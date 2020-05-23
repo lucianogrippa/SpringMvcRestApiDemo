@@ -2,7 +2,7 @@ version: '3'
 services:
     wildfly:
         build: ./wildfly
-        container_name: "wildfly"
+        container_name: wildfly
         ports:
         - "8080:8080"
         - "9990:9990"
@@ -28,7 +28,7 @@ services:
             MYSQL_PASSWORD: user
             MYSQL_ROOT_PASSWORD: grippaweb123
         ports:
-            - 33061:3306
+            - 3306:3306
 
     postgres:
         image: postgres:9.5

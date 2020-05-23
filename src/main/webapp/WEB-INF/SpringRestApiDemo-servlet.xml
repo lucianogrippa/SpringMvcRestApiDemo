@@ -51,6 +51,11 @@
 	
 	<context:component-scan base-package="com.journaldev.spring.controller" />
 	
+	<!-- Mysql Datasource -->
+	<jee:jndi-lookup id="dataSource"
+		jndi-name="java:jboss/datasources/mysqldb" lookup-on-startup="false"
+		cache="false" proxy-interface="javax.sql.DataSource" />
+
 	<!-- SpringContextProvider -->
 	<bean id="springContextProvider"
 		class="helpers.SpringContextProvider"></bean>
