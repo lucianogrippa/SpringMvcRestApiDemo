@@ -14,7 +14,7 @@
   </welcome-file-list>
    <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>/WEB-INF/SpringRestApiDemo-servlet.xml,/WEB-INF/SpringRestApiDemo-beans.xml</param-value>
+    <param-value>/WEB-INF/SpringRestApiDemo-servlet.xml,/WEB-INF/SpringRestApiDemo-beans.xml,/WEB-INF/SpringRestApiDemo-security.xml</param-value>
   </context-param>
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -40,4 +40,24 @@
     <filter-name>charsetFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+
+  <filter>
+		<filter-name>CORS</filter-name>
+		<filter-class>com.thetransactioncompany.cors.CORSFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>CORS</filter-name>
+		<url-pattern>*</url-pattern>
+	</filter-mapping>
+  <!-- Spring Security  Filter -->
+  <filter>
+      <filter-name>springSecurityFilterChain</filter-name>
+      <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+  </filter>
+
+  <filter-mapping>
+      <filter-name>springSecurityFilterChain</filter-name>
+      <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
 </web-app>

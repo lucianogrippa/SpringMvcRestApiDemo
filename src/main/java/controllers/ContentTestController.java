@@ -19,7 +19,7 @@ public class ContentTestController {
 		
 		Content content = new Content();
 		content.setId(id);
-		content.setDescription("prova");
+		content.setDescription("That's works");
 		return content;
 		
 	}

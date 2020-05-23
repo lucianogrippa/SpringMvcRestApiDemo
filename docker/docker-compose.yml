@@ -1,0 +1,63 @@
+version: '3'
+services:
+    wildfly:
+        build: ./wildfly
+        container_name: "wildfly"
+        ports:
+        - "8080:8080"
+        - "9990:9990"
+        volumes:
+        - "./deployments:/opt/jboss/wildfly/standalone/deployments"
+        depends_on:
+            - appdb
+        links:
+            - appdb:wildflydb
+    
+    appdb:
+        build:
+            context: ./mysql
+        network_mode: bridge
+        image: wildfly-db
+        container_name: wildfly-db
+        environment:
+            TZ: Europe/Rome
+            MYSQL_IP: ::1
+            MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+            MYSQL_DATABASE: fbx
+            MYSQL_USER: user
+            MYSQL_PASSWORD: user
+            MYSQL_ROOT_PASSWORD: grippaweb123
+        ports:
+            - 33061:3306
+
+    postgres:
+        image: postgres:9.5
+        container_name: "postgres"
+        volumes:
+            - "./postgres:/docker-entrypoint-initdb.d"
+        environment:
+            - "POSTGRES_PASSWORD=postgres"
+            - "PGPASSWORD=postgres"
+
+    # ActiveMQ:61616 => "admin":"adminactivemq"
+    # ActiveMQWeb:8161 => "admin":"admin"
+    activemq:
+        image: rmohr/activemq:5.10.0
+        container_name: "activemq"
+        ports:
+        - "61616:61616"
+        - "8161:8161"
+    
+    phpmyadmin:
+        depends_on:
+        - appdb
+        network_mode: bridge
+        image: phpmyadmin/phpmyadmin
+        container_name: myadmin-wildfly
+        restart: always
+        environment:
+            PMA_ARBITRARY: 1
+        links:
+            - appdb:wildflydb
+        ports:
+        - '8883:80'

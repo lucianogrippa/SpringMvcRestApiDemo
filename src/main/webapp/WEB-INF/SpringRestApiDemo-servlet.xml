@@ -29,6 +29,13 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
+	<mvc:resources order="1" location="/resources/"
+		mapping="/resources/**" />
+	<mvc:resources mapping="swagger-ui.html"
+		location="classpath:/META-INF/resources/" />
+	<mvc:resources mapping="/webjars/**"
+		location="classpath:/META-INF/resources/webjars/" />
+		
 	<!-- Configura il plugin json -->
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
 		<property name="messageConverters">
@@ -47,4 +54,9 @@
 	<!-- SpringContextProvider -->
 	<bean id="springContextProvider"
 		class="helpers.SpringContextProvider"></bean>
+
+	<bean id="swagger2Config"
+		class="springfox.documentation.swagger2.configuration.Swagger2DocumentationConfiguration">
+	</bean>
+
 </beans>
