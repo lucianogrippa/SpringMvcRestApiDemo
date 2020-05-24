@@ -1,0 +1,6 @@
+INFO    2020-05-24 02:39:38,249 [main] controllers.ContentTestController  - calling: /test/ 10
+INFO    2020-05-24 02:42:01,867 [main] helpers.LogHelper  - calling: /test/ 10
+INFO    2020-05-24 02:45:39,211 [main] helpers.LogHelper  - calling: /test/ 10
+INFO    2020-05-24 02:47:42,768 [main] helpers.LogHelper  - calling: /test/ 10
+INFO    2020-05-24 03:02:24,112 [main] helpers.LogHelper  - calling: /test/ 10
+INFO    2020-05-24 03:13:22,217 [main] helpers.LogHelper  - calling: /test/ 10

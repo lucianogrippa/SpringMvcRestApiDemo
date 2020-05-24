@@ -22,8 +22,8 @@ public class SpringContextIntegrationTest {
 	 
 	    @Before
 	    public void setup() {
-	    	System.setProperty("jboss.server.home.dir","C:\\jboss-platforms\\jboss-7.2.0.Final\\standalone");
-	        System.setProperty("jboss.server.log.dir","C:\\jboss-platforms\\jboss-7.2.0.Final\\standalone\\log");
+	    	System.setProperty("jboss.server.home.dir","./src/test/server");
+	        System.setProperty("jboss.server.log.dir","./src/test/server/log");
 	       
 	        // Process mock annotations
 	        MockitoAnnotations.initMocks(this);
