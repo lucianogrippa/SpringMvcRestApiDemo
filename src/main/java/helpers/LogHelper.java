@@ -1,27 +1,24 @@
 package helpers;
 
+import ch.qos.logback.classic.Level;
+import ch.qos.logback.classic.Logger;
 import com.google.gson.Gson;
-
-import org.apache.log4j.Level;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 
 enum Loglevels {
 	ERROR, INFO, WARN, DEBUG
 }
 
-
 public class LogHelper {
 	private static LogHelper instance;
 	private Logger _logger;
-	private final static String DEFAULT_APPENDER=LogHelper.class.getName();
+	private final static String DEFAULT_APPENDER="application";
 
 	public LogHelper() {
-		_logger = LogManager.getLogger(DEFAULT_APPENDER);
+		_logger = (Logger) org.slf4j.LoggerFactory.getLogger(DEFAULT_APPENDER);
 	}
 
 	public LogHelper(String appender) {
-		_logger = LogManager.getLogger(appender);
+		_logger = (Logger) org.slf4j.LoggerFactory.getLogger(appender);
 	}
 
 	public void logError(String message) {
@@ -103,7 +100,7 @@ public class LogHelper {
 		}
 		else
 		{
-			instance._logger = LogManager.getLogger(DEFAULT_APPENDER);
+			instance._logger = (Logger) org.slf4j.LoggerFactory.getLogger(DEFAULT_APPENDER);
 		}
 		return instance;
 	}
@@ -117,7 +114,7 @@ public class LogHelper {
 		if (instance == null) {
 			instance = new LogHelper(appender);
 		} else {
-			instance._logger = LogManager.getLogger(appender);
+			instance._logger = (Logger) org.slf4j.LoggerFactory.getLogger(appender);
 		}
 		return instance;
 	}
