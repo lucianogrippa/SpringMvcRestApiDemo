@@ -79,4 +79,14 @@
 		<error-code>401</error-code>
 		<location>/api/handle_401</location>
 	</error-page>
+	
+	<error-page>
+		<error-code>403</error-code>
+		<location>/api/handle_403</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>500</error-code>
+		<location>/api/handle_500</location>
+	</error-page>
 </web-app>

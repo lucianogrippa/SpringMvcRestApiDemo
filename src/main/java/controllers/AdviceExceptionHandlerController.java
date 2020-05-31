@@ -16,7 +16,10 @@ import org.springframework.web.context.request.WebRequest;
 
 import dtos.ApiErrorMessageResponse;
 import exceptions.ApiBadRequestHandlerException;
-import exceptions.ApiMethodNotFoundException;
+import exceptions.ApiForbiddenHandlerException;
+import exceptions.ApiInternalServerErrorHandlerException;
+import exceptions.ApiMethodNotAllowedHandlerException;
+import exceptions.ApiNotFoundException;
 import exceptions.ApiNotAuthMethodHadlerException;
 import helpers.ErrorHandlerHelper;
 import helpers.LogHelper;
@@ -34,16 +37,16 @@ public class AdviceExceptionHandlerController {
 	 * @param ex
 	 * @return
 	 */
-	@ExceptionHandler(ApiMethodNotFoundException.class)
+	@ExceptionHandler(ApiNotFoundException.class)
 	@ResponseBody
 	public ResponseEntity<ApiErrorMessageResponse> requestHandlingNoHandlerFound(HttpServletRequest req,
-			ApiMethodNotFoundException ex) {
+			ApiNotFoundException ex) {
 		logger.logDebug("<<<<<<<<<<<<<<<<<<<<<<<< api not found method >>>>>>>>>>>>>>>>>");
 
 		String errorURL = ex.getRequestURL();
 		logger.logDebug("in api not found service >> " + errorURL);
 
-		String errorMessage = "Request url " + errorURL + " is not valid";
+		String errorMessage =  ex.getMessage();
 
 		ApiErrorMessageResponse errorInfo = new ApiErrorMessageResponse();
 		errorInfo.setData(null);
@@ -66,7 +69,7 @@ public class AdviceExceptionHandlerController {
 		String errorURL = ex.getRequestURL();
 		logger.logDebug("in api bad request service >> " + errorURL);
 
-		String errorMessage = "Paramiter missing or wrong type for method " + errorURL;
+		String errorMessage = ex.getMessage();
 
 		ApiErrorMessageResponse errorInfo = new ApiErrorMessageResponse();
 		errorInfo.setData(null);
@@ -95,12 +98,83 @@ public class AdviceExceptionHandlerController {
 		ApiErrorMessageResponse errorInfo = new ApiErrorMessageResponse();
 		errorInfo.setData(null);
 		errorInfo.setDescription(errorMessage);
-		errorInfo.setError("API_BAD_REQUEST");
+		errorInfo.setError("API_UNAUTHORIZED");
 		errorInfo.setId(System.currentTimeMillis());
-		errorInfo.setStatus(HttpStatus.BAD_REQUEST.value());
+		errorInfo.setStatus(HttpStatus.UNAUTHORIZED.value());
 
 		ResponseEntity<ApiErrorMessageResponse> responseApi = new ResponseEntity<ApiErrorMessageResponse>(errorInfo,
 				HttpStatus.UNAUTHORIZED);
+		return responseApi;
+	}
+	
+	@ExceptionHandler(value = { ApiForbiddenHandlerException.class })
+	@ResponseStatus(value = HttpStatus.FORBIDDEN)
+	@ResponseBody
+	public ResponseEntity<ApiErrorMessageResponse> badForbidden(HttpServletRequest req, ApiForbiddenHandlerException ex) {
+		logger.logDebug("in api forbidden request service");
+
+		String errorURL = ex.getHttpMethod();
+		logger.logDebug("in api forbidden request service >> " + errorURL);
+
+		String errorMessage = ex.getMessage();
+
+		ApiErrorMessageResponse errorInfo = new ApiErrorMessageResponse();
+		errorInfo.setData(null);
+		errorInfo.setDescription(errorMessage);
+		errorInfo.setError("API_FORBIDDEN");
+		errorInfo.setId(System.currentTimeMillis());
+		errorInfo.setStatus(HttpStatus.FORBIDDEN.value());
+
+		ResponseEntity<ApiErrorMessageResponse> responseApi = new ResponseEntity<ApiErrorMessageResponse>(errorInfo,
+				HttpStatus.FORBIDDEN);
+		return responseApi;
+	}
+	
+	@ExceptionHandler(value = { ApiInternalServerErrorHandlerException.class })
+	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+	@ResponseBody
+	public ResponseEntity<ApiErrorMessageResponse> badInternalServerError(HttpServletRequest req, ApiInternalServerErrorHandlerException ex) {
+		logger.logDebug("in api internal server error request service");
+
+		String errorURL = ex.getHttpMethod();
+		logger.logDebug("in api forbidden request service >> " + errorURL);
+
+		String errorMessage = ex.getMessage();
+		String descriptionMessage = ErrorHandlerHelper.getStatTrace(ex);
+
+		ApiErrorMessageResponse errorInfo = new ApiErrorMessageResponse();
+		errorInfo.setData(errorMessage);
+		errorInfo.setDescription(descriptionMessage);
+		errorInfo.setError("API_INTERNAL_SERVER_ERROR");
+		errorInfo.setId(System.currentTimeMillis());
+		errorInfo.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+
+		ResponseEntity<ApiErrorMessageResponse> responseApi = new ResponseEntity<ApiErrorMessageResponse>(errorInfo,
+				HttpStatus.INTERNAL_SERVER_ERROR);
+		return responseApi;
+	}
+	
+	@ExceptionHandler(value = { ApiMethodNotAllowedHandlerException.class })
+	@ResponseStatus(value = HttpStatus.METHOD_NOT_ALLOWED)
+	@ResponseBody
+	public ResponseEntity<ApiErrorMessageResponse> badMethodNotAllowed(HttpServletRequest req, ApiMethodNotAllowedHandlerException ex) {
+		logger.logDebug("in api internal server error request service");
+
+		String errorURL = ex.getHttpMethod();
+		logger.logDebug("in api forbidden request service >> " + errorURL);
+
+		String errorMessage = ex.getMessage();
+		String descriptionMessage = ErrorHandlerHelper.getStatTrace(ex);
+
+		ApiErrorMessageResponse errorInfo = new ApiErrorMessageResponse();
+		errorInfo.setData(errorMessage);
+		errorInfo.setDescription(descriptionMessage);
+		errorInfo.setError("API_IMETHOD_NOT_ALLOWED");
+		errorInfo.setId(System.currentTimeMillis());
+		errorInfo.setStatus(HttpStatus.METHOD_NOT_ALLOWED.value());
+
+		ResponseEntity<ApiErrorMessageResponse> responseApi = new ResponseEntity<ApiErrorMessageResponse>(errorInfo,
+				HttpStatus.METHOD_NOT_ALLOWED);
 		return responseApi;
 	}
 	

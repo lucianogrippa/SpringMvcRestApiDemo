@@ -2,14 +2,13 @@ package exceptions;
 
 import javax.servlet.ServletException;
 
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.servlet.NoHandlerFoundException;
 
 @ResponseStatus(value = HttpStatus.BAD_REQUEST)
 public class ApiBadRequestHandlerException extends ServletException {
 
+	private static final long serialVersionUID = 1L;
 	private String httpMethod;
 	private String requestURL;
 
