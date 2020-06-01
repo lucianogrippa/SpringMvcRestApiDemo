@@ -2,6 +2,9 @@ package dtos;
 
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PropertiesListData {
     private String fileName;
     private String path;

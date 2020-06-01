@@ -5,42 +5,50 @@ import javax.servlet.ServletException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import dtos.ApiErrorMessageResponse;
+import helpers.ErrorHandlerHelper;
+import helpers.LogHelper;
+
 @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
 public class ApiInternalServerErrorHandlerException extends ServletException {
 
 	private static final long serialVersionUID = 1L;
-	private String httpMethod;
-	private String requestURL;
-	
-	public ApiInternalServerErrorHandlerException(String message, Throwable rootCause) {
-		super(message, rootCause);
-	}
-	
+	LogHelper logger = LogHelper.getLogger();
+
 	public ApiInternalServerErrorHandlerException() {
-		super();
+		super("Error " + HttpStatus.INTERNAL_SERVER_ERROR.value() + ": Exception occurred on server");
 	}
 
-	public ApiInternalServerErrorHandlerException(String httpMethod, String requestURL) {
-		super("Server Error 500");
-		this.setHttpMethod(httpMethod);
-		this.setRequestURL(requestURL);
+	public ApiInternalServerErrorHandlerException(String message) {
+		super(message);
+		logger.logDebug("in ApiInternalServerErrorHandlerException " + message);
 	}
 
-	public String getHttpMethod() {
-		return httpMethod;
+	public ApiInternalServerErrorHandlerException(String message, Throwable exc) {
+		super(message, exc);
+		logger.logDebug("in ApiInternalServerErrorHandlerException " + message);
 	}
 
-	public void setHttpMethod(String httpMethod) {
-		this.httpMethod = httpMethod;
-	}
+	public ApiErrorMessageResponse getResponseDto() {
 
-	public String getRequestURL() {
-		return requestURL;
-	}
+		ApiErrorMessageResponse errorInfo = new ApiErrorMessageResponse();
+		String description = "";
+		if (getStackTrace() != null) {
+			description = ErrorHandlerHelper.getStackTrace(getRootCause());
+		} else if (getMessage() != null && !getMessage().isEmpty()) {
+			description = getMessage();
+		} else {
+			description = "Internal Server error occurred see exception";
+		}
 
-	public void setRequestURL(String requestURL) {
-		this.requestURL = requestURL;
+		errorInfo.setExeption(getRootCause());
+
+		errorInfo.setData(null);
+		errorInfo.setDescription(description);
+		errorInfo.setError("API_INTERNAL_SERVER_ERROR");
+		errorInfo.setId(System.currentTimeMillis());
+		errorInfo.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+
+		return errorInfo;
 	}
-	
-	
 }

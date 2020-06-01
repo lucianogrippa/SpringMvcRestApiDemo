@@ -2,6 +2,10 @@ package dtos;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Content implements Serializable {
 	private static final long serialVersionUID = 2174947401248457687L;
 	private long id;

@@ -5,36 +5,50 @@ import javax.servlet.ServletException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import dtos.ApiErrorMessageResponse;
+import helpers.ErrorHandlerHelper;
+import helpers.LogHelper;
+
 @ResponseStatus(value = HttpStatus.FORBIDDEN)
 public class ApiForbiddenHandlerException extends ServletException {
 	private static final long serialVersionUID = 1L;
-	
-	private String httpMethod;
-	private String requestURL;
+
+	LogHelper logger = LogHelper.getLogger();
 
 	public ApiForbiddenHandlerException() {
-		super();
-	}
-	
-	public ApiForbiddenHandlerException(String httpMethod, String requestURL) {
-		super("No handler found for " + httpMethod + " " + requestURL);
-		this.setHttpMethod(httpMethod);
-		this.setRequestURL(requestURL);
+		super("Error " + HttpStatus.FORBIDDEN.value() + ": forbidden access to resource");
 	}
 
-	public String getHttpMethod() {
-		return httpMethod;
+	public ApiForbiddenHandlerException(String message) {
+		super(message);
+		logger.logDebug("in ApiForbiddenHandlerException " + message);
 	}
 
-	public void setHttpMethod(String httpMethod) {
-		this.httpMethod = httpMethod;
+	public ApiForbiddenHandlerException(String message, Throwable exc) {
+		super(message, exc);
+		logger.logDebug("in ApiForbiddenHandlerException " + message);
 	}
 
-	public String getRequestURL() {
-		return requestURL;
-	}
+	public ApiErrorMessageResponse getResponseDto() {
 
-	public void setRequestURL(String requestURL) {
-		this.requestURL = requestURL;
+		ApiErrorMessageResponse errorInfo = new ApiErrorMessageResponse();
+		String description = "";
+		if (getRootCause() != null) {
+			description = ErrorHandlerHelper.getStackTrace(getRootCause());
+		} else if (getMessage() != null && !getMessage().isEmpty()) {
+			description = getMessage();
+		} else {
+			description = "Forbidden access to resource";
+		}
+
+		errorInfo.setExeption(getRootCause());
+
+		errorInfo.setData(null);
+		errorInfo.setDescription(description);
+		errorInfo.setError("API_RESOURCE_FORBIDDEN");
+		errorInfo.setId(System.currentTimeMillis());
+		errorInfo.setStatus(HttpStatus.FORBIDDEN.value());
+
+		return errorInfo;
 	}
 }

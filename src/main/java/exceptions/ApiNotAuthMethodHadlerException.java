@@ -5,38 +5,51 @@ import javax.servlet.ServletException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import dtos.ApiErrorMessageResponse;
+import helpers.ErrorHandlerHelper;
+import helpers.LogHelper;
+
 @ResponseStatus(value = HttpStatus.UNAUTHORIZED)
 public class ApiNotAuthMethodHadlerException extends ServletException {
 
-	private static final long serialVersionUID = -5631579370214649717L;
+	private static final long serialVersionUID = 1L;
 
-	private String httpMethod;
-	private String requestURL;
+	LogHelper logger = LogHelper.getLogger();
 
 	public ApiNotAuthMethodHadlerException() {
-		super();
+		super("Error " + HttpStatus.UNAUTHORIZED.value() + ": permission denied for access to resource");
 	}
 
-	public ApiNotAuthMethodHadlerException(String httpMethod, String requestURL) {
-		super("You should authorized to access");
-		this.setHttpMethod(httpMethod);
-		this.setRequestURL(requestURL);
+	public ApiNotAuthMethodHadlerException(String message) {
+		super(message);
+		logger.logDebug("in ApiNotAuthMethodHadlerException " + message);
 	}
 
-	public String getHttpMethod() {
-		return httpMethod;
+	public ApiNotAuthMethodHadlerException(String message, Throwable exc) {
+		super(message, exc);
+		logger.logDebug("in ApiNotAuthMethodHadlerException " + message);
 	}
 
-	public void setHttpMethod(String httpMethod) {
-		this.httpMethod = httpMethod;
-	}
+	public ApiErrorMessageResponse getResponseDto() {
 
-	public String getRequestURL() {
-		return requestURL;
-	}
+		ApiErrorMessageResponse errorInfo = new ApiErrorMessageResponse();
+		String description = "";
+		if (getRootCause() != null) {
+			description = ErrorHandlerHelper.getStackTrace(getRootCause());
+		} else if (getMessage() != null && !getMessage().isEmpty()) {
+			description = getMessage();
+		} else {
+			description = "Permission denied for access to resource";
+		}
 
-	public void setRequestURL(String requestURL) {
-		this.requestURL = requestURL;
-	}
+		errorInfo.setExeption(getRootCause());
 
+		errorInfo.setData(null);
+		errorInfo.setDescription(description);
+		errorInfo.setError("API_RESOURCE_UNAUTHORIZED");
+		errorInfo.setId(System.currentTimeMillis());
+		errorInfo.setStatus(HttpStatus.UNAUTHORIZED.value());
+
+		return errorInfo;
+	}
 }

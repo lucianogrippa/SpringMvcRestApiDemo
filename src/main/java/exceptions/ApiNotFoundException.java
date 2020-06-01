@@ -5,42 +5,50 @@ import javax.servlet.ServletException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import dtos.ApiErrorMessageResponse;
+import helpers.ErrorHandlerHelper;
+import helpers.LogHelper;
+
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
 public class ApiNotFoundException extends ServletException {
-    
+
 	private static final long serialVersionUID = -4931623900956989558L;
-	private String httpMethod;
-	private String requestURL;
+	LogHelper logger = LogHelper.getLogger();
 
 	public ApiNotFoundException() {
-		super();
+		super("Error " + HttpStatus.NOT_FOUND.value() + ": Resource not found");
 	}
-	
-	public ApiNotFoundException(String httpMethod, String requestURL) {
-		super("No handler found for " + httpMethod + " " + requestURL);
-		this.setHttpMethod(httpMethod);
-		this.setRequestURL(requestURL);
-	}
-	
-	public ApiNotFoundException(String httpMethod, String requestURL,String message) {
+
+	public ApiNotFoundException(String message) {
 		super(message);
-		this.setHttpMethod(httpMethod);
-		this.setRequestURL(requestURL);
+		logger.logDebug("in ApiNotFoundException " + message);
 	}
 
-	public String getHttpMethod() {
-		return httpMethod;
+	public ApiNotFoundException(String message, Throwable exc) {
+		super(message, exc);
+		logger.logDebug("in ApiNotFoundException " + message);
 	}
 
-	public void setHttpMethod(String httpMethod) {
-		this.httpMethod = httpMethod;
-	}
+	public ApiErrorMessageResponse getResponseDto() {
 
-	public String getRequestURL() {
-		return requestURL;
-	}
+		ApiErrorMessageResponse errorInfo = new ApiErrorMessageResponse();
+		String description = "";
+		if (getRootCause() != null) {
+			description = ErrorHandlerHelper.getStackTrace(getRootCause());
+		} else if (getMessage() != null && !getMessage().isEmpty()) {
+			description = getMessage();
+		} else {
+			description = "Resource not found in this server";
+		}
 
-	public void setRequestURL(String requestURL) {
-		this.requestURL = requestURL;
+		errorInfo.setExeption(getRootCause());
+
+		errorInfo.setData(null);
+		errorInfo.setDescription(description);
+		errorInfo.setError("API_RESOURCE_NOT_FOUND");
+		errorInfo.setId(System.currentTimeMillis());
+		errorInfo.setStatus(HttpStatus.NOT_FOUND.value());
+
+		return errorInfo;
 	}
 }

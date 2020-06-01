@@ -5,36 +5,53 @@ import javax.servlet.ServletException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import dtos.ApiErrorMessageResponse;
+import helpers.ErrorHandlerHelper;
+import helpers.LogHelper;
+
 @ResponseStatus(value = HttpStatus.BAD_REQUEST)
 public class ApiBadRequestHandlerException extends ServletException {
-
 	private static final long serialVersionUID = 1L;
-	private String httpMethod;
-	private String requestURL;
-
-	public ApiBadRequestHandlerException() {
-		super();
+    
+	LogHelper logger = LogHelper.getLogger();
+	
+	public ApiBadRequestHandlerException(){
+		super("Error "+HttpStatus.BAD_REQUEST.value()+": Bad request");
+	}
+	public ApiBadRequestHandlerException(String message) {
+		super(message);
+		logger.logDebug("in ApiBadRequestHandlerException "+message);
 	}
 	
-	public ApiBadRequestHandlerException(String httpMethod, String requestURL) {
-		super("Bad request for " + httpMethod + " " + requestURL);
-		this.setHttpMethod(httpMethod);
-		this.setRequestURL(requestURL);
+	public ApiBadRequestHandlerException(String message,Throwable exc) {
+		super(message,exc);
+		logger.logDebug("in ApiBadRequestHandlerException "+message);
 	}
 
-	public String getHttpMethod() {
-		return httpMethod;
-	}
-
-	public void setHttpMethod(String httpMethod) {
-		this.httpMethod = httpMethod;
-	}
-
-	public String getRequestURL() {
-		return requestURL;
-	}
-
-	public void setRequestURL(String requestURL) {
-		this.requestURL = requestURL;
+	public ApiErrorMessageResponse getResponseDto() {
+		
+		ApiErrorMessageResponse errorInfo = new ApiErrorMessageResponse();
+		String description = "";
+		if(getRootCause()!= null) {
+			description =  ErrorHandlerHelper.getStackTrace(getRootCause());
+		}
+		else if(getMessage() != null && !getMessage().isEmpty())
+		{
+			description = getMessage();
+		}
+		else
+		{
+			description ="Bad request error 400 ";
+		}
+		
+		errorInfo.setExeption(getRootCause());
+		
+		errorInfo.setData(null);
+		errorInfo.setDescription(description);
+		errorInfo.setError("API_BAD_REQUEST");
+		errorInfo.setId(System.currentTimeMillis());
+		errorInfo.setStatus(HttpStatus.BAD_REQUEST.value());
+		
+		return errorInfo;
 	}
 }

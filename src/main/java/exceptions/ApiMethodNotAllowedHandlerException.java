@@ -8,41 +8,50 @@ import javax.servlet.ServletException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import dtos.ApiErrorMessageResponse;
+import helpers.ErrorHandlerHelper;
+import helpers.LogHelper;
+
 @ResponseStatus(value = HttpStatus.METHOD_NOT_ALLOWED)
 public class ApiMethodNotAllowedHandlerException extends ServletException {
+
 	private static final long serialVersionUID = 1L;
-	private String httpMethod;
-	private String requestURL;
+	LogHelper logger = LogHelper.getLogger();
 
 	public ApiMethodNotAllowedHandlerException() {
-		super();
-	}
-	
-	public ApiMethodNotAllowedHandlerException(String httpMethod, String requestURL) {
-		super("Method not allowed -> "+httpMethod+" url "+requestURL);
-		this.setHttpMethod(httpMethod);
-		this.setRequestURL(requestURL);
-	}
-	
-	public ApiMethodNotAllowedHandlerException(String httpMethod, String requestURL,String message) {
-		super("Method not allowed: "+message);
-		this.setHttpMethod(httpMethod);
-		this.setRequestURL(requestURL);
+		super("Error " + HttpStatus.METHOD_NOT_ALLOWED.value() + ": Exception: wrong parameters for method call");
 	}
 
-	public String getHttpMethod() {
-		return httpMethod;
+	public ApiMethodNotAllowedHandlerException(String message) {
+		super(message);
+		logger.logDebug("in ApiMethodNotAllowedHandlerException " + message);
 	}
 
-	public void setHttpMethod(String httpMethod) {
-		this.httpMethod = httpMethod;
+	public ApiMethodNotAllowedHandlerException(String message, Throwable exc) {
+		super(message, exc);
+		logger.logDebug("in ApiMethodNotAllowedHandlerException " + message);
 	}
 
-	public String getRequestURL() {
-		return requestURL;
-	}
+	public ApiErrorMessageResponse getResponseDto() {
 
-	public void setRequestURL(String requestURL) {
-		this.requestURL = requestURL;
+		ApiErrorMessageResponse errorInfo = new ApiErrorMessageResponse();
+		String description = "";
+		if (getRootCause() != null) {
+			description = ErrorHandlerHelper.getStackTrace(getRootCause());
+		} else if (getMessage() != null && !getMessage().isEmpty()) {
+			description = getMessage();
+		} else {
+			description = "Wrong parameters for method call";
+		}
+
+		errorInfo.setExeption(getRootCause());
+
+		errorInfo.setData(null);
+		errorInfo.setDescription(description);
+		errorInfo.setError("API_NOT_ALLOWED");
+		errorInfo.setId(System.currentTimeMillis());
+		errorInfo.setStatus(HttpStatus.METHOD_NOT_ALLOWED.value());
+
+		return errorInfo;
 	}
 }
