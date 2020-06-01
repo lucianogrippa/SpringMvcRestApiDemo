@@ -51,5 +51,4 @@ public class ContentTestControllerTest {
 			fail("test fail");
 		}
 	}
-
 }

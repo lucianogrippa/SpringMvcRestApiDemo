@@ -107,8 +107,8 @@ public class CommonController extends BaseController{
 	 * @return
 	 * @throws ApiInternalServerErrorHandlerException
 	 */
-	@RequestMapping(value = "/logger/change", method = RequestMethod.POST)
-	public @ResponseBody Content changeLogLevel(@RequestParam(value = "level", defaultValue = "info") String logLevel,
+	@RequestMapping(value = "/logger/change/{level}", method = RequestMethod.PUT)
+	public @ResponseBody Content changeLogLevel(@PathVariable(value = "level") String logLevel,
 			HttpServletRequest request, HttpServletResponse response)
 			throws ApiMethodNotAllowedHandlerException, ApiInternalServerErrorHandlerException {
 		logger.logInfo("calling /logger/change/" + logLevel);
@@ -162,7 +162,7 @@ public class CommonController extends BaseController{
 	 * @throws ApiMethodNotAllowedHandlerException
 	 * @throws ApiInternalServerErrorHandlerException
 	 */
-	@RequestMapping(value = "/properties/create", method = RequestMethod.PUT)
+	@RequestMapping(value = "/properties/create", method = RequestMethod.POST)
 	@Description("crea il file di properties")
 	public @ResponseBody Content createPropertiesFile(@RequestBody PropertiesListData propertiesPayload,
 			HttpServletRequest request, HttpServletResponse response)
@@ -255,7 +255,7 @@ public class CommonController extends BaseController{
 
 	@RequestMapping(value = "/properties/delete", method = RequestMethod.DELETE)
 	@Description("elimina un file di properties")
-	public @ResponseBody Content deletePropertiesFile(@RequestParam(value = "file", defaultValue = "") String file,
+	public @ResponseBody Content deletePropertiesFile(@RequestParam(value = "filename",defaultValue = "") String file,
 			HttpServletRequest request, HttpServletResponse response)
 			throws ApiInternalServerErrorHandlerException, ApiMethodNotAllowedHandlerException {
 		Content content = new Content();
@@ -263,8 +263,13 @@ public class CommonController extends BaseController{
 		content.setError(null);
 		content.setId(System.currentTimeMillis());
 		content.setData(false);
-
+		
+		
 		if (file != null && !file.isEmpty()) {
+			if(!file.endsWith("properties")) {
+				file +=".properties";
+			}
+			
 			File pFile = new File(file);
 			try {
 				if (pFile.isFile() && pFile.exists()) {
