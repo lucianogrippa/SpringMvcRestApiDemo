@@ -5,7 +5,6 @@ package controllers;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -19,19 +18,15 @@ import exceptions.ApiForbiddenHandlerException;
 import exceptions.ApiInternalServerErrorHandlerException;
 import exceptions.ApiMethodNotAllowedHandlerException;
 import exceptions.ApiNotAuthMethodHadlerException;
-import exceptions.ApiNotFoundException;
-import helpers.LogHelper;
+import exceptions.ApiNotFoundHandlerException;
 
 @ControllerAdvice
-public class AdviceExceptionHandlerController {
-
-	@Autowired
-	LogHelper logger;
+public class AdviceExceptionHandlerController extends BaseController {
 	
-	@ExceptionHandler(ApiNotFoundException.class)
+	@ExceptionHandler(ApiNotFoundHandlerException.class)
 	@ResponseBody
 	public ResponseEntity<ApiErrorMessageResponse> requestHandlingNoHandlerFound(HttpServletRequest req,
-			ApiNotFoundException ex) {
+			ApiNotFoundHandlerException ex) {
 		logger.logDebug("<<<<<<<<<<<<<<<<<<<<<<<< api not found method >>>>>>>>>>>>>>>>>");
 
 		ApiErrorMessageResponse errorInfo = ex.getResponseDto();

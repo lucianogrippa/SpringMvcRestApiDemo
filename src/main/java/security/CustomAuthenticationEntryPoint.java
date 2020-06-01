@@ -10,9 +10,9 @@ import org.springframework.http.MediaType;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
 
-import exceptions.ApiNotAuthMethodHadlerException;
-
 public class CustomAuthenticationEntryPoint extends BasicAuthenticationEntryPoint {
+	public static final String REALM_NAME = "memorynotfound.com";
+	
 	@Override
     public void commence(HttpServletRequest request,
                          HttpServletResponse response,
@@ -30,7 +30,7 @@ public class CustomAuthenticationEntryPoint extends BasicAuthenticationEntryPoin
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        setRealmName(SecurityConfig.REALM_NAME);
+        setRealmName(REALM_NAME);
         super.afterPropertiesSet();
     }
 }

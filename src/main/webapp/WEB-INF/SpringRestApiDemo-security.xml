@@ -12,7 +12,7 @@
 	<beans:bean id="basicAuthEntryPoint"
 		class="security.CustomAuthenticationEntryPoint" />
 
-	<http realm="rai.it">
+	<http realm="grippaweb.eu">
 		<intercept-url pattern="/api/**" access="permitAll()" />
 		<intercept-url pattern="/**" access="isAuthenticated()" />
 		<http-basic entry-point-ref="basicAuthEntryPoint" />
@@ -22,10 +22,8 @@
 	<authentication-manager>
 		<authentication-provider>
 			<user-service>
-				<user name="lgrippa" password="grippaweb123"
-					authorities="ROLE_USER" />
-				<user name="admin" password="admin.01"
-					authorities="ROLE_MANAGER" />
+				<user name="lgrippa" password="grippaweb123" authorities="ROLE_USER" />
+				<user name="admin" password="admin.01" authorities="ROLE_MANAGER" />
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>

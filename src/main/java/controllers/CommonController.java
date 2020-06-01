@@ -12,7 +12,6 @@ import java.util.Scanner;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Description;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,16 +27,12 @@ import dtos.Content;
 import dtos.PropertiesListData;
 import exceptions.ApiInternalServerErrorHandlerException;
 import exceptions.ApiMethodNotAllowedHandlerException;
-import exceptions.ApiNotFoundException;
+import exceptions.ApiNotFoundHandlerException;
 import helpers.LogHelper;
 
 @RestController
 @RequestMapping("/api")
-public class CommonController {
-
-	@Autowired
-	LogHelper logger;
-
+public class CommonController extends BaseController{
 	/**
 	 * Get jboss.server.home.dir system property
 	 * 
@@ -63,11 +58,11 @@ public class CommonController {
 	 * 
 	 * @param response
 	 * @return
-	 * @throws ApiNotFoundException, ApiInternalServerErrorHandlerException
+	 * @throws ApiNotFoundHandlerException, ApiInternalServerErrorHandlerException
 	 */
 	@RequestMapping(value = "/logfilesList", method = RequestMethod.GET)
 	public @ResponseBody Content logfilesList(HttpServletRequest request, HttpServletResponse response)
-			throws ApiNotFoundException, ApiInternalServerErrorHandlerException {
+			throws ApiNotFoundHandlerException, ApiInternalServerErrorHandlerException {
 		LogHelper.getLogger().logInfo("calling: /logfilesList");
 		String contentLog = System.getProperty("jboss.server.home.dir") + "/log";
 		File pFile = new File(contentLog);
@@ -90,10 +85,10 @@ public class CommonController {
 					content.setError(null);
 
 				} else {
-					throw new ApiNotFoundException("Log directory is empty");
+					throw new ApiNotFoundHandlerException("Log directory is empty");
 				}
 			} else {
-				throw new ApiNotFoundException("log directory not exists");
+				throw new ApiNotFoundHandlerException("log directory not exists");
 			}
 		} catch (Exception e) {
 			throw new ApiInternalServerErrorHandlerException(e.getMessage(), e);
@@ -289,7 +284,7 @@ public class CommonController {
 	}
 
 	@RequestMapping(value = "/logger/readfile/{file}", method = RequestMethod.GET)
-	@Description("elimina un file di properties")
+	@Description("legge un file del log")
 	public @ResponseBody Content loggerReadFile(@PathVariable("file") String file, HttpServletRequest request,
 			HttpServletResponse response)
 			throws IOException, ApiInternalServerErrorHandlerException, ApiMethodNotAllowedHandlerException {
