@@ -15,5 +15,13 @@
 						    http://www.springframework.org/schema/jee 
 						    http://www.springframework.org/schema/jee/spring-jee-4.0.xsd">
 
-			<bean id="loggerHelper" name="loggerHelper" class="helpers.LogHelper" scope="prototype"></bean>
-	</beans>
+			
+	<bean id="loggerHelper" name="loggerHelper" class="helpers.LogHelper" scope="prototype" />
+		
+	<bean id="restAuthenticationEntryPoint" name="restAuthenticationEntryPoint" class="security.api.RestAuthenticationEntryPoint" />
+		
+	<bean id="jwtAuthenticationProvider" name="jwtAuthenticationProvider" class="security.api.JwtAuthenticationProvider" />
+
+	<bean id="jwtAuthenticationSuccessHandler" name="jwtAuthenticationSuccessHandler" class="security.api.JwtAuthenticationSuccessHandler" />
+
+</beans>

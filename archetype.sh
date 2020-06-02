@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # sets only if must build with specific version of jdk otherwise comment it
-	# export JAVA_HOME=/home/lucianogrippa/sdk/jdk8u252-b09
-	
+# export JAVA_HOME=/home/lucianogrippa/sdk/jdk8u252-b09
+DATE_WITH_TIME=`date "+%Y%m%d-%H%M%S"`
 MVNW_FILE=./mvnw
 MVN_DIR=.mvn
 MVN_REPO_SETTINGS=$HOME/.m2/settings.xml
@@ -11,6 +11,9 @@ DEFAULT_SETTINGS_CONTENT="<settings xmlns=\"http://maven.apache.org/SETTINGS/1.0
       xsi:schemaLocation=\"http://maven.apache.org/SETTINGS/1.0.0
                           https://maven.apache.org/xsd/settings-1.0.0.xsd\">
     </settings>"
+
+CURRENT_DIRECTORY=$PWD
+
 getopts a: prjdirname
 
 ARCHETIPE_PROJECT_DIR=$OPTARG
@@ -19,11 +22,20 @@ echo "archetipe project $ARCHETIPE_PROJECT_DIR"
 getopts X maketest
 
 echo "-x = $maketest"
+
+getopts m: commitMessage
+
+if [ "$commitMessage" = "m" ]; then
+   COMMIT_MESSAGE=$OPTARG
+else
+  COMMIT_MESSAGE="generate archetype $DATE_WITH_TIME"
+fi
+
 # options solo uno -debug
-if [ "$maketest" == "X" ]; then
+if [ "$maketest" = "X" ]; then
 	DEBUGOPTION=-X
 else
-   DEBUGOPTION=-B
+   DEBUGOPTION="-B release:prepare release:perform"
 fi
 
 echo "debug option $DEBUG"
@@ -56,7 +68,13 @@ if [ -d "$ARCHETIPE_PROJECT_DIR" ] && [ -d "./target/generated-sources/archetype
    rm -rf $ARCHETIPE_PROJECT_DIR/pom.xml && \
    rm -rf $ARCHETIPE_PROJECT_DIR/src && \
    cp -r ./target/generated-sources/archetype/** $ARCHETIPE_PROJECT_DIR/ && \
-   ./mvnw -f $ARCHETIPE_PROJECT_DIR -B clean install
+   ./mvnw -f $ARCHETIPE_PROJECT_DIR clean install -B && \
+   cd $ARCHETIPE_PROJECT_DIR && \
+   git add . && \
+   git commit -m "$COMMIT_MESSAGE" && \
+   git pull && \
+   git push && \
+   cd $CURRENT_DIRECTORY
 fi
 
 
