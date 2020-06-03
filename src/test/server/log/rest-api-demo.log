@@ -28,3 +28,8 @@
 [2020-06-02 00:22:52.758][INFO  application] calling: /jbossdir
 [2020-06-02 00:22:52.924][INFO  application] calling /logger/change/debug
 [2020-06-02 00:22:53.025][INFO  application] calling: /test/ 10
+[2020-06-03 09:15:28.070][INFO  application] calling: /logfilesList
+[2020-06-03 09:15:28.365][DEBUG application] start create properties
+[2020-06-03 09:15:28.398][INFO  application] calling: /jbossdir
+[2020-06-03 09:15:28.501][INFO  application] calling /logger/change/debug
+[2020-06-03 09:15:28.549][INFO  application] calling: /test/ 10
