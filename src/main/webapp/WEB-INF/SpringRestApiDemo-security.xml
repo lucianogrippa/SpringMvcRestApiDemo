@@ -27,6 +27,8 @@
 		<custom-filter before="FORM_LOGIN_FILTER" ref="jwtAuthenticationFilter" />
 	</http>
 
+	<beans:bean id="jwtAuthenticationProvider" name="jwtAuthenticationProvider" class="security.api.JwtAuthenticationProvider" scope="prototype" />
+
 	<!-- authentication manager per le api -->
 	<authentication-manager alias="authenticationManager">
 		<authentication-provider ref="jwtAuthenticationProvider" />

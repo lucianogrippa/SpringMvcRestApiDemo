@@ -3,20 +3,15 @@
  */
 package security.api;
 
-import java.util.List;
+import java.io.UnsupportedEncodingException;
 
 import org.jose4j.jwt.MalformedClaimException;
+import org.jose4j.lang.JoseException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 
-import dtos.JwtUser;
-import exceptions.JwtTokenMalformedException;
 import helpers.JwtHelper;
 import helpers.LogHelper;
 
@@ -24,7 +19,7 @@ import helpers.LogHelper;
  * @author luciano
  *
  */
-public class JwtAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
+public class JwtAuthenticationProvider implements AuthenticationProvider {
 
 	@Autowired
 	JwtHelper jwtUtil;
@@ -33,43 +28,21 @@ public class JwtAuthenticationProvider extends AbstractUserDetailsAuthentication
 	LogHelper logger;
 
 	public JwtAuthenticationProvider() {
+	}
 
+	@Override
+	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+		try {
+			return JwtAuthenticationToken.fromAuth(authentication);
+		} catch (MalformedClaimException | UnsupportedEncodingException | JoseException e) {
+			logger.logException(e);
+		}
+		return null;
 	}
 
 	@Override
 	public boolean supports(Class<?> authentication) {
-		return (JwtAuthenticationToken.class.isAssignableFrom(authentication));
-	}
-
-	@Override
-	protected void additionalAuthenticationChecks(UserDetails userDetails,
-			UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	protected UserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken authentication)
-			throws AuthenticationException {
-		JwtAuthenticationToken jwtAuthenticationToken = JwtAuthenticationToken.fromAuth(authentication);
-		String token = jwtAuthenticationToken.getToken();
-
-		JwtUser parsedUser;
-		try {
-			parsedUser = jwtUtil.parseToken(token);
-
-			if (parsedUser == null) {
-				throw new JwtTokenMalformedException("JWT token is not valid");
-			}
-
-			List<GrantedAuthority> authorityList = AuthorityUtils
-					.commaSeparatedStringToAuthorityList(parsedUser.getRole());
-
-			return new User(parsedUser.getUsername(), token, authorityList);
-		} catch (MalformedClaimException | JwtTokenMalformedException e) {
-			logger.logException(e);
-		}
-		return null;
+		return true;
 	}
 
 }
