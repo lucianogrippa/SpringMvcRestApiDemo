@@ -94,9 +94,13 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
 				}
 				else
 				{
+					if(auth != null)
+						auth= null;
 					getFailureHandler().onAuthenticationFailure(request, response,new ApiAuthenticationTokenException("User role not have grant access to the api"));
 				}
 			} else {
+				if(auth != null)
+					auth= null;
 				getFailureHandler().onAuthenticationFailure(request, response,
 						authenticationProvider.getExceptionCause());
 			}

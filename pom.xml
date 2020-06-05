@@ -9,6 +9,7 @@
 	<description>Progetto prototipo per creare Spring Mvc Rest Api da deployare su server jboss wildfly</description>
 	<properties>
 		<java-version>1.8</java-version>
+		<JBOSS_HOME>/home/luciano/jboss/wildfly/wildfly-10.1.0.Final</JBOSS_HOME>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<org.springframework-version>4.2.2.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.7.4</org.aspectj-version>
@@ -178,16 +179,16 @@
 			<artifactId>logback-classic</artifactId>
 			<version>1.1.3</version>
 		</dependency>
-		
+
 		<!-- IN memory database -->
-		
+
 		<!-- H2 -->
 		<dependency>
-	   		<groupId>com.h2database</groupId>
-	   		<artifactId>h2</artifactId>
-	   		<version>1.3.165</version>
-	   		<scope>runtime</scope>
-	   	</dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.3.165</version>
+			<scope>runtime</scope>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -224,6 +225,31 @@
 				<configuration>
 					<mainClass>org.test.int1.Main</mainClass>
 				</configuration>
+			</plugin>
+			<!-- Jboss Application server plugin -->
+			<plugin>
+				<groupId>org.jboss.as.plugins</groupId>
+				<artifactId>jboss-as-maven-plugin</artifactId>
+				<version>7.9.Final</version>
+				<configuration>
+					<jboss-home>${JBOSS_HOME}</jboss-home>
+					<jvmArgs>-Xdebug -Xnoagent
+						-Xrunjdwp:transport=dt_socket,address=8794,server=y,suspend=y
+						-Xms64M -Xmx512M -XX:MaxPermSize=256M
+						-Djava.net.preferIPv4Stack=true
+						-Djboss.modules.system.pkgs=org.jboss.byteman -server</jvmArgs>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>deploy</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+						<configuration>
+							<deployEnabled>false</deployEnabled>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 		<finalName>SpringRestApiDemo</finalName>

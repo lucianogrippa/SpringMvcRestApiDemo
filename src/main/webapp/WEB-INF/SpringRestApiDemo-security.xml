@@ -13,9 +13,9 @@
 		pre-post-annotations="enabled" />
 
 	<!-- abilita il login per le api -->
-	<http pattern="/api/signin" security="none" />
-	<http pattern="/api/signup" security="none" />
-	<http pattern="/api/testtoken" security="none" />
+	<http pattern="/api/signin/**" security="none" />
+	<http pattern="/api/signup/**" security="none" />
+	<http pattern="/api/testtoken/**" security="none" />
 	<!-- escludi le pagine error -->
 	<http pattern="/api/handle_*" security="none" />
 
@@ -31,7 +31,7 @@
 	<beans:bean id="jwtAuthenticationProvider" name="jwtAuthenticationProvider" class="security.api.JwtAuthenticationProvider" scope="prototype" />
 
 	<!-- authentication manager per le api -->
-	<authentication-manager alias="authenticationManager">
+	<authentication-manager id="authenticationManager" alias="authenticationManager">
 		<authentication-provider ref="jwtAuthenticationProvider" />
 	</authentication-manager>
 
@@ -39,7 +39,7 @@
 	<beans:bean id="jwtAuthenticationFilter" class="security.api.JwtAuthenticationFilter">
 		<beans:property name="authenticationManager" ref="authenticationManager" />
 		<beans:property name="authenticationSuccessHandler" ref="jwtAuthenticationSuccessHandler" />
-		<beans:property name="authenticationFailureHandler" ref="jwtAuthenticationFailureHandler"></beans:property>
+		<beans:property name="authenticationFailureHandler" ref="jwtAuthenticationFailureHandler" />
 	</beans:bean>
 	
 	
@@ -49,13 +49,13 @@
 	<beans:bean id="basicAuthEntryPoint"
 		class="security.CustomAuthenticationEntryPoint" />
 
-	<http realm="grippaweb.eu">
+	<http realm="grippaweb.eu" authentication-manager-ref="basicAuthManager">
 		<intercept-url pattern="/swagger-ui.html"
 			access="isAuthenticated()" />
 		<http-basic entry-point-ref="basicAuthEntryPoint" />
 		<csrf disabled="true" />
 	</http>
-	<authentication-manager>
+	<authentication-manager id="basicAuthManager" alias="basicAuthManager">
 		<authentication-provider>
 			<user-service>
 				<user name="lgrippa" password="grippaweb123"

@@ -39,7 +39,7 @@ public class AuthController extends BaseController {
 	public @ResponseBody String signinAsString(@PathVariable(value = "authToken") String authToken) throws ApiNotAuthMethodHadlerException, ApiForbiddenHandlerException {
 		String resp = null;
 		if (!StringUtils.isEmpty(authToken)) {
-			
+			 
 			// cerca l'utente
 			User user = userService.authUserByRequestAuthToken(authToken);
 			if(user != null) {

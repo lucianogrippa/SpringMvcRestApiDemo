@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import exceptions.ApiBadRequestHandlerException;
 import exceptions.ApiForbiddenHandlerException;
 import exceptions.ApiInternalServerErrorHandlerException;
+import exceptions.ApiMethodNotAllowedHandlerException;
 import exceptions.ApiNotAcceptedHandlerException;
 import exceptions.ApiNotAuthMethodHadlerException;
 import exceptions.ApiNotFoundHandlerException;
@@ -53,6 +54,13 @@ public class HttpApiDefaultErrorPageController extends BaseController {
 	public void requestHandlingNotAccettable(HttpServletRequest req) throws ApiNotAcceptedHandlerException {
 		String origMessage = (String)req.getAttribute("javax.servlet.error.message");
 		throw new ApiNotAcceptedHandlerException(origMessage); 
+	}
+	
+	@RequestMapping(value = "/handle_405")
+	@ResponseBody
+	public void requestMethodNotAllowed(HttpServletRequest req) throws ApiMethodNotAllowedHandlerException {
+		String origMessage = (String)req.getAttribute("javax.servlet.error.message");
+		throw new ApiMethodNotAllowedHandlerException(origMessage); 
 	}
 
 	@RequestMapping(value = "/handle_500")
