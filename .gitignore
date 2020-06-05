@@ -1,3 +1,7 @@
 /target/
-src/test/server/log/rest-api-demo-2020-06-01.0.log
-src/test/server/log/rest-api-demo.log
+target/
+/docker/deployments
+docker/deployments
+src/test/server/log
+/src/test/server/log
+.classpath
