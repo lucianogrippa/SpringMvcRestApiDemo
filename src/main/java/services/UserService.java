@@ -35,9 +35,15 @@ public class UserService implements IUserService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	public User authUserWithToken(String username, long userId) {
+	@Override
+	public User authUserWithUUID(String username, long userId) {
 		return repository.findByIdUsername(username,userId);
+	}
+
+	@Override
+	public User authUserByRequestAuthToken(String authToken) {
+		
+		return repository.findByRequestAuthToken(authToken);
 	}
 	
 	

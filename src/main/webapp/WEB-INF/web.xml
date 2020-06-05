@@ -86,6 +86,11 @@
 	</error-page>
 	
 	<error-page>
+		<error-code>406</error-code>
+		<location>/api/handle_406</location>
+	</error-page>
+	
+	<error-page>
 		<error-code>500</error-code>
 		<location>/api/handle_500</location>
 	</error-page>

@@ -6,14 +6,23 @@ import java.util.List;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
+import org.springframework.security.web.authentication.session.NullAuthenticatedSessionStrategy;
+import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
+import org.springframework.util.StringUtils;
 
+import dtos.JwtUser;
+import entities.User;
+import exceptions.ApiAuthenticationTokenException;
 import exceptions.JwtTokenMissingException;
 import helpers.JwtHelper;
 import helpers.LogHelper;
@@ -25,17 +34,27 @@ import security.ApiGrantedAuthority;
  *
  */
 public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
-	@Autowired LogHelper logger;
-	@Autowired JwtHelper jwtHelper;
+	@Autowired
+	LogHelper logger;
+	@Autowired
+	JwtHelper jwtHelper;
+
+	@Autowired
+	JwtAuthenticationProvider authenticationProvider;
 	
+	@Autowired
+	JwtAuthenticationSuccessHandler jwtAuthenticationSuccessHandler;
 	
+	@Autowired
+	JwtAuthenticationFailureHandler jwAuthenticationFailureHandler;
+
 	public JwtAuthenticationFilter() {
 		super("/**");
 	}
 
 	@Override
 	protected boolean requiresAuthentication(HttpServletRequest request, HttpServletResponse response) {
-		return true;
+		return super.requiresAuthentication(request, response);
 	}
 
 	@Override
@@ -52,19 +71,38 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
 		try {
 			// rimuovi il Bearer
 			String authToken = header.substring(6).trim();
-		
-			//TODO: CARICARE LE AUTORITIES DAL DB
+
+			// TODO: CARICARE LE AUTORITIES DAL DB
 			List<ApiGrantedAuthority> authorities = new ArrayList<ApiGrantedAuthority>();
 			authorities.add(new ApiGrantedAuthority("ROLE_USER"));
 			authorities.add(new ApiGrantedAuthority("ROLE_ADMIN"));
 			authorities.add(new ApiGrantedAuthority("ROLE_EDITOR"));
+
+			JwtAuthenticationToken authRequest = new JwtAuthenticationToken(authorities, authToken);
+			// authentica la richiesta
+			auth = authenticationProvider.authenticate(authRequest);
 			
-			JwtAuthenticationToken authRequest = new JwtAuthenticationToken(authorities,authToken);
-			// authentica la richiesta 
-			auth = getAuthenticationManager().authenticate(authRequest);
+			if (auth != null && auth.getPrincipal() != null  && auth.isAuthenticated()) {
+				User userPrincipal = (User) auth.getDetails();
+				ApiGrantedAuthority userAuthority   = authorities.stream()
+						  .filter(a->userPrincipal.getRole().equals(a.getAuthority()))
+						  .findAny()
+						  .orElse(null);
+				
+				if(userAuthority != null && !StringUtils.isEmpty(userAuthority.getAuthority())) {
+						getSuccessHandler().onAuthenticationSuccess(request, response, authRequest);
+				}
+				else
+				{
+					getFailureHandler().onAuthenticationFailure(request, response,new ApiAuthenticationTokenException("User role not have grant access to the api"));
+				}
+			} else {
+				getFailureHandler().onAuthenticationFailure(request, response,
+						authenticationProvider.getExceptionCause());
+			}
 		} catch (Exception e) {
 			logger.logException(e);
-			throw new JwtTokenMissingException("Error in Jwt Authentication header",e);
+			throw new JwtTokenMissingException("Error in Jwt Authentication header", e);
 		}
 		return auth;
 	}
@@ -74,9 +112,8 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
 			Authentication authResult) throws IOException, ServletException {
 		super.successfulAuthentication(request, response, chain, authResult);
 
-		// As this authentication is in HTTP header, after success we need to continue
-		// the request normally
-		// and return the response as if the resource was not secured at all
+		// questa chiamata seve a far continare normalmente la chiamata
+		//jwtAuthenticationSuccessHandler.onAuthenticationSuccess(request, response, authResult);
 		chain.doFilter(request, response);
 	}
 }

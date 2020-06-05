@@ -24,6 +24,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import dtos.JwtUser;
+import exceptions.ApiExpairedTokenException;
+import exceptions.ApiForbiddenHandlerException;
 
 /**
  * Helper da utilizzare per la generazione del token e per il parser
@@ -60,7 +62,7 @@ public class JwtHelper {
 
 	private Key secretKey;
 
-	public JwtUser parseToken(String token) throws MalformedClaimException, JoseException, UnsupportedEncodingException {
+	public JwtUser parseToken(String token) throws MalformedClaimException, JoseException, UnsupportedEncodingException, ApiForbiddenHandlerException, ApiExpairedTokenException {
 		JwtConsumer jwtConsumer = new JwtConsumerBuilder().setRequireExpirationTime().setAllowedClockSkewInSeconds(30)
 				.setRequireSubject().setExpectedIssuer(issuer).setExpectedAudience(audience)
 				.setVerificationKey(getSecretKey())
@@ -86,10 +88,12 @@ public class JwtHelper {
 
 			if (e.hasExpired()) {
 				logger.logDebug("JWT expired at " + e.getJwtContext().getJwtClaims().getExpirationTime());
+				throw new ApiExpairedTokenException("Token is expired "+ e.getJwtContext().getJwtClaims().getExpirationTime(), e ,e.getJwtContext().getJwtClaims().getExpirationTime().getValueInMillis());
 			}
 
 			if (e.hasErrorCode(ErrorCodes.AUDIENCE_INVALID)) {
 				logger.logDebug("JWT had wrong audience: " + e.getJwtContext().getJwtClaims().getAudience());
+				throw new ApiForbiddenHandlerException("Token audience is invalid "+ e.getJwtContext().getJwtClaims().getAudience(), e);
 			}
 		}
 		return null;
