@@ -17,6 +17,7 @@ import exceptions.ApiBadRequestHandlerException;
 import exceptions.ApiForbiddenHandlerException;
 import exceptions.ApiInternalServerErrorHandlerException;
 import exceptions.ApiMethodNotAllowedHandlerException;
+import exceptions.ApiNotAcceptedHandlerException;
 import exceptions.ApiNotAuthMethodHadlerException;
 import exceptions.ApiNotFoundHandlerException;
 
@@ -73,6 +74,19 @@ public class AdviceExceptionHandlerController extends BaseController {
 
 		ResponseEntity<ApiErrorMessageResponse> responseApi = new ResponseEntity<ApiErrorMessageResponse>(errorInfo,
 				HttpStatus.FORBIDDEN);
+		return responseApi;
+	}
+	
+	@ExceptionHandler(value = { ApiNotAcceptedHandlerException.class })
+	@ResponseStatus(value = HttpStatus.NOT_ACCEPTABLE)
+	@ResponseBody
+	public ResponseEntity<ApiErrorMessageResponse> notAccettable(HttpServletRequest req, ApiNotAcceptedHandlerException ex) {
+		logger.logDebug("in api not accettable request service");
+		
+		ApiErrorMessageResponse errorInfo = ex.getResponseDto();
+
+		ResponseEntity<ApiErrorMessageResponse> responseApi = new ResponseEntity<ApiErrorMessageResponse>(errorInfo,
+				HttpStatus.NOT_ACCEPTABLE);
 		return responseApi;
 	}
 	

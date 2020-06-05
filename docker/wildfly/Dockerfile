@@ -27,5 +27,7 @@ RUN /opt/config/execute.sh add-activemq-rar.cli
 # cleanup
 RUN rm -rf $JBOSS_HOME/standalone/configuration/standalone_xml_history
 
-# automatically launch the standalone configuration
+# aggiungi alla configurazione le properties
+ADD ./config/application.springrestdemo.properties $JBOSS_HOME/standalone/configuration/application.springrestdemo.properties
+# run jboss
 CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-Djboss.server.home.dir=/opt/jboss/wildfly/standalone","-Djboss.server.log.dir=/opt/jboss/wildfly/standalone/log" ,"-b", "0.0.0.0", "-bmanagement", "0.0.0.0", "-c", "standalone-full.xml"]

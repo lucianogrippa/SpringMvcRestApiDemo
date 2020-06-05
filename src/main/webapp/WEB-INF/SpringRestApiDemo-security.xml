@@ -15,6 +15,7 @@
 	<!-- abilita il login per le api -->
 	<http pattern="/api/signin" security="none" />
 	<http pattern="/api/signup" security="none" />
+	<http pattern="/api/testtoken" security="none" />
 	<!-- escludi le pagine error -->
 	<http pattern="/api/handle_*" security="none" />
 
@@ -27,6 +28,8 @@
 		<custom-filter before="FORM_LOGIN_FILTER" ref="jwtAuthenticationFilter" />
 	</http>
 
+	<beans:bean id="jwtAuthenticationProvider" name="jwtAuthenticationProvider" class="security.api.JwtAuthenticationProvider" scope="prototype" />
+
 	<!-- authentication manager per le api -->
 	<authentication-manager alias="authenticationManager">
 		<authentication-provider ref="jwtAuthenticationProvider" />
@@ -36,6 +39,7 @@
 	<beans:bean id="jwtAuthenticationFilter" class="security.api.JwtAuthenticationFilter">
 		<beans:property name="authenticationManager" ref="authenticationManager" />
 		<beans:property name="authenticationSuccessHandler" ref="jwtAuthenticationSuccessHandler" />
+		<beans:property name="authenticationFailureHandler" ref="jwtAuthenticationFailureHandler"></beans:property>
 	</beans:bean>
 	
 	

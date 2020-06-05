@@ -3,20 +3,18 @@
  */
 package security.api;
 
-import java.util.List;
+import java.io.UnsupportedEncodingException;
 
 import org.jose4j.jwt.MalformedClaimException;
+import org.jose4j.lang.JoseException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 
-import dtos.JwtUser;
-import exceptions.JwtTokenMalformedException;
+import exceptions.ApiAuthenticationTokenException;
+import exceptions.ApiExpairedTokenException;
+import exceptions.ApiForbiddenHandlerException;
 import helpers.JwtHelper;
 import helpers.LogHelper;
 
@@ -24,52 +22,63 @@ import helpers.LogHelper;
  * @author luciano
  *
  */
-public class JwtAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
+public class JwtAuthenticationProvider implements AuthenticationProvider {
 
 	@Autowired
 	JwtHelper jwtUtil;
 
 	@Autowired
 	LogHelper logger;
+	
+	private boolean expired;
+	
+	private AuthenticationException exceptionCause;
 
 	public JwtAuthenticationProvider() {
+	}
 
+	@Override
+	public Authentication authenticate(Authentication authentication) {
+		Authentication authUser =null;
+		exceptionCause= null;
+		try {
+			authUser = JwtAuthenticationToken.fromAuth(authentication);
+		} catch (MalformedClaimException | UnsupportedEncodingException
+				| JoseException   e) {
+			logger.logException(e);
+			exceptionCause = new ApiAuthenticationTokenException("Can't authenticate with provided token" ,e);
+			expired=false;
+		}catch(ApiForbiddenHandlerException e) {
+			logger.logException(e);
+			exceptionCause = new ApiAuthenticationTokenException("Can't authenticate with provided token" ,e);
+		}
+		catch (ApiExpairedTokenException e) {
+			logger.logException(e);
+			expired = true;
+			exceptionCause = e;
+		}
+		
+		if(authUser == null && exceptionCause == null) {
+			exceptionCause = new ApiAuthenticationTokenException("Token error or wrong credentials");
+		}
+		return authUser;
 	}
 
 	@Override
 	public boolean supports(Class<?> authentication) {
-		return (JwtAuthenticationToken.class.isAssignableFrom(authentication));
+		return true;
 	}
 
-	@Override
-	protected void additionalAuthenticationChecks(UserDetails userDetails,
-			UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
-		// TODO Auto-generated method stub
-
+	public boolean isExpired() {
+		return expired;
 	}
 
-	@Override
-	protected UserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken authentication)
-			throws AuthenticationException {
-		JwtAuthenticationToken jwtAuthenticationToken = JwtAuthenticationToken.fromAuth(authentication);
-		String token = jwtAuthenticationToken.getToken();
+	protected void setExpired(boolean expired) {
+		this.expired = expired;
+	}
 
-		JwtUser parsedUser;
-		try {
-			parsedUser = jwtUtil.parseToken(token);
-
-			if (parsedUser == null) {
-				throw new JwtTokenMalformedException("JWT token is not valid");
-			}
-
-			List<GrantedAuthority> authorityList = AuthorityUtils
-					.commaSeparatedStringToAuthorityList(parsedUser.getRole());
-
-			return new User(parsedUser.getUsername(), token, authorityList);
-		} catch (MalformedClaimException | JwtTokenMalformedException e) {
-			logger.logException(e);
-		}
-		return null;
+	public AuthenticationException getExceptionCause() {
+		return exceptionCause;
 	}
 
 }
