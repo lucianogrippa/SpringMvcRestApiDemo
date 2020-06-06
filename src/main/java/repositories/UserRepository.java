@@ -29,19 +29,16 @@ public class UserRepository implements PagingAndSortingRepository<User, Long>, U
 
 	@Override
 	public <S extends User> S save(S entity) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public <S extends User> Iterable<S> save(Iterable<S> entities) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public User findOne(Long id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -53,55 +50,52 @@ public class UserRepository implements PagingAndSortingRepository<User, Long>, U
 
 	@Override
 	public Iterable<User> findAll() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Iterable<User> findAll(Iterable<Long> ids) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public long count() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
+
 
 	}
 
 	@Override
 	public void delete(User entity) {
-		// TODO Auto-generated method stub
+
 
 	}
 
 	@Override
 	public void delete(Iterable<? extends User> entities) {
-		// TODO Auto-generated method stub
+
 
 	}
 
 	@Override
 	public void deleteAll() {
-		// TODO Auto-generated method stub
+
 
 	}
 
 	@Override
 	public Iterable<User> findAll(Sort sort) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	@Override
 	public Page<User> findAll(Pageable pageable) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 

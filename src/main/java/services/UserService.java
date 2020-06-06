@@ -32,7 +32,6 @@ public class UserService implements IUserService {
 
 	@Override
 	public User find(long id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override

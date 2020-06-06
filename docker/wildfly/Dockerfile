@@ -20,14 +20,14 @@ RUN rm -f /opt/jboss/wildfly/modules/org/apache/activemq/main/log4j*
 RUN rm -f /opt/jboss/wildfly/modules/org/apache/activemq/main/slf4j*
 RUN rm -f /opt/jboss/wildfly/modules/org/apache/activemq/main/geronimo*
 
-# cleanup
+# cleanup e aggiungi il modulo che gestisce le code
 RUN rm -rf $JBOSS_HOME/standalone/configuration/standalone_xml_history
 RUN /opt/config/execute.sh add-activemq-rar.cli
 
-# cleanup
+# elimina l'history dello standalone
 RUN rm -rf $JBOSS_HOME/standalone/configuration/standalone_xml_history
 
-# add script for run debug o standard
+# aggiungi script per lanciare il server
 ADD ./config/run.sh /opt/jboss/wildfly/bin/run.sh
 ADD ./config/run-debug.sh /opt/jboss/wildfly/bin/run-debug.sh
 
