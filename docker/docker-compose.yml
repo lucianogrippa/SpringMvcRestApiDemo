@@ -6,8 +6,11 @@ services:
         ports:
         - "8080:8080"
         - "9990:9990"
+        - "8794:8794"
+        - "9999:9999"
+        - "8787:8787"
         volumes:
-        - "./deployments:/opt/jboss/wildfly/standalone/deployments"
+        - "./wildfly/standalone:/opt/jboss/wildfly/standalone"
         depends_on:
             - appdb
         links:
