@@ -1,5 +1,6 @@
 -- db sprindemo
-CREATE DATABASE IF NOT EXISTS restapidemo;
+CREATE DATABASE IF NOT EXISTS restapidemo CHARACTER SET = 'utf8'
+  COLLATE = 'utf8_general_ci';
 
 USE restapidemo;
 
@@ -51,7 +52,7 @@ CHARACTER SET = 'utf8'
 COLLATE = 'utf8_general_ci', ENGINE=INNODB;
 
 -- vista utente ruolo
-CREATE OR REPLACE VIEW VIEW§_usersoles AS
+CREATE OR REPLACE VIEW view_usersoles AS
 SELECT 
  u.id AS userid,
  u.firstname AS firstname,
@@ -186,4 +187,7 @@ CALL sp_createOrUpdateUser(-1,"Giada","Grippa","gigrippa","a59ebcabdac43122aea84
 COMMIT;
 SET autocommit =1;
 set FOREIGN_KEY_CHECKS =1;
+
+GRANT ALL PRIVILEGES ON restapidemo.* TO 'user'@'%';
+GRANT ALL PRIVILEGES ON restapidemo.* TO 'user'@'localhost';
 

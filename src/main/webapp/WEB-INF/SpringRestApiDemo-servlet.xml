@@ -24,10 +24,11 @@
 	<context:component-scan
 		base-package="controllers,entities,dtos,helpers,exceptions,security,repositories,dao,services" />
 
+	<!-- configurazione del file di properties -->
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
-			<value>file:${jboss.server.base.dir}/configuration/application.springrestdemo.properties</value>
+			<value>file:${jboss.server.base.dir}/configuration/webapps/application.springrestdemo.properties</value>
 		</property>
 	</bean>
 
@@ -70,7 +71,7 @@
 
 	<!-- Mysql Datasource -->
 	<jee:jndi-lookup id="mysqlDataSource"
-	jndi-name="java:jboss/datasources/mysqldb" lookup-on-startup="false"  proxy-interface="javax.sql.DataSource" />
+	jndi-name="java:jboss/datasources/mysqldb" lookup-on-startup="true"  proxy-interface="javax.sql.DataSource" />
 
 	<!-- SpringContextProvider -->
 	<bean id="springContextProvider"

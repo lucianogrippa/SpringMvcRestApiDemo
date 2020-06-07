@@ -11,7 +11,7 @@ module add --name=com.mysql.jdbc --resources=/opt/jdbc/mysql-connector-java-5.1.
 /subsystem=datasources/jdbc-driver=mysql:add(driver-name="mysql",driver-module-name="com.mysql.jdbc",driver-class-name=com.mysql.jdbc.Driver,driver-xa-datasource-class-name=com.mysql.jdbc.jdbc2.optional.MysqlXADataSource)
 
 # Add mysql the datasource
-data-source add --name=MysqlDS --driver-name=mysql --jndi-name=java:jboss/datasources/mysqldb --connection-url=jdbc:mysql://wildflydb/pgcrypto?useUnicode=true&connectionCollation=utf8_general_ci&characterSetResults=utf8&characterEncoding=utf8 --user-name=user --password=user --use-ccm=true --max-pool-size=5 --blocking-timeout-wait-millis=5000 --enabled=true --driver-class=com.mysql.jdbc.Driver --exception-sorter-class-name=com.mysql.jdbc.integration.jboss.ExtendedMysqlExceptionSorter --jta=true --use-java-context=true --valid-connection-checker-class-name=com.mysql.jdbc.integration.jboss.MysqlValidConnectionChecker
+data-source add --name=mysqlds --driver-name=mysql --jndi-name=java:jboss/datasources/mysqldb --connection-url=jdbc:mysql://wildflydb/pgcrypto?useUnicode=true&connectionCollation=utf8_general_ci&characterSetResults=utf8&characterEncoding=utf8 --user-name=user --password=kj7£fiU --use-ccm=true --max-pool-size=5 --blocking-timeout-wait-millis=5000 --enabled=true --driver-class=com.mysql.jdbc.Driver --exception-sorter-class-name=com.mysql.jdbc.integration.jboss.ExtendedMysqlExceptionSorter --jta=true --use-java-context=true --valid-connection-checker-class-name=com.mysql.jdbc.integration.jboss.MysqlValidConnectionChecker
 
 
 # Execute the batch

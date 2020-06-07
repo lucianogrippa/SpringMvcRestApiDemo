@@ -1,10 +1,30 @@
-[2020-06-06 12:39:43.901][INFO  application] calling: /logfilesList
-[2020-06-06 12:39:44.592][DEBUG application] start create properties
-[2020-06-06 12:39:44.726][INFO  application] calling: /jbossdir
-[2020-06-06 12:39:44.862][INFO  application] calling /logger/change/debug
-[2020-06-06 12:39:44.964][INFO  application] calling: /test/ 10
-[2020-06-06 13:17:45.660][INFO  application] calling: /logfilesList
-[2020-06-06 13:17:46.318][DEBUG application] start create properties
-[2020-06-06 13:17:46.377][INFO  application] calling: /jbossdir
-[2020-06-06 13:17:46.504][INFO  application] calling /logger/change/debug
-[2020-06-06 13:17:46.640][INFO  application] calling: /test/ 10
+[2020-06-07 16:19:49.132][INFO  application] calling: /logfilesList
+[2020-06-07 16:19:49.865][DEBUG application] start create properties
+[2020-06-07 16:19:49.956][INFO  application] calling: /jbossdir
+[2020-06-07 16:19:50.068][INFO  application] calling /logger/change/debug
+[2020-06-07 16:19:50.213][INFO  application] calling: /test/ 10
+[2020-06-07 16:21:31.283][INFO  application] calling: /logfilesList
+[2020-06-07 16:21:31.760][DEBUG application] start create properties
+[2020-06-07 16:21:31.808][INFO  application] calling: /jbossdir
+[2020-06-07 16:21:31.926][INFO  application] calling /logger/change/debug
+[2020-06-07 16:21:32.044][INFO  application] calling: /test/ 10
+[2020-06-07 16:24:13.691][INFO  application] calling: /logfilesList
+[2020-06-07 16:24:14.658][DEBUG application] start create properties
+[2020-06-07 16:24:14.821][INFO  application] calling: /jbossdir
+[2020-06-07 16:24:15.003][INFO  application] calling /logger/change/debug
+[2020-06-07 16:24:15.103][INFO  application] calling: /test/ 10
+[2020-06-07 17:00:30.217][INFO  application] calling: /logfilesList
+[2020-06-07 17:00:30.697][DEBUG application] start create properties
+[2020-06-07 17:00:30.830][INFO  application] calling: /jbossdir
+[2020-06-07 17:00:30.992][INFO  application] calling /logger/change/debug
+[2020-06-07 17:00:31.097][INFO  application] calling: /test/ 10
+[2020-06-07 17:29:48.195][INFO  application] calling: /logfilesList
+[2020-06-07 17:29:49.364][DEBUG application] start create properties
+[2020-06-07 17:29:49.495][INFO  application] calling: /jbossdir
+[2020-06-07 17:29:49.892][INFO  application] calling /logger/change/debug
+[2020-06-07 17:29:50.011][INFO  application] calling: /test/ 10
+[2020-06-07 17:31:46.576][INFO  application] calling: /logfilesList
+[2020-06-07 17:31:47.165][DEBUG application] start create properties
+[2020-06-07 17:31:47.305][INFO  application] calling: /jbossdir
+[2020-06-07 17:31:47.470][INFO  application] calling /logger/change/debug
+[2020-06-07 17:31:47.557][INFO  application] calling: /test/ 10
