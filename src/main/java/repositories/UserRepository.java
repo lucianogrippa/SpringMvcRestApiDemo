@@ -3,11 +3,7 @@ package repositories;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import dao.UserDao;
@@ -15,8 +11,8 @@ import entities.User;
 import helpers.AppPropertiesHelper;
 import helpers.LogHelper;
 
-@Repository(value = "userRepository")
-public class UserRepository implements PagingAndSortingRepository<User, Long>, UserDao {
+@Component(value = "userRepository")
+public class UserRepository implements UserDao {
 
 	@Autowired
 	Environment env;
@@ -27,77 +23,6 @@ public class UserRepository implements PagingAndSortingRepository<User, Long>, U
 	@Autowired
 	LogHelper logger;
 
-	@Override
-	public <S extends User> S save(S entity) {
-		return null;
-	}
-
-	@Override
-	public <S extends User> Iterable<S> save(Iterable<S> entities) {
-		return null;
-	}
-
-	@Override
-	public User findOne(Long id) {
-		return null;
-	}
-
-	@Override
-	public boolean exists(Long id) {
-
-		return false;
-	}
-
-	@Override
-	public Iterable<User> findAll() {
-		return null;
-	}
-
-	@Override
-	public Iterable<User> findAll(Iterable<Long> ids) {
-		return null;
-	}
-
-	@Override
-	public long count() {
-		return 0;
-	}
-
-	@Override
-	public void delete(Long id) {
-
-
-	}
-
-	@Override
-	public void delete(User entity) {
-
-
-	}
-
-	@Override
-	public void delete(Iterable<? extends User> entities) {
-
-
-	}
-
-	@Override
-	public void deleteAll() {
-
-
-	}
-
-	@Override
-	public Iterable<User> findAll(Sort sort) {
-
-		return null;
-	}
-
-	@Override
-	public Page<User> findAll(Pageable pageable) {
-
-		return null;
-	}
 
 	/**
 	 * Nell 'esempio viene ricercato attraverso le porperties
@@ -164,5 +89,4 @@ public class UserRepository implements PagingAndSortingRepository<User, Long>, U
 		}
 		return null;
 	}
-
 }

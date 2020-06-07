@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>SpringRestApiDemo</groupId>
@@ -11,12 +10,12 @@
 		<java-version>1.8</java-version>
 		<JBOSS_HOME>/home/luciano/jboss/wildfly/wildfly-10.1.0.Final</JBOSS_HOME>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<org.springframework-version>4.2.2.RELEASE</org.springframework-version>
-		<org.aspectj-version>1.7.4</org.aspectj-version>
-		<org.slf4j-version>1.7.5</org.slf4j-version>
-		<jackson.databind-version>2.9.10.4</jackson.databind-version>
+		<org.springframework-version>4.0.3.RELEASE</org.springframework-version>
 		<spring.security.version>4.0.3.RELEASE</spring.security.version>
-		<log4j.version>1.2.17</log4j.version>
+		<org.aspectj-version>1.7.4</org.aspectj-version>
+		<hibernate.version>4.3.11.Final</hibernate.version>
+		<jackson.databind-version>2.9.10.4</jackson.databind-version>
+		<mysql.connector.version>5.1.31</mysql.connector.version>
 	</properties>
 	<dependencies>
 		<!-- Jackson -->
@@ -42,6 +41,32 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>2.1.5.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.connector.version}</version>
+			<scope>runtime</scope>
 		</dependency>
 		<!-- Test -->
 		<dependency>
@@ -110,11 +135,6 @@
 
 		<!-- Spring Security -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-			<version>1.2.7.RELEASE</version>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
 			<version>${spring.security.version}</version>
@@ -123,12 +143,12 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
-			<version>4.0.1.RELEASE</version>
+			<version>${spring.security.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-messaging</artifactId>
-			<version>4.0.1.RELEASE</version>
+			<version>${spring.security.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.bitbucket.b_c</groupId>

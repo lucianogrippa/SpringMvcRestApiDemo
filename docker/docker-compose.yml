@@ -3,6 +3,7 @@ services:
     wildfly:
         build: ./wildfly
         container_name: wildfly
+        network_mode: bridge
         ports:
         - "8080:8080"
         - "9990:9990"
@@ -17,7 +18,7 @@ services:
         depends_on:
             - appdb
         links:
-            - appdb:wildflydb
+            - appdb:wildflydbhost
     
     appdb:
         build:
@@ -29,9 +30,9 @@ services:
             TZ: Europe/Rome
             MYSQL_IP: ::1
             MYSQL_ALLOW_EMPTY_PASSWORD: "no"
-            MYSQL_DATABASE: appdb
+            MYSQL_DATABASE: restapidemo
             MYSQL_USER: user
-            MYSQL_PASSWORD: ma45£ata
+            MYSQL_PASSWORD: ma45lata
             MYSQL_ROOT_PASSWORD: kj7£fiU
         ports:
             - 3306:3306
@@ -58,3 +59,4 @@ services:
             - appdb:wildflydb
         ports:
         - '8883:80'
+

@@ -5,16 +5,17 @@
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:jee="http://www.springframework.org/schema/jee"
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc
 							http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
 							http://www.springframework.org/schema/beans 
 							http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 							http://www.springframework.org/schema/context 
 							http://www.springframework.org/schema/context/spring-context-4.0.xsd
-
-
 						    http://www.springframework.org/schema/jee 
-						    http://www.springframework.org/schema/jee/spring-jee-4.0.xsd">
+						    http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
+						    http://www.springframework.org/schema/tx
+						    http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
 	<!-- Supporto per le annotazioni -->
 	<context:annotation-config></context:annotation-config>
@@ -70,9 +71,45 @@
 		jndi-name="java:jboss/datasources/ExampleDS" lookup-on-startup="false" proxy-interface="javax.sql.DataSource" />
 
 	<!-- Mysql Datasource -->
-	<jee:jndi-lookup id="mysqlDataSource"
-	jndi-name="java:jboss/datasources/mysqldb" lookup-on-startup="true"  proxy-interface="javax.sql.DataSource" />
+	<jee:jndi-lookup id="jndiMySqlDataSource"
+	jndi-name="java:jboss/datasources/mysqldb" lookup-on-startup="false"  proxy-interface="javax.sql.DataSource" />
+	
+	<!--
+	<bean id="mysqlDataSource"
+	  class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	    <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+	    <property name="url" value="jdbc:mysql://wildflydbhost/restapidemo?useLegacyDatetimeCode=false&amp;serverTimezone=UTC" />
+	    <property name="username" value="user" />
+	    <property name="password" value="ma45lata" />
+	</bean>-->
 
+	<!-- Configurazione JPA Hibernate -->
+	<bean id="appEntityManager" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		    <property name="dataSource" ref="jndiMySqlDataSource" />
+		    <property name="packagesToScan" value="entities" />
+		    <property name="jpaVendorAdapter">
+		        <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+		    </property>
+		    <property name="jpaProperties">
+		        <props>
+		            <prop key="hibernate.hbm2ddl.auto">validate</prop>
+		            <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+		            <prop key="hibernate.show_sql">true</prop>
+		            <prop key="hibernate.format_sql">true</prop>
+		        </props>
+		    </property>
+	</bean>
+	
+	<!-- Definisce il transaction manager -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+	    <property name="entityManagerFactory" ref="appEntityManager" />
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<bean id="persistenceExceptionTranslationPostProcessor" class=
+  	"org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+	
+	
 	<!-- SpringContextProvider -->
 	<bean id="springContextProvider"
 		class="helpers.SpringContextProvider"></bean>

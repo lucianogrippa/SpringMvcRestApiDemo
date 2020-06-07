@@ -6,6 +6,7 @@
 MVNW_FILE=./mvnw
 MVN_DIR=.mvn
 
+
 # search  JAVA_HOME 
 if [ -n "$JAVA_HOME" ] && [ -x "$JAVA_HOME/bin/java" ];  then
     echo "JAVA_HOME found in $JAVA_HOME"    
@@ -20,5 +21,12 @@ if [ ! -f "$MVNW_FILE" ] || [ ! -d "$MVN_DIR" ]; then
     exec mvn -N io.takari:maven:wrapper
 fi
 
-./mvnw clean install && echo "copy target/SpringRestApiDemo.war docker/wildfly/standalone/deployments/" \
+getopts s skiptest
+
+
+if [ "$skiptest" = "s" ]; then
+   SKIP_OPT="-Dmaven.test.skip=true"
+fi
+
+./mvnw $SKIP_OPT clean install  && echo "copy target/SpringRestApiDemo.war docker/wildfly/standalone/deployments/" \
                      && cp target/SpringRestApiDemo.war docker/wildfly/standalone/deployments/

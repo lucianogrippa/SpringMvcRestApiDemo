@@ -9,6 +9,8 @@ ADD config /opt/config
 ADD amq /opt/amq
 
 USER root
+RUN yum install telnet -y
+RUN yum install mysql -y
 RUN chmod +x /opt/config/execute.sh
 USER jboss
 

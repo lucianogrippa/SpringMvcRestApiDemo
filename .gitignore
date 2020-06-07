@@ -6,15 +6,5 @@ src/test/server/log
 /src/test/server/log
 .classpath
 
-/docker/wildfly/standalone/log
 docker/wildfly/standalone/log
-docker/wildfly/standalone/data/content
-docker/wildfly/standalone/data/messagingjournal
-docker/wildfly/standalone/data/messagingbindings
-
-/docker/wildfly/standalone/data/content
-/docker/wildfly/standalone/data/messagingjournal
-/docker/wildfly/standalone/data/messagingbindings
-
-/docker/wildfly/standalone/tmp
-/docker/wildfly/standalone/tmp
+/docker/wildfly/standalone/log

@@ -1,3 +1,0 @@
-[2020-06-07 15:39:51.383][DEBUG application] key generated public: [B@3af08c3c
-[2020-06-07 15:39:52.101][DEBUG application] JWT validation succeeded! JWT Claims Set:{iss=grippaweb.eu, aud=api.auth, exp=1591544991, jti=gY61DfZoFboQEsrlxUlQTg, iat=1591544391, nbf=1591544271, sub=luciomio, userId=1, role=ROLE_ADMIN, firstname=lucio, lastname=blasi, email=ffc9fcae7bc}
-[2020-06-07 15:39:52.183][INFO  application] calling: /test/ 12
