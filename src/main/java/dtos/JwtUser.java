@@ -10,7 +10,7 @@ public class JwtUser {
 	private String lastName;
 	private String email;
     private String username;
-    private String role;
+    private String[] role;
     private String jwt;
     
     public static JwtUser fromUser(User user) {
@@ -20,7 +20,7 @@ public class JwtUser {
     	    jUser.setFirstName(user.getFirstname());
     	    jUser.setId(user.getId());
     	    jUser.setLastName(user.getLastname());
-    	    jUser.setRole(user.getRole());
+    	    jUser.setRole((String[]) user.getRoles().stream().map(e->e.getName()).toArray());
     	    jUser.setUsername(user.getUsername());
     	    
     	    return jUser;
@@ -34,11 +34,11 @@ public class JwtUser {
 	public void setUsername(String userName) {
 		this.username = userName;
 	}
-	public String getRole() {
+	public String[] getRole() {
 		return role;
 	}
-	public void setRole(String role) {
-		this.role = role;
+	public void setRole(String[] objects) {
+		this.role = objects;
 	}
 
 	public String getFirstName() {

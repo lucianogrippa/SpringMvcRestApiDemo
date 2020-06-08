@@ -79,7 +79,7 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
 			if (auth != null && auth.getPrincipal() != null  && auth.isAuthenticated()) {
 				User userPrincipal = (User) auth.getDetails();
 				ApiGrantedAuthority userAuthority   = authorities.stream()
-						  .filter(a->userPrincipal.getRole().equals(a.getAuthority()))
+						  .filter(a->userPrincipal.getRoles().iterator().next().getCode().equals(a.getAuthority()))
 						  .findAny()
 						  .orElse(null);
 				

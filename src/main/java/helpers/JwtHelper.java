@@ -79,7 +79,7 @@ public class JwtHelper {
 			user.setLastName(jwtClaims.getClaimValueAsString("lastname"));
 			user.setEmail(jwtClaims.getStringClaimValue("email"));
 			user.setId(Long.valueOf(jwtClaims.getClaimValueAsString("userId")));
-			user.setRole(jwtClaims.getClaimValueAsString("role"));
+			user.setRole(new String[] { jwtClaims.getClaimValueAsString("role")});
 			user.setJwt(token);
 			
 			return user;

@@ -1,28 +1,45 @@
 package repositories;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.ParameterExpression;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import javax.persistence.metamodel.EntityType;
+import javax.persistence.metamodel.Metamodel;
+
 import org.apache.commons.codec.digest.DigestUtils;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
+import dao.AbstractDao;
 import dao.UserDao;
+import entities.Roles;
 import entities.User;
+import entities.UsersRoles;
 import helpers.AppPropertiesHelper;
 import helpers.LogHelper;
 
-@Component(value = "userRepository")
-public class UserRepository implements UserDao {
+@Repository("userDao")
+public class UserRepository extends AbstractDao<Integer, User> implements UserDao {
 
 	@Autowired
-	Environment env;
-
-	@Autowired
-	AppPropertiesHelper appPropertiesHelper;
+	AppPropertiesHelper properties;
 
 	@Autowired
 	LogHelper logger;
-
 
 	/**
 	 * Nell 'esempio viene ricercato attraverso le porperties
@@ -30,63 +47,76 @@ public class UserRepository implements UserDao {
 	@Override
 	public User findByCredential(String username, String pwd) {
 
-		String dbUsername = appPropertiesHelper.getAppUsername();
-		String dbPwd = appPropertiesHelper.getAppUserPwd();
+		try {
+			User user = (User) getEntityManager()
+					.createQuery("SELECT u FROM User u WHERE u.username = :uid AND u.secret = :sec ")
+					.setParameter("uid", username).setParameter("sec", pwd).getSingleResult();
 
-		if (!StringUtils.isEmpty(username) && !StringUtils.isEmpty(dbPwd) && dbUsername.contentEquals(username)
-				&& dbPwd.contentEquals(pwd)) {
-			User usr = new User(appPropertiesHelper.getAppUserId());
-			usr.setFirstname(appPropertiesHelper.getAppUserFirstname());
-			usr.setLastname(appPropertiesHelper.getAppUserLastName());
-			usr.setUsername(appPropertiesHelper.getAppUsername());
-			usr.setRole(appPropertiesHelper.getAppUserRole());
-			usr.setEmail(appPropertiesHelper.getAppUserPwd());
+			return user;
+		} catch (NoResultException ex) {
+			return null;
+		}
+	}
 
-			return usr;
+	@Override
+	public User findByIdUsername(String username, long userId) {
+		try {
+			User user = (User) getEntityManager()
+					.createQuery("SELECT u FROM User u WHERE u.id = :uid AND u.username = :name ")
+					.setParameter("uid", userId).setParameter("name", username).getSingleResult();
+
+			return user;
+		} catch (NoResultException ex) {
+			return null;
+		}
+	}
+
+	public User findByRequestAuthToken(String authToken) {
+		if (!StringUtils.isEmpty(authToken)) {
+
+			List<User> userList = list();
+			if (userList != null) {
+				try {
+					Optional<User> user = userList.stream().map(u -> {
+						String cleanToken = String.format("%s@%s@%s", u.getUsername(), u.getSecret(),
+								properties.getAppKey());
+						String dbRequestToken = DigestUtils.sha256Hex(cleanToken);
+						u.setSecret(dbRequestToken);
+						return u;
+					}).filter(e -> e.getSecret().equals(authToken)).findFirst();
+
+					return user.get();
+				} catch (Exception e) {
+					logger.logException(e);
+				}
+			}
 		}
 		return null;
 	}
 
 	@Override
-	public User findByIdUsername(String username, long userId) {
-		if(!StringUtils.isEmpty(username) && userId>0) {
-			String dbUsername = appPropertiesHelper.getAppUsername();
-			long dbId = appPropertiesHelper.getAppUserId();
-
-			if (!StringUtils.isEmpty(username) && dbId>0 && dbUsername.contentEquals(username)
-					&& userId == dbId) {
-				User usr = new User(appPropertiesHelper.getAppUserId());
-				usr.setFirstname(appPropertiesHelper.getAppUserFirstname());
-				usr.setLastname(appPropertiesHelper.getAppUserLastName());
-				usr.setUsername(appPropertiesHelper.getAppUsername());
-				usr.setRole(appPropertiesHelper.getAppUserRole());
-				usr.setEmail(appPropertiesHelper.getAppUserPwd());
-
-				return usr;
-			}
-		}
-		return null;
+	public boolean add(User user) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
-	public User findByRequestAuthToken(String authToken) {
-		if(!StringUtils.isEmpty(authToken)) {
-			String dbUsername = appPropertiesHelper.getAppUsername();
-			String dbPwd = appPropertiesHelper.getAppUserPwd();
-			String dbAppKey = appPropertiesHelper.getAppKey();
-			String cleanToken = String.format("%s@%s@%s", dbUsername,dbPwd,dbAppKey);
-			
-			String dbRequestToken = DigestUtils.sha256Hex(cleanToken);  
-			if (!StringUtils.isEmpty(dbRequestToken) && dbRequestToken.equals(authToken)) {
-				User usr = new User(appPropertiesHelper.getAppUserId());
-				usr.setFirstname(appPropertiesHelper.getAppUserFirstname());
-				usr.setLastname(appPropertiesHelper.getAppUserLastName());
-				usr.setUsername(appPropertiesHelper.getAppUsername());
-				usr.setRole(appPropertiesHelper.getAppUserRole());
-				usr.setEmail(appPropertiesHelper.getAppUserPwd());
+	@Override
+	public boolean addInrole(User user, Roles roles) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
-				return usr;
-			}
-		}
-		return null;
+	@Override
+	public boolean delete(long id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<User> list() {
+		List<User> users = getEntityManager().createQuery("SELECT u FROM User u ORDER BY u.firstname ASC")
+				.getResultList();
+		return users;
 	}
 }
