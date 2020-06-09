@@ -4,7 +4,6 @@ import java.util.List;
 
 import entities.Roles;
 import entities.User;
-import entities.UsersRoles;
 
 public interface UserDao {
 	User findByCredential(String username,String pwd);

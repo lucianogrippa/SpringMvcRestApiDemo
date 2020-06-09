@@ -5,7 +5,10 @@ import java.lang.reflect.ParameterizedType;
  
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
- 
+
+import org.springframework.stereotype.Component;
+
+@Component
 public abstract class AbstractDao<PK extends Serializable, T> {
      
     private final Class<T> persistentClass;
