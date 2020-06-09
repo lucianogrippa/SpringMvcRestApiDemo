@@ -29,7 +29,8 @@
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
-			<value>file:${jboss.server.base.dir}/configuration/webapps/application.springrestdemo.properties</value>
+			<value>file:${jboss.server.base.dir}/configuration/webapps/application.springrestdemo.properties
+			</value>
 		</property>
 	</bean>
 
@@ -68,48 +69,59 @@
 
 	<!-- Use in-memory embedded H2 database usa il default di jboss -->
 	<jee:jndi-lookup id="h2dataSource"
-		jndi-name="java:jboss/datasources/ExampleDS" lookup-on-startup="false" proxy-interface="javax.sql.DataSource" />
+		jndi-name="java:jboss/datasources/ExampleDS" lookup-on-startup="false"
+		proxy-interface="javax.sql.DataSource" />
 
 	<!-- Mysql Datasource -->
 	<jee:jndi-lookup id="jndiMySqlDataSource"
-	jndi-name="java:jboss/datasources/mysqldb" lookup-on-startup="false"  proxy-interface="javax.sql.DataSource" />
-	
-	<!--
-	<bean id="mysqlDataSource"
-	  class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-	    <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-	    <property name="url" value="jdbc:mysql://wildflydbhost/restapidemo?useLegacyDatetimeCode=false&amp;serverTimezone=UTC" />
-	    <property name="username" value="user" />
-	    <property name="password" value="ma45lata" />
-	</bean>-->
+		jndi-name="java:jboss/datasources/mysqldb" lookup-on-startup="false"
+		proxy-interface="javax.sql.DataSource"
+		expected-type="javax.persistence.EntityManager" />
+
+	<!-- <bean id="mysqlDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" /> <property 
+		name="url" value="jdbc:mysql://wildflydbhost/restapidemo?useLegacyDatetimeCode=false&amp;serverTimezone=UTC" 
+		/> <property name="username" value="user" /> <property name="password" value="ma45lata" 
+		/> </bean> -->
 
 	<!-- Configurazione JPA Hibernate -->
-	<bean id="appEntityManager" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		    <property name="dataSource" ref="jndiMySqlDataSource" />
-		    <property name="packagesToScan" value="entities" />
-		    <property name="jpaVendorAdapter">
-		        <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
-		    </property>
-		    <property name="jpaProperties">
-		        <props>
-		            <prop key="hibernate.hbm2ddl.auto">validate</prop>
-		            <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
-		            <prop key="hibernate.show_sql">true</prop>
-		            <prop key="hibernate.format_sql">true</prop>
-		        </props>
-		    </property>
+	<bean id="appEntityManager" name="appEntityManager"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="jndiMySqlDataSource" />
+		<property name="persistenceUnitName" value="restApiJPAUnit" />
+		<property name="persistenceXmlLocation" value="classpath:META-INF/SpringRestApiDemo-persistence.xml"/>
+		<property name="packagesToScan">
+			<list>
+				<value>entities</value>
+			</list>
+		</property>
+		<property name="jpaVendorAdapter">
+			<bean
+				class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+		</property>
+		<property name="jpaProperties">
+			<props>
+			 	<prop key="hibernate.archive.autodetection">class,hbm</prop>
+				<prop key="hibernate.hbm2ddl.auto">validate</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+			</props>
+		</property>
 	</bean>
-	
+
 	<!-- Definisce il transaction manager -->
-	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-	    <property name="entityManagerFactory" ref="appEntityManager" />
+	<bean id="transactionManager"
+		class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="appEntityManager" />
 	</bean>
-	<tx:annotation-driven transaction-manager="transactionManager"/>
-	
-	<bean id="persistenceExceptionTranslationPostProcessor" class=
-  	"org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
-	
-	
+	<tx:annotation-driven
+		transaction-manager="transactionManager" />
+
+	<bean id="persistenceExceptionTranslationPostProcessor"
+		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+
+
 	<!-- SpringContextProvider -->
 	<bean id="springContextProvider"
 		class="helpers.SpringContextProvider"></bean>
