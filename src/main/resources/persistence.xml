@@ -1,8 +1,0 @@
-<persistence>
-	<persistence-unit name="restApiJPAUnit"
-		transaction-type="RESOURCE_LOCAL">
-		<class>entities.User</class>
-		<class>entities.Roles</class>
-		<class>entities.UsersRoles</class>
-	</persistence-unit>
-</persistence>

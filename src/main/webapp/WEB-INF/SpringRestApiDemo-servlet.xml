@@ -84,30 +84,15 @@
 		/> <property name="username" value="user" /> <property name="password" value="ma45lata" 
 		/> </bean> -->
 
+		 <!-- Create default configuration for Hibernate -->
+	<bean id="hibernateJpaVendorAdapter" 
+		 class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
 	<!-- Configurazione JPA Hibernate -->
 	<bean id="appEntityManager" name="appEntityManager"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="jndiMySqlDataSource" />
-		<property name="persistenceUnitName" value="restApiJPAUnit" />
-		<property name="persistenceXmlLocation" value="classpath:META-INF/SpringRestApiDemo-persistence.xml"/>
-		<property name="packagesToScan">
-			<list>
-				<value>entities</value>
-			</list>
-		</property>
-		<property name="jpaVendorAdapter">
-			<bean
-				class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
-		</property>
-		<property name="jpaProperties">
-			<props>
-			 	<prop key="hibernate.archive.autodetection">class,hbm</prop>
-				<prop key="hibernate.hbm2ddl.auto">validate</prop>
-				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
-				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.format_sql">true</prop>
-			</props>
-		</property>
+		<property name="persistenceXmlLocation" value="/META-INF/SpringRestApiDemo-persistence.xml"/>
+		<property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter"/>
 	</bean>
 
 	<!-- Definisce il transaction manager -->
