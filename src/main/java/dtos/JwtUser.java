@@ -1,5 +1,7 @@
 package dtos;
 
+import java.util.Arrays;
+
 import org.springframework.util.StringUtils;
 
 import entities.User;
@@ -20,7 +22,11 @@ public class JwtUser {
     	    jUser.setFirstName(user.getFirstname());
     	    jUser.setId(user.getId());
     	    jUser.setLastName(user.getLastname());
-    	    jUser.setRole((String[]) user.getRoles().stream().map(e->e.getName()).toArray());
+    	    if(user.getRoles() != null && user.getRoles().size()>0) {
+    	    	jUser.setRole(Arrays.copyOf(user.getRoles().stream()
+    	    			.map(e->e.getName()).toArray() ,
+    	    			user.getRoles().size(),String[].class));
+    	    }
     	    jUser.setUsername(user.getUsername());
     	    
     	    return jUser;

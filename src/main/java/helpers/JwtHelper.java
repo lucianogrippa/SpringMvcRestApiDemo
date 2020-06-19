@@ -42,12 +42,6 @@ public class JwtHelper {
 	@Value("${jwt.secret}")
 	private String secret;
 
-	@Value("${jwt.keysize}")
-	private int keySize;
-
-	@Value("${jwt.seed}")
-	String initSeed;
-
 	@Value("${jwt.issuer}")
 	private String issuer;
 
@@ -56,6 +50,12 @@ public class JwtHelper {
 
 	@Value("${jwt.kid}")
 	private String kid;
+	
+	@Value("${jwt.expire.seconds}")
+	int jwtExpireSeconds;
+	
+	@Value("${jwt.expire.past.seconds}")
+	int jwtExpirePastSeconds;
 
 	@Autowired
 	LogHelper logger;
@@ -102,14 +102,16 @@ public class JwtHelper {
 	public String generateToken(JwtUser user) throws JoseException, UnsupportedEncodingException {
 		// create pauyload
 		if (user != null && !StringUtils.isEmpty(user.getUsername())) {
-
+			int expireTimeInMinutes = jwtExpireSeconds/60;
+			int expireTimePasteInMinutes = jwtExpirePastSeconds/60;
+			
 			JwtClaims claims = new JwtClaims();
 			claims.setIssuer(issuer);
 			claims.setAudience(audience);
-			claims.setExpirationTimeMinutesInTheFuture(10);
+			claims.setExpirationTimeMinutesInTheFuture(expireTimeInMinutes);
 			claims.setGeneratedJwtId();
 			claims.setIssuedAtToNow();
-			claims.setNotBeforeMinutesInThePast(2);
+			claims.setNotBeforeMinutesInThePast(expireTimePasteInMinutes);
 			claims.setSubject(user.getUsername());
 			claims.setClaim("userId", user.getId());
 			claims.setClaim("role", user.getRole());

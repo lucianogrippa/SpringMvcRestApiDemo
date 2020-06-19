@@ -7,6 +7,7 @@ import entities.User;
 
 public interface UserDao {
 	User findByCredential(String username,String pwd);
+	User findById(long id);
 	User findByIdUsername(String username, long userId);
 	User findByRequestAuthToken(String authToken);
 	boolean add(User user);

@@ -7,7 +7,7 @@ import javax.persistence.NoResultException;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import dao.AbstractDao;
@@ -17,8 +17,8 @@ import entities.User;
 import helpers.AppPropertiesHelper;
 import helpers.LogHelper;
 
-@Repository("userDao")
-public class UserRepository extends AbstractDao<Integer, User> implements UserDao {
+@Service("userDao")
+public class UserRepository extends AbstractDao<Long, User> implements UserDao {
 
 	@Autowired
 	AppPropertiesHelper properties;
@@ -34,11 +34,12 @@ public class UserRepository extends AbstractDao<Integer, User> implements UserDa
 
 		try {
 			User user = (User) getEntityManager()
-					.createQuery("SELECT u FROM User u WHERE u.username = :uid AND u.secret = :sec ")
+					.createQuery("from User u where u.username = :uid and u.secret = :sec ",User.class)
 					.setParameter("uid", username).setParameter("sec", pwd).getSingleResult();
 
 			return user;
 		} catch (NoResultException ex) {
+			logger.logDebug(ex.getMessage());
 			return null;
 		}
 	}
@@ -47,7 +48,7 @@ public class UserRepository extends AbstractDao<Integer, User> implements UserDa
 	public User findByIdUsername(String username, long userId) {
 		try {
 			User user = (User) getEntityManager()
-					.createQuery("SELECT u FROM User u WHERE u.id = :uid AND u.username = :name ")
+					.createQuery("from User u where u.id = :uid and u.username = :name",User.class)
 					.setParameter("uid", userId).setParameter("name", username).getSingleResult();
 
 			return user;
@@ -97,11 +98,15 @@ public class UserRepository extends AbstractDao<Integer, User> implements UserDa
 		return false;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> list() {
-		List<User> users = getEntityManager().createQuery("SELECT u FROM User u ORDER BY u.firstname ASC")
+		List<User> users = getEntityManager().createQuery("from User u order by u.firstname",User.class)
 				.getResultList();
 		return users;
+	}
+
+	@Override
+	public User findById(long id) {
+		return getByKey(id);
 	}
 }

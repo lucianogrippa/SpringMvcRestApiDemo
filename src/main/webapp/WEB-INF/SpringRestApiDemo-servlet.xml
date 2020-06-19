@@ -72,11 +72,9 @@
 		jndi-name="java:jboss/datasources/ExampleDS" lookup-on-startup="false"
 		proxy-interface="javax.sql.DataSource" />
 
-	<!-- Mysql Datasource -->
-	<jee:jndi-lookup id="jndiMySqlDataSource"
-		jndi-name="java:jboss/datasources/mysqldb" lookup-on-startup="false"
-		proxy-interface="javax.sql.DataSource"
-		expected-type="javax.persistence.EntityManager" />
+	<!-- Mysql Datasource <jee:jndi-lookup id="jndiMySqlDataSource" jndi-name="java:jboss/datasources/mysqldb" 
+		lookup-on-startup="false" proxy-interface="javax.sql.DataSource" expected-type="javax.persistence.EntityManager" 
+		/> -->
 
 	<!-- <bean id="mysqlDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" /> <property 
@@ -84,15 +82,22 @@
 		/> <property name="username" value="user" /> <property name="password" value="ma45lata" 
 		/> </bean> -->
 
-		 <!-- Create default configuration for Hibernate -->
-	<bean id="hibernateJpaVendorAdapter" 
-		 class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+	<!-- Create default configuration for Hibernate -->
+	<bean id="hibernateJpaVendorAdapter"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
 	<!-- Configurazione JPA Hibernate -->
 	<bean id="appEntityManager" name="appEntityManager"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="dataSource" ref="jndiMySqlDataSource" />
-		<property name="persistenceXmlLocation" value="/META-INF/SpringRestApiDemo-persistence.xml"/>
-		<property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter"/>
+		<!-- <property name="persistenceXmlLocation" value="/META-INF/persistence.xml"/> -->
+		<property name="persistenceUnitName" value="restApiJPAUnit" />
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+	</bean>
+
+	<bean id="jpaVendorAdapter"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="showSql" value="true" />
+		<property name="generateDdl" value="true" />
+		<property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect" />
 	</bean>
 
 	<!-- Definisce il transaction manager -->

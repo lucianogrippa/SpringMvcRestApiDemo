@@ -1,8 +1,8 @@
-# Mark the commands below to be run as a batch
+# imposta il comnado come batch
 batch
 
-# Add the org.apache.activemq module
-module add --name=org.apache.activemq --module-xml=/opt/amq/activemq-module.xml
+# togli il commeto per installare il modulo delle code
+# module add --name=org.apache.activemq --module-xml=/opt/amq/activemq-module.xml
 
 # add mysql module
 module add --name=com.mysql.jdbc --resources=/opt/jdbc/mysql-connector-java-5.1.37-bin.jar --module-xml=/opt/jdbc/mysql-module.xml

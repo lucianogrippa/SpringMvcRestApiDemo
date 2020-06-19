@@ -4,8 +4,8 @@
 @echo off
 
 set "MVNW_FILE=mvnw.cmd"
-@rem "DEPLOYING_PATH=docker\deployments\SpringRestApiDemo.war"
-set "DEPLOYING_PATH=C:\jboss-platforms\wildfly-10.1.0.Final\standalone\deployments\SpringRestApiDemo.war"
+set "DEPLOYING_PATH=.\docker\wildfly\standalone\deployments\SpringRestApiDemo.war"
+@rem set "DEPLOYING_PATH=C:\jboss-platforms\wildfly-10.1.0.Final\standalone\deployments\SpringRestApiDemo.war"
 @rem search  JAVA_HOME
 if exist "%JAVA_HOME%\bin\java.exe" (
 	echo "JAVA_HOME found in %JAVA_HOME%"
@@ -42,6 +42,6 @@ if [%1]==[] (
 )
 
 :done (
-	echo "try to copy target/SpringRestApiDemo.war  %DEPLOYING_PATH%" \
-	copy /Y target\SpringRestApiDemo.war %DEPLOYING_PATH%
+	echo "try to copy .\target/SpringRestApiDemo.war  %DEPLOYING_PATH%" \
+	copy /Y .\target\SpringRestApiDemo.war %DEPLOYING_PATH%
 )

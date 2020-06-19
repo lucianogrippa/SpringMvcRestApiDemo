@@ -1,14 +1,18 @@
 package entities;
 
-import java.sql.Date;
-import java.util.Set;
+import java.util.Collection;
+import java.util.Date;
+import java.util.LinkedHashSet;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -27,38 +31,42 @@ public class User {
 
 	@Column(nullable = false)
 	private String firstname;
-	
+
 	@Column(nullable = false)
 	private String lastname;
-	
+
 	@Column(nullable = false)
 	private String secret;
-	
+
 	@Column(nullable = false)
 	private String email;
-	
+
 	@Column(nullable = false)
 	private String username;
-	
-	@Column(nullable = false)
+
+	@Column(nullable = false, columnDefinition = "BIT", length = 1)
 	@Type(type = "org.hibernate.type.NumericBooleanType")
 	private boolean active;
-	
+
 	@Basic(optional = false)
 	@Column(name = "creationtimestamp", insertable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
-	
 	private Date creationtimestamp;
-	@Temporal(TemporalType.DATE)
+
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date lastupdate;
-	
-	@Temporal(TemporalType.DATE)
+
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date lastaccess;
-	
+
 	// ruoli di appartenenza utenti
-	@ManyToMany(targetEntity = Roles.class)
-	private Set<Roles> roles;
-	
+	@ManyToMany(targetEntity = Roles.class,fetch=FetchType.EAGER)
+	@JoinTable(name = "usersroles", joinColumns = { @JoinColumn(name = "userid") }, inverseJoinColumns = {
+			@JoinColumn(name = "roleid") })
+	private Collection<Roles> roles = new  LinkedHashSet<Roles>();
+
+	public User() {
+	}
 
 	public User(long id) {
 		userId = id;
@@ -140,11 +148,11 @@ public class User {
 		this.lastaccess = lastaccess;
 	}
 
-	public Set<Roles> getRoles() {
+	public Collection<Roles> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(Set<Roles> roles) {
+	public void setRoles(Collection<Roles> roles) {
 		this.roles = roles;
 	}
 }

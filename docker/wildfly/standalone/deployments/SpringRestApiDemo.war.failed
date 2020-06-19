@@ -1,2 +1,0 @@
-{"WFLYCTL0080: Failed services" => {"jboss.deployment.unit.\"SpringRestApiDemo.war\".WeldStartService" => "org.jboss.msc.service.StartException in service jboss.deployment.unit.\"SpringRestApiDemo.war\".WeldStartService: Failed to start service
-    Caused by: java.lang.IllegalArgumentException: WFLYWELD0037: Error injecting persistence unit into CDI managed bean. Can't find a persistence unit named 'restApiJPAUnit' in deployment SpringRestApiDemo.war for injection point javax.persistence.EntityManager dao.AbstractDao.entityManager"}}

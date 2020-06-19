@@ -9,4 +9,4 @@ exec $STANDALONE_FILE -Djboss.server.home.dir=/opt/jboss/wildfly/standalone \
 -Djboss.server.log.dir=/opt/jboss/wildfly/standalone/log \
 -b 0.0.0.0 \
 -bmanagement 0.0.0.0 \
--c standalone-full.xml
+-c standalone.xml
