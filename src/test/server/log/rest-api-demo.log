@@ -1,35 +1,24 @@
-[2020-06-02 00:13:47.265][INFO  application] calling: /logfilesList
-[2020-06-02 00:13:47.722][DEBUG application] start create properties
-[2020-06-02 00:13:47.895][INFO  application] calling: /jbossdir
-[2020-06-02 00:13:48.011][INFO  application] calling /logger/change/debug
-[2020-06-02 00:13:48.093][INFO  application] calling: /test/ 10
-[2020-06-02 00:15:51.308][INFO  application] calling: /logfilesList
-[2020-06-02 00:15:52.087][DEBUG application] start create properties
-[2020-06-02 00:15:52.196][INFO  application] calling: /jbossdir
-[2020-06-02 00:15:52.388][INFO  application] calling /logger/change/debug
-[2020-06-02 00:15:52.502][INFO  application] calling: /test/ 10
-[2020-06-02 00:17:13.004][INFO  application] calling: /logfilesList
-[2020-06-02 00:17:13.681][DEBUG application] start create properties
-[2020-06-02 00:17:13.755][INFO  application] calling: /jbossdir
-[2020-06-02 00:17:13.884][INFO  application] calling /logger/change/debug
-[2020-06-02 00:17:13.999][INFO  application] calling: /test/ 10
-[2020-06-02 00:18:50.098][INFO  application] calling: /logfilesList
-[2020-06-02 00:18:50.983][DEBUG application] start create properties
-[2020-06-02 00:18:51.053][INFO  application] calling: /jbossdir
-[2020-06-02 00:18:51.193][INFO  application] calling /logger/change/debug
-[2020-06-02 00:18:51.388][INFO  application] calling: /test/ 10
-[2020-06-02 00:21:15.573][INFO  application] calling: /logfilesList
-[2020-06-02 00:21:16.284][DEBUG application] start create properties
-[2020-06-02 00:21:16.416][INFO  application] calling: /jbossdir
-[2020-06-02 00:21:16.589][INFO  application] calling /logger/change/debug
-[2020-06-02 00:21:16.728][INFO  application] calling: /test/ 10
-[2020-06-02 00:22:52.243][INFO  application] calling: /logfilesList
-[2020-06-02 00:22:52.692][DEBUG application] start create properties
-[2020-06-02 00:22:52.758][INFO  application] calling: /jbossdir
-[2020-06-02 00:22:52.924][INFO  application] calling /logger/change/debug
-[2020-06-02 00:22:53.025][INFO  application] calling: /test/ 10
-[2020-06-03 09:15:28.070][INFO  application] calling: /logfilesList
-[2020-06-03 09:15:28.365][DEBUG application] start create properties
-[2020-06-03 09:15:28.398][INFO  application] calling: /jbossdir
-[2020-06-03 09:15:28.501][INFO  application] calling /logger/change/debug
-[2020-06-03 09:15:28.549][INFO  application] calling: /test/ 10
+[2020-06-22 10:44:18.291][INFO  application] calling: /logfilesList
+[2020-06-22 10:44:18.636][DEBUG application] start create properties
+[2020-06-22 10:44:18.703][INFO  application] calling: /jbossdir
+[2020-06-22 10:44:18.826][INFO  application] calling /logger/change/debug
+[2020-06-22 10:44:19.069][INFO  application] calling: /test/ 10
+[2020-06-22 10:46:37.476][INFO  application] calling: /jbossdir
+[2020-06-22 10:47:57.294][INFO  application] calling: /logfilesList
+[2020-06-22 10:47:57.674][DEBUG application] start create properties
+[2020-06-22 10:47:57.723][INFO  application] calling: /jbossdir
+[2020-06-22 10:47:57.858][INFO  application] calling /logger/change/debug
+[2020-06-22 10:47:57.983][INFO  application] calling: /test/ 10
+[2020-06-22 10:53:40.787][INFO  application] calling: /testtoken/ 
+[2020-06-22 10:53:54.341][DEBUG application] in ApiNotAcceptedHandlerException test user not found !!
+[2020-06-22 12:51:38.774][INFO  application] calling: /logfilesList
+[2020-06-22 12:51:39.127][DEBUG application] start create properties
+[2020-06-22 12:51:39.172][INFO  application] calling: /jbossdir
+[2020-06-22 12:51:39.273][INFO  application] calling /logger/change/debug
+[2020-06-22 12:51:39.457][INFO  application] calling: /testtoken/ 
+[2020-06-22 12:51:39.559][INFO  application] calling: /test/ 10
+[2020-06-22 12:56:50.357][INFO  application] calling: /logfilesList
+[2020-06-22 12:56:50.699][DEBUG application] start create properties
+[2020-06-22 12:56:50.745][INFO  application] calling: /jbossdir
+[2020-06-22 12:56:50.842][INFO  application] calling /logger/change/debug
+[2020-06-22 12:56:51.034][INFO  application] calling: /test/ 10
