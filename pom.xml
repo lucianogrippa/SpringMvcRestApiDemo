@@ -63,18 +63,17 @@
 			<version>${hibernate.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-c3p0</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.hibernate</groupId> -->
+<!-- 			<artifactId>hibernate-c3p0</artifactId> -->
+<!-- 			<version>${hibernate.version}</version> -->
+<!-- 		</dependency> -->
 
-		<!-- c3p0 -->
-		<dependency>
-			<groupId>com.mchange</groupId>
-			<artifactId>c3p0</artifactId>
-			<version>0.9.5.2</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.mchange</groupId> -->
+<!-- 			<artifactId>c3p0</artifactId> -->
+<!-- 			<version>0.9.5.2</version> -->
+<!-- 		</dependency> -->
 
 		<!-- Hibernate Validator -->
 		<dependency>
@@ -84,7 +83,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-search</artifactId>
+			<artifactId>hibernate-search-orm</artifactId>
 			<version>5.7.0.Final</version>
 			<scope>provided</scope>
 		</dependency>
