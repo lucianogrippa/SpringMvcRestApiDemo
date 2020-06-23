@@ -43,8 +43,8 @@ public class CommonControllerTest {
 	@Before
 	public void setUp() throws Exception {
 		if (this.mockMvc == null) {
-			System.setProperty("jboss.server.home.dir", "./src/test/server");
-			System.setProperty("jboss.server.log.dir", "./src/test/server/log");
+			System.setProperty("jboss.server.home.dir", "./docker/wildfly/standalone");
+			System.setProperty("jboss.server.log.dir", "./docker/wildfly/standalone/log");
 
 			// Process mock annotations
 			MockitoAnnotations.initMocks(this);
