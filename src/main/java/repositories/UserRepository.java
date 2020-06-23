@@ -7,7 +7,7 @@ import javax.persistence.NoResultException;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import dao.AbstractDao;
@@ -17,7 +17,7 @@ import entities.User;
 import helpers.AppPropertiesHelper;
 import helpers.LogHelper;
 
-@Service("userDao")
+@Component
 public class UserRepository extends AbstractDao<Long, User> implements UserDao {
 
 	@Autowired
@@ -33,7 +33,7 @@ public class UserRepository extends AbstractDao<Long, User> implements UserDao {
 	public User findByCredential(String username, String pwd) {
 
 		try {
-			User user = (User) getEntityManager()
+			User user = getEntityManager()
 					.createQuery("from User u where u.username = :uid and u.secret = :sec ",User.class)
 					.setParameter("uid", username).setParameter("sec", pwd).getSingleResult();
 
@@ -47,7 +47,7 @@ public class UserRepository extends AbstractDao<Long, User> implements UserDao {
 	@Override
 	public User findByIdUsername(String username, long userId) {
 		try {
-			User user = (User) getEntityManager()
+			User user = getEntityManager()
 					.createQuery("from User u where u.id = :uid and u.username = :name",User.class)
 					.setParameter("uid", userId).setParameter("name", username).getSingleResult();
 
@@ -82,19 +82,16 @@ public class UserRepository extends AbstractDao<Long, User> implements UserDao {
 
 	@Override
 	public boolean add(User user) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean addInrole(User user, Roles roles) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean delete(long id) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

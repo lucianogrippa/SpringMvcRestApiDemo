@@ -8,3 +8,5 @@ src/test/server/log
 
 docker/wildfly/standalone/log
 /docker/wildfly/standalone/log
+/docker/wildfly/standalone/deployments/SpringRestApiDemo.war
+/docker/wildfly/standalone/deployments/SpringRestApiDemo.war.deployed
