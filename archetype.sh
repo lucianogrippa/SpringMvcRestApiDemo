@@ -63,6 +63,8 @@ fi
 ./mvnw clean install archetype:create-from-project $DEBUGOPTION
 
 cp -r ./docker $ARCHETIPE_PROJECT_DIR/docker
+cp compile.sh  $ARCHETIPE_PROJECT_DIR/compile.sh
+cp compile.bat $ARCHETIPE_PROJECT_DIR/compile.bat
 
 # se e' presente il progetto archetipe ed e' stato creato in source
 # allora copia 
