@@ -1,2 +1,2 @@
 #!/bin/bash
-docker exec -it wildfly /bin/bash
+docker exec -it -u root  wildfly /bin/bash

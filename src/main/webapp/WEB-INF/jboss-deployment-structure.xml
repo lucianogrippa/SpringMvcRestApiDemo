@@ -4,9 +4,9 @@
 		<!-- Exclusions allow you to prevent the server from automatically adding 
 			some dependencies -->
 		<exclusions>
-			<module name="org.jboss.resteasy"></module>
+			<!--<module name="org.jboss.resteasy"></module> -->
 			<module name="org.slf4j" />
-			<module name="org.slf4j.impl" />
+			<!-- <module name="org.slf4j.impl" /> -->
 			<module name="org.apache.log4j" />
 		</exclusions>
 	</deployment>

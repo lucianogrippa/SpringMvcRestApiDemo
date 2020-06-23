@@ -6,24 +6,62 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
     http://www.springframework.org/schema/security
-    http://www.springframework.org/schema/security/spring-security-4.0.xsd">
+    http://www.springframework.org/schema/security/spring-security-5.3.xsd">
 
+	<!-- attivato @PreFilter, @PreAuthorize, @PostFilter -->
+	<global-method-security
+		pre-post-annotations="enabled" />
 
+	<!-- abilita il login per le api -->
+	<http pattern="/api/signin/**" security="none" />
+	<http pattern="/api/signup/**" security="none" />
+	<http pattern="/api/testtoken/**" security="none" />
+	<!-- escludi le pagine error -->
+	<http pattern="/api/handle_*" security="none" />
+
+	<!-- autenticazione token -->
+	<!-- abilita il filtro custom per gestire il token -->
+	<http pattern="/api/**"
+		entry-point-ref="restAuthenticationEntryPoint"
+		create-session="stateless">
+		<csrf disabled="true" />
+		<custom-filter before="FORM_LOGIN_FILTER" ref="jwtAuthenticationFilter" />
+	</http>
+
+	<beans:bean id="jwtAuthenticationProvider" name="jwtAuthenticationProvider" class="security.api.JwtAuthenticationProvider" scope="prototype" />
+
+	<!-- authentication manager per le api -->
+	<authentication-manager id="authenticationManager" alias="authenticationManager">
+		<authentication-provider ref="jwtAuthenticationProvider" />
+	</authentication-manager>
+
+	<!-- Bean che gestira' il filtro per il jwt -->
+	<beans:bean id="jwtAuthenticationFilter" class="security.api.JwtAuthenticationFilter">
+		<beans:property name="authenticationManager" ref="authenticationManager" />
+		<beans:property name="authenticationSuccessHandler" ref="jwtAuthenticationSuccessHandler" />
+		<beans:property name="authenticationFailureHandler" ref="jwtAuthenticationFailureHandler" />
+	</beans:bean>
+	
+	
+	<!-- basic authenticatin per swagger -->
+
+	<!-- brean entrypoint -->
 	<beans:bean id="basicAuthEntryPoint"
 		class="security.CustomAuthenticationEntryPoint" />
 
-	<http realm="grippaweb.eu">
-		<intercept-url pattern="/api/**" access="permitAll()" />
-		<intercept-url pattern="/**" access="isAuthenticated()" />
+	<http realm="grippaweb.eu" authentication-manager-ref="basicAuthManager">
+		<intercept-url pattern="/swagger-ui.html"
+			access="isAuthenticated()" />
 		<http-basic entry-point-ref="basicAuthEntryPoint" />
 		<csrf disabled="true" />
 	</http>
-
-	<authentication-manager>
+	<authentication-manager id="basicAuthManager" alias="basicAuthManager">
 		<authentication-provider>
 			<user-service>
-				<user name="lgrippa" password="grippaweb123" authorities="ROLE_USER" />
-				<user name="admin" password="admin.01" authorities="ROLE_MANAGER" />
+				<user name="lgrippa" password="grippaweb123"
+					authorities="ROLE_USER" />
+				<user name="admin" password="admin.01"
+					authorities="ROLE_MANAGER" />
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>

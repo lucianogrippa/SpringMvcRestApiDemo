@@ -1,3 +1,13 @@
 /target/
-src/test/server/log/rest-api-demo-2020-06-01.0.log
-src/test/server/log/rest-api-demo.log
+target/
+/docker/deployments
+docker/deployments
+src/test/server/log
+/src/test/server/log
+.classpath
+
+docker/wildfly/standalone/log
+/docker/wildfly/standalone/log
+/docker/wildfly/standalone/deployments/SpringRestApiDemo.war
+/docker/wildfly/standalone/deployments/SpringRestApiDemo.war.deployed
+/jboss.server.log.dir_IS_UNDEFINED

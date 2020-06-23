@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+           <layout class="org.apache.log4j.PatternLayout">
+             <param name="ConversionPattern"
+		    value="%-4r [%t] %-5p %c %x - %m%n"/>
+           </layout>	    
+	</appender>
+
+	<appender name="hlog" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${jboss.server.home.dir}/log/rest-api-demo-hbm.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<!-- <param name="Threshold" value="info"/>	-->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-7p %d [%t] %c %x - %m%n"/>
+		</layout>
+	</appender>
+	
+	<appender name="hlogSql" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${jboss.server.home.dir}/log/rest-api-demo-sql.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<!-- <param name="Threshold" value="info"/>	-->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-7p %d [%t] %c %x - %m%n"/>
+		</layout>
+	</appender>
+	
+	<appender name="hlogAST" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${jboss.server.home.dir}/log/rest-api-demo-ast.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<!-- <param name="Threshold" value="info"/>	-->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-7p %d [%t] %c %x - %m%n"/>
+		</layout>
+	</appender>
+	
+	<appender name="hlogDDL" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${jboss.server.home.dir}/log/rest-api-demo-ddl.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<!-- <param name="Threshold" value="info"/>	-->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-7p %d [%t] %c %x - %m%n"/>
+		</layout>
+	</appender>
+	
+	<logger name="org.hibernate">
+		<level value="ERROR" />
+		<appender-ref ref="hlog" />
+	</logger>
+	
+	<logger name="org.hibernate.SQL">
+		<level value="DEBUG" />
+		<appender-ref ref="hlogSql" />
+	</logger>
+	
+	<logger name="org.hibernate.type.descriptor.sql">
+		<level value="TRACE" />
+		<appender-ref ref="hlogSql" />
+	</logger>
+	
+	<logger name="org.hibernate.hql.internal.ast.AST">
+		<level value="DEBUG" />
+		<appender-ref ref="hlogAST" />
+	</logger>
+
+	
+	<logger name="org.hibernate.tool.hbm2ddl">
+		<level value="DEBUG" />
+		<appender-ref ref="hlogDDL" />
+	</logger>
+	
+	<logger name="org.hibernate.hql.internal">
+		<level value="INFO" />
+		<appender-ref ref="hlog" />
+	</logger>
+	
+	<root>
+	   <!-- <priority value ="info" /> -->
+	   <appender-ref ref="hlog" />
+	</root>
+	
+</log4j:configuration>

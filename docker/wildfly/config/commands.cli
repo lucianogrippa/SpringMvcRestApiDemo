@@ -1,17 +1,8 @@
-# Mark the commands below to be run as a batch
+# imposta il comnado come batch
 batch
 
-# add postgres module
-module add --name=org.postgres --resources=/opt/jdbc/postgresql-9.4-1205.jdbc42.jar --module-xml=/opt/jdbc/postgres-module.xml
-
-# Add postgres driver
-/subsystem=datasources/jdbc-driver=postgres:add(driver-name="postgres",driver-module-name="org.postgres",driver-class-name=org.postgresql.Driver,driver-xa-datasource-class-name=org.postgresql.xa.PGXADataSource)
-
-# Add the datasource
-data-source add --name=PostgresDS --driver-name=postgres --jndi-name=java:jboss/datasources/PostgresDS --connection-url=jdbc:postgresql://postgres:5432/postgres --user-name=postgres --password=postgres --use-ccm=true --max-pool-size=5 --blocking-timeout-wait-millis=5000 --enabled=true --driver-class=org.postgresql.Driver --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter --jta=true --use-java-context=true --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker
-
-# Add the org.apache.activemq module
-module add --name=org.apache.activemq --module-xml=/opt/amq/activemq-module.xml
+# togli il commeto per installare il modulo delle code
+# module add --name=org.apache.activemq --module-xml=/opt/amq/activemq-module.xml
 
 # add mysql module
 module add --name=com.mysql.jdbc --resources=/opt/jdbc/mysql-connector-java-5.1.37-bin.jar --module-xml=/opt/jdbc/mysql-module.xml
@@ -20,7 +11,7 @@ module add --name=com.mysql.jdbc --resources=/opt/jdbc/mysql-connector-java-5.1.
 /subsystem=datasources/jdbc-driver=mysql:add(driver-name="mysql",driver-module-name="com.mysql.jdbc",driver-class-name=com.mysql.jdbc.Driver,driver-xa-datasource-class-name=com.mysql.jdbc.jdbc2.optional.MysqlXADataSource)
 
 # Add mysql the datasource
-data-source add --name=MysqlDS --driver-name=mysql --jndi-name=java:jboss/datasources/mysqldb --connection-url=jdbc:mysql://wildflydb/pgcrypto?useUnicode=true&connectionCollation=utf8_general_ci&characterSetResults=utf8&characterEncoding=utf8 --user-name=user --password=user --use-ccm=true --max-pool-size=5 --blocking-timeout-wait-millis=5000 --enabled=true --driver-class=com.mysql.jdbc.Driver --exception-sorter-class-name=com.mysql.jdbc.integration.jboss.ExtendedMysqlExceptionSorter --jta=true --use-java-context=true --valid-connection-checker-class-name=com.mysql.jdbc.integration.jboss.MysqlValidConnectionChecker
+data-source add --name=mysqlds --driver-name=mysql --jndi-name=java:jboss/datasources/mysqldb --connection-url=jdbc:mysql://wildflydbhost/restapidemo?useUnicode=true&connectionCollation=utf8_general_ci&characterSetResults=utf8&characterEncoding=utf8 --user-name=user --password=ma45lata --use-ccm=true --max-pool-size=5 --blocking-timeout-wait-millis=5000 --enabled=true --driver-class=com.mysql.jdbc.Driver --exception-sorter-class-name=com.mysql.jdbc.integration.jboss.ExtendedMysqlExceptionSorter --jta=true --use-java-context=true
 
 
 # Execute the batch
