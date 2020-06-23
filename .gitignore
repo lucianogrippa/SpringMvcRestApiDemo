@@ -10,4 +10,7 @@ docker/wildfly/standalone/log
 /docker/wildfly/standalone/log
 /docker/wildfly/standalone/deployments/SpringRestApiDemo.war
 /docker/wildfly/standalone/deployments/SpringRestApiDemo.war.deployed
+docker/wildfly/standalone/deployments/SpringRestApiDemo.war
+docker/wildfly/standalone/deployments/SpringRestApiDemo.war.deployed
 /jboss.server.log.dir_IS_UNDEFINED
+jboss.server.log.dir_IS_UNDEFINED
