@@ -36,16 +36,7 @@ services:
             MYSQL_ROOT_PASSWORD: kj7£fiU
         ports:
             - 3306:3306
-
-    # ActiveMQ:61616 => "admin":"adminactivemq"
-    # ActiveMQWeb:8161 => "admin":"admin"
-    activemq:
-        image: rmohr/activemq:5.10.0
-        container_name: "activemq"
-        ports:
-        - "61616:61616"
-        - "8161:8161"
-    
+            
     phpmyadmin:
         depends_on:
         - appdb
