@@ -1,6 +1,4 @@
 ### Table of Contents
-You're sections headers will be used to reference location of destination.
-
 - [Description](#description)
     - [Technologies](#technologies)
 - [How To Use](#how-to-use)
@@ -14,11 +12,10 @@ You're sections headers will be used to reference location of destination.
 
 ## Description
 
-The main goal of the project is to create a basic rest API service that can be used in environments such as production.
+The main goal of the project is to create a basic rest API service that can be used in environments builded with application server (wildfly) and database server.
+To simulate the environment was used docker technologies and docker-compose.yml file was created in [docker](/docker) folder.
 
-In order to simulate the production environment, "docker-compose" file was used, located in  [docker directory](/docs/images/docker)
-
-- Docker compose file with 3 services 
+The Docker compose file is structured in 3 services
   - wildfly
   - appdb
   - phpmyadmin
