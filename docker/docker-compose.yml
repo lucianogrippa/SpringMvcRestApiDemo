@@ -19,7 +19,6 @@ services:
             - appdb
         links:
             - appdb:wildflydbhost
-    
     appdb:
         build:
             context: ./mysql

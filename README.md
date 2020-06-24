@@ -1,14 +1,11 @@
-# Spring Mvc Rest Api Project
-
-This is starter project for developing json rest apis using Spring MVC Web Framework on jboss wildfly server
-
-
-
 ### Table of Contents
 You're sections headers will be used to reference location of destination.
 
 - [Description](#description)
+    - [Technologies](#technologies)
 - [How To Use](#how-to-use)
+    - [Installation](#installation)
+    - [API Reference](#api-reference)
 - [References](#references)
 - [License](#license)
 - [Author Info](#author-info)
@@ -17,14 +14,18 @@ You're sections headers will be used to reference location of destination.
 
 ## Description
 
-The project contains :
+The main goal of the project is to create a basic rest API service that can be used in environments such as production.
+
+In order to simulate the production environment, "docker-compose" file was used, located in  [docker directory](/docs/images/docker)
 
 - Docker compose file with 3 services 
   - wildfly
   - appdb
   - phpmyadmin
 
-![Docker compose services arch](/docs/images/docker-compose.PNG?raw=true "Project architetture")
+![Docker compose services](/docs/images/docker-compose.PNG?raw=true "Project services")
+
+
 
 #### Technologies
 

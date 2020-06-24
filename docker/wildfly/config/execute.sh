@@ -2,10 +2,8 @@
 
 JBOSS_HOME=/opt/jboss/wildfly
 JBOSS_CLI=$JBOSS_HOME/bin/jboss-cli.sh
-# non contiene il supporto per le code
+
 JBOSS_PROFILE=standalone.xml
-# contiene il supporto per le code
-#JBOSS_PROFILE=standalone-full.xml
 
 function wait_for_server() {
   until `$JBOSS_CLI -c "ls /deployment" &> /dev/null`; do

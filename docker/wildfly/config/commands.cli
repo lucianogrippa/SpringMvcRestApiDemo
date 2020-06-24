@@ -1,9 +1,6 @@
 # imposta il comnado come batch
 batch
 
-# togli il commeto per installare il modulo delle code
-# module add --name=org.apache.activemq --module-xml=/opt/amq/activemq-module.xml
-
 # add mysql module
 module add --name=com.mysql.jdbc --resources=/opt/jdbc/mysql-connector-java-5.1.37-bin.jar --module-xml=/opt/jdbc/mysql-module.xml
 

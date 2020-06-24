@@ -16,8 +16,11 @@ CURRENT_DIRECTORY=$PWD
 
 getopts a: prjdirname
 
-ARCHETIPE_PROJECT_DIR=$OPTARG
-echo "archetipe project $ARCHETIPE_PROJECT_DIR"
+ARCHETYPE_PROJECT_DIR=$OPTARG
+if [ "x$ARCHETYPE_PROJECT_DIR" = "x" ]; then
+  $ARCHETYPE_PROJECT_DIR = "../spring-rest-archetype"
+fi
+echo "archetipe project $ARCHETYPE_PROJECT_DIR"
 
 getopts X maketest
 
@@ -62,18 +65,18 @@ fi
 
 ./mvnw clean install archetype:create-from-project $DEBUGOPTION
 
-cp -r ./docker $ARCHETIPE_PROJECT_DIR/docker
-cp compile.sh  $ARCHETIPE_PROJECT_DIR/compile.sh
-cp compile.bat $ARCHETIPE_PROJECT_DIR/compile.bat
+# cp -r ./docker $ARCHETYPE_PROJECT_DIR/docker
+# cp compile.sh  $ARCHETYPE_PROJECT_DIR/compile.sh
+# cp compile.bat $ARCHETYPE_PROJECT_DIR/compile.bat
 
 # se e' presente il progetto archetipe ed e' stato creato in source
 # allora copia 
-if [ -d "$ARCHETIPE_PROJECT_DIR" ] && [ -d "./target/generated-sources/archetype" ] ; then
-   rm -rf $ARCHETIPE_PROJECT_DIR/pom.xml && \
-   rm -rf $ARCHETIPE_PROJECT_DIR/src && \
-   cp -r ./target/generated-sources/archetype/** $ARCHETIPE_PROJECT_DIR/ && \
-   ./mvnw -f $ARCHETIPE_PROJECT_DIR clean install -B && \
-   cd $ARCHETIPE_PROJECT_DIR && \
+if [ -d "$ARCHETYPE_PROJECT_DIR" ] && [ -d "./target/generated-sources/archetype" ] ; then
+   rm -rf $ARCHETYPE_PROJECT_DIR/pom.xml && \
+   rm -rf $ARCHETYPE_PROJECT_DIR/src && \
+   cp -r ./target/generated-sources/archetype/** $ARCHETYPE_PROJECT_DIR/ && \
+   ./mvnw -f $ARCHETYPE_PROJECT_DIR clean install -B && \
+   cd $ARCHETYPE_PROJECT_DIR && \
    git add . && \
    git commit -m "$COMMIT_MESSAGE" && \
    git pull && \
