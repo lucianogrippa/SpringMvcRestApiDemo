@@ -12,8 +12,9 @@
 
 ## Description
 
-The main goal of the project is to create a basic rest API service that can be used in environments builded with application server (wildfly) and database server.
-To simulate the environment was used docker technologies and docker-compose.yml file was created in [docker](/docker) folder.
+The main goal of the project is to create a basic rest API service in Java Spring web mvc Framework that can be used in environments builded with application server (wildfly) and database server (Mysql 5.7).<br />
+To simulate the environment was used docker technology.
+<br />All files for "docker" implementation are in [docker](/docker) folder.
 
 The Docker compose file is structured in 3 services
   - wildfly
@@ -22,7 +23,7 @@ The Docker compose file is structured in 3 services
 
 ![Docker compose services](/docs/images/docker-compose.PNG?raw=true "Project services")
 
-
+The wildfly server has 3 volumes and one link to communicating with db service
 
 #### Technologies
 
