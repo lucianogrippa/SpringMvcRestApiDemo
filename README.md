@@ -21,8 +21,8 @@ The main goal of project is create a basic rest API service in Java Spring webmv
 For simulate real environment is used [docker technology](https://www.docker.com), all file required for building it are in [/docker](/docker) folder.
 
 ![Docker compose services](/docs/images/docker-compose.PNG?raw=true "Project services")
-
-As you see in above picture, the environment has 3 services **wildfly**, **appdb**, **phpmyadmin**.<br />
+<p>
+As you see in above picture, the environment has 3 services **wildfly**, **appdb**, **phpmyadmin**.</p>
 
 - **wildfly** service is [jboss wildfly 10.1 server](https://wildfly.org) running using [open-jdk](https://openjdk.java.net) 11 .
   it has 4 volumes mounted on following directories:
@@ -48,6 +48,7 @@ The wildfly service is provided at localhost:8080
 
 ### Database Structure
 ![Docker compose services](/docs/images/database.png?raw=true "Project services")
+<p>
 The database is structurated in 3 tables (see pic above).
 
 **roles -> usersroles -> users** each tables is mapped in [entities](/src/main/java/entities) clases.
@@ -66,6 +67,7 @@ You can perform all crud operations or search for queries using the [UserDao](/s
 ### Rest Service project
 L'entry point del servizio è /api ogni richiesta deve essere autorizzata attraverso un token jwt che verrà rilasciato dopo 
 l'autenticazione /api/signin.
+</p>
 
 [Back To The Top](#description)
 
