@@ -2,7 +2,7 @@
 - [Description](#description)
   - [Environment](#environment)
   - [Database Structure](#database-structure)
-  - [Rest Service](#rest-service)
+  - [Rest Service project](#rest-service-project)
 - [How To Use](#how-to-use)
     - [Installation](#installation)
     - [API Reference](#api-reference)
@@ -40,7 +40,7 @@ The wildfly service is provided at localhost:8080
   
 - **appdb** is [Mysql 5.7 server image](https://hub.docker.com/_/mysql) where founding schema "restapidemo".
   The schema dump sql file is located on this file [dump.sql](/docker/mysql/dump.sql)
-  The appdb service is provided at localhost: 3306, password and user can be setted in [docker-compose] (/docker/docker-compose.yml) file.
+  The appdb service is provided at localhost: 3306, password and user can be setted in [docker-compose.yml](/docker/docker-compose.yml) file.
 
 - **phpmyadmin** is simple web server php with phpmyadmin installed and ready to use.
   Can be useful for explore or manage database server.
@@ -61,10 +61,10 @@ Tables:
 - **users** table contains users profiles information and authentication data.
 - **usersroles** table defines relations "many to many" between users and roles.
 
-You can perform all crud operations or search for queries using the [UserDao](/src/main/java/dao/UserDao.java) class.
+You can perform all crud operations or search for queries using the [UserDao](/src/main/java/dao/UserDao.java) class implementation is in [UserRepository](/src/main/java/repositories/UserRepository.java) class.
 
-### Rest Service
-L'entry point del servizio è /api ogini richiesta deve essere autorizzata attraverso un token jwt che verrà rilasciato dopo 
+### Rest Service project
+L'entry point del servizio è /api ogni richiesta deve essere autorizzata attraverso un token jwt che verrà rilasciato dopo 
 l'autenticazione /api/signin.
 
 [Back To The Top](#description)
