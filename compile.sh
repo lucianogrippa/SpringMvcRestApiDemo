@@ -3,7 +3,7 @@
 # sets only if must build with specific version of jdk otherwise comment it
 	# export JAVA_HOME=/home/lucianogrippa/sdk/jdk8u252-b09
 	
-MVNW_FILE=./mvnw
+MVNW_FILE="./mvnw"
 MVN_DIR=.mvn
 
 
