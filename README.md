@@ -12,15 +12,14 @@
 
 ## Description
 
-The main goal of the project is to create a basic rest API service in Java Spring webmvc Framework that can be used in environments builded with application server (wildfly) and database server (Mysql 5.7).<br />
-To simulate the environment was used docker technology.
-<br />All files for "docker" implementation are in [docker](/docker) folder.
+The main goal of project is create a basic rest API service in Java Spring webmvc Framework that can be used in environments builded on java application servers (wildfly) and databases server (Mysql 5.7). For this purpose is docker technology used.<br />
+All files for "docker services" implementation are in ["docker"](/docker) folder.
 
 ![Docker compose services](/docs/images/docker-compose.PNG?raw=true "Project services")
 
-As you see in above picture, the environment has 3 services wildfly,appdb,phpmyadmin.<br />
+As you see in above picture, the environment has 3 services **wildfly**, **appdb**, **phpmyadmin**.<br />
 
-- wildfly service is jboss wildfly 10.1 server running using open-jdk 11 .
+- **wildfly** service is [jboss wildfly 10.1 server](https://wildfly.org) running using [open-jdk](https://openjdk.java.net) 11 .
   it has 4 volumes mounted on following directories:
   - [standalone/configuration/webapp](/docker/wildfly/standalone/configuration/webapps)
     where is placed properties file for application 
@@ -30,17 +29,27 @@ As you see in above picture, the environment has 3 services wildfly,appdb,phpmya
     where are placed server's log and application's log
   - [standalone/lib](/docker/wildfly/standalone/lib)
     where can be placed library for application dipendecies
+Moreover is used standalone.xml file where is setting up a datasource required by 
+our simple application.<br />
+The wildfly service is provided at localhost:8080
   
-- 
+- **appdb** is [Mysql 5.7 server image](https://hub.docker.com/_/mysql) where founding schema "restapidemo".
+  The schema dump sql file is located on this file [dump.sql](/docker/mysql/dump.sql)
+  The appdb service is provided at localhost: 3306, password and user can be setted in [docker-compose] (/ docker / docker-compose.yml) file.
+
+- **phpmyadmin** is simple web server php with phpmyadmin installed and ready to use.
+  Can be useful for explore or manage database server.
+  The phpmyadmin service is provided at localhost:8883
 
 #### Technologies
 
-- Technology 1
-- Technology 2
+- Docker for simulate environment
+- Spring web mvc
+- Spring security
+- Hibernate
+
 
 [Back To The Top](#technologies)
-
----
 
 ## How To Use
 
