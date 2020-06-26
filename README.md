@@ -12,18 +12,26 @@
 
 ## Description
 
-The main goal of the project is to create a basic rest API service in Java Spring web mvc Framework that can be used in environments builded with application server (wildfly) and database server (Mysql 5.7).<br />
+The main goal of the project is to create a basic rest API service in Java Spring webmvc Framework that can be used in environments builded with application server (wildfly) and database server (Mysql 5.7).<br />
 To simulate the environment was used docker technology.
 <br />All files for "docker" implementation are in [docker](/docker) folder.
 
-The Docker compose file is structured in 3 services
-  - wildfly
-  - appdb
-  - phpmyadmin
-
 ![Docker compose services](/docs/images/docker-compose.PNG?raw=true "Project services")
 
-The wildfly server has 3 volumes and one link to communicating with db service
+As you see in above picture, the environment has 3 services wildfly,appdb,phpmyadmin.<br />
+
+- wildfly service is jboss wildfly 10.1 server running using open-jdk 11 .
+  it has 4 volumes mounted on following directories:
+  - [standalone/configuration/webapp](/docker/wildfly/standalone/configuration/webapps)
+    where is placed properties file for application 
+  - [standalone/deployments](/docker/wildfly/standalone/deplymentes)
+    where is placed the compiled application file **SpringRestApiDemo.war**
+  - [standalone/log](/docker/wildfly/standalone/log)
+    where are placed server's log and application's log
+  - [standalone/lib](/docker/wildfly/standalone/lib)
+    where can be placed library for application dipendecies
+  
+- 
 
 #### Technologies
 
@@ -84,7 +92,6 @@ SOFTWARE.
 
 ## Author Info
 
-- Twitter - [@jamesqquick](https://twitter.com/jamesqquick)
-- Website - [James Q Quick](https://jamesqquick.com)
+- Twitter - [@lgrippa75](https://twitter.com/lgrippa75)
 
 [Back To The Top](#read-me-template)
