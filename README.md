@@ -12,7 +12,7 @@
 
 ## Description
 
-The main goal of project is create a basic rest API service in Java Spring webmvc Framework that can be used in environments builded on java application servers (wildfly) and databases server (Mysql 5.7). For this purpose is docker technology used.<br />
+The main goal of project is create a basic rest API service in Java Spring webmvc Framework that can be used in environments builded on java application servers (wildfly) and databases server (Mysql 5.7). For this purpose docker technology used.<br />
 All files for "docker services" implementation are in ["docker"](/docker) folder.
 
 ![Docker compose services](/docs/images/docker-compose.PNG?raw=true "Project services")
@@ -35,7 +35,7 @@ The wildfly service is provided at localhost:8080
   
 - **appdb** is [Mysql 5.7 server image](https://hub.docker.com/_/mysql) where founding schema "restapidemo".
   The schema dump sql file is located on this file [dump.sql](/docker/mysql/dump.sql)
-  The appdb service is provided at localhost: 3306, password and user can be setted in [docker-compose] (/ docker / docker-compose.yml) file.
+  The appdb service is provided at localhost: 3306, password and user can be setted in [docker-compose] (/docker/docker-compose.yml) file.
 
 - **phpmyadmin** is simple web server php with phpmyadmin installed and ready to use.
   Can be useful for explore or manage database server.
