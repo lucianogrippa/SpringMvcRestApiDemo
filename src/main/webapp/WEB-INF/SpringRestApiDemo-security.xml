@@ -58,8 +58,6 @@
 	<authentication-manager id="basicAuthManager" alias="basicAuthManager">
 		<authentication-provider>
 			<user-service>
-				<user name="lgrippa" password="grippaweb123"
-					authorities="ROLE_USER" />
 				<user name="admin" password="admin.01"
 					authorities="ROLE_MANAGER" />
 			</user-service>

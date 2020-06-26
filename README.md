@@ -1,6 +1,8 @@
 ### Table of Contents
 - [Description](#description)
-    - [Technologies](#technologies)
+  - [Environment](#environment)
+  - [Database Structure](#database-structure)
+  - [Rest Service](#rest-service)
 - [How To Use](#how-to-use)
     - [Installation](#installation)
     - [API Reference](#api-reference)
@@ -44,7 +46,26 @@ The wildfly service is provided at localhost:8080
   Can be useful for explore or manage database server.
   The phpmyadmin service is provided at localhost:8883
 
-#### Rest Service
+### Database Structure
+![Docker compose services](/docs/images/database.png?raw=true "Project services")
+The database is structurated in 3 tables (see pic above).
+
+**roles -> usersroles -> users** each tables is mapped in [entities](/src/main/java/entities) clases.
+
+As you can see this structure is designed to contain the user authentication information needed by the security framework to protect the controller /api and the same applies to all controllers.
+If you wont to change structure or add or modifiy users or tables and consequently have the changes available for testing on the appdb service, you should edit the [dump.sql](/docker/mysql/dump.sql) file and remap the whole entity class.
+
+Tables: 
+
+- **roles** table contains roles definitions.
+- **users** table contains users profiles information and authentication data.
+- **usersroles** table defines relations "many to many" between users and roles.
+
+You can perform all crud operations or search for queries using the [UserDao](/src/main/java/dao/UserDao.java) class.
+
+### Rest Service
+L'entry point del servizio è /api ogini richiesta deve essere autorizzata attraverso un token jwt che verrà rilasciato dopo 
+l'autenticazione /api/signin.
 
 [Back To The Top](#description)
 
@@ -98,6 +119,7 @@ SOFTWARE.
 
 ## Author Info
 
+Luciano Grippa
 - Twitter - [@lgrippa75](https://twitter.com/lgrippa75)
 
 [Back To The Top](#description)
