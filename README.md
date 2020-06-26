@@ -47,14 +47,15 @@ The wildfly service is provided at localhost:8080
   The phpmyadmin service is provided at localhost:8883
 
 ### Database Structure
+
 ![Docker compose services](/docs/images/database.png?raw=true "Project services")
 <p>
-The database is structurated in 3 tables (see pic above).
+The database is structured in 3 tables.
 
 **roles -> usersroles -> users** each tables is mapped in [entities](/src/main/java/entities) clases.
 
 As you can see this structure is designed to contain the user authentication information needed by the security framework to protect the controller /api and the same applies to all controllers.
-If you wont to change structure or add or modifiy users or tables and consequently have the changes available for testing on the appdb service, you should edit the [dump.sql](/docker/mysql/dump.sql) file and remap the whole entity class.
+If you want to change structure , add or modify users or tables and consequently have the changes available for testing on the appdb service, you should edit the [dump.sql](/docker/mysql/dump.sql) file and remap the whole entity class.
 
 Tables: 
 
