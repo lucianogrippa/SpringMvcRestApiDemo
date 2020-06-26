@@ -24,7 +24,7 @@ As you see in above picture, the environment has 3 services wildfly,appdb,phpmya
   it has 4 volumes mounted on following directories:
   - [standalone/configuration/webapp](/docker/wildfly/standalone/configuration/webapps)
     where is placed properties file for application 
-  - [standalone/deployments](/docker/wildfly/standalone/deplymentes)
+  - [standalone/deployments](/docker/wildfly/standalone/deployments)
     where is placed the compiled application file **SpringRestApiDemo.war**
   - [standalone/log](/docker/wildfly/standalone/log)
     where are placed server's log and application's log
