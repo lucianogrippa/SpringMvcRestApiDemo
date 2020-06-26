@@ -1,4 +1,4 @@
-### Table of Contents
+### Table of Contents (#tableofcontents)
 - [Description](#description)
     - [Technologies](#technologies)
 - [How To Use](#how-to-use)
@@ -12,8 +12,11 @@
 
 ## Description
 
-The main goal of project is create a basic rest API service in Java Spring webmvc Framework that can be used in environments builded on java application servers (wildfly) and databases server (Mysql 5.7). For this purpose docker technology used.<br />
-All files for "docker services" implementation are in ["docker"](/docker) folder.
+The main goal of project is create a basic rest API service in Java Spring webmvc Framework that can be used in environments builded on java application servers (wildfly) and databases server (Mysql 5.7).<br />
+
+### Environment
+
+For simulate real environment is used [docker technology](https://www.docker.com), all file required for building it are in [/docker](/docker) folder.
 
 ![Docker compose services](/docs/images/docker-compose.PNG?raw=true "Project services")
 
@@ -41,15 +44,9 @@ The wildfly service is provided at localhost:8080
   Can be useful for explore or manage database server.
   The phpmyadmin service is provided at localhost:8883
 
-#### Technologies
+#### Rest Service
 
-- Docker for simulate environment
-- Spring web mvc
-- Spring security
-- Hibernate
-
-
-[Back To The Top](#technologies)
+[Back To The Top](#description)
 
 ## How To Use
 
@@ -62,12 +59,12 @@ The wildfly service is provided at localhost:8080
 ```html
     <p>dummy code</p>
 ```
-[Back To The Top](#read-me-template)
+[Back To The Top](##tableofcontents)
 
 ---
 
 ## References
-[Back To The Top](#read-me-template)
+[Back To The Top](##tableofcontents)
 
 ---
 
@@ -95,7 +92,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-[Back To The Top](#read-me-template)
+[Back To The Top](#tableofcontents)
 
 ---
 
@@ -103,4 +100,4 @@ SOFTWARE.
 
 - Twitter - [@lgrippa75](https://twitter.com/lgrippa75)
 
-[Back To The Top](#read-me-template)
+[Back To The Top](##tableofcontents)
