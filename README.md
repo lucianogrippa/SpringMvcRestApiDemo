@@ -1,4 +1,4 @@
-### Table of Contents (#tableofcontents)
+### Table of Contents
 - [Description](#description)
     - [Technologies](#technologies)
 - [How To Use](#how-to-use)
@@ -64,7 +64,7 @@ The wildfly service is provided at localhost:8080
 ---
 
 ## References
-[Back To The Top](##tableofcontents)
+[Back To The Top](#description)
 
 ---
 
@@ -92,7 +92,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-[Back To The Top](#tableofcontents)
+[Back To The Top](#description)
 
 ---
 
@@ -100,4 +100,4 @@ SOFTWARE.
 
 - Twitter - [@lgrippa75](https://twitter.com/lgrippa75)
 
-[Back To The Top](##tableofcontents)
+[Back To The Top](#description)
