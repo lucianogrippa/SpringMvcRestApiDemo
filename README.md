@@ -22,7 +22,7 @@ For simulate real environment is used [docker technology](https://www.docker.com
 
 ![Docker compose services](/docs/images/docker-compose.PNG?raw=true "Project services")
 <p>
-As you see in above picture, the environment has 3 services **wildfly**, **appdb**, **phpmyadmin**.</p>
+As you see in above picture, the environment has 3 services <b>wildfly</b>, <b>appdb</b>, <b>phpmyadmin</b>.</p>
 
 - **wildfly** service is [jboss wildfly 10.1 server](https://wildfly.org) running using [open-jdk](https://openjdk.java.net) 11 .
   it has 4 volumes mounted on following directories:
@@ -31,12 +31,13 @@ As you see in above picture, the environment has 3 services **wildfly**, **appdb
   - [standalone/deployments](/docker/wildfly/standalone/deployments)
     where is placed the compiled application file **SpringRestApiDemo.war**
   - [standalone/log](/docker/wildfly/standalone/log)
-    where are placed server's log and application's log
+    where are placed server log and application log
   - [standalone/lib](/docker/wildfly/standalone/lib)
-    where can be placed library for application dipendecies
-Moreover is used standalone.xml file where is setting up a datasource required by 
-our simple application.<br />
-The wildfly service is provided at localhost:8080
+    where can be placed libraries for application dependencies.
+
+  jboss wildfly use standalone.xml configuration file where is setting up a datasource required by 
+  our simple application.<br />
+  The wildfly service is provided at localhost:8080
   
 - **appdb** is [Mysql 5.7 server image](https://hub.docker.com/_/mysql) where founding schema "restapidemo".
   The schema dump sql file is located on this file [dump.sql](/docker/mysql/dump.sql)
