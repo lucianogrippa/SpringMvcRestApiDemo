@@ -1,13 +1,11 @@
 /target/
 target/
-/docker/deployments
-docker/deployments
 src/test/server/log
 /src/test/server/log
 .classpath
 
-docker/wildfly/standalone/log
-/docker/wildfly/standalone/log
+docker/wildfly/standalone/log/*.log
+/docker/wildfly/standalone/log/*.log
 /docker/wildfly/standalone/deployments/SpringRestApiDemo.war
 /docker/wildfly/standalone/deployments/SpringRestApiDemo.war.deployed
 docker/wildfly/standalone/deployments/SpringRestApiDemo.war
