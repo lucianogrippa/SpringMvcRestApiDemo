@@ -3,8 +3,6 @@ package helpers;
 import java.io.UnsupportedEncodingException;
 import java.security.Key;
 
-import javax.annotation.Resource;
-
 import org.jose4j.jwa.AlgorithmConstraints.ConstraintType;
 import org.jose4j.jws.AlgorithmIdentifiers;
 import org.jose4j.jws.JsonWebSignature;
@@ -35,9 +33,6 @@ import exceptions.ApiForbiddenHandlerException;
 @Service(value = "jwtHelper")
 @Scope(value = "prototype")
 public class JwtHelper {
-
-	@Resource
-	private Environment env;
 
 	@Value("${jwt.secret}")
 	private String secret;
