@@ -17,9 +17,11 @@ CURRENT_DIRECTORY=$PWD
 getopts a: prjdirname
 
 ARCHETYPE_PROJECT_DIR=$OPTARG
-if [ "x$ARCHETYPE_PROJECT_DIR" = "x" ]; then
+if [ ! -n "$ARCHETYPE_PROJECT_DIR" ]; then
+  echo "set ../spring-rest-archetype"
   $ARCHETYPE_PROJECT_DIR = "../spring-rest-archetype"
 fi
+
 echo "archetipe project $ARCHETYPE_PROJECT_DIR"
 
 getopts X maketest
@@ -75,13 +77,15 @@ if [ -d "$ARCHETYPE_PROJECT_DIR" ] && [ -d "./target/generated-sources/archetype
    rm -rf $ARCHETYPE_PROJECT_DIR/pom.xml && \
    rm -rf $ARCHETYPE_PROJECT_DIR/src && \
    cp -r ./target/generated-sources/archetype/** $ARCHETYPE_PROJECT_DIR/ && \
-   ./mvnw -f $ARCHETYPE_PROJECT_DIR clean install -B && \
-   cd $ARCHETYPE_PROJECT_DIR && \
-   git add . && \
-   git commit -m "$COMMIT_MESSAGE" && \
-   git pull && \
-   git push && \
-   cd $CURRENT_DIRECTORY
+   ./mvnw -f $ARCHETYPE_PROJECT_DIR clean install -B
+  
+  # uncommet only if want push to repository
+  #  cd $ARCHETYPE_PROJECT_DIR && \
+  #  git add . && \
+  #  git commit -m "$COMMIT_MESSAGE" && \
+  #  git pull && \
+  #  git push && \
+  #  cd $CURRENT_DIRECTORY
 fi
 
 
