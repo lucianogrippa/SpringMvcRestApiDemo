@@ -3,8 +3,11 @@ target/
 src/test/server/log
 /src/test/server/log
 .classpath
-
+.settings
+/.settings/*.*
+.settings/*.*
 docker/wildfly/standalone/log/*.log
+/docker/wildfly/standalone/log/*.log.*
 /docker/wildfly/standalone/log/*.log
 /docker/wildfly/standalone/deployments/SpringRestApiDemo.war
 /docker/wildfly/standalone/deployments/SpringRestApiDemo.war.deployed
