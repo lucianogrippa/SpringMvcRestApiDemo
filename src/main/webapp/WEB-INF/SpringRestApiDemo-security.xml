@@ -55,10 +55,12 @@
 		<http-basic entry-point-ref="basicAuthEntryPoint" />
 		<csrf disabled="true" />
 	</http>
+
 	<authentication-manager id="basicAuthManager" alias="basicAuthManager">
 		<authentication-provider>
+		    <password-encoder hash="bcrypt" />
 			<user-service>
-				<user name="admin" password="admin.01"
+				<user name="admin" password="$2a$04$4MuZ5tEpWuux0TxyvffIMOdZh6UKZJd/wj1XJcnJzoirr9f.KHPvG"
 					authorities="ROLE_MANAGER" />
 			</user-service>
 		</authentication-provider>

@@ -2,6 +2,7 @@ package controllers;
 
 
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -13,6 +14,7 @@ import java.util.Properties;
 
 import org.hamcrest.Matchers;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -21,6 +23,7 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.http.MediaType;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -76,9 +79,9 @@ public class ContentTestControllerTest {
 	}
 	
 	@Test
-	public void test() {
+	public void echo() {
 		try {
-			this.mockMvc.perform(get("/api/test/10")).andExpect(status().isOk())
+			this.mockMvc.perform(get("/api/echo/10")).andExpect(status().isOk())
 					.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 					.andExpect(content().string(Matchers.containsString("\"id\":10")));
 		} catch (Exception e) {
@@ -87,15 +90,13 @@ public class ContentTestControllerTest {
 		}
 	}
 	
-//	@Test
-//	public void  testtoken() {
-//		try {
-//			this.mockMvc.perform(get("/api/testtoken")).andExpect(status().isOk())
-//					.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-//					.andExpect(content().string(Matchers.containsString("343ac2b34f53518ef6cc693f2685b2d6a6574fc5e82aa499743215487d72acb6")));
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			fail("test fail");
-//		}
-//	}
+	@Test
+	@Ignore
+	public void getBCryptPassword()
+	{
+		String password = BCrypt.hashpw("admin.01",BCrypt.gensalt(4));
+		System.out.println(password);
+		
+		assertTrue(password != null && BCrypt.checkpw("admin.01", password));
+	}
 }

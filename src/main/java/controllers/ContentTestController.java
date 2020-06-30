@@ -17,7 +17,10 @@ import services.UserService;
 
 @RestController
 @RequestMapping("/api")
-public class ContentTestController extends BaseController {
+public class ContentTestController {
+	@Autowired
+	LogHelper logger;
+	
 	@Autowired
 	AppPropertiesHelper appPropertiesHelper;
 
@@ -30,7 +33,7 @@ public class ContentTestController extends BaseController {
 	 * @param id paramiter id example
 	 * @return
 	 */
-	@RequestMapping(value = "/test/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/echo/{id}", method = RequestMethod.GET)
 	public @ResponseBody Content getContent(@PathVariable("id") long id) {
 		LogHelper.getLogger().logInfo("calling: /test/ " + id);
 

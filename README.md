@@ -14,7 +14,7 @@
 
 ## Description
 
-The main goal of project is create a basic rest API service in Java Spring webmvc Framework that can be used in environments builded on java application servers (wildfly) and databases server (Mysql 5.7).<br />
+The main goal of project is create a basic rest API service in Java Spring webmvc Framework that can be used in environments builded on java application servers (jboss wildfly 19.1.0.Final) and databases server (Mysql 5.7).<br />
 
 ### Environment
 
@@ -24,7 +24,7 @@ For simulate real environment is used [docker technology](https://www.docker.com
 <p>
 As you see in above picture, the environment has 3 services <b>wildfly</b>, <b>appdb</b>, <b>phpmyadmin</b>.</p>
 
-- **wildfly** service is [jboss wildfly 10.1 server](https://wildfly.org) running using [open-jdk](https://openjdk.java.net) 11 .
+- **wildfly** service is [jboss wildfly 19.1.0.Final server](https://wildfly.org) running using [open-jdk](https://openjdk.java.net) 11 .
   it has 4 volumes mounted on following directories:
   - [standalone/configuration/webapp](/docker/wildfly/standalone/configuration/webapps)
     where is placed properties file for application 
@@ -56,7 +56,7 @@ The database is structured in 3 tables.
 **roles -> usersroles -> users** each tables is mapped in [entities](/src/main/java/entities) clases.
 
 As you can see this structure is designed to contain the user authentication information needed by the security framework to protect the controller /api and the same applies to all controllers.
-If you want to change structure , add or modify users or tables and consequently have the changes available for testing on the appdb service, you should edit the [dump.sql](/docker/mysql/dump.sql) file and remap the whole entity class.
+If you want to change structure , add or modify users or tables and consequently getting changes available for testing the "appdb" service, you should edit the [dump.sql](/docker/mysql/dump.sql) file and remap the whole entity class.
 
 Tables: 
 
@@ -64,12 +64,38 @@ Tables:
 - **users** table contains users profiles information and authentication data.
 - **usersroles** table defines relations "many to many" between users and roles.
 
-You can perform all crud operations or search for queries using the [UserDao](/src/main/java/dao/UserDao.java) class implementation is in [UserRepository](/src/main/java/repositories/UserRepository.java) class.
+You can perform all crud operations or search for queries, using the [UserDao](/src/main/java/dao/UserDao.java) class, implementation is in [UserRepository](/src/main/java/repositories/UserRepository.java) class.
+</p>
 
 ### Rest Service project
-L'entry point del servizio è /api ogni richiesta deve essere autorizzata attraverso un token jwt che verrà rilasciato dopo 
-l'autenticazione /api/signin.
-</p>
+All basics services have been implemented in main path /api: <br>
+- GET: **/test/{id}** 
+- GET: **/testtoken**
+- GET: **/signin/{authToken}**
+- POST: **/signin**
+
+Each service is protected by jwt token that is get through user authentication.
+All token settings are provide by [application properties](/docker/wildfly/standalone/configuration/webapps/application.springrestdemo.properties) file.<br>
+
+Properties file contain the following keys:
+<br >
+<h5>For jwt token</h5>
+
+- jwt.secret : token secret
+- jwt.issuer : issuer
+- jwt.kid : token id
+- jwt.auth.audience : audience
+- jwt.expire.seconds : expire time in seconds
+- jwt.expire.past.seconds : expire time for past in seconds
+
+<h5>For another's purposes</h5>
+
+- app.key : needed for authentication
+- app.user.id : user id for testing apis
+
+
+
+
 
 [Back To The Top](#description)
 
