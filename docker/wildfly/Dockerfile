@@ -22,7 +22,7 @@ RUN cd $HOME \
 RUN /opt/jboss/wildfly/bin/add-user.sh admin admin --silent
 
 ADD jdbc /opt/jdbc
-ADD config /opt/config
+ADD ./config /opt/config
 # ADD amq /opt/amq
 
 USER root
@@ -30,7 +30,6 @@ USER root
 RUN yum install telnet -y
 RUN yum install mysql -y
 RUN chmod +x /opt/config/execute.sh
-USER jboss
 
 RUN /opt/config/execute.sh commands.cli
 
