@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>SpringRestApiDemo</groupId>
 	<artifactId>SpringRestApiDemo</artifactId>
-	<version>0.1.4</version>
+	<version>0.1.5</version>
 	<packaging>war</packaging>
 	<description>Progetto prototipo per creare Spring Mvc Rest Api da deployare su server jboss wildfly</description>
 	<properties>
@@ -14,7 +14,7 @@
 		<spring.security.version>5.3.3.RELEASE</spring.security.version>
 		<org.aspectj-version>1.9.5</org.aspectj-version>
 		<hibernate.version>5.4.18.Final</hibernate.version>
-		<mysql.connector.version>8.0.16</mysql.connector.version>
+		<mysql.connector.version>8.0.20</mysql.connector.version>
 		<jackson.databind-version>2.11.0</jackson.databind-version>
 		<swagger.version>2.9.2</swagger.version>
 	</properties>

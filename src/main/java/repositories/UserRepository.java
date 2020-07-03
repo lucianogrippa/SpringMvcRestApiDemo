@@ -7,7 +7,7 @@ import javax.persistence.NoResultException;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import dao.AbstractDao;
@@ -17,7 +17,7 @@ import entities.User;
 import helpers.AppPropertiesHelper;
 import helpers.LogHelper;
 
-@Component
+@Service
 public class UserRepository extends AbstractDao<Long, User> implements UserDao {
 
 	@Autowired

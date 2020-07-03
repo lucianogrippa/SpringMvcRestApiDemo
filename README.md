@@ -3,10 +3,14 @@
   - [Environment](#environment)
   - [Database Structure](#database-structure)
   - [Rest Service project](#rest-service-project)
+    - [Output json](#output-json)
+    - [Folders organization](#folders-organization)
+      - [docker](#docker)
+      - [main](#main)
+        - [java folder](#java-folder)
+        - [resources folder](#resources-folder)
+        - [webapp folder](#webapp-folder)
 - [How To Use](#how-to-use)
-    - [Installation](#installation)
-    - [API Reference](#api-reference)
-- [References](#references)
 - [License](#license)
 - [Author Info](#author-info)
 
@@ -15,6 +19,15 @@
 ## Description
 
 The main goal of project is create a basic rest API service in Java Spring webmvc Framework that can be used in environments builded on java application servers (jboss wildfly 19.1.0.Final) and databases server (Mysql 5.7).<br />
+
+The project include:
+
+- Spring Webmvc
+- Secure api request with jwt token in Authorizzazion header (Spring Security)
+- data persistance with hibernate (Spring jpa and Hibernate)
+- swagger for api documentation 
+- Exception handling and error custom output
+- docker containers for simulate enviorment
 
 ### Environment
 
@@ -68,6 +81,7 @@ You can perform all crud operations or search for queries, using the [UserDao](/
 </p>
 
 ### Rest Service project
+
 All basics services have been implemented in main path /api: <br>
 - GET: **/test/{id}** 
 - GET: **/testtoken**
@@ -93,29 +107,92 @@ Properties file contain the following keys:
 - app.key : needed for authentication
 - app.user.id : user id for testing apis
 
+#### Output json
+
+All controllers response with json representation of class [Content](/src/main/java/dtos/Content.java):
+
+Success:
+
+```json
+  {
+    "id": 24,
+    "description": "That's works",
+    "status": 200,
+    "data": "paramiter: 24"
+  }
+```
+
+Error:
+
+```json
+  {
+    "id": 24,
+    "description": "error description",
+    "error":"error code or specific description",
+    "status": 401
+  }
+```
+
+The exceptions will respond with json representation of class [ApiErrorMessageResponse](/src/main/java/dtos/ApiErrorMessageResponse.java)
 
 
+```json
+  {
+    "id": 1593784588022,
+    "description": "Not Found",
+    "status": 404,
+    "error": "API_RESOURCE_NOT_FOUND",
+    "exceptionOccurred": true
+  }
+```
+
+The error pages are json output managed by [HttpApiDefaultErrorPageController](/src/main/java/controllers/HttpApiDefaultErrorPageController.java) controller
+
+The exception will set different status and are managed by [AdviceExceptionHandlerController](/src/main/java/controllers/AdviceExceptionHandlerController.java) controller
+
+
+#### Folders organization
+
+##### [docker](/docker)
+
+In this folder are located all files used for handle docker environments implementation.
+
+##### [main](/src/main) 
+
+this contains 3 folders java, resources,webapp
+
+###### java folder
+
+**[controllers](/src/main/java/controllers)**: contains all application controller in particular:
+- [AdviceExceptionHandlerController](/src/main/java/controllers/AdviceExceptionHandlerController.java), manages the exceptions for output presentation
+- [AuthController](src/main/java/controllers/AuthController.java), manages the /signin api needed for creating jwt token.
+- [ContentDemoController](/src/main/java/controllers/ContentDemoController.java), contains simple "api" /echo and /testtoken
+- [HttpApiDefaultErrorPageController](/src/main/java/controllers/HttpApiDefaultErrorPageController.java), contains all error page controllers.
+
+**[dao](/src/main/java/dao)**, contains all dao interfaces definition need for crud operations.
+**[dtos](/src/main/java/dtos)**, contains all classes to be serializing in json to output presentation layer.
+**[entities](/src/main/java/entities)**, contains map jpa entities classes.
+**[exceptions](/src/main/java/exceptions)**, exception classes implementations.
+**[helpers](/src/main/java/helpers)**,helpers classes useful for manage some situations as logging, get application properties or generate jwt token with specific parameters.
+**[repositories](/src/main/java/repositories)**, contains dao implementation classes.
+**[security](/src/main/java/security)**, contains all classes needed for handle the security providers and filters.
+All classes to manage the jwt token have been putting in [security/api](/src/main/java/security/api) folder.
+**[services](/src/main/java/services)** contains services classes.
+
+###### resources folder
+
+This folder contains logback, log4j and persistence.xml configurations
+
+###### webapp folder
+
+In [WEB-INF](/src/main/webapp/WEB-INF) are collect all configuration files for Spring beans , Spring security and servlet web.xml.
 
 
 [Back To The Top](#description)
 
 ## How To Use
 
-#### Installation
-
-
-
-#### API Reference
-
-```html
-    <p>dummy code</p>
-```
 [Back To The Top](##tableofcontents)
-
----
-
-## References
-[Back To The Top](#description)
 
 ---
 
@@ -151,5 +228,6 @@ SOFTWARE.
 
 Luciano Grippa
 - Twitter - [@lgrippa75](https://twitter.com/lgrippa75)
+- skype - lucianogrippa
 
 [Back To The Top](#description)

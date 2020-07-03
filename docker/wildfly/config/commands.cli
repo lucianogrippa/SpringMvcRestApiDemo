@@ -2,13 +2,13 @@
 batch
 
 # add mysql module
-module add --name=com.mysql.jdbc --resources=/opt/jdbc/mysql-connector-java-5.1.37-bin.jar --module-xml=/opt/jdbc/mysql-module.xml
+module add --name=com.mysql.jdbc --resources=/opt/jdbc/mysql-connector-java-8.0.20.jar --module-xml=/opt/jdbc/mysql-module.xml
 
 # Add mysql driver
-/subsystem=datasources/jdbc-driver=mysql:add(driver-name="mysql",driver-module-name="com.mysql.jdbc",driver-class-name=com.mysql.jdbc.Driver,driver-xa-datasource-class-name=com.mysql.jdbc.jdbc2.optional.MysqlXADataSource)
+/subsystem=datasources/jdbc-driver=mysql:add(driver-name="mysql",driver-module-name="com.mysql.jdbc",driver-class-name=com.mysql.cj.jdbc.Driver,driver-xa-datasource-class-name=com.mysql.cj.jdbc.MysqlXADataSource)
 
 # Add mysql the datasource
-data-source add --name=mysqlds --driver-name=mysql --jndi-name=java:jboss/datasources/mysqldb --connection-url=jdbc:mysql://wildflydbhost/restapidemo?useUnicode=true&connectionCollation=utf8_general_ci&characterSetResults=utf8&characterEncoding=utf8 --user-name=user --password=ma45lata --use-ccm=true --max-pool-size=5 --blocking-timeout-wait-millis=5000 --enabled=true --driver-class=com.mysql.jdbc.Driver --exception-sorter-class-name=com.mysql.jdbc.integration.jboss.ExtendedMysqlExceptionSorter --jta=true --use-java-context=true
+data-source add --name=mysqlds --driver-name=mysql --jndi-name=java:jboss/datasources/mysqldb --connection-url=jdbc:mysql://wildflydbhost/restapidemo?useUnicode=true&connectionCollation=utf8_general_ci&characterSetResults=utf8&characterEncoding=utf8&serverTimezone=UTC --user-name=user --password=ma45lata --use-ccm=true --max-pool-size=5 --blocking-timeout-wait-millis=5000 --enabled=true --driver-class=com.mysql.cj.jdbc.Driver --exception-sorter-class-name=com.mysql.jdbc.integration.jboss.ExtendedMysqlExceptionSorter --jta=true --use-java-context=true
 
 
 # Execute the batch
