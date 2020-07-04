@@ -4,6 +4,8 @@ src/test/server/log
 /src/test/server/log
 .classpath
 .settings
+.mvn
+/.mvn
 /.settings/*.*
 .settings/*.*
 docker/wildfly/standalone/log/*.log
