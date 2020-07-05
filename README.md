@@ -193,9 +193,7 @@ In [WEB-INF](/src/main/webapp/WEB-INF) are collect all configuration files for S
 
 The main project dependency is maven so first of all you need [to install maven](https://maven.apache.org/install.html) in your system.
 
-You can use this project from maven archetype.<br>
-First you should install install archetype.
-[Download this project](https://github.com/lucianogrippa/SpringMvcRestApiDemo/archive/master.zip) from github unzip it and open terminal in directory containing project.
+You can use this project by [clone](https://github.com/lucianogrippa/SpringMvcRestApiDemo.git) or [download](https://github.com/lucianogrippa/SpringMvcRestApiDemo/archive/make-docs.zip) from github. <br />After do that if you are choose to download, unzip it then open terminal in directory containing project.
 
 type:
 ```bash
