@@ -19,7 +19,7 @@ getopts a: prjdirname
 ARCHETYPE_PROJECT_DIR=$OPTARG
 if [ ! -n "$ARCHETYPE_PROJECT_DIR" ]; then
   echo "set ../spring-rest-archetype"
-  $ARCHETYPE_PROJECT_DIR = "../spring-rest-archetype"
+  ARCHETYPE_PROJECT_DIR="../spring-rest-archetype"
 fi
 
 echo "archetipe project $ARCHETYPE_PROJECT_DIR"
@@ -40,7 +40,7 @@ fi
 if [ "$maketest" = "X" ]; then
 	DEBUGOPTION=-X
 else
-   DEBUGOPTION="-B release:prepare release:perform"
+   DEBUGOPTION="-B"
 fi
 
 echo "debug option $DEBUG"
@@ -73,8 +73,17 @@ fi
 
 # se e' presente il progetto archetipe ed e' stato creato in source
 # allora copia 
+echo "checking $ARCHETYPE_PROJECT_DIR directory"
+
+if [ ! -d "$ARCHETYPE_PROJECT_DIR" ]; then
+  echo "creating directory.. $ARCHETYPE_PROJECT_DIR"
+  mkdir $ARCHETYPE_PROJECT_DIR
+fi
+
 if [ -d "$ARCHETYPE_PROJECT_DIR" ] && [ -d "./target/generated-sources/archetype" ] ; then
+echo "checking ok"
    rm -rf $ARCHETYPE_PROJECT_DIR/pom.xml && \
+   rm -rf $ARCHETYPE_PROJECT_DIR/target && \
    rm -rf $ARCHETYPE_PROJECT_DIR/src && \
    cp -r ./target/generated-sources/archetype/** $ARCHETYPE_PROJECT_DIR/ && \
    ./mvnw -f $ARCHETYPE_PROJECT_DIR clean install -B
@@ -87,5 +96,3 @@ if [ -d "$ARCHETYPE_PROJECT_DIR" ] && [ -d "./target/generated-sources/archetype
   #  git push && \
   #  cd $CURRENT_DIRECTORY
 fi
-
-

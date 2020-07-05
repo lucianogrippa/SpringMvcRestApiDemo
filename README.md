@@ -191,7 +191,53 @@ In [WEB-INF](/src/main/webapp/WEB-INF) are collect all configuration files for S
 
 ## How To Use
 
+The main project dependency is maven so first of all you need [to install maven](https://maven.apache.org/install.html) in your system.
+
+You can use this project from maven archetype.<br>
+First you should install install archetype.
+[Download this project](https://github.com/lucianogrippa/SpringMvcRestApiDemo/archive/master.zip) from github unzip it and open terminal in directory containing project.
+
+type:
+```bash
+# this generateing the archetype files in ../spring-rest-archetype directory
+# and install it in default catalog.
+$ ./archetype.sh
+
+# if won't to put archetypes files in ../spring-rest-archetype  you should use -a argument
+$ ./archetype.sh -a [archetype-generated-path]
+```
+<p>
+If all done well, you are ready to create own project from this one.
+The fastest and simplest way is to use Eclipse or any other IDE, you should find the archetype in the local default catalog (usually located in ~/.m2 directory).
+</p>
+
+Once the project is created you can compile it using the command:
+```bash
+$ ./complile.sh
+# for skiping test just use argument -s
+$ ./compile.sh -s
+```
+This command generates /target/[projectname].war file and then copy it in [deployments](/docker/wildfly/standalone/deployments) directory.
+
+<h5>Docker Environment</h5>
+
+To build all images just go in /docker directory and then type:
+```bash
+$ ./buils_start.sh
+```
+This command force "build" and then start all service defined in [docker-compose.yml](docker/docker-compose.yml), so you should use this command once or only if necessary because the images will lost all data.
+
+If the images exists you can control start and stop using the commands:
+
+```bash
+# start the dockers services.
+$ ./start.sh
+ #stop docker services
+$ ./stop.sh
+```
+
 [Back To The Top](##tableofcontents)
+
 
 ---
 
