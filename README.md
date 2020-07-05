@@ -197,8 +197,7 @@ You can use this project by [clone](https://github.com/lucianogrippa/SpringMvcRe
 
 type:
 ```bash
-# this generateing the archetype files in ../spring-rest-archetype directory
-# and install it in default catalog.
+ # this generates the archetype files in the ../spring-rest-archetype directory, then installs them in the default catalog.
 $ ./archetype.sh
 
 # if won't to put archetypes files in ../spring-rest-archetype  you should use -a argument
@@ -212,7 +211,7 @@ The fastest and simplest way is to use Eclipse or any other IDE, you should find
 Once the project is created you can compile it using the command:
 ```bash
 $ ./complile.sh
-# for skiping test just use argument -s
+# for skipping test just use argument -s
 $ ./compile.sh -s
 ```
 This command generates /target/[projectname].war file and then copy it in [deployments](/docker/wildfly/standalone/deployments) directory.
@@ -223,7 +222,7 @@ To build all images just go in /docker directory and then type:
 ```bash
 $ ./buils_start.sh
 ```
-This command force "build" and then start all service defined in [docker-compose.yml](docker/docker-compose.yml), so you should use this command once or only if necessary because the images will lost all data.
+This command force "build" and then start all services defined in [docker-compose.yml](docker/docker-compose.yml), so you should use this command once or only if necessary because the images will lost all data.
 
 If the images exists you can control start and stop using the commands:
 
