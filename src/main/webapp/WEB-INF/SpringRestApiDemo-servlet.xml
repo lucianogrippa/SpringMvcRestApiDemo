@@ -82,7 +82,7 @@
 		/> <property name="username" value="user" /> <property name="password" value="ma45lata" 
 		/> </bean> -->
 
-	<!-- Create default configuration for Hibernate -->
+	<!--JPA HIBERNATE CONFIGURATION -->
 	<bean id="hibernateJpaVendorAdapter"
 		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
 	<!-- Configurazione JPA Hibernate -->
@@ -105,17 +105,16 @@
 		class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="appEntityManager" />
 	</bean>
-	<tx:annotation-driven
-		transaction-manager="transactionManager" />
+	<tx:annotation-driven transaction-manager="transactionManager" />
 
-	<bean id="persistenceExceptionTranslationPostProcessor"
-		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+	<bean id="persistenceExceptionTranslationPostProcessor" class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
 
 	<!-- SpringContextProvider -->
 	<bean id="springContextProvider"
 		class="helpers.SpringContextProvider"></bean>
 
+	<!-- SWAGGER -->
 	<bean id="swagger2Config"
 		class="springfox.documentation.swagger2.configuration.Swagger2DocumentationConfiguration">
 	</bean>

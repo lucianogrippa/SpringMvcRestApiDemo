@@ -3,6 +3,7 @@ package controllers;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,10 +15,13 @@ import exceptions.ApiMethodNotAllowedHandlerException;
 import exceptions.ApiNotAcceptedHandlerException;
 import exceptions.ApiNotAuthMethodHadlerException;
 import exceptions.ApiNotFoundHandlerException;
+import helpers.LogHelper;
 
 @RestController
 @RequestMapping("/api")
-public class HttpApiDefaultErrorPageController extends BaseController {
+public class HttpApiDefaultErrorPageController {
+	@Autowired
+	LogHelper logger;
 	
 	@RequestMapping(value = "/handle_404")
 	@ResponseBody

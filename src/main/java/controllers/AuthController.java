@@ -24,7 +24,7 @@ import services.UserService;
 
 @RestController
 @RequestMapping("/api")
-public class AuthController extends BaseController {
+public class AuthController {
 	@Autowired
 	LogHelper logger;
 	

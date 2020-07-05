@@ -1,0 +1,126 @@
+<?xml version='1.0' ?><!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<book>
+	<title>README</title>
+	<chapter id="spring-mvc-rest-api-project">
+		<title>Spring Mvc Rest Api Project</title>
+		<para>This is starter project for developing json rest apis using Spring MVC Web Framework on jboss wildfly server</para>
+		<blockquote>
+			<para>This is a ReadMe template to help save you time and effort.</para>
+		</blockquote>
+		<section id="table-of-contents">
+			<section>
+				<title>Table of Contents</title>
+				<para>You're sections headers will be used to reference location of destination.</para>
+				<itemizedlist>
+					<listitem>
+						<para>
+							<link linkend="description">Description</link>
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							<link linkend="how-to-use">How To Use</link>
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							<link linkend="references">References</link>
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							<link linkend="license">License</link>
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							<link linkend="author-info">Author Info</link>
+						</para>
+					</listitem>
+				</itemizedlist>
+			</section>
+		</section>
+		<section id="description">
+			<title>Description</title>
+			<para>Creating ReadMe's for your Github repository can be tedious.  I hope this template can save you time and effort as well as provide you with some consistency across your projects.</para>
+			<section id="technologies">
+				<section>
+					<title>Technologies</title>
+					<itemizedlist>
+						<listitem>
+							<para>Technology 1</para>
+						</listitem>
+						<listitem>
+							<para>Technology 2</para>
+						</listitem>
+					</itemizedlist>
+					<para>
+						<link linkend="read-me-template">Back To The Top</link>
+					</para>
+				</section>
+			</section>
+		</section>
+		<section id="how-to-use">
+			<title>How To Use</title>
+			<section id="installation">
+				<section>
+					<title>Installation</title>
+				</section>
+				<section id="api-reference">
+					<title>API Reference</title>
+					<literallayout role="language-html"><code>    &lt;p&gt;dummy code&lt;/p&gt;</code></literallayout>
+					<para>
+						<link linkend="read-me-template">Back To The Top</link>
+					</para>
+				</section>
+			</section>
+		</section>
+		<section id="references">
+			<title>References</title>
+			<para>
+				<link linkend="read-me-template">Back To The Top</link>
+			</para>
+		</section>
+		<section id="license">
+			<title>License</title>
+			<para>MIT License</para>
+			<para>Copyright (c) [2017] [James Q Quick]</para>
+			<para>Permission is hereby granted, free of charge, to any person obtaining a copy
+				of this software and associated documentation files (the "Software"), to deal
+				in the Software without restriction, including without limitation the rights
+				to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+				copies of the Software, and to permit persons to whom the Software is
+				furnished to do so, subject to the following conditions:</para>
+			<para>The above copyright notice and this permission notice shall be included in all
+				copies or substantial portions of the Software.</para>
+			<para>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+				IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+				FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+				AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+				LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+				OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+				SOFTWARE.</para>
+			<para>
+				<link linkend="read-me-template">Back To The Top</link>
+			</para>
+		</section>
+		<section id="author-info">
+			<title>Author Info</title>
+			<itemizedlist>
+				<listitem>
+					<para>Twitter - 
+						<ulink url="https://twitter.com/jamesqquick">@jamesqquick</ulink>
+					</para>
+				</listitem>
+				<listitem>
+					<para>Website - 
+						<ulink url="https://jamesqquick.com">James Q Quick</ulink>
+					</para>
+				</listitem>
+			</itemizedlist>
+			<para>
+				<link linkend="read-me-template">Back To The Top</link>
+			</para>
+		</section>
+	</chapter>
+</book>

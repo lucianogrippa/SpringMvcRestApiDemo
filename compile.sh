@@ -3,8 +3,9 @@
 # sets only if must build with specific version of jdk otherwise comment it
 	# export JAVA_HOME=/home/lucianogrippa/sdk/jdk8u252-b09
 	
-MVNW_FILE=./mvnw
+MVNW_FILE="./mvnw"
 MVN_DIR=.mvn
+DATE_WITH_TIME=`date "+%Y%m%d-%H%M%S"`
 
 
 # search  JAVA_HOME 
@@ -27,6 +28,13 @@ getopts s skiptest
 if [ "$skiptest" = "s" ]; then
    SKIP_OPT="-Dmaven.test.skip=true"
 fi
+
+# remove log to prevent access denied
+if [ -f "./docker/wildfly/standalone/log/rest-api-demo.log" ]; then
+    cp "./docker/wildfly/standalone/log/rest-api-demo.log"  "./docker/wildfly/standalone/log/rest-api-demo.log.$DATE_WITH_TIME" 
+fi
+
+rm -f ./docker/wildfly/standalone/log/rest-api-demo.log
 
 ./mvnw $SKIP_OPT clean install  && echo "copy target/SpringRestApiDemo.war docker/wildfly/standalone/deployments/" \
                      && cp target/SpringRestApiDemo.war docker/wildfly/standalone/deployments/
