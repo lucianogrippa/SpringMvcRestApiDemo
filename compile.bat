@@ -3,8 +3,11 @@
 
 @echo off
 
+set "JAVA_HOME=C:\\Projects\\rai-projects\\sdks\\openjdk-11.0.2\\jdk-11.0.2"
 set "MVNW_FILE=mvnw.cmd"
 set "DEPLOYING_PATH=.\docker\wildfly\standalone\deployments\SpringRestApiDemo.war"
+set "SERVER_PATH=C:\\jboss-platforms\\wildfly-19.1.0.Final\\standalone\deployments\\SpringRestApiDemo.war"
+
 @rem set "DEPLOYING_PATH=C:\jboss-platforms\wildfly-10.1.0.Final\standalone\deployments\SpringRestApiDemo.war"
 @rem search  JAVA_HOME
 if exist "%JAVA_HOME%\bin\java.exe" (
@@ -28,6 +31,16 @@ if [%1]==[] (
 	goto all
 )
 
+if [%1]==["-server"] (
+	goto toserver
+)
+
+:toserver{ 
+	echo "skipping test ------------------------"
+	call mvnw.cmd clean install
+	goto doneServer 
+}
+
 :skiptest (
     echo "skipping test ------------------------"
 	call mvnw.cmd clean install -Dmaven.test.skip=true
@@ -39,6 +52,11 @@ if [%1]==[] (
     echo "compiling  ------------------------"
 	call mvnw.cmd clean install
 	goto done
+)
+
+:doneServer (
+	echo "try to copy .\target/SpringRestApiDemo.war  %DEPLOYING_PATH%" \
+	copy /Y .\target\SpringRestApiDemo.war %SERVER_PATH%
 )
 
 :done (

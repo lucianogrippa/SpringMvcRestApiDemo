@@ -6,6 +6,10 @@ src/test/server/log
 .settings
 .mvn
 /.mvn
+mvnw.cmd
+mvnw
+/mvnw.cmd
+/mvnw
 /.settings/*.*
 .settings/*.*
 docker/wildfly/standalone/log/*.log

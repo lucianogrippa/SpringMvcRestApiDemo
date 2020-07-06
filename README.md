@@ -106,6 +106,17 @@ Properties file contain the following keys:
 - app.key : needed for authentication
 - app.user.id : user id for testing apis
 
+---
+
+You can navigate swagger-ui documentation in http://localhost:8080/SpringRestApiDemo/swagger-ui.html 
+Will prompt the credential. The default are : username: admin password: admin.01 but you should change it.
+
+<h5>Change swagger credentials</h5>
+first of all generate the jwt token need for request (you can Postman or similar software as well):
+```json
+```
+
+
 #### Output json
 
 All controllers response with json representation of class [Content](/src/main/java/dtos/Content.java):
@@ -162,29 +173,29 @@ this contains 3 folders java, resources,webapp
 
 ###### java folder
 
-**[controllers](/src/main/java/controllers)**: contains all application controller in particular:
+**[controllers](/src/main/java/controllers)**: contains all application controller:
 - [AdviceExceptionHandlerController](/src/main/java/controllers/AdviceExceptionHandlerController.java), manages the exceptions for output presentation
 - [AuthController](src/main/java/controllers/AuthController.java), manages the /signin api needed for creating jwt token.
 - [ContentDemoController](/src/main/java/controllers/ContentDemoController.java), contains simple "api" /echo and /testtoken
 - [HttpApiDefaultErrorPageController](/src/main/java/controllers/HttpApiDefaultErrorPageController.java), contains all error page controllers.
 
-**[dao](/src/main/java/dao)**, contains all dao interfaces definition need for crud operations.
-**[dtos](/src/main/java/dtos)**, contains all classes to be serializing in json to output presentation layer.
-**[entities](/src/main/java/entities)**, contains map jpa entities classes.
-**[exceptions](/src/main/java/exceptions)**, exception classes implementations.
-**[helpers](/src/main/java/helpers)**,helpers classes useful for manage some situations as logging, get application properties or generate jwt token with specific parameters.
-**[repositories](/src/main/java/repositories)**, contains dao implementation classes.
-**[security](/src/main/java/security)**, contains all classes needed for handle the security providers and filters.
-All classes to manage the jwt token have been putting in [security/api](/src/main/java/security/api) folder.
-**[services](/src/main/java/services)** contains services classes.
+**[dao](/src/main/java/dao)**, contains all dao interfaces definition need for crud operations.<br />
+**[dtos](/src/main/java/dtos)**, contains all classes to be serializing in json to output presentation layer.<br />
+**[entities](/src/main/java/entities)**, contains map jpa entities classes.<br />
+**[exceptions](/src/main/java/exceptions)**, exception classes implementations.<br />
+**[helpers](/src/main/java/helpers)**,helpers classes useful for manage some situations as logging, get application properties or generate jwt token with specific parameters.<br />
+**[repositories](/src/main/java/repositories)**, contains dao implementation classes.<br />
+**[security](/src/main/java/security)**, contains all classes needed for handle the security providers and filters.<br />
+All classes to manage the jwt token have been putting in [security/api](/src/main/java/security/api) folder.<br />
+**[services](/src/main/java/services)** contains services classes.<br />
 
 ###### resources folder
 
-This folder contains logback, log4j and persistence.xml configurations
+This folder contains logback, log4j and persistence.xml configurations.
 
 ###### webapp folder
 
-In [WEB-INF](/src/main/webapp/WEB-INF) are collect all configuration files for Spring beans , Spring security and servlet web.xml.
+In [WEB-INF](/src/main/webapp/WEB-INF) are collect all configuration files for Spring beans , Spring security and servlet web.xml.<br />
 
 
 [Back To The Top](#description)
