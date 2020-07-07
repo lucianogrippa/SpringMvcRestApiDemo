@@ -1,5 +1,7 @@
 package services;
 
+import java.util.List;
+
 import entities.User;
 
 public interface IUserService {
@@ -14,4 +16,6 @@ public interface IUserService {
 	boolean save(User user);
 
 	boolean delete(long userId);
+	
+	List<User> listAll();
 }

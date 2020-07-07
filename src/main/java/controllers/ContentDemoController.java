@@ -3,11 +3,9 @@ package controllers;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,6 +21,7 @@ import services.UserService;
 @RestController
 @RequestMapping("/api")
 public class ContentDemoController {
+
 	@Autowired
 	LogHelper logger;
 
@@ -86,40 +85,6 @@ public class ContentDemoController {
 			resp.setStatus(200);
 		} else {
 			throw new ApiNotAcceptedHandlerException("missing pwd paramiter");
-		}
-		return resp;
-	}
-
-	@PostMapping(value = "/saveUser")
-	public @ResponseBody Content createUser(@RequestBody User user) throws ApiNotAcceptedHandlerException {
-		LogHelper.getLogger().logInfo("calling: /saveUser/ ");
-		Content resp = new Content();
-		resp.setId(System.currentTimeMillis());
-		boolean isSaved = userService.save(user);
-		if (isSaved) {
-			resp.setData(true);
-			resp.setStatus(200);
-		}
-		else
-		{
-		   throw new ApiNotAcceptedHandlerException("can't save user");
-		}
-		return resp;
-	}
-	
-	@DeleteMapping(value = "/deleteUser/{userId}")
-	public @ResponseBody Content deleteUser(@PathVariable(name = "userId",required = true) long userId) throws ApiNotAcceptedHandlerException {
-		LogHelper.getLogger().logInfo("calling: /deleteUser/ ");
-		Content resp = new Content();
-		resp.setId(System.currentTimeMillis());
-		boolean isSaved = userService.delete(userId);
-		if (isSaved) {
-			resp.setData(true);
-			resp.setStatus(200);
-		}
-		else
-		{
-		   throw new ApiNotAcceptedHandlerException("can't save user");
 		}
 		return resp;
 	}

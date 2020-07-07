@@ -1,5 +1,7 @@
 package services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -70,5 +72,10 @@ public class UserService implements IUserService {
 		boolean isSaved = false;
 		isSaved = repository.remove(userId);
 		return isSaved;
+	}
+
+	@Override
+	public List<User> listAll() {
+		return repository.list();
 	}
 }

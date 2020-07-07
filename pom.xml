@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>SpringRestApiDemo</groupId>
 	<artifactId>SpringRestApiDemo</artifactId>
-	<version>0.1.5</version>
+	<version>0.1.6</version>
 	<packaging>war</packaging>
 	<description>Progetto prototipo per creare Spring Mvc Rest Api da deployare su server jboss wildfly</description>
 	<properties>

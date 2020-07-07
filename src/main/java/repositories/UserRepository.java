@@ -2,9 +2,7 @@ package repositories;
 
 import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
 import java.util.Optional;
-import java.util.TimeZone;
 
 import javax.persistence.NoResultException;
 

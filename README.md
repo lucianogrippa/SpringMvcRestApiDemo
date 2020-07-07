@@ -3,6 +3,10 @@
   - [Environment](#environment)
   - [Database Structure](#database-structure)
   - [Rest Service project](#rest-service-project)
+- [<h5>AuthController</h5>](#h5authcontrollerh5)
+- [<h5>ContentDemoController</h5>](#h5contentdemocontrollerh5)
+- [<h5>RolesController</h5>](#h5rolescontrollerh5)
+- [<h5>UserController</h5>](#h5usercontrollerh5)
     - [Output json](#output-json)
     - [Folders organization](#folders-organization)
       - [docker](#docker)
@@ -17,16 +21,15 @@
 
 ## Description
 
-The main goal of project is create a basic rest API service in Java Spring webmvc Framework that can be used in environments builded on java application servers (jboss wildfly 19.1.0.Final) and databases server (Mysql 5.7).<br />
+The main goal of project is to create a basic REST API SERVICE with Java Spring Webmvc Framework which can be deployed on Java application servers (jboss wildfly 19.1.0.Final) and database servers (Mysql 5.7).<br />
 
-The project include:
+The project includes:
 
-- Spring Webmvc
-- Secure api request with jwt token in Authorizzazion header (Spring Security)
-- data persistance with hibernate (Spring jpa and Hibernate)
-- swagger for api documentation 
-- Exception handling and error custom output
-- docker containers for simulate enviorment
+- Spring Webmvc.
+- Secure api request with jwt token in Authorizzazion header (Spring Security).
+- Data persistance with hibernate (Spring jpa and Hibernate).
+- Exception handling and customized error output.
+- Docker containers to simulate the application server and the database server.
 
 ### Environment
 
@@ -39,25 +42,23 @@ As you see in above picture, the environment has 3 services <b>wildfly</b>, <b>a
 - **wildfly** service is [jboss wildfly 19.1.0.Final server](https://wildfly.org) running using [open-jdk](https://openjdk.java.net) 11 .
   it has 4 volumes mounted on following directories:
   - [standalone/configuration/webapp](/docker/wildfly/standalone/configuration/webapps)
-    where is placed properties file for application 
+    where is placed properties file for application .
   - [standalone/deployments](/docker/wildfly/standalone/deployments)
-    where is placed the compiled application file **SpringRestApiDemo.war**
+    where is placed the compiled application file **SpringRestApiDemo.war**.
   - [standalone/log](/docker/wildfly/standalone/log)
-    where are placed server log and application log
+    where are placed server log and application log files.
   - [standalone/lib](/docker/wildfly/standalone/lib)
     where can be placed libraries for application dependencies.
 
-  jboss wildfly use standalone.xml configuration file where is setting up a datasource required by 
-  our simple application.<br />
-  The wildfly service is provided at localhost:8080
+  The connection with database is performed with datasource and mysql connector module configured on standalone.xml file. 
+  The wildfly service is provided at localhost:8080.<br />
   
 - **appdb** is [Mysql 5.7 server image](https://hub.docker.com/_/mysql) where founding schema "restapidemo".
-  The schema dump sql file is located on this file [dump.sql](/docker/mysql/dump.sql)
-  The appdb service is provided at localhost: 3306, password and user can be setted in [docker-compose.yml](/docker/docker-compose.yml) file.
+  The schema is created from [mysql/dump.sql](/docker/mysql/dump.sql) file.
+  The appdb service is provided at localhost: 3306, all connection parameters can be set up on [docker-compose.yml](/docker/docker-compose.yml) file.<br />
 
 - **phpmyadmin** is simple web server php with phpmyadmin installed and ready to use.
-  Can be useful for explore or manage database server.
-  The phpmyadmin service is provided at localhost:8883
+  Can be useful for explore or manage database server. The phpmyadmin service is provided at localhost:8883.<br />
 
 ### Database Structure
 
@@ -81,14 +82,76 @@ You can perform all crud operations or search for queries, using the [UserDao](/
 
 ### Rest Service project
 
-All basics services have been implemented in main path /api: <br>
-- GET: **/test/{id}** 
-- GET: **/testtoken**
-- GET: **/signin/{authToken}**
-- POST: **/signin**
+<p>There are 3 controllers each of them are reachable through path /api.</p>
 
-Each service is protected by jwt token that is get through user authentication.
-All token settings are provide by [application properties](/docker/wildfly/standalone/configuration/webapps/application.springrestdemo.properties) file.<br>
+Every controller expose specific group of api as you can see on [json postman descriptor](/docs/SpringRestApiDemo.postman_collection.json).<br />
+You can import it in postman enviorment.<br />
+
+All basics services have been implemented in main path /api: <br>
+<h5>AuthController</h5>
+---
+
+- GET: **/signin/{authToken}** : the path parameter **authToken** is created through the following function:
+
+```java
+  DigestUtils.sha256Hex(String.format("%s@%s@%s"), username,secret, appkey);
+```
+the service return jwt token String.<br /> AppKey is an application property. 
+
+- POST: **/signin** : accept payload object with 3 fields: 
+
+```json
+ {
+	"appKey":"f9e7bc9fcae0ffccf975708bdf40ab13",
+	"username":"lgrippa",
+	"secret":"48df8b3e62340b9cf63040d3318c8809"
+ }
+ ```
+ and if authentication succeded return:
+ ```json
+ {
+    "id": 1594128067680,
+    "status": 200,
+    "data": "{json token}"
+}
+```
+return json token in data field.
+
+
+<h5>ContentDemoController</h5>
+---
+
+- GET: **/echo/{id}** : is simple echo service.
+- GET: **/testtoken** : used for testing purpose not expose it. returns a simple string to using as a parameter to GET /signin/{authToken} service.
+- GET: **/genBCryptPassword** : returns the encrypted password to be set to basic authentication provider (see basicAuthManager in [SpringRestApiDemo-security.xml](src\main\webapp\WEB-INF\SpringRestApiDemo-security.xml) file) required to protect the swagger-ui.html page.
+
+<h5>RolesController</h5>
+---
+
+- GET : **/role/{roleid}** : find role object by id.
+- GET : **/rolecode/{code}** : find role object by code.
+- GET : **/listroles** : list all roles.
+- POST: **/saveRole** : save a role object.
+- DELETE: **/deleteRole/{roleId}** : delete role object by id.
+
+<h5>UserController</h5>
+---
+
+- GET : **/listusers** : list all users.
+- POST: **/saveUser** : save an user.
+- DELETE: **/deleteUser/{userId}** : delete user by id.
+
+Each service is protected with jwt token provided by user authentication calling one of /signin/{authToken} or /signin services.
+The jwt token must be put in "Authorization" header prefixed by "Bearer" string like this example:
+
+```bash
+
+$ curl --location --request GET 'http://localhost:8080/SpringRestApiDemo/api/echo/4' \
+  --header 'Authorization: Bearer '
+
+```
+
+The token settings are provide by [application properties](/docker/wildfly/standalone/configuration/webapps/application.springrestdemo.properties) file.<br>
 
 Properties file contain the following keys:
 <br >
@@ -107,15 +170,6 @@ Properties file contain the following keys:
 - app.user.id : user id for testing apis
 
 ---
-
-You can navigate swagger-ui documentation in http://localhost:8080/SpringRestApiDemo/swagger-ui.html 
-Will prompt the credential. The default are : username: admin password: admin.01 but you should change it.
-
-<h5>Change swagger credentials</h5>
-first of all generate the jwt token need for request (you can Postman or similar software as well):
-```json
-```
-
 
 #### Output json
 
@@ -175,8 +229,10 @@ this contains 3 folders java, resources,webapp
 
 **[controllers](/src/main/java/controllers)**: contains all application controller:
 - [AdviceExceptionHandlerController](/src/main/java/controllers/AdviceExceptionHandlerController.java), manages the exceptions for output presentation
-- [AuthController](src/main/java/controllers/AuthController.java), manages the /signin api needed for creating jwt token.
+- [AuthController](src/main/java/controllers/AuthController.java), manages the /signin api needed for creating jwt token involved in authentication process.
 - [ContentDemoController](/src/main/java/controllers/ContentDemoController.java), contains simple "api" /echo and /testtoken
+- [UserController](/src/main/java/controllers/UserController.java) , contains api for add, edit or list users.
+- [RolesController](/src/main/java/controllers/RolesController.java) , contains api for add, edit or list roles.
 - [HttpApiDefaultErrorPageController](/src/main/java/controllers/HttpApiDefaultErrorPageController.java), contains all error page controllers.
 
 **[dao](/src/main/java/dao)**, contains all dao interfaces definition need for crud operations.<br />
