@@ -55,16 +55,14 @@ Tables:
 - **roles** table contains roles definitions.
 - **users** table contains users profiles information and authentication data.
 - **usersroles** table defines relations "many to many" between users and roles.
-
-You can perform all crud operations or search for queries, using the [UserDao](/src/main/java/dao/UserDao.java) class, implementation is in [UserRepository](/src/main/java/repositories/UserRepository.java) class.
+  
 </p>
 
 ### Rest Service project
 
-<p>There are 3 controllers each of them are reachable through path /api.</p>
+<p>There are 3 controllers, each of which can be reached via /api path.</p>
 
-Every controller expose specific group of api as you can see on [json postman descriptor](/docs/SpringRestApiDemo.postman_collection.json).<br />
-You can import it in postman enviorment.<br />
+Each controller exposes a specific group of APIs as you can see on [json postman descriptor](/docs/SpringRestApiDemo.postman_collection.json) (you can import it in postman application).<br />
 
 All basics services have been implemented in main path /api: <br>
 <h5>AuthController</h5>
@@ -238,16 +236,16 @@ In [WEB-INF](/src/main/webapp/WEB-INF) are collect all configuration files for S
 ## How To Use
 
 The main project dependency is maven so first of all you need [to install maven](https://maven.apache.org/install.html) in your system.
-
-You can use this project by [clone](https://github.com/lucianogrippa/SpringMvcRestApiDemo.git) or [download](https://github.com/lucianogrippa/SpringMvcRestApiDemo/archive/make-docs.zip) from github. <br />After do that if you are choose to download, unzip it then open terminal in directory containing project.
+After that You can [clone](https://github.com/lucianogrippa/SpringMvcRestApiDemo.git) or [download](https://github.com/lucianogrippa/SpringMvcRestApiDemo/archive/make-docs.zip) project from github, if you are choose to download, unzip it then open terminal in directory containing project.
 
 type:
+
 ```bash
  # this generates the archetype files in the ../spring-rest-archetype directory, then installs them in the default catalog.
 $ ./archetype.sh
 
 # if won't to put archetypes files in ../spring-rest-archetype  you should use -a argument
-$ ./archetype.sh -a [archetype-generated-path]
+$ ./archetype.sh -a /path_to_put_archetype
 ```
 <p>
 If all done well, you are ready to create own project from this one.
@@ -257,7 +255,7 @@ The fastest and simplest way is to use Eclipse or any other IDE, you should find
 Once the project is created you can compile it using the command:
 ```bash
 $ ./complile.sh
-# for skipping test just use argument -s
+# for skipping tests, use argument -s
 $ ./compile.sh -s
 ```
 This command generates /target/[projectname].war file and then copy it in [deployments](/docker/wildfly/standalone/deployments) directory.
