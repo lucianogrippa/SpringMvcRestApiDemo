@@ -57,6 +57,7 @@ USER root
 RUN chmod u+x /opt/jboss/wildfly/bin/run.sh
 RUN chmod u+x /opt/jboss/wildfly/bin/run-debug.sh
 
+EXPOSE 8787
 # aggiungi alla configurazione le properties
 #ADD ./config/application.springrestdemo.properties $JBOSS_HOME/standalone/configuration/application.springrestdemo.properties
 # run jboss

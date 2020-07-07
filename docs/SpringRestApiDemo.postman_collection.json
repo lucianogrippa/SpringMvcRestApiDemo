@@ -1,0 +1,747 @@
+{
+	"info": {
+		"_postman_id": "d652a59b-9cf0-4f39-aecd-33e65937efab",
+		"name": "SpringRestApiDemo",
+		"description": "Github project https://github.com/lucianogrippa/SpringMvcRestApiDemo.git\r\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AuthController",
+			"item": [
+				{
+					"name": "api/signin",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"appKey\":\"f9e7bc9fcae0ffccf975708bdf40ab13\",\n\t\"username\":\"lgrippa\",\n\t\"secret\":\"48df8b3e62340b9cf63040d3318c8809\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/SpringRestApiDemo/api/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SpringRestApiDemo",
+								"api",
+								"signin"
+							]
+						},
+						"description": "sign in and get token"
+					},
+					"response": []
+				},
+				{
+					"name": "api/signin/${token}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"appKey\":\"f9e7bc9fcae0ffccf975708bdf40ab13\",\n\t\"username\":\"luciomio\",\n\t\"secret\":\"ffc9fcae7bc\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/SpringRestApiDemo/api/signin/343ac2b34f53518ef6cc693f2685b2d6a6574fc5e82aa499743215487d72acb6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SpringRestApiDemo",
+								"api",
+								"signin",
+								"343ac2b34f53518ef6cc693f2685b2d6a6574fc5e82aa499743215487d72acb6"
+							]
+						},
+						"description": "sign in and get token"
+					},
+					"response": []
+				}
+			],
+			"description": "Controller che espone le api necessarie all'autenticazione utente",
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ac1cba16-3678-418a-8c2c-8d6ec3b0ac21",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "c42e33f0-c700-4eb4-8b3b-c6eefdf6a58e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "ContentDemoController",
+			"item": [
+				{
+					"name": "api/genBCryptPassword",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ffa7f41c-e8d5-4689-9bcc-ce5259840088",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "67381181-e686-4a1d-84fd-e73de4a1ee3b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{auth_tokn_data}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "pwd",
+									"value": "admin.01",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/SpringRestApiDemo/api/genBCryptPassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SpringRestApiDemo",
+								"api",
+								"genBCryptPassword"
+							]
+						},
+						"description": "a basic template for spring mvc rest api"
+					},
+					"response": []
+				},
+				{
+					"name": "api/testtoken",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/SpringRestApiDemo/api/testtoken",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SpringRestApiDemo",
+								"api",
+								"testtoken"
+							]
+						},
+						"description": "Ottiene un token per eseguire i test"
+					},
+					"response": []
+				},
+				{
+					"name": "api/echo",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "d3217f42-a2dc-44d8-b0a7-180adf99d56d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "232dd028-d599-4880-b248-3c52cba2499e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_tokn_data}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/SpringRestApiDemo/api/echo/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SpringRestApiDemo",
+								"api",
+								"echo",
+								"4"
+							]
+						},
+						"description": "a basic template for spring mvc rest api"
+					},
+					"response": []
+				}
+			],
+			"description": "Controller che espone le api al fine di dimostrazione",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d5c6c132-1205-4049-8dae-78b1a0eb6a3f",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "38f6743b-6762-427d-a26e-ef2fb78838a9",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "RolesController",
+			"item": [
+				{
+					"name": "api/listroles",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "32cbdfac-6771-41d5-98a8-8c29eb0e9cae",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "fa3f1976-15b9-40f5-ac7e-441ab339561d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{auth_tokn_data}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/SpringRestApiDemo/api/listroles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SpringRestApiDemo",
+								"api",
+								"listroles"
+							]
+						},
+						"description": "a basic template for spring mvc rest api"
+					},
+					"response": []
+				},
+				{
+					"name": "api/role",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a73dd1cd-0bb9-4e3b-9bd4-500feee83932",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "634c3769-8598-4fcc-a89e-b0d7edbf5d06",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/SpringRestApiDemo/api/role/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SpringRestApiDemo",
+								"api",
+								"role",
+								"1"
+							]
+						},
+						"description": "a basic template for spring mvc rest api"
+					},
+					"response": []
+				},
+				{
+					"name": "api/rolecode",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "6a8e4202-86be-4fb7-8fdc-7dcf4d8e40cb",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "449e671c-b2ad-4e27-842e-c4442d16183d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/SpringRestApiDemo/api/rolecode/ROLE_ADMIN",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SpringRestApiDemo",
+								"api",
+								"rolecode",
+								"ROLE_ADMIN"
+							]
+						},
+						"description": "a basic template for spring mvc rest api"
+					},
+					"response": []
+				},
+				{
+					"name": "api/saveRole",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c009b71e-f4ed-43fd-9cab-f22974e54613",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": -1,\n    \"name\": \"Super Admin\",\n    \"code\": \"ROLE_SUPER_ADMIN\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/SpringRestApiDemo/api/saveRole",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SpringRestApiDemo",
+								"api",
+								"saveRole"
+							]
+						},
+						"description": "sign in and get token"
+					},
+					"response": []
+				},
+				{
+					"name": "api/deleteRole",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "d825c2e4-9494-4469-bef0-7790e4257038",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/SpringRestApiDemo/api/deleteRole/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SpringRestApiDemo",
+								"api",
+								"deleteRole",
+								"6"
+							]
+						},
+						"description": "sign in and get token"
+					},
+					"response": []
+				}
+			],
+			"description": "Controller che espone le api necessarie ad effettuare operazione crud sui i ruoli",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e6369678-b2ee-486e-b925-4bb3b4cf25c1",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "fe3482de-fcb3-492a-ae5f-96e6870bf1f5",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "UserController",
+			"item": [
+				{
+					"name": "api/listusers",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "4891ae25-9a00-47bd-8b26-a35ee3fabf1a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "4cd73666-0c20-4c47-9f65-bed7608274bd",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/SpringRestApiDemo/api/listusers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SpringRestApiDemo",
+								"api",
+								"listusers"
+							]
+						},
+						"description": "a basic template for spring mvc rest api"
+					},
+					"response": []
+				},
+				{
+					"name": "api/saveUser",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "bf1a8125-32bb-4565-a7ad-4de44524aabb",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 9,\n    \"firstname\": \"Test\",\n    \"lastname\": \"User\",\n    \"secret\": \"baf004a98b01510590f3632415ec3b6e\",\n    \"email\": \"testuser@mymail.com\",\n    \"username\": \"testuser\",\n    \"active\": true,\n    \"roles\": [{\n            \"id\": 1,\n            \"name\": \"Amministratore\",\n            \"code\": \"ROLE_ADMIN\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/SpringRestApiDemo/api/saveUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SpringRestApiDemo",
+								"api",
+								"saveUser"
+							]
+						},
+						"description": "sign in and get token"
+					},
+					"response": []
+				},
+				{
+					"name": "api/deleteUser",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "1e012c0c-6d5a-426b-b751-abd438a91de3",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/SpringRestApiDemo/api/deleteUser/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SpringRestApiDemo",
+								"api",
+								"deleteUser",
+								"3"
+							]
+						},
+						"description": "sign in and get token"
+					},
+					"response": []
+				}
+			],
+			"description": "Controller che espone le api necessarie ad aggiungere , eliminare o listare gli utenti",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "fd8af274-6e35-4b63-b65b-de67f5cd7212",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "21a8df50-fce8-4d7b-9e21-73ee32322f5a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{auth_tokn_data}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "ca5fb83f-b5ab-400d-8553-e55d58c1ad4a",
+				"type": "text/javascript",
+				"exec": [
+					"// usa un token per i test",
+					"pm.sendRequest(\"http://localhost:8080/SpringRestApiDemo/api/signin/343ac2b34f53518ef6cc693f2685b2d6a6574fc5e82aa499743215487d72acb6\", function (err, response) {",
+					"   ",
+					"    if(!!response.stream){",
+					"        let jwt = response.stream.toString();",
+					"        console.log(\"response: \", jwt);",
+					"        pm.globals.set(\"auth_tokn_data\", jwt);",
+					"    }",
+					"    else",
+					"    {",
+					"         console.log(\"response: \", \"no data avaible\");",
+					"    }",
+					"});"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "74676772-6d15-4f8d-aa16-b45f4028028c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "ce035be1-a6cf-40e3-a77a-f541f39d7b7d",
+			"key": "auth_tokn_data",
+			"value": ""
+		}
+	],
+	"protocolProfileBehavior": {}
+}

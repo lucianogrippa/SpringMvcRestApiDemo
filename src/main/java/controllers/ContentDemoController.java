@@ -2,9 +2,12 @@ package controllers;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,9 +21,10 @@ import services.UserService;
 @RestController
 @RequestMapping("/api")
 public class ContentDemoController {
+
 	@Autowired
 	LogHelper logger;
-	
+
 	@Autowired
 	AppPropertiesHelper appPropertiesHelper;
 
@@ -33,7 +37,7 @@ public class ContentDemoController {
 	 * @param id paramiter id example
 	 * @return
 	 */
-	@RequestMapping(value = "/echo/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/echo/{id}")
 	public @ResponseBody Content getContent(@PathVariable("id") long id) {
 		LogHelper.getLogger().logInfo("calling: /test/ " + id);
 
@@ -48,7 +52,7 @@ public class ContentDemoController {
 
 	}
 
-	@RequestMapping(value = "/testtoken", method = RequestMethod.GET)
+	@GetMapping(value = "/testtoken")
 	public @ResponseBody String testtoken() throws ApiNotAcceptedHandlerException {
 		LogHelper.getLogger().logInfo("calling: /testtoken/ ");
 
@@ -67,4 +71,21 @@ public class ContentDemoController {
 		throw new ApiNotAcceptedHandlerException("test user not found !!");
 	}
 
+	@PostMapping(value = "/genBCryptPassword")
+	public @ResponseBody Content getBCryptPassword(@RequestParam(value = "pwd") String pwd)
+			throws ApiNotAcceptedHandlerException {
+		LogHelper.getLogger().logInfo("calling: /genBCryptPassword/ ");
+
+		Content resp = new Content();
+		resp.setId(System.currentTimeMillis());
+		if (pwd != null && !pwd.isEmpty()) {
+			String password = BCrypt.hashpw(pwd, BCrypt.gensalt(4));
+			resp.setData(password);
+			resp.setDescription("password encryption generation");
+			resp.setStatus(200);
+		} else {
+			throw new ApiNotAcceptedHandlerException("missing pwd paramiter");
+		}
+		return resp;
+	}
 }

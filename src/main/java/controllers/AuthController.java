@@ -5,10 +5,11 @@ import java.io.UnsupportedEncodingException;
 import org.jose4j.lang.JoseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,7 +36,7 @@ public class AuthController {
 	UserService userService;
 	
 	
-	@RequestMapping(value = "/signin/{authToken}", method = RequestMethod.GET)
+	@GetMapping(value = "/signin/{authToken}")
 	public @ResponseBody String signinAsString(@PathVariable(value = "authToken") String authToken) throws ApiNotAuthMethodHadlerException, ApiForbiddenHandlerException {
 		String resp = null;
 		if (!StringUtils.isEmpty(authToken)) {
@@ -67,7 +68,7 @@ public class AuthController {
 		return resp;
 	}
 	
-	@RequestMapping(value = "/signin", method = RequestMethod.POST)
+	@PostMapping(value = "/signin")
 	public @ResponseBody Content signin(@RequestBody AuthPayload authPayload) throws ApiNotAuthMethodHadlerException, ApiForbiddenHandlerException {
 		Content resp = new Content();
 		resp.setId(System.currentTimeMillis());

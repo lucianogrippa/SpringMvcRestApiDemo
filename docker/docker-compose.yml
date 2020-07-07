@@ -5,11 +5,11 @@ services:
         container_name: wildfly
         network_mode: bridge
         ports:
-        - "8080:8080"
-        - "9990:9990"
-        - "8794:8794"
-        - "9999:9999"
-        - "8787:8787"
+        - 8080:8080
+        - 9990:9990
+        - 8794:8794
+        - 9999:9999
+        - 8787:8787
         volumes:
         - "./wildfly/standalone/deployments:/opt/jboss/wildfly/standalone/deployments"
         - "./wildfly/standalone/configuration/webapps:/opt/jboss/wildfly/standalone/configuration/webapps"

@@ -6,6 +6,10 @@ src/test/server/log
 .settings
 .mvn
 /.mvn
+mvnw.cmd
+mvnw
+/mvnw.cmd
+/mvnw
 /.settings/*.*
 .settings/*.*
 docker/wildfly/standalone/log/*.log
@@ -18,3 +22,5 @@ docker/wildfly/standalone/deployments/SpringRestApiDemo.war.deployed
 /jboss.server.log.dir_IS_UNDEFINED
 jboss.server.log.dir_IS_UNDEFINED
 /src/test/server/log/*.log
+src/test/server/log/*.log
+.settings/org.eclipse.wst.common.component

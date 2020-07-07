@@ -180,9 +180,6 @@ INSERT INTO roles (id,name,code) VALUES (1,"Amministratore","ROLE_ADMIN"),
 
 -- crea due utenti 
 CALL sp_createOrUpdateUser(-1,"Luciano","Grippa","lgrippa","48df8b3e62340b9cf63040d3318c8809",1,"lgrippa75@gmail.com",1);
-CALL sp_createOrUpdateUser(-1,"Mary","Grippa","mgrippa","371bee64fc851f896122d88b8678ca36",1,"luciano_grippa@hotmail.com",2);
-CALL sp_createOrUpdateUser(-1,"Gino","Grippa","ggrippa","371bee64fc851f896122d88b8678ca36",1,"luciano_grippa@yahoo.com",3);
-CALL sp_createOrUpdateUser(-1,"Giada","Grippa","gigrippa","a59ebcabdac43122aea847bc0eb7e8fb",1,"info@grippaweb.eu",4);
 
 COMMIT;
 SET autocommit =1;
