@@ -5,10 +5,10 @@ The main goal of project is to create a basic REST API SERVICE with Java Spring 
 The project includes:
 
 - Spring Webmvc.
-- Secure api request with jwt token in Authorizzazion header (Spring Security).
-- Data persistance with hibernate (Spring jpa and Hibernate).
-- Exception handling and customized error output.
-- Docker containers to simulate the application server and the database server.
+- Secured api request with jwt token in Authorization header (Spring Security).
+- Data persistence with hibernate (Spring jpa and Hibernate).
+- Exception handling and custom error output.
+- Docker containers to develop application on the jboss server and database server.
 
 ### Environment
 

@@ -22,3 +22,4 @@ docker/wildfly/standalone/deployments/SpringRestApiDemo.war.deployed
 /jboss.server.log.dir_IS_UNDEFINED
 jboss.server.log.dir_IS_UNDEFINED
 /src/test/server/log/*.log
+.settings/org.eclipse.wst.common.component
