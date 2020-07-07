@@ -697,7 +697,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "{{auth_tokn_data}}",
+				"value": "{{auth_tokn_data_demo}}",
 				"type": "string"
 			}
 		]
@@ -715,7 +715,7 @@
 					"    if(!!response.stream){",
 					"        let jwt = response.stream.toString();",
 					"        console.log(\"response: \", jwt);",
-					"        pm.globals.set(\"auth_tokn_data\", jwt);",
+					"        pm.collectionVariables.set(\"auth_tokn_data_demo\", jwt);",
 					"    }",
 					"    else",
 					"    {",
@@ -738,8 +738,8 @@
 	],
 	"variable": [
 		{
-			"id": "ce035be1-a6cf-40e3-a77a-f541f39d7b7d",
-			"key": "auth_tokn_data",
+			"id": "380d214f-dcaa-4c4b-9e84-8ecc6b5e605e",
+			"key": "auth_tokn_data_demo",
 			"value": ""
 		}
 	],
