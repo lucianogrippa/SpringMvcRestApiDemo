@@ -243,7 +243,7 @@ type:
 ```bash
  # this generates the archetype files in the ../spring-rest-archetype directory, then installs them in the default catalog.
 $ ./archetype.sh
-
+### OR
 # if won't to put archetypes files in ../spring-rest-archetype  you should use -a argument
 $ ./archetype.sh -a /path_to_put_archetype
 ```
@@ -255,6 +255,7 @@ The fastest and simplest way is to use Eclipse or any other IDE, you should find
 Once the project is created you can compile it using the command:
 ```bash
 $ ./complile.sh
+### OR
 # for skipping tests, use argument -s
 $ ./compile.sh -s
 ```
