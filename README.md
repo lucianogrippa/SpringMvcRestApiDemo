@@ -1,24 +1,3 @@
-### Table of Contents
-- [Description](#description)
-  - [Environment](#environment)
-  - [Database Structure](#database-structure)
-  - [Rest Service project](#rest-service-project)
-- [<h5>AuthController</h5>](#h5authcontrollerh5)
-- [<h5>ContentDemoController</h5>](#h5contentdemocontrollerh5)
-- [<h5>RolesController</h5>](#h5rolescontrollerh5)
-- [<h5>UserController</h5>](#h5usercontrollerh5)
-    - [Output json](#output-json)
-    - [Folders organization](#folders-organization)
-      - [docker](#docker)
-      - [main](#main)
-        - [java folder](#java-folder)
-        - [resources folder](#resources-folder)
-        - [webapp folder](#webapp-folder)
-- [How To Use](#how-to-use)
-- [Author Info](#author-info)
-
----
-
 ## Description
 
 The main goal of project is to create a basic REST API SERVICE with Java Spring Webmvc Framework which can be deployed on Java application servers (jboss wildfly 19.1.0.Final) and database servers (Mysql 5.7).<br />
