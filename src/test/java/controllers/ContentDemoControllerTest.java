@@ -8,9 +8,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Properties;
+import java.util.TimeZone;
 
 import org.hamcrest.Matchers;
 import org.junit.Before;
@@ -131,4 +135,25 @@ public class ContentDemoControllerTest {
 
 		assertTrue(!StringUtils.isEmpty(jUser) && jUser.contains("-1"));
 	}
+	
+	@Test
+	public void testDate() {
+		// test utc date
+		String utcCurrentTime ="";
+		try {
+			utcCurrentTime = getCurrentUtcTime();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println(utcCurrentTime);
+		assertTrue(utcCurrentTime != null && utcCurrentTime.endsWith("Z"));
+	}
+	
+	private  String getCurrentUtcTime() throws ParseException {
+	    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+	    simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+	    return simpleDateFormat.format(new Date());
+	}
+	
 }
