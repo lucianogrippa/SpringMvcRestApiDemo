@@ -1,27 +1,27 @@
 ## Description
 
-The main goal of project is to create a basic REST API SERVICE with Java Spring Webmvc Framework which can be deployed on Java application servers (jboss wildfly 19.1.0.Final) and database servers (Mysql 5.7).<br />
+The main goal of the project is to create a basic REST API SERVICE with Java Spring Webmvc Framework, which can be deployed on Java application servers (jboss wildfly 19.1.0. Final) and database servers (Mysql 5.7).).<br />
 
 The project includes:
 
 - Spring Webmvc.
-- Secured api request with jwt token in Authorization header (Spring Security).
+- Secured api request with a jwt token in the Authorization header (Spring Security).
 - Data persistence with hibernate (Spring jpa and Hibernate).
 - Exception handling and custom error output.
-- Docker containers to develop application on the jboss server and database server.
+- Docker containers to develop applications on the jboss server and database server.
 
 ### Environment
 
-For simulate real environment is used [docker technology](https://www.docker.com), all file required for building it are in [/docker](/docker) folder.
+For simulating real environment is used [docker technology](https://www.docker.com), all files required for building it is in [/docker](/docker) folder.
 
 ![Docker compose services](/docs/images/docker-compose.PNG?raw=true "Project services")
 <p>
-As you see in above picture, the environment has 3 services <b>wildfly</b>, <b>appdb</b>, <b>phpmyadmin</b>.</p>
+As you see in the above picture, the environment has 3 services: <b>wildfly</b>, <b>appdb</b>, <b>phpmyadmin</b>.</p>
 
-- **wildfly** service is [jboss wildfly 19.1.0.Final server](https://wildfly.org) running using [open-jdk](https://openjdk.java.net) 11 .
-  it has 4 volumes mounted on following directories:
+- **wildfly** service is [jboss wildfly 19.1.0. Final server](https://wildfly.org) running using [open-jdk](https://openjdk.java.net) 11.
+it has 4 volumes mounted on following directories:
   - [standalone/configuration/webapp](/docker/wildfly/standalone/configuration/webapps)
-    where is placed properties file for application .
+    where is placed properties file for the application.
   - [standalone/deployments](/docker/wildfly/standalone/deployments)
     where is placed the compiled application file **SpringRestApiDemo.war**.
   - [standalone/log](/docker/wildfly/standalone/log)
@@ -247,10 +247,16 @@ $ ./archetype.sh
 # if won't to put archetypes files in ../spring-rest-archetype  you should use -a argument
 $ ./archetype.sh -a /path_to_put_archetype
 ```
-<p>
+<br /><br />
 If all done well, you are ready to create own project from this one.
 The fastest and simplest way is to use Eclipse or any other IDE, you should find the archetype in the local default catalog (usually located in ~/.m2 directory).
-</p>
+You can use olso this command:
+```bash
+mvn archetype:generate  -DarchetypeGroupId=SpringRestApiDemo  -DarchetypeArtifactId=SpringRestApiDemo-archetype  -DarchetypeVersion=0.1.6  -DgroupId=my.groupid   -DartifactId=my.artifactId
+```
+where groupId=my.groupid and artifactId=my.artifactId should be set with your project's values.
+	
+<br /><br />
 
 Once the project is created you can compile it using the command:
 ```bash
