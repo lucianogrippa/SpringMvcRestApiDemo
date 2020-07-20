@@ -1,0 +1,45 @@
+version: '3'
+services:
+    tomcat:
+        build: ./tomcat
+        container_name: tomcat
+        network_mode: bridge
+        ports:
+        - 8081:8080
+        volumes:
+        - "./tomcat/webapps:/opt/tomcat/webapps"
+        depends_on:
+            - appdb
+        links:
+            - appdb:tomcatdbhost
+    appdb:
+        build:
+            context: ./mysql
+        network_mode: bridge
+        image: wildfly-db
+        container_name: wildfly-db
+        environment:
+            TZ: Europe/Rome
+            MYSQL_IP: ::1
+            MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+            MYSQL_DATABASE: restapidemo
+            MYSQL_USER: user
+            MYSQL_PASSWORD: ma45lata
+            MYSQL_ROOT_PASSWORD: kj7£fiU
+        ports:
+            - 3306:3306
+            
+    phpmyadmin:
+        depends_on:
+        - appdb
+        network_mode: bridge
+        image: phpmyadmin/phpmyadmin
+        container_name: myadmin-wildfly
+        restart: always
+        environment:
+            PMA_ARBITRARY: 1
+        links:
+            - appdb:wildflydb
+        ports:
+        - '8883:80'
+
