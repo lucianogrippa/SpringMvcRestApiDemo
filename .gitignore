@@ -25,3 +25,4 @@ jboss.server.log.dir_IS_UNDEFINED
 src/test/server/log/*.log
 .settings/org.eclipse.wst.common.component
 src/test/server/log/rest-api-demo.log
+/docker/tomcat/webapps/*.*
