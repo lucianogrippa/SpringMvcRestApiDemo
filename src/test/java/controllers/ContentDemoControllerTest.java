@@ -28,6 +28,7 @@ import org.mockito.Spy;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.http.MediaType;
 import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.test.context.event.annotation.BeforeTestClass;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.util.StringUtils;
@@ -66,7 +67,8 @@ public class ContentDemoControllerTest {
 		if (this.mockMvc == null) {
 			System.setProperty("jboss.server.home.dir", "./src/test/server");
 			System.setProperty("jboss.server.log.dir", "./src/test/server/log");
-
+			System.setProperty("SERVER_BASE_DIR", "./src/test/server");
+			System.setProperty("SERVER_BASE_LOG_DIR", "./src/test/server/log");
 			// Process mock annotations
 			MockitoAnnotations.initMocks(this);
 

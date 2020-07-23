@@ -6,6 +6,7 @@
 set "JAVA_HOME=C:\\Projects\\rai-projects\\sdks\\openjdk-11.0.2\\jdk-11.0.2"
 set "MVNW_FILE=mvnw.cmd"
 set "DEPLOYING_PATH=.\docker\wildfly\standalone\deployments\SpringRestApiDemo.war"
+set "DEPLOYING_PATH_TOMCAT=.\docker\tomcat\webapps\SpringRestApiDemo.war"
 set "SERVER_PATH=C:\\jboss-platforms\\wildfly-19.1.0.Final\\standalone\deployments\\SpringRestApiDemo.war"
 
 @rem set "DEPLOYING_PATH=C:\jboss-platforms\wildfly-10.1.0.Final\standalone\deployments\SpringRestApiDemo.war"
@@ -37,20 +38,20 @@ if [%1]==["-server"] (
 
 :toserver{ 
 	echo "skipping test ------------------------"
-	call mvnw.cmd clean install
+	call mvnw.cmd clean package
 	goto doneServer 
 }
 
 :skiptest (
     echo "skipping test ------------------------"
-	call mvnw.cmd clean install -Dmaven.test.skip=true
+	call mvnw.cmd clean package -Dmaven.test.skip=true
 	goto done
 )
 
 
 :all (
     echo "compiling  ------------------------"
-	call mvnw.cmd clean install
+	call mvnw.cmd clean package
 	goto done
 )
 
@@ -62,4 +63,9 @@ if [%1]==["-server"] (
 :done (
 	echo "try to copy .\target/SpringRestApiDemo.war  %DEPLOYING_PATH%" \
 	copy /Y .\target\SpringRestApiDemo.war %DEPLOYING_PATH%
+)
+
+:done (
+	echo "try to copy .\target/SpringRestApiDemo.war  %DEPLOYING_PATH%" \
+	copy /Y .\target\SpringRestApiDemo.war %DEPLOYING_PATH_TOMCAT%
 )

@@ -29,7 +29,7 @@
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
-			<value>file:${jboss.server.base.dir}/configuration/webapps/application.springrestdemo.properties
+			<value>file:${SERVER_BASE_DIR}/configuration/webapps/application.springrestdemo.properties
 			</value>
 		</property>
 	</bean>
@@ -72,7 +72,7 @@
 		jndi-name="java:jboss/datasources/ExampleDS" lookup-on-startup="false"
 		proxy-interface="javax.sql.DataSource" />
 
-	<!-- Mysql Datasource <jee:jndi-lookup id="jndiMySqlDataSource" jndi-name="java:jboss/datasources/mysqldb" 
+	<!-- Mysql Datasource <jee:jndi-lookup id="jndiMySqlDataSource" jndi-name="jdbc/mysqldb" 
 		lookup-on-startup="false" proxy-interface="javax.sql.DataSource" expected-type="javax.persistence.EntityManager" 
 		/> -->
 
@@ -85,6 +85,7 @@
 	<!--JPA HIBERNATE CONFIGURATION -->
 	<bean id="hibernateJpaVendorAdapter"
 		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+		
 	<!-- Configurazione JPA Hibernate -->
 	<bean id="appEntityManager" name="appEntityManager"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">

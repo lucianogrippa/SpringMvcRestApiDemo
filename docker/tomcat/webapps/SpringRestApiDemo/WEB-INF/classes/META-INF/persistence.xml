@@ -1,0 +1,28 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+	<!-- Define persistence unit -->
+	<persistence-unit name="restApiJPAUnit"
+		transaction-type="JTA">
+		<jta-data-source>jdbc/mysqldb</jta-data-source>
+		<class>entities.User</class>
+		<class>entities.Roles</class>
+		<properties>
+			<property name="hibernate.archive.autodetection"
+				value="class,hbm" />
+			<property name="hibernate.hbm2ddl.auto" value="validate" />
+			<property name="hibernate.dialect"
+				value="org.hibernate.dialect.MySQL5Dialect" />
+			<!-- <property name="hibernate.show_sql" value="true" /> -->
+			<!-- <property name="hibernate.format_sql" value="true"/> -->
+			<property name="javax.persistence.lock.timeout" value="100" />
+			<property name="javax.persistence.query.timeout" value="100" />
+			<property name="wildfly.jpa.hibernate.search.module"
+				value="none" />
+			<property name="hibernate.transaction.factory_class"
+				value="org.hibernate.transaction.JTATransactionFactory" />
+			<property name="hibernate.transaction.manager_lookup_class"
+				value="javax.transaction.TransactionManager" />
+		</properties>
+	</persistence-unit>
+</persistence>

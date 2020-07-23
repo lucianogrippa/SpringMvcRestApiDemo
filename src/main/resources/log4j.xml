@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
 <log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
 
 	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
@@ -9,7 +11,7 @@
 	</appender>
 
 	<appender name="hlog" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="File" value="${jboss.server.home.dir}/log/rest-api-demo-hbm.log" />
+		<param name="File" value="${SERVER_BASE_LOG_DIR}/rest-api-demo-hbm.log" />
 		<param name="DatePattern" value="'.'yyyy-MM-dd" />
 		<!-- <param name="Threshold" value="info"/>	-->
 		<layout class="org.apache.log4j.PatternLayout">
@@ -18,7 +20,7 @@
 	</appender>
 	
 	<appender name="hlogSql" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="File" value="${jboss.server.home.dir}/log/rest-api-demo-sql.log" />
+		<param name="File" value="${SERVER_BASE_LOG_DIR}/rest-api-demo-sql.log" />
 		<param name="DatePattern" value="'.'yyyy-MM-dd" />
 		<!-- <param name="Threshold" value="info"/>	-->
 		<layout class="org.apache.log4j.PatternLayout">
@@ -27,7 +29,7 @@
 	</appender>
 	
 	<appender name="hlogAST" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="File" value="${jboss.server.home.dir}/log/rest-api-demo-ast.log" />
+		<param name="File" value="${SERVER_BASE_LOG_DIR}/rest-api-demo-ast.log" />
 		<param name="DatePattern" value="'.'yyyy-MM-dd" />
 		<!-- <param name="Threshold" value="info"/>	-->
 		<layout class="org.apache.log4j.PatternLayout">
@@ -36,7 +38,7 @@
 	</appender>
 	
 	<appender name="hlogDDL" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="File" value="${jboss.server.home.dir}/log/rest-api-demo-ddl.log" />
+		<param name="File" value="${SERVER_BASE_LOG_DIR}/rest-api-demo-ddl.log" />
 		<param name="DatePattern" value="'.'yyyy-MM-dd" />
 		<!-- <param name="Threshold" value="info"/>	-->
 		<layout class="org.apache.log4j.PatternLayout">

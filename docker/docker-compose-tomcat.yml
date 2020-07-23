@@ -1,13 +1,17 @@
-version: '3'
+version: "3"
 services:
     tomcat:
         build: ./tomcat
         container_name: tomcat
+        environment:
+            SERVER_BASE_DIR: /opt/tomcat
+            ERVER_BASE_LOG_DIR: /opt/tomcat/logs
         network_mode: bridge
         ports:
-        - 8081:8080
+            - 8080:8080
         volumes:
-        - "./tomcat/webapps:/opt/tomcat/webapps"
+            - "./tomcat/webapps:/opt/tomcat/webapps"
+            - "./tomcat/configuration/webapps:/opt/tomcat/configuration/webapps"
         depends_on:
             - appdb
         links:
@@ -16,8 +20,8 @@ services:
         build:
             context: ./mysql
         network_mode: bridge
-        image: wildfly-db
-        container_name: wildfly-db
+        image: tomcat-db
+        container_name: tomcat-db
         environment:
             TZ: Europe/Rome
             MYSQL_IP: ::1
@@ -28,18 +32,17 @@ services:
             MYSQL_ROOT_PASSWORD: kj7£fiU
         ports:
             - 3306:3306
-            
+
     phpmyadmin:
         depends_on:
-        - appdb
+            - appdb
         network_mode: bridge
         image: phpmyadmin/phpmyadmin
-        container_name: myadmin-wildfly
+        container_name: myadmin-tomcat
         restart: always
         environment:
             PMA_ARBITRARY: 1
         links:
-            - appdb:wildflydb
+            - appdb:tomcatdb
         ports:
-        - '8883:80'
-
+            - "8883:80"

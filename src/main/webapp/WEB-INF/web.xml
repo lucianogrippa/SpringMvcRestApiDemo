@@ -69,29 +69,37 @@
 		<error-code>404</error-code>
 		<location>/api/handle_404</location>
 	</error-page>
-	
+
 	<error-page>
 		<error-code>400</error-code>
 		<location>/api/handle_400</location>
 	</error-page>
-	
+
 	<error-page>
 		<error-code>401</error-code>
 		<location>/api/handle_401</location>
 	</error-page>
-	
+
 	<error-page>
 		<error-code>403</error-code>
 		<location>/api/handle_403</location>
 	</error-page>
-	
+
 	<error-page>
 		<error-code>406</error-code>
 		<location>/api/handle_406</location>
 	</error-page>
-	
+
 	<error-page>
 		<error-code>500</error-code>
 		<location>/api/handle_500</location>
 	</error-page>
+
+	<resource-ref>
+		<description>Mysql Datasource</description>
+		<res-ref-name>jdbc/mysqldb</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+
 </web-app>
