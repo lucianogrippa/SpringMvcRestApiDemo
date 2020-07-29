@@ -1,8 +1,8 @@
 version: "3"
 services:
-    tomcat:
+    tomcatapp:
         build: ./tomcat
-        container_name: tomcat
+        container_name: tomcatapp
         environment:
             SERVER_BASE_DIR: /opt/tomcat
             ERVER_BASE_LOG_DIR: /opt/tomcat/logs

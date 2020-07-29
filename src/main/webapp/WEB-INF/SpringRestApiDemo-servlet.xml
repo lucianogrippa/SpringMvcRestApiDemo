@@ -72,16 +72,10 @@
 		jndi-name="java:jboss/datasources/ExampleDS" lookup-on-startup="false"
 		proxy-interface="javax.sql.DataSource" />
 
-	<!-- Mysql Datasource <jee:jndi-lookup id="jndiMySqlDataSource" jndi-name="jdbc/mysqldb" 
-		lookup-on-startup="false" proxy-interface="javax.sql.DataSource" expected-type="javax.persistence.EntityManager" 
-		/> -->
-
-	<!-- <bean id="mysqlDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" /> <property 
-		name="url" value="jdbc:mysql://wildflydbhost/restapidemo?useLegacyDatetimeCode=false&amp;serverTimezone=UTC" 
-		/> <property name="username" value="user" /> <property name="password" value="ma45lata" 
-		/> </bean> -->
-
+	<bean id="mysqlDS" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="jdbc/mysqldb" />
+    </bean>
+    
 	<!--JPA HIBERNATE CONFIGURATION -->
 	<bean id="hibernateJpaVendorAdapter"
 		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
@@ -89,9 +83,16 @@
 	<!-- Configurazione JPA Hibernate -->
 	<bean id="appEntityManager" name="appEntityManager"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<!-- <property name="persistenceXmlLocation" value="/META-INF/persistence.xml"/> -->
+<!-- 		<property name="persistenceXmlLocation" value="/META-INF/persistence.xml"/> -->
 		<property name="persistenceUnitName" value="restApiJPAUnit" />
 		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+		<property name="persistenceUnitManager">
+            <bean
+                class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
+                <property name="defaultDataSource" ref="mysqlDS" />
+            </bean>
+        </property>
+		<property name="dataSource" ref="mysqlDS" />
 	</bean>
 
 	<bean id="jpaVendorAdapter"
@@ -106,6 +107,7 @@
 		class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="appEntityManager" />
 	</bean>
+	
 	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
 
 	<bean id="persistenceExceptionTranslationPostProcessor"  class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />

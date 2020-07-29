@@ -37,4 +37,6 @@ fi
 rm -f ./docker/wildfly/standalone/log/rest-api-demo.log
 
 ./mvnw $SKIP_OPT clean install  && echo "copy target/SpringRestApiDemo.war docker/wildfly/standalone/deployments/" \
-                     && cp target/SpringRestApiDemo.war docker/wildfly/standalone/deployments/
+                     && cp target/SpringRestApiDemo.war docker/wildfly/standalone/deployments/ 
+
+cp target/SpringRestApiDemo.war docker/tomcat/webapps/
