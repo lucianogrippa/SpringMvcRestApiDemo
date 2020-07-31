@@ -29,9 +29,9 @@ USER root
 
 RUN yum install telnet -y
 RUN yum install mysql -y
-RUN chmod +x /opt/config/execute.sh
+#RUN chmod +x /opt/config/execute.sh
 
-RUN /opt/config/execute.sh commands.cli
+#RUN /opt/config/execute.sh commands.cli
 
 # non installa re il server di code attualmente non serve al progetto
 # RUN unzip /opt/amq/activemq-rar-5.10.0.rar -d /opt/jboss/wildfly/modules/org/apache/activemq/main

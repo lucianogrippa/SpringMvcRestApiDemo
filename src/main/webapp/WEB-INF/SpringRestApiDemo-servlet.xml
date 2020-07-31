@@ -73,7 +73,7 @@
 	<bean id="mysqlDS"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"
-			value="com.mysql.jdbc.Driver" />
+			value="com.mysql.cj.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://#{systemEnvironment['MYSQL_HOST']}/restapidemo?useUnicode=true&amp;connectionCollation=utf8_general_ci&amp;characterSetResults=utf8&amp;characterEncoding=utf8&amp;serverTimezone=UTC" />
 		<property name="username" value="#{systemEnvironment['MYSQL_USER']}" />
 		<property name="password" value="#{systemEnvironment['MYSQL_PASSWORD']}" />
