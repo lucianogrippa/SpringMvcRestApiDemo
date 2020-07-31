@@ -23,7 +23,7 @@
 
 	<!-- scan dei componenti -->
 	<context:component-scan
-		base-package="controllers,entities,dtos,helpers,exceptions,security,repositories,dao,services" />
+		base-package="configurations,controllers,entities,dtos,helpers,exceptions,security,repositories,dao,services" />
 
 	<!-- configurazione del file di properties -->
 	<bean id="propertyConfigurer"
@@ -67,31 +67,34 @@
 	<context:component-scan
 		base-package="com.journaldev.spring.controller" />
 
-	<!-- Use in-memory embedded H2 database usa il default di jboss -->
-	<jee:jndi-lookup id="h2dataSource"
-		jndi-name="java:jboss/datasources/ExampleDS" lookup-on-startup="false"
-		proxy-interface="javax.sql.DataSource" />
+<!-- 	<jee:jndi-lookup id="mysqlDS" jndi-name="jdbc/mysqldb" -->
+<!-- 		lookup-on-startup="true" proxy-interface="javax.sql.DataSource" /> -->
 
-	<bean id="mysqlDS" class="org.springframework.jndi.JndiObjectFactoryBean">
-        <property name="jndiName" value="jdbc/mysqldb" />
-    </bean>
-    
+	<bean id="mysqlDS"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://#{systemEnvironment['MYSQL_HOST']}/restapidemo?useUnicode=true&amp;connectionCollation=utf8_general_ci&amp;characterSetResults=utf8&amp;characterEncoding=utf8&amp;serverTimezone=UTC" />
+		<property name="username" value="#{systemEnvironment['MYSQL_USER']}" />
+		<property name="password" value="#{systemEnvironment['MYSQL_PASSWORD']}" />
+	</bean>
+
 	<!--JPA HIBERNATE CONFIGURATION -->
 	<bean id="hibernateJpaVendorAdapter"
 		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
-		
+
 	<!-- Configurazione JPA Hibernate -->
 	<bean id="appEntityManager" name="appEntityManager"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-<!-- 		<property name="persistenceXmlLocation" value="/META-INF/persistence.xml"/> -->
+		<!-- <property name="persistenceXmlLocation" value="/META-INF/persistence.xml"/> -->
 		<property name="persistenceUnitName" value="restApiJPAUnit" />
 		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
 		<property name="persistenceUnitManager">
-            <bean
-                class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
-                <property name="defaultDataSource" ref="mysqlDS" />
-            </bean>
-        </property>
+			<bean
+				class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
+				<property name="defaultDataSource" ref="mysqlDS" />
+			</bean>
+		</property>
 		<property name="dataSource" ref="mysqlDS" />
 	</bean>
 
@@ -99,7 +102,8 @@
 		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 		<property name="showSql" value="true" />
 		<property name="generateDdl" value="true" />
-		<property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect" />
+		<property name="databasePlatform"
+			value="org.hibernate.dialect.MySQL5Dialect" />
 	</bean>
 
 	<!-- Definisce il transaction manager -->
@@ -107,10 +111,12 @@
 		class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="appEntityManager" />
 	</bean>
-	
-	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
 
-	<bean id="persistenceExceptionTranslationPostProcessor"  class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+	<tx:annotation-driven
+		transaction-manager="transactionManager" proxy-target-class="true" />
+
+	<bean id="persistenceExceptionTranslationPostProcessor"
+		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
 
 	<!-- SpringContextProvider -->

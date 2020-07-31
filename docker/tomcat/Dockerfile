@@ -8,7 +8,7 @@ RUN mkdir /opt/tomcat/configuration/ && \
     mkdir /opt/tomcat/configuration/webapps/
 
 
-RUN apt-get update && apt-get install vim  -y 
+RUN apt-get update && apt-get install vim openssl -y 
 
 ADD ./libs/apache-tomcat-8.5.57.tar.gz /opt/tomcat
 
@@ -26,11 +26,13 @@ RUN rm -rf apache-tomcat-8.5.57
 WORKDIR /opt/tomcat/webapps
 
 ADD ./libs/mysql-connector-java-8.0.20.jar /opt/tomcat/lib/mysql-connector-java-8.0.20.jar
-ADD ./mysql/context.xml /opt/tomcat/conf/context.xml
-ADD ./mysql/server.xml /opt/tomcat/conf/server.xml
+
+# ADD ./tomcat/conf/context.xml /opt/tomcat/conf/context.xml
+# ADD ./tomcat/conf/server.xml /opt/tomcat/conf/server.xml
+# ADD ./tomcat/conf/web.xml /opt/tomcat/conf/web.xml
+
 ADD ./libs/log4j-1.2.17.jar /opt/tomcat/lib/log4j-1.2.17.jar
 
-ENV SERVER_BASE_DIR /opt/tomcat
-ENV SERVER_BASE_LOG_DIR /opt/tomcat/logs
+RUN export CATALINA_OPTS="-agentlib:jdwp=transport=dt_socket,address=8787,server=y,suspend=n";
 
 CMD ["/opt/tomcat/bin/catalina.sh", "run"]

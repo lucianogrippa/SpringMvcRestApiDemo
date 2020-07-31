@@ -5,8 +5,6 @@ FROM jboss/base-jdk:11
 ENV WILDFLY_VERSION 19.1.0.Final
 ENV WILDFLY_SHA1 6883125745a62b598659ea351f5b1706aff53955
 ENV JBOSS_HOME /opt/jboss/wildfly
-ENV SERVER_BASE_DIR /opt/jboss/wildfly/standalone
-ENV SERVER_BASE_LOG_DIR /opt/jboss/wildfly/standalone/log
 
 USER root
 

@@ -1,52 +1,56 @@
 version: '3'
 services:
-    wildfly:
-        build: ./wildfly
-        container_name: wildfly
-        network_mode: bridge
-        ports:
-        - 8080:8080
-        - 9990:9990
-        - 8794:8794
-        - 9999:9999
-        - 8787:8787
-        volumes:
-        - "./wildfly/standalone/deployments:/opt/jboss/wildfly/standalone/deployments"
-        - "./wildfly/standalone/configuration/webapps:/opt/jboss/wildfly/standalone/configuration/webapps"
-        - "./wildfly/standalone/log:/opt/jboss/wildfly/standalone/log"
-        - "./wildfly/standalone/lib:/opt/jboss/wildfly/standalone/lib"
-        depends_on:
-            - appdb
-        links:
-            - appdb:wildflydbhost
-    appdb:
-        build:
-            context: ./mysql
-        network_mode: bridge
-        image: wildfly-db
-        container_name: wildfly-db
-        environment:
-            TZ: Europe/Rome
-            MYSQL_IP: ::1
-            MYSQL_ALLOW_EMPTY_PASSWORD: "no"
-            MYSQL_DATABASE: restapidemo
-            MYSQL_USER: user
-            MYSQL_PASSWORD: ma45lata
-            MYSQL_ROOT_PASSWORD: kj7£fiU
-        ports:
-            - 3306:3306
-            
-    phpmyadmin:
-        depends_on:
-        - appdb
-        network_mode: bridge
-        image: phpmyadmin/phpmyadmin
-        container_name: myadmin-wildfly
-        restart: always
-        environment:
-            PMA_ARBITRARY: 1
-        links:
-            - appdb:wildflydb
-        ports:
-        - '8883:80'
-
+  wildfly:
+    build: ./wildfly
+    container_name: wildfly
+    network_mode: bridge
+    environment:
+      MYSQL_USER: user
+      MYSQL_PASSWORD: ma45lata
+      MYSQL_HOST: wildflydbhost
+      SERVER_BASE_DIR: /opt/jboss/wildfly
+      ERVER_BASE_LOG_DIR: /opt/jboss/wildfly/standalone/log
+    ports:
+    - 8080:8080
+    - 9990:9990
+    - 8794:8794
+    - 9999:9999
+    - 8787:8787
+    volumes:
+    - ./wildfly/standalone/deployments:/opt/jboss/wildfly/standalone/deployments
+    - ./wildfly/standalone/configuration/webapps:/opt/jboss/wildfly/standalone/configuration/webapps
+    - ./wildfly/standalone/log:/opt/jboss/wildfly/standalone/log
+    - ./wildfly/standalone/lib:/opt/jboss/wildfly/standalone/lib
+    depends_on:
+    - appdb
+    links:
+    - appdb:wildflydbhost
+  appdb:
+    build:
+      context: ./mysql
+    network_mode: bridge
+    image: wildfly-db
+    container_name: wildfly-db
+    environment:
+      TZ: Europe/Rome
+      MYSQL_IP: ::1
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'no'
+      MYSQL_DATABASE: restapidemo
+      MYSQL_USER: user
+      MYSQL_PASSWORD: ma45lata
+      MYSQL_ROOT_PASSWORD: kj7£fiU
+    ports:
+    - 3306:3306
+  phpmyadmin:
+    depends_on:
+    - appdb
+    network_mode: bridge
+    image: phpmyadmin/phpmyadmin
+    container_name: myadmin-wildfly
+    restart: always
+    environment:
+      PMA_ARBITRARY: 1
+    links:
+    - appdb:wildflydb
+    ports:
+    - 8883:80

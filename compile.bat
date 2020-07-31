@@ -3,7 +3,7 @@
 
 @echo off
 
-set "JAVA_HOME=C:\\Projects\\rai-projects\\sdks\\openjdk-11.0.2\\jdk-11.0.2"
+set "JAVA_HOME=C:\\Projects\\my-projects\\usb-backup\\app\\java\\openjdk\\java-1.8.0"
 set "MVNW_FILE=mvnw.cmd"
 set "DEPLOYING_PATH=.\docker\wildfly\standalone\deployments\SpringRestApiDemo.war"
 set "DEPLOYING_PATH_TOMCAT=.\docker\tomcat\webapps\SpringRestApiDemo.war"

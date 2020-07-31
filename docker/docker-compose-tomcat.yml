@@ -1,48 +1,53 @@
-version: "3"
+version: '3'
 services:
-    tomcatapp:
-        build: ./tomcat
-        container_name: tomcatapp
-        environment:
-            SERVER_BASE_DIR: /opt/tomcat
-            ERVER_BASE_LOG_DIR: /opt/tomcat/logs
-        network_mode: bridge
-        ports:
-            - 8080:8080
-        volumes:
-            - "./tomcat/webapps:/opt/tomcat/webapps"
-            - "./tomcat/configuration/webapps:/opt/tomcat/configuration/webapps"
-        depends_on:
-            - appdb
-        links:
-            - appdb:tomcatdbhost
-    appdb:
-        build:
-            context: ./mysql
-        network_mode: bridge
-        image: tomcat-db
-        container_name: tomcat-db
-        environment:
-            TZ: Europe/Rome
-            MYSQL_IP: ::1
-            MYSQL_ALLOW_EMPTY_PASSWORD: "no"
-            MYSQL_DATABASE: restapidemo
-            MYSQL_USER: user
-            MYSQL_PASSWORD: ma45lata
-            MYSQL_ROOT_PASSWORD: kj7£fiU
-        ports:
-            - 3306:3306
-
-    phpmyadmin:
-        depends_on:
-            - appdb
-        network_mode: bridge
-        image: phpmyadmin/phpmyadmin
-        container_name: myadmin-tomcat
-        restart: always
-        environment:
-            PMA_ARBITRARY: 1
-        links:
-            - appdb:tomcatdb
-        ports:
-            - "8883:80"
+  tomcatapp:
+    build: ./tomcat
+    container_name: tomcatapp
+    environment:
+      MYSQL_USER: user
+      MYSQL_PASSWORD: ma45lata
+      MYSQL_HOST: tomcatdbhost
+      SERVER_BASE_DIR: /opt/tomcat
+      ERVER_BASE_LOG_DIR: /opt/tomcat/logs
+    network_mode: bridge
+    ports:
+    - 8080:8080
+    - 8787:8787
+    volumes:
+    - ./tomcat/webapps:/opt/tomcat/webapps
+    - ./tomcat/configuration/webapps:/opt/tomcat/configuration/webapps
+    - ./tomcat/conf:/opt/tomcat/conf
+    - ./tomcat/logs:/opt/tomcat/logs
+    depends_on:
+    - appdb
+    links:
+    - appdb:tomcatdbhost
+  appdb:
+    build:
+      context: ./mysql
+    network_mode: bridge
+    image: tomcat-db
+    container_name: tomcat-db
+    environment:
+      TZ: Europe/Rome
+      MYSQL_IP: ::1
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'no'
+      MYSQL_DATABASE: restapidemo
+      MYSQL_USER: user
+      MYSQL_PASSWORD: ma45lata
+      MYSQL_ROOT_PASSWORD: kj7£fiU
+    ports:
+    - 3306:3306
+  phpmyadmin:
+    depends_on:
+    - appdb
+    network_mode: bridge
+    image: phpmyadmin/phpmyadmin
+    container_name: myadmin-tomcat
+    restart: always
+    environment:
+      PMA_ARBITRARY: 1
+    links:
+    - appdb:tomcatdb
+    ports:
+    - 8883:80
