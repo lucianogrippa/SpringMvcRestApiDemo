@@ -29,3 +29,4 @@ src/test/server/log/rest-api-demo.log
 /docker/tomcat/logs/*.log
 /docker/tomcat/logs/*.out
 /docker/tomcat/logs/*.txt
+/docker/tomcat/webapps/SpringRestApiDemo

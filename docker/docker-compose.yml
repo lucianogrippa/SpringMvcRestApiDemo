@@ -4,16 +4,9 @@ services:
     build: ./wildfly
     container_name: wildfly
     network_mode: bridge
-    environment:
-      MYSQL_USER: user
-      MYSQL_PASSWORD: ma45lata
-      MYSQL_HOST: wildflydbhost
-      SERVER_BASE_DIR: /opt/jboss/wildfly
-      ERVER_BASE_LOG_DIR: /opt/jboss/wildfly/standalone/log
     ports:
     - 8080:8080
     - 9990:9990
-    - 8794:8794
     - 9999:9999
     - 8787:8787
     volumes:

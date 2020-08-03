@@ -1,12 +1,20 @@
 # usa openjdk 11
 FROM jboss/base-jdk:11
 
-# imposta WILDFLY_VERSION
-ENV WILDFLY_VERSION 19.1.0.Final
-ENV WILDFLY_SHA1 6883125745a62b598659ea351f5b1706aff53955
-ENV JBOSS_HOME /opt/jboss/wildfly
-
 USER root
+
+# imposta WILDFLY_VERSION
+
+ENV WILDFLY_VERSION=19.1.0.Final
+ENV WILDFLY_SHA1=6883125745a62b598659ea351f5b1706aff53955
+ENV JBOSS_HOME=/opt/jboss/wildfly
+
+ENV MYSQL_USER=user
+ENV MYSQL_PASSWORD=ma45lata
+ENV MYSQL_URL=jdbc:mysql://wildflydbhost/restapidemo?useUnicode=true&connectionCollation=utf8_general_ci&characterSetResults=utf8&characterEncoding=utf8&serverTimezone=UTC
+
+ENV SERVER_BASE_DIR=/opt/jboss/wildfly/standalone
+ENV SERVER_BASE_LOG_DIR=/opt/jboss/wildfly/log
 
 # fai il download dell'immagine jboss
 RUN cd $HOME \
@@ -23,27 +31,15 @@ RUN /opt/jboss/wildfly/bin/add-user.sh admin admin --silent
 
 ADD jdbc /opt/jdbc
 ADD ./config /opt/config
-# ADD amq /opt/amq
 
 USER root
 
 RUN yum install telnet -y
 RUN yum install mysql -y
-#RUN chmod +x /opt/config/execute.sh
+RUN chmod +x /opt/config/execute.sh
 
-#RUN /opt/config/execute.sh commands.cli
-
-# non installa re il server di code attualmente non serve al progetto
-# RUN unzip /opt/amq/activemq-rar-5.10.0.rar -d /opt/jboss/wildfly/modules/org/apache/activemq/main
-
-# RUN rm -f /opt/jboss/wildfly/modules/org/apache/activemq/main/broker-config.xml
-# RUN rm -f /opt/jboss/wildfly/modules/org/apache/activemq/main/log4j*
-# RUN rm -f /opt/jboss/wildfly/modules/org/apache/activemq/main/slf4j*
-# RUN rm -f /opt/jboss/wildfly/modules/org/apache/activemq/main/geronimo*
-
-# cleanup e aggiungi il modulo che gestisce le code
+RUN /opt/config/execute.sh commands.cli
 RUN rm -rf $JBOSS_HOME/standalone/configuration/standalone_xml_history
-# RUN /opt/config/execute.sh add-activemq-rar.cli
 
 # elimina l'history dello standalone
 RUN rm -rf $JBOSS_HOME/standalone/configuration/standalone_xml_history
@@ -58,9 +54,5 @@ USER root
 RUN chmod u+x /opt/jboss/wildfly/bin/run.sh
 RUN chmod u+x /opt/jboss/wildfly/bin/run-debug.sh
 
-EXPOSE 8787
-
-# aggiungi alla configurazione le properties
-#ADD ./config/application.springrestdemo.properties $JBOSS_HOME/standalone/configuration/application.springrestdemo.properties
 # run jboss
 CMD ["/opt/jboss/wildfly/bin/run-debug.sh"]
