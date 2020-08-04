@@ -1,9 +1,7 @@
-<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2"
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
 	<!-- Define persistence unit -->
 	<persistence-unit name="restApiJPAUnit">
-		<!-- <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> -->
+		<!-- Enable  non-jta-data-source> only for jboss-->
 		<non-jta-data-source>java:jboss/datasources/mysqldb</non-jta-data-source>
 		<class>entities.User</class>
 		<class>entities.Roles</class>
@@ -16,12 +14,9 @@
 			<!-- <property name="hibernate.format_sql" value="true"/> -->
 			<property name="javax.persistence.lock.timeout" value="100" />
 			<property name="javax.persistence.query.timeout" value="100" />
-			<property name="wildfly.jpa.hibernate.search.module"
-				value="none" />
-			<property name="hibernate.transaction.factory_class"
-				value="org.hibernate.transaction.JTATransactionFactory" />
-			<property name="hibernate.transaction.manager_lookup_class"
-				value="javax.transaction.TransactionManager" />
+			<property name="wildfly.jpa.hibernate.search.module" value="none" />
+			<property name="hibernate.transaction.factory_class" value="org.hibernate.transaction.JTATransactionFactory" />
+			<property name="hibernate.transaction.manager_lookup_class" value="javax.transaction.TransactionManager" />
 		</properties>
 	</persistence-unit>
 </persistence>

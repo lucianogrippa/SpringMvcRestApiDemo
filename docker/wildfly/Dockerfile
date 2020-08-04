@@ -9,9 +9,7 @@ ENV WILDFLY_VERSION=19.1.0.Final
 ENV WILDFLY_SHA1=6883125745a62b598659ea351f5b1706aff53955
 ENV JBOSS_HOME=/opt/jboss/wildfly
 
-ENV MYSQL_USER=user
-ENV MYSQL_PASSWORD=ma45lata
-ENV MYSQL_URL=jdbc:mysql://wildflydbhost/restapidemo?useUnicode=true&connectionCollation=utf8_general_ci&characterSetResults=utf8&characterEncoding=utf8&serverTimezone=UTC
+ENV DATASOURCE_JNDI_NAME=java:jboss/datasources/mysqldb
 
 ENV SERVER_BASE_DIR=/opt/jboss/wildfly/standalone
 ENV SERVER_BASE_LOG_DIR=/opt/jboss/wildfly/log

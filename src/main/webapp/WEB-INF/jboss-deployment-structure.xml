@@ -6,6 +6,7 @@
 		<exclusions>
 			<!--<module name="org.jboss.resteasy"></module> -->
 			<module name="org.slf4j" />
+			<module name="org.hibernate" slot="main" />
 			<!-- <module name="org.slf4j.impl" /> -->
 			<module name="org.apache.log4j" />
 		</exclusions>

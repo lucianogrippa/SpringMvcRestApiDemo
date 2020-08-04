@@ -23,7 +23,7 @@
 
 	<!-- scan dei componenti -->
 	<context:component-scan
-		base-package="configurations,controllers,entities,dtos,helpers,exceptions,security,repositories,dao,services" />
+		base-package="configurations,controllers,dtos,helpers,exceptions,security,repositories,dao,services" />
 
 	<!-- configurazione del file di properties -->
 	<bean id="propertyConfigurer"
@@ -67,16 +67,7 @@
 	<context:component-scan
 		base-package="com.journaldev.spring.controller" />
 
-	<jee:jndi-lookup id="mysqlDS" jndi-name="java:jboss/datasources/mysqldb" lookup-on-startup="true" proxy-interface="javax.sql.DataSource" />
-
-	<!-- <bean id="mysqlDS"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName"
-			value="com.mysql.cj.jdbc.Driver" />
-		<property name="url" value="#{systemEnvironment['MYSQL_URL']}" />
-		<property name="username" value="#{systemEnvironment['MYSQL_USER']}" />
-		<property name="password" value="#{systemEnvironment['MYSQL_PASSWORD']}" />
-	</bean> -->
+	<jee:jndi-lookup id="mysqlDS" jndi-name="#{systemEnvironment['DATASOURCE_JNDI_NAME']}" lookup-on-startup="true" proxy-interface="javax.sql.DataSource" />
 
 	<!--JPA HIBERNATE CONFIGURATION -->
 	<bean id="hibernateJpaVendorAdapter"
@@ -85,14 +76,10 @@
 	<!-- Configurazione JPA Hibernate -->
 	<bean id="appEntityManager" name="appEntityManager"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<!-- <property name="persistenceXmlLocation" value="/META-INF/persistence.xml"/> -->
-		<property name="persistenceUnitName" value="restApiJPAUnit" />
+		<!-- <property name="persistenceUnitName" value="restApiJPAUnit" /> -->
 		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
-		<property name="packagesToScan">
-            <array value-type="java.lang.String">
-                <value>entities</value>
-            </array>
-        </property>
+		 <!-- Set base package of your entities -->
+		 <property name="packagesToScan" value="entities"/>
 		<property name="persistenceUnitManager">
 			<bean
 				class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">

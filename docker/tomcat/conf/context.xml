@@ -26,5 +26,10 @@
     <!-- Uncomment this to disable session persistence across Tomcat restarts -->
     <!--
     <Manager pathname="" />
-	-->
+  -->
+  
+  <ResourceLink name="jboss/datasources/mysqldb"
+                global="jdbc/MyDB"
+                auth="Container"
+                type="javax.sql.DataSource" />
 </Context>

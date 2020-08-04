@@ -39,7 +39,9 @@
          UserDatabaseRealm to authenticate users
     -->
           <Resource name="UserDatabase" auth="Container" type="org.apache.catalina.UserDatabase" description="User database that can be updated and saved" factory="org.apache.catalina.users.MemoryUserDatabaseFactory" pathname="conf/tomcat-users.xml" />
-
+          <Resource name="jdbc/MyDB" global="jdbc/MyDB" auth="Container" type="javax.sql.DataSource" 
+                    driverClassName="com.mysql.cj.jdbc.Driver" url="jdbc:mysql://tomcatdbhost/restapidemo?useUnicode=true&amp;connectionCollation=utf8_general_ci&amp;characterSetResults=utf8&amp;characterEncoding=utf8&amp;serverTimezone=UTC" 
+                    username="user" password="ma45lata" maxTotal="100" maxIdle="20" minIdle="5" maxWaitMillis="10000" />
      </GlobalNamingResources>
 
      <!-- A "Service" is a collection of one or more "Connectors" that share
