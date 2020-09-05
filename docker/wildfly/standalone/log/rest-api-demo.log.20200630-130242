@@ -1,0 +1,5 @@
+[2020-06-30 12:59:48.277][INFO  application] calling: /logfilesList
+[2020-06-30 12:59:48.590][DEBUG application] start create properties
+[2020-06-30 12:59:48.637][INFO  application] calling: /jbossdir
+[2020-06-30 12:59:48.748][INFO  application] calling /logger/change/debug
+[2020-06-30 12:59:48.913][INFO  application] calling: /test/ 10

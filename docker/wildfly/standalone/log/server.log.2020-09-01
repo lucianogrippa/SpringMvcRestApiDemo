@@ -1,0 +1,608 @@
+2020-09-01 13:06:45,948 INFO  [org.jboss.modules] (main) JBoss Modules version 1.10.0.Final
+2020-09-01 13:06:47,796 INFO  [org.jboss.msc] (main) JBoss MSC version 1.4.11.Final
+2020-09-01 13:06:47,816 INFO  [org.jboss.threads] (main) JBoss Threads version 2.3.3.Final
+2020-09-01 13:06:48,121 INFO  [org.jboss.as] (MSC service thread 1-1) WFLYSRV0049: WildFly Full 19.1.0.Final (WildFly Core 11.1.1.Final) starting
+2020-09-01 13:06:48,156 DEBUG [org.jboss.as.config] (MSC service thread 1-1) Configured system properties:
+	[Standalone] = 
+	awt.toolkit = sun.awt.X11.XToolkit
+	file.encoding = ANSI_X3.4-1968
+	file.separator = /
+	java.awt.graphicsenv = sun.awt.X11GraphicsEnvironment
+	java.awt.headless = true
+	java.awt.printerjob = sun.print.PSPrinterJob
+	java.class.path = /opt/jboss/wildfly/jboss-modules.jar
+	java.class.version = 55.0
+	java.home = /usr/lib/jvm/java-11-openjdk-11.0.5.10-0.el7_7.x86_64
+	java.io.tmpdir = /tmp
+	java.library.path = /usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib
+	java.net.preferIPv4Stack = true
+	java.runtime.name = OpenJDK Runtime Environment
+	java.runtime.version = 11.0.5+10-LTS
+	java.specification.name = Java Platform API Specification
+	java.specification.vendor = Oracle Corporation
+	java.specification.version = 11
+	java.util.logging.manager = org.jboss.logmanager.LogManager
+	java.vendor = Oracle Corporation
+	java.vendor.url = http://java.oracle.com/
+	java.vendor.url.bug = http://bugreport.java.com/bugreport/
+	java.vendor.version = 18.9
+	java.version = 11.0.5
+	java.version.date = 2019-10-15
+	java.vm.compressedOopsMode = 32-bit
+	java.vm.info = mixed mode, sharing
+	java.vm.name = OpenJDK 64-Bit Server VM
+	java.vm.specification.name = Java Virtual Machine Specification
+	java.vm.specification.vendor = Oracle Corporation
+	java.vm.specification.version = 11
+	java.vm.vendor = Oracle Corporation
+	java.vm.version = 11.0.5+10-LTS
+	javax.management.builder.initial = org.jboss.as.jmx.PluggableMBeanServerBuilder
+	jboss.bind.address = 0.0.0.0
+	jboss.bind.address.management = 0.0.0.0
+	jboss.home.dir = /opt/jboss/wildfly
+	jboss.host.name = a833f1570765
+	jboss.modules.dir = /opt/jboss/wildfly/modules
+	jboss.modules.system.pkgs = org.jboss.byteman
+	jboss.node.name = a833f1570765
+	jboss.qualified.host.name = a833f1570765
+	jboss.server.base.dir = /opt/jboss/wildfly/standalone
+	jboss.server.config.dir = /opt/jboss/wildfly/standalone/configuration
+	jboss.server.data.dir = /opt/jboss/wildfly/standalone/data
+	jboss.server.deploy.dir = /opt/jboss/wildfly/standalone/data/content
+	jboss.server.home.dir = /opt/jboss/wildfly/standalone
+	jboss.server.log.dir = /opt/jboss/wildfly/standalone/log
+	jboss.server.name = a833f1570765
+	jboss.server.persist.config = true
+	jboss.server.temp.dir = /opt/jboss/wildfly/standalone/tmp
+	jdk.debug = release
+	line.separator = 
+
+	logging.configuration = file:/opt/jboss/wildfly/standalone/configuration/logging.properties
+	module.path = /opt/jboss/wildfly/modules
+	org.jboss.boot.log.file = /opt/jboss/wildfly/standalone/log/server.log
+	org.jboss.resolver.warning = true
+	os.arch = amd64
+	os.name = Linux
+	os.version = 4.19.76-linuxkit
+	path.separator = :
+	sun.arch.data.model = 64
+	sun.boot.library.path = /usr/lib/jvm/java-11-openjdk-11.0.5.10-0.el7_7.x86_64/lib
+	sun.cpu.endian = little
+	sun.cpu.isalist = 
+	sun.io.unicode.encoding = UnicodeLittle
+	sun.java.command = /opt/jboss/wildfly/jboss-modules.jar -mp /opt/jboss/wildfly/modules org.jboss.as.standalone -Djboss.home.dir=/opt/jboss/wildfly -Djboss.server.base.dir=/opt/jboss/wildfly/standalone -Djboss.server.home.dir=/opt/jboss/wildfly/standalone -Djboss.server.log.dir=/opt/jboss/wildfly/standalone/log -b 0.0.0.0 -bmanagement 0.0.0.0 -c standalone.xml
+	sun.java.launcher = SUN_STANDARD
+	sun.jnu.encoding = ANSI_X3.4-1968
+	sun.management.compiler = HotSpot 64-Bit Tiered Compilers
+	sun.os.patch.level = unknown
+	user.country = US
+	user.dir = /opt/jboss
+	user.home = /root
+	user.language = en
+	user.name = root
+	user.timezone = UTC
+2020-09-01 13:06:48,175 DEBUG [org.jboss.as.config] (MSC service thread 1-1) VM Arguments: -D[Standalone] -Xms64m -Xmx512m -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=256m -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true -agentlib:jdwp=transport=dt_socket,address=8787,server=y,suspend=n --add-exports=java.base/sun.nio.ch=ALL-UNNAMED --add-exports=jdk.unsupported/sun.misc=ALL-UNNAMED --add-exports=jdk.unsupported/sun.reflect=ALL-UNNAMED -Dorg.jboss.boot.log.file=/opt/jboss/wildfly/standalone/log/server.log -Dlogging.configuration=file:/opt/jboss/wildfly/standalone/configuration/logging.properties 
+2020-09-01 13:06:48,518 INFO  [org.jboss.vfs] (MSC service thread 1-2) VFS000002: Failed to clean existing content for temp file provider of type temp. Enable DEBUG level log to find what caused this
+2020-09-01 13:06:52,941 INFO  [org.wildfly.security] (ServerService Thread Pool -- 28) ELY00001: WildFly Elytron version 1.11.4.Final
+2020-09-01 13:06:55,935 INFO  [org.jboss.as.controller.management-deprecated] (Controller Boot Thread) WFLYCTL0028: Attribute 'security-realm' in the resource at address '/core-service=management/management-interface=http-interface' is deprecated, and may be removed in a future version. See the attribute description in the output of the read-resource-description operation to learn more about the deprecation.
+2020-09-01 13:06:56,245 INFO  [org.jboss.as.controller.management-deprecated] (ServerService Thread Pool -- 15) WFLYCTL0028: Attribute 'security-realm' in the resource at address '/subsystem=undertow/server=default-server/https-listener=https' is deprecated, and may be removed in a future version. See the attribute description in the output of the read-resource-description operation to learn more about the deprecation.
+2020-09-01 13:07:00,082 INFO  [org.jboss.as.repository] (ServerService Thread Pool -- 29) WFLYDR0001: Content added at location /opt/jboss/wildfly/standalone/data/content/89/48e4b7bd99b9fb6cbf0d19d264766d8e32457e/content
+2020-09-01 13:07:00,403 INFO  [org.jboss.as.server] (Controller Boot Thread) WFLYSRV0039: Creating http management service using socket-binding (management-http)
+2020-09-01 13:07:00,586 INFO  [org.xnio] (MSC service thread 1-2) XNIO version 3.7.7.Final
+2020-09-01 13:07:00,793 INFO  [org.xnio.nio] (MSC service thread 1-2) XNIO NIO Implementation Version 3.7.7.Final
+2020-09-01 13:07:01,298 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 52) WFLYCLINF0001: Activating Infinispan subsystem.
+2020-09-01 13:07:01,611 INFO  [org.wildfly.extension.microprofile.config.smallrye._private] (ServerService Thread Pool -- 61) WFLYCONF0001: Activating WildFly MicroProfile Config Subsystem
+2020-09-01 13:07:01,456 INFO  [org.wildfly.extension.io] (ServerService Thread Pool -- 53) WFLYIO001: Worker 'default' has auto-configured to 4 IO threads with 32 max task threads based on your 2 available processors
+2020-09-01 13:07:01,656 INFO  [org.wildfly.extension.microprofile.jwt.smallrye._private] (ServerService Thread Pool -- 63) WFLYJWT0001: Activating WildFly MicroProfile JWT Subsystem
+2020-09-01 13:07:01,663 WARN  [org.jboss.as.txn] (ServerService Thread Pool -- 74) WFLYTX0013: The node-identifier attribute on the /subsystem=transactions is set to the default value. This is a danger for environments running multiple servers. Please make sure the attribute value is unique.
+2020-09-01 13:07:01,777 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 72) WFLYSEC0002: Activating Security Subsystem
+2020-09-01 13:07:01,904 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 66) WFLYNAM0001: Activating Naming Subsystem
+2020-09-01 13:07:01,871 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 59) WFLYJSF0007: Activated the following JSF Implementations: [main]
+2020-09-01 13:07:01,947 INFO  [org.jboss.remoting] (MSC service thread 1-4) JBoss Remoting version 5.0.17.Final
+2020-09-01 13:07:01,988 INFO  [org.wildfly.extension.microprofile.opentracing] (ServerService Thread Pool -- 65) WFLYTRACEXT0001: Activating MicroProfile OpenTracing Subsystem
+2020-09-01 13:07:02,005 INFO  [org.wildfly.extension.microprofile.health.smallrye] (ServerService Thread Pool -- 62) WFLYHEALTH0001: Activating Eclipse MicroProfile Health Subsystem
+2020-09-01 13:07:02,054 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 76) WFLYWS0002: Activating WebServices Extension
+2020-09-01 13:07:02,074 INFO  [org.jboss.as.jaxrs] (ServerService Thread Pool -- 54) WFLYRS0016: RESTEasy version 3.11.2.Final
+2020-09-01 13:07:02,135 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 44) WFLYJCA0004: Deploying JDBC-compliant driver class org.h2.Driver (version 1.4)
+2020-09-01 13:07:02,145 INFO  [org.jboss.as.connector] (MSC service thread 1-2) WFLYJCA0009: Starting JCA Subsystem (WildFly/IronJacamar 1.4.20.Final)
+2020-09-01 13:07:02,222 INFO  [org.wildfly.extension.microprofile.metrics.smallrye] (ServerService Thread Pool -- 64) WFLYMETRICS0001: Activating Eclipse MicroProfile Metrics Subsystem
+2020-09-01 13:07:02,281 INFO  [org.jboss.as.security] (MSC service thread 1-2) WFLYSEC0001: Current PicketBox version=5.0.3.Final
+2020-09-01 13:07:02,731 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 44) WFLYJCA0005: Deploying non-JDBC-compliant driver class com.mysql.cj.jdbc.Driver (version 8.0)
+2020-09-01 13:07:03,354 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-1) WFLYUT0003: Undertow 2.1.0.Final starting
+2020-09-01 13:07:03,391 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-1) WFLYJCA0018: Started Driver service with driver-name = h2
+2020-09-01 13:07:03,432 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-1) WFLYJCA0018: Started Driver service with driver-name = mysql
+2020-09-01 13:07:03,484 INFO  [org.jboss.as.naming] (MSC service thread 1-1) WFLYNAM0003: Starting Naming Service
+2020-09-01 13:07:04,045 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-4) WFLYMAIL0001: Bound mail session [java:jboss/mail/Default]
+2020-09-01 13:07:04,058 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 75) WFLYUT0014: Creating file handler for path '/opt/jboss/wildfly/welcome-content' with options [directory-listing: 'false', follow-symlink: 'false', case-sensitive: 'true', safe-symlink-paths: '[]']
+2020-09-01 13:07:04,793 INFO  [org.jboss.as.ejb3] (MSC service thread 1-1) WFLYEJB0481: Strict pool slsb-strict-max-pool is using a max instance size of 32 (per class), which is derived from thread worker pool sizing.
+2020-09-01 13:07:04,795 INFO  [org.jboss.as.ejb3] (MSC service thread 1-4) WFLYEJB0482: Strict pool mdb-strict-max-pool is using a max instance size of 8 (per class), which is derived from the number of CPUs on this host.
+2020-09-01 13:07:05,125 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) WFLYUT0012: Started server default-server.
+2020-09-01 13:07:05,309 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) WFLYUT0018: Host default-host starting
+2020-09-01 13:07:05,733 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-1) WFLYUT0006: Undertow HTTP listener default listening on 0.0.0.0:8080
+2020-09-01 13:07:05,943 INFO  [org.jboss.as.ejb3] (MSC service thread 1-3) WFLYEJB0493: EJB subsystem suspension complete
+2020-09-01 13:07:06,350 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-4) WFLYJCA0001: Bound data source [java:jboss/datasources/mysqldb]
+2020-09-01 13:07:06,350 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-2) WFLYJCA0001: Bound data source [java:jboss/datasources/ExampleDS]
+2020-09-01 13:07:07,185 INFO  [org.jboss.as.patching] (MSC service thread 1-3) WFLYPAT0050: WildFly Full cumulative patch ID is: base, one-off patches include: none
+2020-09-01 13:07:07,265 WARN  [org.jboss.as.domain.management.security] (MSC service thread 1-4) WFLYDM0111: Keystore /opt/jboss/wildfly/standalone/configuration/application.keystore not found, it will be auto generated on first use with a self signed certificate for host localhost
+2020-09-01 13:07:07,331 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-4) WFLYDS0013: Started FileSystemDeploymentService for directory /opt/jboss/wildfly/standalone/deployments
+2020-09-01 13:07:07,428 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-3) WFLYSRV0027: Starting deployment of "spring-mvc-rest-api-demo.war" (runtime-name: "spring-mvc-rest-api-demo.war")
+2020-09-01 13:07:07,880 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-1) WFLYUT0006: Undertow HTTPS listener https listening on 0.0.0.0:8443
+2020-09-01 13:07:08,273 INFO  [org.jboss.ws.common.management] (MSC service thread 1-4) JBWS022052: Starting JBossWS 5.4.1.Final (Apache CXF 3.3.6) 
+2020-09-01 13:07:20,456 WARN  [org.jboss.as.ee] (MSC service thread 1-4) WFLYEE0007: Not installing optional component org.springframework.http.server.reactive.ServletServerHttpResponse$ResponseAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 13:07:20,468 WARN  [org.jboss.as.ee] (MSC service thread 1-4) WFLYEE0007: Not installing optional component org.springframework.http.server.reactive.ServletHttpHandlerAdapter$HandlerResultAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 13:07:20,490 WARN  [org.jboss.as.ee] (MSC service thread 1-4) WFLYEE0007: Not installing optional component org.springframework.http.server.ServletServerHttpAsyncRequestControl due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 13:07:20,508 WARN  [org.jboss.as.ee] (MSC service thread 1-4) WFLYEE0007: Not installing optional component org.springframework.web.context.request.async.StandardServletAsyncWebRequest due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 13:07:20,531 WARN  [org.jboss.as.ee] (MSC service thread 1-4) WFLYEE0007: Not installing optional component org.springframework.http.server.reactive.ServletServerHttpRequest$RequestAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 13:07:20,543 WARN  [org.jboss.as.ee] (MSC service thread 1-4) WFLYEE0007: Not installing optional component io.micrometer.core.instrument.binder.jetty.OnCompletionAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 13:07:21,082 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-4) WFLYJCA0005: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 42.2)
+2020-09-01 13:07:21,338 INFO  [org.infinispan.factories.GlobalComponentRegistry] (MSC service thread 1-1) ISPN000128: Infinispan version: Infinispan 'Infinity Minus ONE +2' 9.4.18.Final
+2020-09-01 13:07:21,380 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-3) WFLYJCA0018: Started Driver service with driver-name = spring-mvc-rest-api-demo.war_org.postgresql.Driver_42_2
+2020-09-01 13:07:23,044 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 80) WFLYCLINF0002: Started client-mappings cache from ejb container
+2020-09-01 13:07:23,551 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 84) 2 Spring WebApplicationInitializers detected on classpath
+2020-09-01 13:07:25,521 INFO  [stdout] (ServerService Thread Pool -- 84) 
+2020-09-01 13:07:25,527 INFO  [stdout] (ServerService Thread Pool -- 84)   .   ____          _            __ _ _
+2020-09-01 13:07:25,531 INFO  [stdout] (ServerService Thread Pool -- 84)  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+2020-09-01 13:07:25,534 INFO  [stdout] (ServerService Thread Pool -- 84) ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+2020-09-01 13:07:25,540 INFO  [stdout] (ServerService Thread Pool -- 84)  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+2020-09-01 13:07:25,545 INFO  [stdout] (ServerService Thread Pool -- 84)   '  |____| .__|_| |_|_| |_\__, | / / / /
+2020-09-01 13:07:25,551 INFO  [stdout] (ServerService Thread Pool -- 84)  =========|_|==============|___/=/_/_/_/
+2020-09-01 13:07:25,561 INFO  [stdout] (ServerService Thread Pool -- 84)  :: Spring Boot ::        (v2.3.3.RELEASE)
+2020-09-01 13:07:25,563 INFO  [stdout] (ServerService Thread Pool -- 84) 
+2020-09-01 13:07:25,577 INFO  [org.hibernate.validator.internal.util.Version] (background-preinit) HV000001: Hibernate Validator 6.0.18.Final
+2020-09-01 13:07:25,801 INFO  [com.grippaweb.springrest.ServletInitializer] (ServerService Thread Pool -- 84) Starting ServletInitializer on a833f1570765 with PID 118 (started by root in /opt/jboss)
+2020-09-01 13:07:25,811 INFO  [com.grippaweb.springrest.ServletInitializer] (ServerService Thread Pool -- 84) No active profile set, falling back to default profiles: default
+2020-09-01 13:07:26,020 INFO  [org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor] (ServerService Thread Pool -- 84) For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-09-01 13:07:29,987 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 84) Initializing Spring embedded WebApplicationContext
+2020-09-01 13:07:29,990 INFO  [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] (ServerService Thread Pool -- 84) Root WebApplicationContext: initialization completed in 3957 ms
+2020-09-01 13:07:31,991 INFO  [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] (ServerService Thread Pool -- 84) Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-01 13:07:33,191 INFO  [org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration] (ServerService Thread Pool -- 84) 
+
+Using generated security password: fc2717ae-6d60-4078-9c22-172daa5ef770
+
+2020-09-01 13:07:33,495 INFO  [org.springframework.security.web.DefaultSecurityFilterChain] (ServerService Thread Pool -- 84) Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@ec500dc, org.springframework.security.web.context.SecurityContextPersistenceFilter@36ca0190, org.springframework.security.web.header.HeaderWriterFilter@1b49a674, org.springframework.security.web.csrf.CsrfFilter@5571cee4, org.springframework.security.web.authentication.logout.LogoutFilter@3d5700d5, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@36cbbb47, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@70401c90, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@134a6d40, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@588aec48, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@370fcbe7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7fe33d1b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2e59bb86, org.springframework.security.web.session.SessionManagementFilter@6b0d7fc4, org.springframework.security.web.access.ExceptionTranslationFilter@606ac54d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@77acd7eb]
+2020-09-01 13:07:33,629 INFO  [org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver] (ServerService Thread Pool -- 84) Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-09-01 13:07:33,850 INFO  [com.grippaweb.springrest.ServletInitializer] (ServerService Thread Pool -- 84) Started ServletInitializer in 10.074 seconds (JVM running for 50.685)
+2020-09-01 13:07:34,008 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (ServerService Thread Pool -- 84) Initializing Mojarra 2.3.9.SP08 for context '/spring-mvc-rest-api-demo'
+2020-09-01 13:07:36,679 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 84) WFLYUT0021: Registered web context: '/spring-mvc-rest-api-demo' for server 'default-server'
+2020-09-01 13:07:37,263 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 45) WFLYSRV0010: Deployed "spring-mvc-rest-api-demo.war" (runtime-name : "spring-mvc-rest-api-demo.war")
+2020-09-01 13:07:37,588 INFO  [org.jboss.as.server] (Controller Boot Thread) WFLYSRV0212: Resuming server
+2020-09-01 13:07:37,611 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0060: Http management interface listening on http://0.0.0.0:9990/management
+2020-09-01 13:07:37,614 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0051: Admin console listening on http://0.0.0.0:9990
+2020-09-01 13:07:37,625 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0025: WildFly Full 19.1.0.Final (WildFly Core 11.1.1.Final) started in 54052ms - Started 543 of 772 services (380 services are lazy, passive or on-demand)
+2020-09-01 13:10:32,572 INFO  [io.undertow.servlet] (default task-1) Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-09-01 13:10:32,576 INFO  [org.springframework.web.servlet.DispatcherServlet] (default task-1) Initializing Servlet 'dispatcherServlet'
+2020-09-01 13:10:32,607 INFO  [org.springframework.web.servlet.DispatcherServlet] (default task-1) Completed initialization in 25 ms
+2020-09-01 13:23:33,312 INFO  [org.jboss.as.repository] (DeploymentScanner-threads - 2) WFLYDR0001: Content added at location /opt/jboss/wildfly/standalone/data/content/4b/256b686826af30dc71e14fa5c63bc84de18337/content
+2020-09-01 13:23:33,535 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-3) WFLYJCA0019: Stopped Driver service with driver-name = spring-mvc-rest-api-demo.war_org.postgresql.Driver_42_2
+2020-09-01 13:23:33,556 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 84) WFLYUT0022: Unregistered web context: '/spring-mvc-rest-api-demo' from server 'default-server'
+2020-09-01 13:23:33,565 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 84) Destroying Spring FrameworkServlet 'dispatcherServlet'
+2020-09-01 13:23:33,577 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 84) Closing Spring root WebApplicationContext
+2020-09-01 13:23:33,595 INFO  [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] (ServerService Thread Pool -- 84) Shutting down ExecutorService 'applicationTaskExecutor'
+2020-09-01 13:23:33,773 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-3) WFLYSRV0028: Stopped deployment spring-mvc-rest-api-demo.war (runtime-name: spring-mvc-rest-api-demo.war) in 251ms
+2020-09-01 13:23:33,783 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0027: Starting deployment of "spring-mvc-rest-api-demo.war" (runtime-name: "spring-mvc-rest-api-demo.war")
+2020-09-01 13:23:39,158 WARN  [org.jboss.as.ee] (MSC service thread 1-3) WFLYEE0007: Not installing optional component org.springframework.http.server.reactive.ServletServerHttpResponse$ResponseAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 13:23:39,174 WARN  [org.jboss.as.ee] (MSC service thread 1-3) WFLYEE0007: Not installing optional component org.springframework.http.server.reactive.ServletHttpHandlerAdapter$HandlerResultAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 13:23:39,194 WARN  [org.jboss.as.ee] (MSC service thread 1-3) WFLYEE0007: Not installing optional component org.springframework.http.server.ServletServerHttpAsyncRequestControl due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 13:23:39,200 WARN  [org.jboss.as.ee] (MSC service thread 1-3) WFLYEE0007: Not installing optional component org.springframework.web.context.request.async.StandardServletAsyncWebRequest due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 13:23:39,224 WARN  [org.jboss.as.ee] (MSC service thread 1-3) WFLYEE0007: Not installing optional component org.springframework.http.server.reactive.ServletServerHttpRequest$RequestAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 13:23:39,232 WARN  [org.jboss.as.ee] (MSC service thread 1-3) WFLYEE0007: Not installing optional component io.micrometer.core.instrument.binder.jetty.OnCompletionAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 13:23:39,305 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-3) WFLYJCA0005: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 42.2)
+2020-09-01 13:23:39,364 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-4) WFLYJCA0018: Started Driver service with driver-name = spring-mvc-rest-api-demo.war_org.postgresql.Driver_42_2
+2020-09-01 13:23:39,429 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 96) 2 Spring WebApplicationInitializers detected on classpath
+2020-09-01 13:23:40,976 INFO  [stdout] (ServerService Thread Pool -- 96) 
+2020-09-01 13:23:40,978 INFO  [stdout] (ServerService Thread Pool -- 96)   .   ____          _            __ _ _
+2020-09-01 13:23:40,989 INFO  [stdout] (ServerService Thread Pool -- 96)  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+2020-09-01 13:23:40,991 INFO  [stdout] (ServerService Thread Pool -- 96) ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+2020-09-01 13:23:40,994 INFO  [stdout] (ServerService Thread Pool -- 96)  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+2020-09-01 13:23:41,000 INFO  [stdout] (ServerService Thread Pool -- 96)   '  |____| .__|_| |_|_| |_\__, | / / / /
+2020-09-01 13:23:41,004 INFO  [stdout] (ServerService Thread Pool -- 96)  =========|_|==============|___/=/_/_/_/
+2020-09-01 13:23:41,016 INFO  [stdout] (ServerService Thread Pool -- 96)  :: Spring Boot ::        (v2.3.3.RELEASE)
+2020-09-01 13:23:41,020 INFO  [stdout] (ServerService Thread Pool -- 96) 
+2020-09-01 13:23:41,257 INFO  [com.grippaweb.springrest.ServletInitializer] (ServerService Thread Pool -- 96) Starting ServletInitializer on a833f1570765 with PID 118 (started by root in /opt/jboss)
+2020-09-01 13:23:41,268 INFO  [com.grippaweb.springrest.ServletInitializer] (ServerService Thread Pool -- 96) No active profile set, falling back to default profiles: default
+2020-09-01 13:23:41,391 INFO  [org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor] (ServerService Thread Pool -- 96) For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-09-01 13:23:44,292 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 96) Initializing Spring embedded WebApplicationContext
+2020-09-01 13:23:44,295 INFO  [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] (ServerService Thread Pool -- 96) Root WebApplicationContext: initialization completed in 2899 ms
+2020-09-01 13:23:46,284 INFO  [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] (ServerService Thread Pool -- 96) Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-01 13:23:47,025 INFO  [org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver] (ServerService Thread Pool -- 96) Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-09-01 13:23:47,245 INFO  [com.grippaweb.springrest.ServletInitializer] (ServerService Thread Pool -- 96) Started ServletInitializer in 7.651 seconds (JVM running for 1024.08)
+2020-09-01 13:23:47,269 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (ServerService Thread Pool -- 96) Initializing Mojarra 2.3.9.SP08 for context '/spring-mvc-rest-api-demo'
+2020-09-01 13:23:48,245 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 96) WFLYUT0021: Registered web context: '/spring-mvc-rest-api-demo' for server 'default-server'
+2020-09-01 13:23:48,617 INFO  [org.jboss.as.server] (DeploymentScanner-threads - 2) WFLYSRV0016: Replaced deployment "spring-mvc-rest-api-demo.war" with deployment "spring-mvc-rest-api-demo.war"
+2020-09-01 13:23:48,626 INFO  [org.jboss.as.repository] (DeploymentScanner-threads - 2) WFLYDR0002: Content removed from location /opt/jboss/wildfly/standalone/data/content/89/48e4b7bd99b9fb6cbf0d19d264766d8e32457e/content
+2020-09-01 13:23:58,634 INFO  [io.undertow.servlet] (default task-2) Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-09-01 13:23:58,644 INFO  [org.springframework.web.servlet.DispatcherServlet] (default task-2) Initializing Servlet 'dispatcherServlet'
+2020-09-01 13:23:58,673 INFO  [org.springframework.web.servlet.DispatcherServlet] (default task-2) Completed initialization in 28 ms
+2020-09-01 14:05:17,111 INFO  [org.jboss.as.repository] (DeploymentScanner-threads - 1) WFLYDR0001: Content added at location /opt/jboss/wildfly/standalone/data/content/e6/bc010197a13438d23b62f49079f89d82846c97/content
+2020-09-01 14:05:17,208 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 96) WFLYUT0022: Unregistered web context: '/spring-mvc-rest-api-demo' from server 'default-server'
+2020-09-01 14:05:17,207 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-1) WFLYJCA0019: Stopped Driver service with driver-name = spring-mvc-rest-api-demo.war_org.postgresql.Driver_42_2
+2020-09-01 14:05:17,223 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 96) Destroying Spring FrameworkServlet 'dispatcherServlet'
+2020-09-01 14:05:17,230 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 96) Closing Spring root WebApplicationContext
+2020-09-01 14:05:17,331 INFO  [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] (ServerService Thread Pool -- 96) Shutting down ExecutorService 'applicationTaskExecutor'
+2020-09-01 14:05:17,444 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-4) WFLYSRV0028: Stopped deployment spring-mvc-rest-api-demo.war (runtime-name: spring-mvc-rest-api-demo.war) in 240ms
+2020-09-01 14:05:17,449 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-4) WFLYSRV0027: Starting deployment of "spring-mvc-rest-api-demo.war" (runtime-name: "spring-mvc-rest-api-demo.war")
+2020-09-01 14:05:23,162 WARN  [org.jboss.as.ee] (MSC service thread 1-4) WFLYEE0007: Not installing optional component org.springframework.http.server.reactive.ServletServerHttpRequest$RequestAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 14:05:23,164 WARN  [org.jboss.as.ee] (MSC service thread 1-4) WFLYEE0007: Not installing optional component io.micrometer.core.instrument.binder.jetty.OnCompletionAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 14:05:23,173 WARN  [org.jboss.as.ee] (MSC service thread 1-4) WFLYEE0007: Not installing optional component org.springframework.http.server.ServletServerHttpAsyncRequestControl due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 14:05:23,174 WARN  [org.jboss.as.ee] (MSC service thread 1-4) WFLYEE0007: Not installing optional component org.springframework.web.context.request.async.StandardServletAsyncWebRequest due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 14:05:23,218 WARN  [org.jboss.as.ee] (MSC service thread 1-4) WFLYEE0007: Not installing optional component org.springframework.http.server.reactive.ServletServerHttpResponse$ResponseAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 14:05:23,222 WARN  [org.jboss.as.ee] (MSC service thread 1-4) WFLYEE0007: Not installing optional component org.springframework.http.server.reactive.ServletHttpHandlerAdapter$HandlerResultAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 14:05:23,299 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-4) WFLYJCA0005: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 42.2)
+2020-09-01 14:05:23,368 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-3) WFLYJCA0018: Started Driver service with driver-name = spring-mvc-rest-api-demo.war_org.postgresql.Driver_42_2
+2020-09-01 14:05:23,416 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 105) 2 Spring WebApplicationInitializers detected on classpath
+2020-09-01 14:05:24,575 INFO  [stdout] (ServerService Thread Pool -- 105) 
+2020-09-01 14:05:24,577 INFO  [stdout] (ServerService Thread Pool -- 105)   .   ____          _            __ _ _
+2020-09-01 14:05:24,579 INFO  [stdout] (ServerService Thread Pool -- 105)  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+2020-09-01 14:05:24,585 INFO  [stdout] (ServerService Thread Pool -- 105) ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+2020-09-01 14:05:24,591 INFO  [stdout] (ServerService Thread Pool -- 105)  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+2020-09-01 14:05:24,593 INFO  [stdout] (ServerService Thread Pool -- 105)   '  |____| .__|_| |_|_| |_\__, | / / / /
+2020-09-01 14:05:24,596 INFO  [stdout] (ServerService Thread Pool -- 105)  =========|_|==============|___/=/_/_/_/
+2020-09-01 14:05:24,605 INFO  [stdout] (ServerService Thread Pool -- 105)  :: Spring Boot ::        (v2.3.3.RELEASE)
+2020-09-01 14:05:24,608 INFO  [stdout] (ServerService Thread Pool -- 105) 
+2020-09-01 14:05:24,772 INFO  [com.grippaweb.springrest.ServletInitializer] (ServerService Thread Pool -- 105) Starting ServletInitializer on a833f1570765 with PID 118 (started by root in /opt/jboss)
+2020-09-01 14:05:24,780 INFO  [com.grippaweb.springrest.ServletInitializer] (ServerService Thread Pool -- 105) No active profile set, falling back to default profiles: default
+2020-09-01 14:05:24,882 INFO  [org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor] (ServerService Thread Pool -- 105) For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-09-01 14:05:27,613 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 105) Initializing Spring embedded WebApplicationContext
+2020-09-01 14:05:27,620 INFO  [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] (ServerService Thread Pool -- 105) Root WebApplicationContext: initialization completed in 2737 ms
+2020-09-01 14:05:29,664 INFO  [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] (ServerService Thread Pool -- 105) Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-01 14:05:30,685 INFO  [org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver] (ServerService Thread Pool -- 105) Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-09-01 14:05:30,790 INFO  [com.grippaweb.springrest.ServletInitializer] (ServerService Thread Pool -- 105) Started ServletInitializer in 7.153 seconds (JVM running for 3527.625)
+2020-09-01 14:05:30,806 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (ServerService Thread Pool -- 105) Initializing Mojarra 2.3.9.SP08 for context '/spring-mvc-rest-api-demo'
+2020-09-01 14:05:32,188 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 105) WFLYUT0021: Registered web context: '/spring-mvc-rest-api-demo' for server 'default-server'
+2020-09-01 14:05:32,282 INFO  [org.jboss.as.server] (DeploymentScanner-threads - 1) WFLYSRV0016: Replaced deployment "spring-mvc-rest-api-demo.war" with deployment "spring-mvc-rest-api-demo.war"
+2020-09-01 14:05:32,304 INFO  [org.jboss.as.repository] (DeploymentScanner-threads - 1) WFLYDR0002: Content removed from location /opt/jboss/wildfly/standalone/data/content/4b/256b686826af30dc71e14fa5c63bc84de18337/content
+2020-09-01 14:05:51,017 INFO  [io.undertow.servlet] (default task-1) Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-09-01 14:05:51,019 INFO  [org.springframework.web.servlet.DispatcherServlet] (default task-1) Initializing Servlet 'dispatcherServlet'
+2020-09-01 14:05:51,037 INFO  [org.springframework.web.servlet.DispatcherServlet] (default task-1) Completed initialization in 16 ms
+2020-09-01 14:30:07,795 INFO  [org.jboss.as.repository] (DeploymentScanner-threads - 1) WFLYDR0001: Content added at location /opt/jboss/wildfly/standalone/data/content/26/fa3b94795ec70a4dfedd620c20dfa1ca194368/content
+2020-09-01 14:30:07,882 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-4) WFLYJCA0019: Stopped Driver service with driver-name = spring-mvc-rest-api-demo.war_org.postgresql.Driver_42_2
+2020-09-01 14:30:07,883 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 105) WFLYUT0022: Unregistered web context: '/spring-mvc-rest-api-demo' from server 'default-server'
+2020-09-01 14:30:07,889 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 105) Destroying Spring FrameworkServlet 'dispatcherServlet'
+2020-09-01 14:30:07,891 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 105) Closing Spring root WebApplicationContext
+2020-09-01 14:30:08,093 INFO  [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] (ServerService Thread Pool -- 105) Shutting down ExecutorService 'applicationTaskExecutor'
+2020-09-01 14:30:08,255 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-4) WFLYSRV0028: Stopped deployment spring-mvc-rest-api-demo.war (runtime-name: spring-mvc-rest-api-demo.war) in 376ms
+2020-09-01 14:30:08,261 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0027: Starting deployment of "spring-mvc-rest-api-demo.war" (runtime-name: "spring-mvc-rest-api-demo.war")
+2020-09-01 14:30:12,086 WARN  [org.jboss.as.ee] (MSC service thread 1-1) WFLYEE0007: Not installing optional component org.springframework.http.server.reactive.ServletServerHttpRequest$RequestAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 14:30:12,092 WARN  [org.jboss.as.ee] (MSC service thread 1-1) WFLYEE0007: Not installing optional component io.micrometer.core.instrument.binder.jetty.OnCompletionAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 14:30:12,100 WARN  [org.jboss.as.ee] (MSC service thread 1-1) WFLYEE0007: Not installing optional component org.springframework.http.server.ServletServerHttpAsyncRequestControl due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 14:30:12,102 WARN  [org.jboss.as.ee] (MSC service thread 1-1) WFLYEE0007: Not installing optional component org.springframework.web.context.request.async.StandardServletAsyncWebRequest due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 14:30:12,167 WARN  [org.jboss.as.ee] (MSC service thread 1-1) WFLYEE0007: Not installing optional component org.springframework.http.server.reactive.ServletServerHttpResponse$ResponseAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 14:30:12,173 WARN  [org.jboss.as.ee] (MSC service thread 1-1) WFLYEE0007: Not installing optional component org.springframework.http.server.reactive.ServletHttpHandlerAdapter$HandlerResultAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 14:30:12,460 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-1) WFLYJCA0005: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 42.2)
+2020-09-01 14:30:12,496 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-2) WFLYJCA0018: Started Driver service with driver-name = spring-mvc-rest-api-demo.war_org.postgresql.Driver_42_2
+2020-09-01 14:30:12,550 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 124) 2 Spring WebApplicationInitializers detected on classpath
+2020-09-01 14:30:13,723 INFO  [stdout] (ServerService Thread Pool -- 124) 
+2020-09-01 14:30:13,734 INFO  [stdout] (ServerService Thread Pool -- 124)   .   ____          _            __ _ _
+2020-09-01 14:30:13,737 INFO  [stdout] (ServerService Thread Pool -- 124)  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+2020-09-01 14:30:13,738 INFO  [stdout] (ServerService Thread Pool -- 124) ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+2020-09-01 14:30:13,740 INFO  [stdout] (ServerService Thread Pool -- 124)  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+2020-09-01 14:30:13,745 INFO  [stdout] (ServerService Thread Pool -- 124)   '  |____| .__|_| |_|_| |_\__, | / / / /
+2020-09-01 14:30:13,746 INFO  [stdout] (ServerService Thread Pool -- 124)  =========|_|==============|___/=/_/_/_/
+2020-09-01 14:30:13,748 INFO  [stdout] (ServerService Thread Pool -- 124)  :: Spring Boot ::        (v2.3.3.RELEASE)
+2020-09-01 14:30:13,749 INFO  [stdout] (ServerService Thread Pool -- 124) 
+2020-09-01 14:30:14,035 INFO  [ServletInitializer] (ServerService Thread Pool -- 124) Starting ServletInitializer on a833f1570765 with PID 118 (started by root in /opt/jboss)
+2020-09-01 14:30:14,044 INFO  [ServletInitializer] (ServerService Thread Pool -- 124) No active profile set, falling back to default profiles: default
+2020-09-01 14:30:14,123 INFO  [org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor] (ServerService Thread Pool -- 124) For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-09-01 14:30:14,378 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 124) Initializing Spring embedded WebApplicationContext
+2020-09-01 14:30:14,379 INFO  [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] (ServerService Thread Pool -- 124) Root WebApplicationContext: initialization completed in 242 ms
+2020-09-01 14:30:14,464 INFO  [ServletInitializer] (ServerService Thread Pool -- 124) Started ServletInitializer in 1.776 seconds (JVM running for 5011.299)
+2020-09-01 14:30:14,479 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (ServerService Thread Pool -- 124) Initializing Mojarra 2.3.9.SP08 for context '/spring-mvc-rest-api-demo'
+2020-09-01 14:30:15,381 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 124) WFLYUT0021: Registered web context: '/spring-mvc-rest-api-demo' for server 'default-server'
+2020-09-01 14:30:15,438 INFO  [org.jboss.as.server] (DeploymentScanner-threads - 1) WFLYSRV0016: Replaced deployment "spring-mvc-rest-api-demo.war" with deployment "spring-mvc-rest-api-demo.war"
+2020-09-01 14:30:15,461 INFO  [org.jboss.as.repository] (DeploymentScanner-threads - 1) WFLYDR0002: Content removed from location /opt/jboss/wildfly/standalone/data/content/e6/bc010197a13438d23b62f49079f89d82846c97/content
+2020-09-01 14:47:05,830 INFO  [org.jboss.as.repository] (DeploymentScanner-threads - 2) WFLYDR0001: Content added at location /opt/jboss/wildfly/standalone/data/content/bb/897d571bde64cd5990ee86f01986da3669b532/content
+2020-09-01 14:47:05,850 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-2) WFLYJCA0019: Stopped Driver service with driver-name = spring-mvc-rest-api-demo.war_org.postgresql.Driver_42_2
+2020-09-01 14:47:06,388 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 125) WFLYUT0022: Unregistered web context: '/spring-mvc-rest-api-demo' from server 'default-server'
+2020-09-01 14:47:06,393 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 125) Closing Spring root WebApplicationContext
+2020-09-01 14:47:06,632 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-3) WFLYSRV0028: Stopped deployment spring-mvc-rest-api-demo.war (runtime-name: spring-mvc-rest-api-demo.war) in 786ms
+2020-09-01 14:47:06,647 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0027: Starting deployment of "spring-mvc-rest-api-demo.war" (runtime-name: "spring-mvc-rest-api-demo.war")
+2020-09-01 14:47:14,503 WARN  [org.jboss.as.ee] (MSC service thread 1-1) WFLYEE0007: Not installing optional component org.springframework.http.server.reactive.ServletServerHttpRequest$RequestAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 14:47:14,505 WARN  [org.jboss.as.ee] (MSC service thread 1-1) WFLYEE0007: Not installing optional component io.micrometer.core.instrument.binder.jetty.OnCompletionAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 14:47:14,516 WARN  [org.jboss.as.ee] (MSC service thread 1-1) WFLYEE0007: Not installing optional component org.springframework.http.server.ServletServerHttpAsyncRequestControl due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 14:47:14,525 WARN  [org.jboss.as.ee] (MSC service thread 1-1) WFLYEE0007: Not installing optional component org.springframework.web.context.request.async.StandardServletAsyncWebRequest due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 14:47:14,610 WARN  [org.jboss.as.ee] (MSC service thread 1-1) WFLYEE0007: Not installing optional component org.springframework.http.server.reactive.ServletServerHttpResponse$ResponseAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 14:47:14,625 WARN  [org.jboss.as.ee] (MSC service thread 1-1) WFLYEE0007: Not installing optional component org.springframework.http.server.reactive.ServletHttpHandlerAdapter$HandlerResultAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 14:47:15,338 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-1) WFLYJCA0005: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 42.2)
+2020-09-01 14:47:15,454 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-1) WFLYJCA0018: Started Driver service with driver-name = spring-mvc-rest-api-demo.war_org.postgresql.Driver_42_2
+2020-09-01 14:47:15,534 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 131) 2 Spring WebApplicationInitializers detected on classpath
+2020-09-01 14:47:17,905 INFO  [stdout] (ServerService Thread Pool -- 131) 
+2020-09-01 14:47:17,923 INFO  [stdout] (ServerService Thread Pool -- 131)   .   ____          _            __ _ _
+2020-09-01 14:47:17,943 INFO  [stdout] (ServerService Thread Pool -- 131)  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+2020-09-01 14:47:17,946 INFO  [stdout] (ServerService Thread Pool -- 131) ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+2020-09-01 14:47:17,965 INFO  [stdout] (ServerService Thread Pool -- 131)  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+2020-09-01 14:47:18,010 INFO  [stdout] (ServerService Thread Pool -- 131)   '  |____| .__|_| |_|_| |_\__, | / / / /
+2020-09-01 14:47:18,045 INFO  [stdout] (ServerService Thread Pool -- 131)  =========|_|==============|___/=/_/_/_/
+2020-09-01 14:47:18,079 INFO  [stdout] (ServerService Thread Pool -- 131)  :: Spring Boot ::        (v2.3.3.RELEASE)
+2020-09-01 14:47:18,098 INFO  [stdout] (ServerService Thread Pool -- 131) 
+2020-09-01 14:47:18,498 INFO  [com.grippaweb.ServletApplication] (ServerService Thread Pool -- 131) Starting ServletApplication on a833f1570765 with PID 118 (started by root in /opt/jboss)
+2020-09-01 14:47:18,517 INFO  [com.grippaweb.ServletApplication] (ServerService Thread Pool -- 131) No active profile set, falling back to default profiles: default
+2020-09-01 14:47:19,841 INFO  [org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor] (ServerService Thread Pool -- 131) For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-09-01 14:47:34,264 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 131) Initializing Spring embedded WebApplicationContext
+2020-09-01 14:47:34,278 INFO  [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] (ServerService Thread Pool -- 131) Root WebApplicationContext: initialization completed in 14404 ms
+2020-09-01 14:47:40,268 WARN  [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext] (ServerService Thread Pool -- 131) Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'LogHelper' defined in VFS resource ["/content/spring-mvc-rest-api-demo.war/WEB-INF/classes/com/grippaweb/helpers/LogHelper.class"]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.grippaweb.helpers.LogHelper]: Constructor threw exception; nested exception is java.lang.ClassCastException: class org.slf4j.impl.Slf4jLogger cannot be cast to class ch.qos.logback.classic.Logger (org.slf4j.impl.Slf4jLogger is in unnamed module of loader 'org.slf4j.impl@1.0.4.GA' @2ba787eb; ch.qos.logback.classic.Logger is in unnamed module of loader 'deployment.spring-mvc-rest-api-demo.war' @185e0164)
+2020-09-01 14:47:40,370 INFO  [org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener] (ServerService Thread Pool -- 131) 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-09-01 14:47:40,389 ERROR [org.springframework.boot.SpringApplication] (ServerService Thread Pool -- 131) Application run failed: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'LogHelper' defined in VFS resource ["/content/spring-mvc-rest-api-demo.war/WEB-INF/classes/com/grippaweb/helpers/LogHelper.class"]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.grippaweb.helpers.LogHelper]: Constructor threw exception; nested exception is java.lang.ClassCastException: class org.slf4j.impl.Slf4jLogger cannot be cast to class ch.qos.logback.classic.Logger (org.slf4j.impl.Slf4jLogger is in unnamed module of loader 'org.slf4j.impl@1.0.4.GA' @2ba787eb; ch.qos.logback.classic.Logger is in unnamed module of loader 'deployment.spring-mvc-rest-api-demo.war' @185e0164)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1318)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1213)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:556)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:516)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:324)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:897)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:879)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.boot.web.servlet.support.SpringBootServletInitializer.run(SpringBootServletInitializer.java:173)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.boot.web.servlet.support.SpringBootServletInitializer.createRootApplicationContext(SpringBootServletInitializer.java:153)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.boot.web.servlet.support.SpringBootServletInitializer.onStartup(SpringBootServletInitializer.java:95)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.web.SpringServletContainerInitializer.onStartup(SpringServletContainerInitializer.java:172)
+	at io.undertow.servlet@2.1.0.Final//io.undertow.servlet.core.DeploymentManagerImpl$1.call(DeploymentManagerImpl.java:204)
+	at io.undertow.servlet@2.1.0.Final//io.undertow.servlet.core.DeploymentManagerImpl$1.call(DeploymentManagerImpl.java:186)
+	at io.undertow.servlet@2.1.0.Final//io.undertow.servlet.core.ServletRequestContextThreadSetupAction$1.call(ServletRequestContextThreadSetupAction.java:42)
+	at io.undertow.servlet@2.1.0.Final//io.undertow.servlet.core.ContextClassLoaderSetupAction$1.call(ContextClassLoaderSetupAction.java:43)
+	at org.wildfly.extension.undertow@19.1.0.Final//org.wildfly.extension.undertow.security.SecurityContextThreadSetupAction.lambda$create$0(SecurityContextThreadSetupAction.java:105)
+	at org.wildfly.extension.undertow@19.1.0.Final//org.wildfly.extension.undertow.deployment.UndertowDeploymentInfoService$UndertowThreadSetupAction.lambda$create$0(UndertowDeploymentInfoService.java:1541)
+	at org.wildfly.extension.undertow@19.1.0.Final//org.wildfly.extension.undertow.deployment.UndertowDeploymentInfoService$UndertowThreadSetupAction.lambda$create$0(UndertowDeploymentInfoService.java:1541)
+	at org.wildfly.extension.undertow@19.1.0.Final//org.wildfly.extension.undertow.deployment.UndertowDeploymentInfoService$UndertowThreadSetupAction.lambda$create$0(UndertowDeploymentInfoService.java:1541)
+	at org.wildfly.extension.undertow@19.1.0.Final//org.wildfly.extension.undertow.deployment.UndertowDeploymentInfoService$UndertowThreadSetupAction.lambda$create$0(UndertowDeploymentInfoService.java:1541)
+	at io.undertow.servlet@2.1.0.Final//io.undertow.servlet.core.DeploymentManagerImpl.deploy(DeploymentManagerImpl.java:252)
+	at org.wildfly.extension.undertow@19.1.0.Final//org.wildfly.extension.undertow.deployment.UndertowDeploymentService.startContext(UndertowDeploymentService.java:96)
+	at org.wildfly.extension.undertow@19.1.0.Final//org.wildfly.extension.undertow.deployment.UndertowDeploymentService$1.run(UndertowDeploymentService.java:78)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.jboss.threads@2.3.3.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.3.3.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1982)
+	at org.jboss.threads@2.3.3.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.3.3.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1377)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+	at org.jboss.threads@2.3.3.Final//org.jboss.threads.JBossThread.run(JBossThread.java:485)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.grippaweb.helpers.LogHelper]: Constructor threw exception; nested exception is java.lang.ClassCastException: class org.slf4j.impl.Slf4jLogger cannot be cast to class ch.qos.logback.classic.Logger (org.slf4j.impl.Slf4jLogger is in unnamed module of loader 'org.slf4j.impl@1.0.4.GA' @2ba787eb; ch.qos.logback.classic.Logger is in unnamed module of loader 'deployment.spring-mvc-rest-api-demo.war' @185e0164)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:217)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:87)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1310)
+	... 39 more
+Caused by: java.lang.ClassCastException: class org.slf4j.impl.Slf4jLogger cannot be cast to class ch.qos.logback.classic.Logger (org.slf4j.impl.Slf4jLogger is in unnamed module of loader 'org.slf4j.impl@1.0.4.GA' @2ba787eb; ch.qos.logback.classic.Logger is in unnamed module of loader 'deployment.spring-mvc-rest-api-demo.war' @185e0164)
+	at deployment.spring-mvc-rest-api-demo.war//com.grippaweb.helpers.LogHelper.<init>(LogHelper.java:20)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:204)
+	... 41 more
+
+2020-09-01 14:47:40,425 ERROR [org.jboss.msc.service.fail] (ServerService Thread Pool -- 131) MSC000001: Failed to start service jboss.deployment.unit."spring-mvc-rest-api-demo.war".undertow-deployment: org.jboss.msc.service.StartException in service jboss.deployment.unit."spring-mvc-rest-api-demo.war".undertow-deployment: java.lang.RuntimeException: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'LogHelper' defined in VFS resource ["/content/spring-mvc-rest-api-demo.war/WEB-INF/classes/com/grippaweb/helpers/LogHelper.class"]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.grippaweb.helpers.LogHelper]: Constructor threw exception; nested exception is java.lang.ClassCastException: class org.slf4j.impl.Slf4jLogger cannot be cast to class ch.qos.logback.classic.Logger (org.slf4j.impl.Slf4jLogger is in unnamed module of loader 'org.slf4j.impl@1.0.4.GA' @2ba787eb; ch.qos.logback.classic.Logger is in unnamed module of loader 'deployment.spring-mvc-rest-api-demo.war' @185e0164)
+	at org.wildfly.extension.undertow@19.1.0.Final//org.wildfly.extension.undertow.deployment.UndertowDeploymentService$1.run(UndertowDeploymentService.java:81)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.jboss.threads@2.3.3.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.3.3.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1982)
+	at org.jboss.threads@2.3.3.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.3.3.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1377)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+	at org.jboss.threads@2.3.3.Final//org.jboss.threads.JBossThread.run(JBossThread.java:485)
+Caused by: java.lang.RuntimeException: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'LogHelper' defined in VFS resource ["/content/spring-mvc-rest-api-demo.war/WEB-INF/classes/com/grippaweb/helpers/LogHelper.class"]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.grippaweb.helpers.LogHelper]: Constructor threw exception; nested exception is java.lang.ClassCastException: class org.slf4j.impl.Slf4jLogger cannot be cast to class ch.qos.logback.classic.Logger (org.slf4j.impl.Slf4jLogger is in unnamed module of loader 'org.slf4j.impl@1.0.4.GA' @2ba787eb; ch.qos.logback.classic.Logger is in unnamed module of loader 'deployment.spring-mvc-rest-api-demo.war' @185e0164)
+	at io.undertow.servlet@2.1.0.Final//io.undertow.servlet.core.DeploymentManagerImpl.deploy(DeploymentManagerImpl.java:254)
+	at org.wildfly.extension.undertow@19.1.0.Final//org.wildfly.extension.undertow.deployment.UndertowDeploymentService.startContext(UndertowDeploymentService.java:96)
+	at org.wildfly.extension.undertow@19.1.0.Final//org.wildfly.extension.undertow.deployment.UndertowDeploymentService$1.run(UndertowDeploymentService.java:78)
+	... 8 more
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'LogHelper' defined in VFS resource ["/content/spring-mvc-rest-api-demo.war/WEB-INF/classes/com/grippaweb/helpers/LogHelper.class"]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.grippaweb.helpers.LogHelper]: Constructor threw exception; nested exception is java.lang.ClassCastException: class org.slf4j.impl.Slf4jLogger cannot be cast to class ch.qos.logback.classic.Logger (org.slf4j.impl.Slf4jLogger is in unnamed module of loader 'org.slf4j.impl@1.0.4.GA' @2ba787eb; ch.qos.logback.classic.Logger is in unnamed module of loader 'deployment.spring-mvc-rest-api-demo.war' @185e0164)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1318)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1213)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:556)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:516)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:324)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:897)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:879)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.boot.web.servlet.support.SpringBootServletInitializer.run(SpringBootServletInitializer.java:173)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.boot.web.servlet.support.SpringBootServletInitializer.createRootApplicationContext(SpringBootServletInitializer.java:153)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.boot.web.servlet.support.SpringBootServletInitializer.onStartup(SpringBootServletInitializer.java:95)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.web.SpringServletContainerInitializer.onStartup(SpringServletContainerInitializer.java:172)
+	at io.undertow.servlet@2.1.0.Final//io.undertow.servlet.core.DeploymentManagerImpl$1.call(DeploymentManagerImpl.java:204)
+	at io.undertow.servlet@2.1.0.Final//io.undertow.servlet.core.DeploymentManagerImpl$1.call(DeploymentManagerImpl.java:186)
+	at io.undertow.servlet@2.1.0.Final//io.undertow.servlet.core.ServletRequestContextThreadSetupAction$1.call(ServletRequestContextThreadSetupAction.java:42)
+	at io.undertow.servlet@2.1.0.Final//io.undertow.servlet.core.ContextClassLoaderSetupAction$1.call(ContextClassLoaderSetupAction.java:43)
+	at org.wildfly.extension.undertow@19.1.0.Final//org.wildfly.extension.undertow.security.SecurityContextThreadSetupAction.lambda$create$0(SecurityContextThreadSetupAction.java:105)
+	at org.wildfly.extension.undertow@19.1.0.Final//org.wildfly.extension.undertow.deployment.UndertowDeploymentInfoService$UndertowThreadSetupAction.lambda$create$0(UndertowDeploymentInfoService.java:1541)
+	at org.wildfly.extension.undertow@19.1.0.Final//org.wildfly.extension.undertow.deployment.UndertowDeploymentInfoService$UndertowThreadSetupAction.lambda$create$0(UndertowDeploymentInfoService.java:1541)
+	at org.wildfly.extension.undertow@19.1.0.Final//org.wildfly.extension.undertow.deployment.UndertowDeploymentInfoService$UndertowThreadSetupAction.lambda$create$0(UndertowDeploymentInfoService.java:1541)
+	at org.wildfly.extension.undertow@19.1.0.Final//org.wildfly.extension.undertow.deployment.UndertowDeploymentInfoService$UndertowThreadSetupAction.lambda$create$0(UndertowDeploymentInfoService.java:1541)
+	at io.undertow.servlet@2.1.0.Final//io.undertow.servlet.core.DeploymentManagerImpl.deploy(DeploymentManagerImpl.java:252)
+	... 10 more
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.grippaweb.helpers.LogHelper]: Constructor threw exception; nested exception is java.lang.ClassCastException: class org.slf4j.impl.Slf4jLogger cannot be cast to class ch.qos.logback.classic.Logger (org.slf4j.impl.Slf4jLogger is in unnamed module of loader 'org.slf4j.impl@1.0.4.GA' @2ba787eb; ch.qos.logback.classic.Logger is in unnamed module of loader 'deployment.spring-mvc-rest-api-demo.war' @185e0164)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:217)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:87)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1310)
+	... 39 more
+Caused by: java.lang.ClassCastException: class org.slf4j.impl.Slf4jLogger cannot be cast to class ch.qos.logback.classic.Logger (org.slf4j.impl.Slf4jLogger is in unnamed module of loader 'org.slf4j.impl@1.0.4.GA' @2ba787eb; ch.qos.logback.classic.Logger is in unnamed module of loader 'deployment.spring-mvc-rest-api-demo.war' @185e0164)
+	at deployment.spring-mvc-rest-api-demo.war//com.grippaweb.helpers.LogHelper.<init>(LogHelper.java:20)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:204)
+	... 41 more
+
+2020-09-01 14:47:40,538 ERROR [org.jboss.as.controller.management-operation] (DeploymentScanner-threads - 2) WFLYCTL0013: Operation ("full-replace-deployment") failed - address: ([]) - failure description: {"WFLYCTL0080: Failed services" => {"jboss.deployment.unit.\"spring-mvc-rest-api-demo.war\".undertow-deployment" => "java.lang.RuntimeException: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'LogHelper' defined in VFS resource [\"/content/spring-mvc-rest-api-demo.war/WEB-INF/classes/com/grippaweb/helpers/LogHelper.class\"]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.grippaweb.helpers.LogHelper]: Constructor threw exception; nested exception is java.lang.ClassCastException: class org.slf4j.impl.Slf4jLogger cannot be cast to class ch.qos.logback.classic.Logger (org.slf4j.impl.Slf4jLogger is in unnamed module of loader 'org.slf4j.impl@1.0.4.GA' @2ba787eb; ch.qos.logback.classic.Logger is in unnamed module of loader 'deployment.spring-mvc-rest-api-demo.war' @185e0164)
+    Caused by: java.lang.RuntimeException: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'LogHelper' defined in VFS resource [\"/content/spring-mvc-rest-api-demo.war/WEB-INF/classes/com/grippaweb/helpers/LogHelper.class\"]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.grippaweb.helpers.LogHelper]: Constructor threw exception; nested exception is java.lang.ClassCastException: class org.slf4j.impl.Slf4jLogger cannot be cast to class ch.qos.logback.classic.Logger (org.slf4j.impl.Slf4jLogger is in unnamed module of loader 'org.slf4j.impl@1.0.4.GA' @2ba787eb; ch.qos.logback.classic.Logger is in unnamed module of loader 'deployment.spring-mvc-rest-api-demo.war' @185e0164)
+    Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'LogHelper' defined in VFS resource [\"/content/spring-mvc-rest-api-demo.war/WEB-INF/classes/com/grippaweb/helpers/LogHelper.class\"]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.grippaweb.helpers.LogHelper]: Constructor threw exception; nested exception is java.lang.ClassCastException: class org.slf4j.impl.Slf4jLogger cannot be cast to class ch.qos.logback.classic.Logger (org.slf4j.impl.Slf4jLogger is in unnamed module of loader 'org.slf4j.impl@1.0.4.GA' @2ba787eb; ch.qos.logback.classic.Logger is in unnamed module of loader 'deployment.spring-mvc-rest-api-demo.war' @185e0164)
+    Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.grippaweb.helpers.LogHelper]: Constructor threw exception; nested exception is java.lang.ClassCastException: class org.slf4j.impl.Slf4jLogger cannot be cast to class ch.qos.logback.classic.Logger (org.slf4j.impl.Slf4jLogger is in unnamed module of loader 'org.slf4j.impl@1.0.4.GA' @2ba787eb; ch.qos.logback.classic.Logger is in unnamed module of loader 'deployment.spring-mvc-rest-api-demo.war' @185e0164)
+    Caused by: java.lang.ClassCastException: class org.slf4j.impl.Slf4jLogger cannot be cast to class ch.qos.logback.classic.Logger (org.slf4j.impl.Slf4jLogger is in unnamed module of loader 'org.slf4j.impl@1.0.4.GA' @2ba787eb; ch.qos.logback.classic.Logger is in unnamed module of loader 'deployment.spring-mvc-rest-api-demo.war' @185e0164)"}}
+2020-09-01 14:47:40,810 INFO  [org.jboss.as.server] (DeploymentScanner-threads - 2) WFLYSRV0016: Replaced deployment "spring-mvc-rest-api-demo.war" with deployment "spring-mvc-rest-api-demo.war"
+2020-09-01 14:47:40,845 INFO  [org.jboss.as.controller] (DeploymentScanner-threads - 2) WFLYCTL0183: Service status report
+WFLYCTL0186:   Services which failed to start:      service jboss.deployment.unit."spring-mvc-rest-api-demo.war".undertow-deployment: java.lang.RuntimeException: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'LogHelper' defined in VFS resource ["/content/spring-mvc-rest-api-demo.war/WEB-INF/classes/com/grippaweb/helpers/LogHelper.class"]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.grippaweb.helpers.LogHelper]: Constructor threw exception; nested exception is java.lang.ClassCastException: class org.slf4j.impl.Slf4jLogger cannot be cast to class ch.qos.logback.classic.Logger (org.slf4j.impl.Slf4jLogger is in unnamed module of loader 'org.slf4j.impl@1.0.4.GA' @2ba787eb; ch.qos.logback.classic.Logger is in unnamed module of loader 'deployment.spring-mvc-rest-api-demo.war' @185e0164)
+WFLYCTL0448: 1 additional services are down due to their dependencies being missing or failed
+2020-09-01 14:47:40,909 INFO  [org.jboss.as.repository] (DeploymentScanner-threads - 2) WFLYDR0002: Content removed from location /opt/jboss/wildfly/standalone/data/content/26/fa3b94795ec70a4dfedd620c20dfa1ca194368/content
+2020-09-01 14:55:18,826 INFO  [org.jboss.as.repository] (DeploymentScanner-threads - 1) WFLYDR0001: Content added at location /opt/jboss/wildfly/standalone/data/content/3f/d56e1677a4dfca952306aa3d27717cdaeec1ef/content
+2020-09-01 14:55:19,416 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-4) WFLYJCA0019: Stopped Driver service with driver-name = spring-mvc-rest-api-demo.war_org.postgresql.Driver_42_2
+2020-09-01 14:55:19,701 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0028: Stopped deployment spring-mvc-rest-api-demo.war (runtime-name: spring-mvc-rest-api-demo.war) in 868ms
+2020-09-01 14:55:19,832 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-4) WFLYSRV0027: Starting deployment of "spring-mvc-rest-api-demo.war" (runtime-name: "spring-mvc-rest-api-demo.war")
+2020-09-01 14:55:30,265 WARN  [org.jboss.as.ee] (MSC service thread 1-1) WFLYEE0007: Not installing optional component org.springframework.http.server.reactive.ServletServerHttpRequest$RequestAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 14:55:30,269 WARN  [org.jboss.as.ee] (MSC service thread 1-1) WFLYEE0007: Not installing optional component io.micrometer.core.instrument.binder.jetty.OnCompletionAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 14:55:30,287 WARN  [org.jboss.as.ee] (MSC service thread 1-1) WFLYEE0007: Not installing optional component org.springframework.http.server.ServletServerHttpAsyncRequestControl due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 14:55:30,306 WARN  [org.jboss.as.ee] (MSC service thread 1-1) WFLYEE0007: Not installing optional component org.springframework.web.context.request.async.StandardServletAsyncWebRequest due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 14:55:30,396 WARN  [org.jboss.as.ee] (MSC service thread 1-1) WFLYEE0007: Not installing optional component org.springframework.http.server.reactive.ServletServerHttpResponse$ResponseAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 14:55:30,425 WARN  [org.jboss.as.ee] (MSC service thread 1-1) WFLYEE0007: Not installing optional component org.springframework.http.server.reactive.ServletHttpHandlerAdapter$HandlerResultAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 14:55:31,643 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-1) WFLYJCA0005: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 42.2)
+2020-09-01 14:55:31,744 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-2) WFLYJCA0018: Started Driver service with driver-name = spring-mvc-rest-api-demo.war_org.postgresql.Driver_42_2
+2020-09-01 14:55:31,895 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 136) 2 Spring WebApplicationInitializers detected on classpath
+2020-09-01 14:55:34,372 INFO  [stdout] (ServerService Thread Pool -- 136) 
+2020-09-01 14:55:34,374 INFO  [stdout] (ServerService Thread Pool -- 136)   .   ____          _            __ _ _
+2020-09-01 14:55:34,382 INFO  [stdout] (ServerService Thread Pool -- 136)  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+2020-09-01 14:55:34,385 INFO  [stdout] (ServerService Thread Pool -- 136) ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+2020-09-01 14:55:34,391 INFO  [stdout] (ServerService Thread Pool -- 136)  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+2020-09-01 14:55:34,396 INFO  [stdout] (ServerService Thread Pool -- 136)   '  |____| .__|_| |_|_| |_\__, | / / / /
+2020-09-01 14:55:34,397 INFO  [stdout] (ServerService Thread Pool -- 136)  =========|_|==============|___/=/_/_/_/
+2020-09-01 14:55:34,400 INFO  [stdout] (ServerService Thread Pool -- 136)  :: Spring Boot ::        (v2.3.3.RELEASE)
+2020-09-01 14:55:34,408 INFO  [stdout] (ServerService Thread Pool -- 136) 
+2020-09-01 14:55:34,796 INFO  [com.grippaweb.ServletApplication] (ServerService Thread Pool -- 136) Starting ServletApplication on a833f1570765 with PID 118 (started by root in /opt/jboss)
+2020-09-01 14:55:34,812 INFO  [com.grippaweb.ServletApplication] (ServerService Thread Pool -- 136) No active profile set, falling back to default profiles: default
+2020-09-01 14:55:34,967 INFO  [org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor] (ServerService Thread Pool -- 136) For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-09-01 14:55:44,125 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 136) Initializing Spring embedded WebApplicationContext
+2020-09-01 14:55:44,127 INFO  [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] (ServerService Thread Pool -- 136) Root WebApplicationContext: initialization completed in 9159 ms
+2020-09-01 14:55:50,709 INFO  [org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver] (ServerService Thread Pool -- 136) Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-09-01 14:55:51,522 INFO  [springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping] (ServerService Thread Pool -- 136) Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-09-01 14:55:52,618 INFO  [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] (ServerService Thread Pool -- 136) Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-01 14:55:54,195 INFO  [springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper] (ServerService Thread Pool -- 136) Context refreshed
+2020-09-01 14:55:54,615 INFO  [springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper] (ServerService Thread Pool -- 136) Found 1 custom documentation plugin(s)
+2020-09-01 14:55:54,754 INFO  [springfox.documentation.spring.web.scanners.ApiListingReferenceScanner] (ServerService Thread Pool -- 136) Scanning for api listing references
+2020-09-01 14:55:54,771 ERROR [springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper] (ServerService Thread Pool -- 136) Unable to scan documentation context default: java.util.regex.PatternSyntaxException: Dangling meta character '*' near index 6
+/api/**
+      ^
+	at java.base/java.util.regex.Pattern.error(Pattern.java:2027)
+	at java.base/java.util.regex.Pattern.sequence(Pattern.java:2202)
+	at java.base/java.util.regex.Pattern.expr(Pattern.java:2068)
+	at java.base/java.util.regex.Pattern.compile(Pattern.java:1782)
+	at java.base/java.util.regex.Pattern.<init>(Pattern.java:1428)
+	at java.base/java.util.regex.Pattern.compile(Pattern.java:1068)
+	at java.base/java.util.regex.Pattern.matches(Pattern.java:1173)
+	at java.base/java.lang.String.matches(String.java:2024)
+	at deployment.spring-mvc-rest-api-demo.war//springfox.documentation.builders.PathSelectors$1.apply(PathSelectors.java:59)
+	at deployment.spring-mvc-rest-api-demo.war//springfox.documentation.builders.PathSelectors$1.apply(PathSelectors.java:56)
+	at deployment.spring-mvc-rest-api-demo.war//com.google.common.base.Predicates$AndPredicate.apply(Predicates.java:384)
+	at deployment.spring-mvc-rest-api-demo.war//com.google.common.collect.Iterators.indexOf(Iterators.java:729)
+	at deployment.spring-mvc-rest-api-demo.war//com.google.common.collect.Iterators.any(Iterators.java:641)
+	at deployment.spring-mvc-rest-api-demo.war//com.google.common.collect.Iterables.any(Iterables.java:603)
+	at deployment.spring-mvc-rest-api-demo.war//springfox.documentation.spring.web.plugins.ApiSelectorBuilder$1.apply(ApiSelectorBuilder.java:61)
+	at deployment.spring-mvc-rest-api-demo.war//springfox.documentation.spring.web.plugins.ApiSelectorBuilder$1.apply(ApiSelectorBuilder.java:58)
+	at deployment.spring-mvc-rest-api-demo.war//com.google.common.base.Predicates$AndPredicate.apply(Predicates.java:384)
+	at deployment.spring-mvc-rest-api-demo.war//com.google.common.collect.Iterators$6.computeNext(Iterators.java:617)
+	at deployment.spring-mvc-rest-api-demo.war//com.google.common.collect.AbstractIterator.tryToComputeNext(AbstractIterator.java:145)
+	at deployment.spring-mvc-rest-api-demo.war//com.google.common.collect.AbstractIterator.hasNext(AbstractIterator.java:140)
+	at deployment.spring-mvc-rest-api-demo.war//springfox.documentation.spring.web.scanners.ApiListingReferenceScanner.scan(ApiListingReferenceScanner.java:48)
+	at deployment.spring-mvc-rest-api-demo.war//springfox.documentation.spring.web.scanners.ApiDocumentationScanner.scan(ApiDocumentationScanner.java:67)
+	at deployment.spring-mvc-rest-api-demo.war//springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper.scanDocumentation(DocumentationPluginsBootstrapper.java:101)
+	at deployment.spring-mvc-rest-api-demo.war//springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper.start(DocumentationPluginsBootstrapper.java:167)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:182)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.context.support.DefaultLifecycleProcessor.access$200(DefaultLifecycleProcessor.java:53)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:360)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:158)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:122)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:895)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:554)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.boot.web.servlet.support.SpringBootServletInitializer.run(SpringBootServletInitializer.java:173)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.boot.web.servlet.support.SpringBootServletInitializer.createRootApplicationContext(SpringBootServletInitializer.java:153)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.boot.web.servlet.support.SpringBootServletInitializer.onStartup(SpringBootServletInitializer.java:95)
+	at deployment.spring-mvc-rest-api-demo.war//org.springframework.web.SpringServletContainerInitializer.onStartup(SpringServletContainerInitializer.java:172)
+	at io.undertow.servlet@2.1.0.Final//io.undertow.servlet.core.DeploymentManagerImpl$1.call(DeploymentManagerImpl.java:204)
+	at io.undertow.servlet@2.1.0.Final//io.undertow.servlet.core.DeploymentManagerImpl$1.call(DeploymentManagerImpl.java:186)
+	at io.undertow.servlet@2.1.0.Final//io.undertow.servlet.core.ServletRequestContextThreadSetupAction$1.call(ServletRequestContextThreadSetupAction.java:42)
+	at io.undertow.servlet@2.1.0.Final//io.undertow.servlet.core.ContextClassLoaderSetupAction$1.call(ContextClassLoaderSetupAction.java:43)
+	at org.wildfly.extension.undertow@19.1.0.Final//org.wildfly.extension.undertow.security.SecurityContextThreadSetupAction.lambda$create$0(SecurityContextThreadSetupAction.java:105)
+	at org.wildfly.extension.undertow@19.1.0.Final//org.wildfly.extension.undertow.deployment.UndertowDeploymentInfoService$UndertowThreadSetupAction.lambda$create$0(UndertowDeploymentInfoService.java:1541)
+	at org.wildfly.extension.undertow@19.1.0.Final//org.wildfly.extension.undertow.deployment.UndertowDeploymentInfoService$UndertowThreadSetupAction.lambda$create$0(UndertowDeploymentInfoService.java:1541)
+	at org.wildfly.extension.undertow@19.1.0.Final//org.wildfly.extension.undertow.deployment.UndertowDeploymentInfoService$UndertowThreadSetupAction.lambda$create$0(UndertowDeploymentInfoService.java:1541)
+	at org.wildfly.extension.undertow@19.1.0.Final//org.wildfly.extension.undertow.deployment.UndertowDeploymentInfoService$UndertowThreadSetupAction.lambda$create$0(UndertowDeploymentInfoService.java:1541)
+	at io.undertow.servlet@2.1.0.Final//io.undertow.servlet.core.DeploymentManagerImpl.deploy(DeploymentManagerImpl.java:252)
+	at org.wildfly.extension.undertow@19.1.0.Final//org.wildfly.extension.undertow.deployment.UndertowDeploymentService.startContext(UndertowDeploymentService.java:96)
+	at org.wildfly.extension.undertow@19.1.0.Final//org.wildfly.extension.undertow.deployment.UndertowDeploymentService$1.run(UndertowDeploymentService.java:78)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.jboss.threads@2.3.3.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.3.3.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1982)
+	at org.jboss.threads@2.3.3.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.3.3.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1377)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+	at org.jboss.threads@2.3.3.Final//org.jboss.threads.JBossThread.run(JBossThread.java:485)
+
+2020-09-01 14:55:54,918 INFO  [com.grippaweb.ServletApplication] (ServerService Thread Pool -- 136) Started ServletApplication in 22.385 seconds (JVM running for 6551.753)
+2020-09-01 14:55:55,000 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (ServerService Thread Pool -- 136) Initializing Mojarra 2.3.9.SP08 for context '/spring-mvc-rest-api-demo'
+2020-09-01 14:55:56,858 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 136) WFLYUT0021: Registered web context: '/spring-mvc-rest-api-demo' for server 'default-server'
+2020-09-01 14:55:56,980 INFO  [org.jboss.as.server] (DeploymentScanner-threads - 1) WFLYSRV0016: Replaced deployment "spring-mvc-rest-api-demo.war" with deployment "spring-mvc-rest-api-demo.war"
+2020-09-01 14:55:56,985 INFO  [org.jboss.as.controller] (DeploymentScanner-threads - 1) WFLYCTL0183: Service status report
+WFLYCTL0185:    Newly corrected services:
+      service jboss.deployment.unit."spring-mvc-rest-api-demo.war".deploymentCompleteService (new available)
+
+2020-09-01 14:55:57,003 INFO  [org.jboss.as.repository] (DeploymentScanner-threads - 1) WFLYDR0002: Content removed from location /opt/jboss/wildfly/standalone/data/content/bb/897d571bde64cd5990ee86f01986da3669b532/content
+2020-09-01 14:55:57,447 INFO  [io.undertow.servlet] (default task-7) Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-09-01 14:55:57,456 INFO  [org.springframework.web.servlet.DispatcherServlet] (default task-7) Initializing Servlet 'dispatcherServlet'
+2020-09-01 14:55:57,546 INFO  [org.springframework.web.servlet.DispatcherServlet] (default task-7) Completed initialization in 88 ms
+2020-09-01 14:57:30,277 INFO  [application] (default task-12) calling: /test/ 4
+2020-09-01 15:00:44,030 INFO  [org.jboss.as.repository] (DeploymentScanner-threads - 1) WFLYDR0001: Content added at location /opt/jboss/wildfly/standalone/data/content/71/bb9020d4bea984e340bce278ba187f3baee4c3/content
+2020-09-01 15:00:44,183 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-2) WFLYJCA0019: Stopped Driver service with driver-name = spring-mvc-rest-api-demo.war_org.postgresql.Driver_42_2
+2020-09-01 15:00:44,184 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 136) WFLYUT0022: Unregistered web context: '/spring-mvc-rest-api-demo' from server 'default-server'
+2020-09-01 15:00:44,196 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 136) Destroying Spring FrameworkServlet 'dispatcherServlet'
+2020-09-01 15:00:44,197 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 136) Closing Spring root WebApplicationContext
+2020-09-01 15:00:44,205 INFO  [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] (ServerService Thread Pool -- 136) Shutting down ExecutorService 'applicationTaskExecutor'
+2020-09-01 15:00:44,434 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-3) WFLYSRV0028: Stopped deployment spring-mvc-rest-api-demo.war (runtime-name: spring-mvc-rest-api-demo.war) in 255ms
+2020-09-01 15:00:44,438 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-3) WFLYSRV0027: Starting deployment of "spring-mvc-rest-api-demo.war" (runtime-name: "spring-mvc-rest-api-demo.war")
+2020-09-01 15:00:47,993 WARN  [org.jboss.as.ee] (MSC service thread 1-2) WFLYEE0007: Not installing optional component org.springframework.http.server.reactive.ServletServerHttpRequest$RequestAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 15:00:47,999 WARN  [org.jboss.as.ee] (MSC service thread 1-2) WFLYEE0007: Not installing optional component io.micrometer.core.instrument.binder.jetty.OnCompletionAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 15:00:48,011 WARN  [org.jboss.as.ee] (MSC service thread 1-2) WFLYEE0007: Not installing optional component org.springframework.http.server.ServletServerHttpAsyncRequestControl due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 15:00:48,013 WARN  [org.jboss.as.ee] (MSC service thread 1-2) WFLYEE0007: Not installing optional component org.springframework.web.context.request.async.StandardServletAsyncWebRequest due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 15:00:48,067 WARN  [org.jboss.as.ee] (MSC service thread 1-2) WFLYEE0007: Not installing optional component org.springframework.http.server.reactive.ServletServerHttpResponse$ResponseAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 15:00:48,069 WARN  [org.jboss.as.ee] (MSC service thread 1-2) WFLYEE0007: Not installing optional component org.springframework.http.server.reactive.ServletHttpHandlerAdapter$HandlerResultAsyncListener due to an exception (enable DEBUG log level to see the cause)
+2020-09-01 15:00:48,169 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-2) WFLYJCA0005: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 42.2)
+2020-09-01 15:00:48,212 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-1) WFLYJCA0018: Started Driver service with driver-name = spring-mvc-rest-api-demo.war_org.postgresql.Driver_42_2
+2020-09-01 15:00:48,555 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 155) 2 Spring WebApplicationInitializers detected on classpath
+2020-09-01 15:00:49,119 INFO  [stdout] (ServerService Thread Pool -- 155) 
+2020-09-01 15:00:49,123 INFO  [stdout] (ServerService Thread Pool -- 155)   .   ____          _            __ _ _
+2020-09-01 15:00:49,141 INFO  [stdout] (ServerService Thread Pool -- 155)  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+2020-09-01 15:00:49,145 INFO  [stdout] (ServerService Thread Pool -- 155) ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+2020-09-01 15:00:49,154 INFO  [stdout] (ServerService Thread Pool -- 155)  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+2020-09-01 15:00:49,155 INFO  [stdout] (ServerService Thread Pool -- 155)   '  |____| .__|_| |_|_| |_\__, | / / / /
+2020-09-01 15:00:49,157 INFO  [stdout] (ServerService Thread Pool -- 155)  =========|_|==============|___/=/_/_/_/
+2020-09-01 15:00:49,167 INFO  [stdout] (ServerService Thread Pool -- 155)  :: Spring Boot ::        (v2.3.3.RELEASE)
+2020-09-01 15:00:49,173 INFO  [stdout] (ServerService Thread Pool -- 155) 
+2020-09-01 15:00:49,436 INFO  [com.grippaweb.ServletApplication] (ServerService Thread Pool -- 155) Starting ServletApplication on a833f1570765 with PID 118 (started by root in /opt/jboss)
+2020-09-01 15:00:49,444 INFO  [com.grippaweb.ServletApplication] (ServerService Thread Pool -- 155) No active profile set, falling back to default profiles: default
+2020-09-01 15:00:49,537 INFO  [org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor] (ServerService Thread Pool -- 155) For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-09-01 15:00:52,813 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 155) Initializing Spring embedded WebApplicationContext
+2020-09-01 15:00:52,814 INFO  [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] (ServerService Thread Pool -- 155) Root WebApplicationContext: initialization completed in 3268 ms
+2020-09-01 15:00:55,491 INFO  [org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver] (ServerService Thread Pool -- 155) Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-09-01 15:00:55,827 INFO  [springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping] (ServerService Thread Pool -- 155) Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-09-01 15:00:56,257 INFO  [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] (ServerService Thread Pool -- 155) Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-01 15:00:56,810 INFO  [springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper] (ServerService Thread Pool -- 155) Context refreshed
+2020-09-01 15:00:56,842 INFO  [springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper] (ServerService Thread Pool -- 155) Found 1 custom documentation plugin(s)
+2020-09-01 15:00:56,870 INFO  [springfox.documentation.spring.web.scanners.ApiListingReferenceScanner] (ServerService Thread Pool -- 155) Scanning for api listing references
+2020-09-01 15:00:57,250 INFO  [com.grippaweb.ServletApplication] (ServerService Thread Pool -- 155) Started ServletApplication in 8.57 seconds (JVM running for 6854.085)
+2020-09-01 15:00:57,269 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (ServerService Thread Pool -- 155) Initializing Mojarra 2.3.9.SP08 for context '/spring-mvc-rest-api-demo'
+2020-09-01 15:00:58,200 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 155) WFLYUT0021: Registered web context: '/spring-mvc-rest-api-demo' for server 'default-server'
+2020-09-01 15:00:58,228 INFO  [org.jboss.as.server] (DeploymentScanner-threads - 1) WFLYSRV0016: Replaced deployment "spring-mvc-rest-api-demo.war" with deployment "spring-mvc-rest-api-demo.war"
+2020-09-01 15:00:58,236 INFO  [org.jboss.as.repository] (DeploymentScanner-threads - 1) WFLYDR0002: Content removed from location /opt/jboss/wildfly/standalone/data/content/3f/d56e1677a4dfca952306aa3d27717cdaeec1ef/content
+2020-09-01 15:12:48,353 INFO  [io.undertow.servlet] (default task-12) Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-09-01 15:12:48,354 INFO  [org.springframework.web.servlet.DispatcherServlet] (default task-12) Initializing Servlet 'dispatcherServlet'
+2020-09-01 15:12:48,378 INFO  [org.springframework.web.servlet.DispatcherServlet] (default task-12) Completed initialization in 19 ms
+2020-09-01 15:13:27,224 INFO  [application] (default task-8) calling: /test/ 12
+2020-09-01 15:13:37,899 INFO  [application] (default task-8) calling: /test/ 12

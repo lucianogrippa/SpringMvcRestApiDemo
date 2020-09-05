@@ -1,2 +1,2 @@
 #!/bin/bash
-docker-compose -f docker-compose-tomcat.yml up  &
+docker-compose -f docker-compose-tomcat.yml up  -d

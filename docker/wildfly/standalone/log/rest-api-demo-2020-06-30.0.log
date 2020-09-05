@@ -1,0 +1,14 @@
+[2020-06-30 15:27:33.513][DEBUG application] key generated public: [B@5873b2da
+[2020-06-30 15:27:33.862][DEBUG application] JWT validation succeeded! JWT Claims Set:{iss=grippaweb.eu, aud=api.auth, exp=1593532053, jti=pV4HGydt2yhL3LId05PJeQ, iat=1593530853, nbf=1593530733, sub=lgrippa, userId=1, role=[Amministratore], firstname=Luciano, lastname=Grippa, email=lgrippa75@gmail.com}
+[2020-06-30 15:27:34.028][INFO  application] calling: /test/ 12
+[2020-06-30 15:27:56.291][DEBUG application] key generated public: [B@b48f996
+[2020-06-30 15:27:56.370][DEBUG application] JWT validation succeeded! JWT Claims Set:{iss=grippaweb.eu, aud=api.auth, exp=1593532076, jti=ldH-K3mbwvVORxm8h66R5Q, iat=1593530876, nbf=1593530756, sub=lgrippa, userId=1, role=[Amministratore], firstname=Luciano, lastname=Grippa, email=lgrippa75@gmail.com}
+[2020-06-30 15:27:56.476][INFO  application] calling: /test/ 24
+[2020-06-30 15:28:14.712][DEBUG application] in ApiNotFoundException Not Found
+[2020-06-30 15:28:14.725][DEBUG application] <<<<<<<<<<<<<<<<<<<<<<<< api not found method >>>>>>>>>>>>>>>>>
+[2020-06-30 15:28:14.813][DEBUG application] in ApiNotFoundException Not Found
+[2020-06-30 15:28:14.815][DEBUG application] <<<<<<<<<<<<<<<<<<<<<<<< api not found method >>>>>>>>>>>>>>>>>
+[2020-06-30 15:56:12.510][DEBUG application] in ApiNotFoundException Not Found
+[2020-06-30 15:56:12.515][DEBUG application] <<<<<<<<<<<<<<<<<<<<<<<< api not found method >>>>>>>>>>>>>>>>>
+[2020-06-30 15:56:12.651][DEBUG application] in ApiNotFoundException Not Found
+[2020-06-30 15:56:12.662][DEBUG application] <<<<<<<<<<<<<<<<<<<<<<<< api not found method >>>>>>>>>>>>>>>>>

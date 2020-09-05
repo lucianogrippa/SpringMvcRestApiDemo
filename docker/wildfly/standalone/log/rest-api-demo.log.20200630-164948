@@ -1,0 +1,32 @@
+[2020-06-30 13:02:54.771][INFO  application] calling: /logfilesList
+[2020-06-30 13:02:55.097][DEBUG application] start create properties
+[2020-06-30 13:02:55.141][INFO  application] calling: /jbossdir
+[2020-06-30 13:02:55.251][INFO  application] calling /logger/change/debug
+[2020-06-30 13:02:55.425][INFO  application] calling: /test/ 10
+[2020-06-30 13:42:23.635][DEBUG application] key generated public: [B@402c59af
+[2020-06-30 13:42:23.939][DEBUG application] JWT validation succeeded! JWT Claims Set:{iss=grippaweb.eu, aud=api.auth, exp=1593525743, jti=cXb1kEOEUa0O3iQWAhONug, iat=1593524543, nbf=1593524423, sub=lgrippa, userId=1, role=[Amministratore], firstname=Luciano, lastname=Grippa, email=lgrippa75@gmail.com}
+[2020-06-30 13:42:24.053][INFO  application] calling: /test/ 12
+[2020-06-30 13:47:46.973][DEBUG application] key generated public: [B@185711d1
+[2020-06-30 13:47:47.037][DEBUG application] JWT validation succeeded! JWT Claims Set:{iss=grippaweb.eu, aud=api.auth, exp=1593526066, jti=s_KCKxy_uUsQvdxOMA_Bdg, iat=1593524866, nbf=1593524746, sub=lgrippa, userId=1, role=[Amministratore], firstname=Luciano, lastname=Grippa, email=lgrippa75@gmail.com}
+[2020-06-30 13:47:47.143][INFO  application] calling: /test/ 12
+[2020-06-30 14:26:47.603][DEBUG application] key generated public: [B@f7ec235
+[2020-06-30 14:26:47.979][DEBUG application] JWT validation succeeded! JWT Claims Set:{iss=grippaweb.eu, aud=api.auth, exp=1593528407, jti=fUH81LKOy4Vm2PIbB_uFhQ, iat=1593527207, nbf=1593527087, sub=lgrippa, userId=1, role=[Amministratore], firstname=Luciano, lastname=Grippa, email=lgrippa75@gmail.com}
+[2020-06-30 14:26:48.204][INFO  application] calling: /test/ 12
+[2020-06-30 14:26:54.928][DEBUG application] key generated public: [B@45df0a19
+[2020-06-30 14:26:55.006][DEBUG application] JWT validation succeeded! JWT Claims Set:{iss=grippaweb.eu, aud=api.auth, exp=1593528414, jti=ovaUpJDIMDkjDy14B4yRCg, iat=1593527214, nbf=1593527094, sub=lgrippa, userId=1, role=[Amministratore], firstname=Luciano, lastname=Grippa, email=lgrippa75@gmail.com}
+[2020-06-30 14:26:55.166][DEBUG application] in ApiNotFoundException Not Found
+[2020-06-30 14:26:55.171][DEBUG application] <<<<<<<<<<<<<<<<<<<<<<<< api not found method >>>>>>>>>>>>>>>>>
+[2020-06-30 14:35:49.728][DEBUG application] in ApiNotAuthMethodHadlerException Full authentication is required to access this resource
+[2020-06-30 14:35:49.736][DEBUG application] in api unauthorizated request service
+[2020-06-30 14:35:50.942][DEBUG application] in ApiInternalServerErrorHandlerException There is no PasswordEncoder mapped for the id "null"
+[2020-06-30 14:35:50.946][DEBUG application] in api internal server error request service
+[2020-06-30 14:36:49.585][DEBUG application] in ApiInternalServerErrorHandlerException There is no PasswordEncoder mapped for the id "null"
+[2020-06-30 14:36:49.587][DEBUG application] in api internal server error request service
+[2020-06-30 14:36:51.297][DEBUG application] in ApiInternalServerErrorHandlerException There is no PasswordEncoder mapped for the id "null"
+[2020-06-30 14:36:51.303][DEBUG application] in api internal server error request service
+[2020-06-30 14:36:52.690][DEBUG application] in ApiInternalServerErrorHandlerException There is no PasswordEncoder mapped for the id "null"
+[2020-06-30 14:36:52.694][DEBUG application] in api internal server error request service
+[2020-06-30 14:36:53.535][DEBUG application] in ApiInternalServerErrorHandlerException There is no PasswordEncoder mapped for the id "null"
+[2020-06-30 14:36:53.538][DEBUG application] in api internal server error request service
+[2020-06-30 14:38:13.127][DEBUG application] in ApiInternalServerErrorHandlerException There is no PasswordEncoder mapped for the id "null"
+[2020-06-30 14:38:13.130][DEBUG application] in api internal server error request service

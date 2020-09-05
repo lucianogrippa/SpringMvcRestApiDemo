@@ -1,0 +1,30 @@
+[2020-08-03 13:26:27.673][DEBUG application] in ApiNotAuthMethodHadlerException Full authentication is required to access this resource
+[2020-08-03 13:26:27.726][DEBUG application] in api unauthorizated request service
+[2020-08-03 13:26:30.801][DEBUG application] in ApiNotFoundException 
+[2020-08-03 13:26:30.822][DEBUG application] <<<<<<<<<<<<<<<<<<<<<<<< api not found method >>>>>>>>>>>>>>>>>
+[2020-08-03 13:26:30.922][DEBUG application] in ApiNotFoundException 
+[2020-08-03 13:26:30.927][DEBUG application] <<<<<<<<<<<<<<<<<<<<<<<< api not found method >>>>>>>>>>>>>>>>>
+[2020-08-03 13:29:53.029][DEBUG application] in ApiNotFoundException 
+[2020-08-03 13:29:53.103][DEBUG application] <<<<<<<<<<<<<<<<<<<<<<<< api not found method >>>>>>>>>>>>>>>>>
+[2020-08-03 13:29:53.175][DEBUG application] in ApiNotFoundException 
+[2020-08-03 13:29:53.183][DEBUG application] <<<<<<<<<<<<<<<<<<<<<<<< api not found method >>>>>>>>>>>>>>>>>
+[2020-08-03 13:30:18.842][DEBUG application] key generated public: [B@7fd57f95
+[2020-08-03 13:30:20.001][DEBUG application] in authUser: lgrippa pwd: 48df8b3e62340b9cf63040d3318c8809 appKey: f9e7bc9fcae0ffccf975708bdf40ab13
+[2020-08-03 13:30:20.003][DEBUG application] appKey: f9e7bc9fcae0ffccf975708bdf40ab13 ok 
+[2020-08-03 13:30:20.212][DEBUG application] key generated public: [B@78e21776
+[2020-08-03 13:37:32.493][DEBUG application] in ApiNotFoundException 
+[2020-08-03 13:37:32.544][DEBUG application] <<<<<<<<<<<<<<<<<<<<<<<< api not found method >>>>>>>>>>>>>>>>>
+[2020-08-03 13:37:32.590][DEBUG application] in ApiNotFoundException 
+[2020-08-03 13:37:32.593][DEBUG application] <<<<<<<<<<<<<<<<<<<<<<<< api not found method >>>>>>>>>>>>>>>>>
+[2020-08-03 13:41:07.792][DEBUG application] key generated public: [B@591e8a93
+[2020-08-03 13:41:08.988][DEBUG application] in authUser: lgrippa pwd: 48df8b3e62340b9cf63040d3318c8809 appKey: f9e7bc9fcae0ffccf975708bdf40ab13
+[2020-08-03 13:41:08.992][DEBUG application] appKey: f9e7bc9fcae0ffccf975708bdf40ab13 ok 
+[2020-08-03 13:41:09.201][DEBUG application] key generated public: [B@87130cb
+[2020-08-03 13:45:04.406][DEBUG application] in ApiNotFoundException 
+[2020-08-03 13:45:04.464][DEBUG application] <<<<<<<<<<<<<<<<<<<<<<<< api not found method >>>>>>>>>>>>>>>>>
+[2020-08-03 13:45:04.502][DEBUG application] in ApiNotFoundException 
+[2020-08-03 13:45:04.520][DEBUG application] <<<<<<<<<<<<<<<<<<<<<<<< api not found method >>>>>>>>>>>>>>>>>
+[2020-08-03 13:45:17.467][DEBUG application] in ApiNotFoundException 
+[2020-08-03 13:45:17.473][DEBUG application] <<<<<<<<<<<<<<<<<<<<<<<< api not found method >>>>>>>>>>>>>>>>>
+[2020-08-03 13:45:17.517][DEBUG application] in ApiNotFoundException 
+[2020-08-03 13:45:17.525][DEBUG application] <<<<<<<<<<<<<<<<<<<<<<<< api not found method >>>>>>>>>>>>>>>>>

@@ -1,0 +1,51 @@
+[2020-07-06 07:39:04.740][DEBUG application] in ApiNotAuthMethodHadlerException Full authentication is required to access this resource
+[2020-07-06 07:39:04.767][DEBUG application] in api unauthorizated request service
+[2020-07-06 07:39:08.488][DEBUG application] in ApiNotFoundException Not Found
+[2020-07-06 07:39:08.507][DEBUG application] <<<<<<<<<<<<<<<<<<<<<<<< api not found method >>>>>>>>>>>>>>>>>
+[2020-07-06 07:39:08.581][DEBUG application] in ApiNotFoundException Not Found
+[2020-07-06 07:39:08.584][DEBUG application] <<<<<<<<<<<<<<<<<<<<<<<< api not found method >>>>>>>>>>>>>>>>>
+[2020-07-06 07:52:10.427][DEBUG application] key generated public: [B@5e0087da
+[2020-07-06 07:52:10.653][DEBUG application] JWT validation succeeded! JWT Claims Set:{iss=grippaweb.eu, aud=api.auth, exp=1594023130, jti=NSoUP6rKp-Z4TZt6FxrMCw, iat=1594021930, nbf=1594021810, sub=lgrippa, userId=1, role=[Amministratore], firstname=Luciano, lastname=Grippa, email=lgrippa75@gmail.com}
+[2020-07-06 07:52:10.754][INFO  application] calling: /test/ 4
+[2020-07-06 07:52:37.874][DEBUG application] key generated public: [B@9559587
+[2020-07-06 07:52:37.957][DEBUG application] JWT validation succeeded! JWT Claims Set:{iss=grippaweb.eu, aud=api.auth, exp=1594023157, jti=cgvoUItaXZxaBV_2VYQStQ, iat=1594021957, nbf=1594021837, sub=lgrippa, userId=1, role=[Amministratore], firstname=Luciano, lastname=Grippa, email=lgrippa75@gmail.com}
+[2020-07-06 07:53:49.905][DEBUG application] key generated public: [B@474723ba
+[2020-07-06 07:53:49.985][DEBUG application] JWT validation succeeded! JWT Claims Set:{iss=grippaweb.eu, aud=api.auth, exp=1594023229, jti=Zdh6GA_01D2dZ-q-heFw6g, iat=1594022029, nbf=1594021909, sub=lgrippa, userId=1, role=[Amministratore], firstname=Luciano, lastname=Grippa, email=lgrippa75@gmail.com}
+[2020-07-06 07:53:50.067][INFO  application] calling: /test/ 4
+[2020-07-06 07:55:13.454][DEBUG application] key generated public: [B@3cebcd25
+[2020-07-06 07:55:13.538][DEBUG application] JWT validation succeeded! JWT Claims Set:{iss=grippaweb.eu, aud=api.auth, exp=1594023313, jti=OlO1Qk_x3OYo430EVyN3NA, iat=1594022113, nbf=1594021993, sub=lgrippa, userId=1, role=[Amministratore], firstname=Luciano, lastname=Grippa, email=lgrippa75@gmail.com}
+[2020-07-06 07:56:53.721][DEBUG application] key generated public: [B@1ee5f50d
+[2020-07-06 07:56:53.788][DEBUG application] JWT validation succeeded! JWT Claims Set:{iss=grippaweb.eu, aud=api.auth, exp=1594023413, jti=hmjF1KchEGOyUCCo7eWWvA, iat=1594022213, nbf=1594022093, sub=lgrippa, userId=1, role=[Amministratore], firstname=Luciano, lastname=Grippa, email=lgrippa75@gmail.com}
+[2020-07-06 07:56:53.872][INFO  application] calling: /genBCryptPassword/ 
+[2020-07-06 08:06:28.562][DEBUG application] key generated public: [B@2d26a4f5
+[2020-07-06 08:06:28.729][DEBUG application] JWT validation succeeded! JWT Claims Set:{iss=grippaweb.eu, aud=api.auth, exp=1594023988, jti=JmLU0tUbUqbTbDDZ9Q44mQ, iat=1594022788, nbf=1594022668, sub=lgrippa, userId=1, role=[Amministratore], firstname=Luciano, lastname=Grippa, email=lgrippa75@gmail.com}
+[2020-07-06 08:06:28.815][INFO  application] calling: /genBCryptPassword/ 
+[2020-07-06 08:42:03.096][DEBUG application] in ApiNotFoundException Not Found
+[2020-07-06 08:42:03.108][DEBUG application] <<<<<<<<<<<<<<<<<<<<<<<< api not found method >>>>>>>>>>>>>>>>>
+[2020-07-06 08:42:03.174][DEBUG application] in ApiNotFoundException Not Found
+[2020-07-06 08:42:03.176][DEBUG application] <<<<<<<<<<<<<<<<<<<<<<<< api not found method >>>>>>>>>>>>>>>>>
+[2020-07-06 09:01:20.289][DEBUG application] in authUser: lgrippa pwd: 48df8b3e62340b9cf63040d3318c8809 appKey: f9e7bc9fcae0ffccf975708bdf40ab13
+[2020-07-06 09:01:20.291][DEBUG application] appKey: f9e7bc9fcae0ffccf975708bdf40ab13 ok 
+[2020-07-06 09:01:20.425][DEBUG application] key generated public: [B@252a7892
+[2020-07-06 09:01:42.604][INFO  application] calling: /testtoken/ 
+[2020-07-06 09:01:42.605][DEBUG application] in find id: 1
+[2020-07-06 09:01:58.494][DEBUG application] key generated public: [B@1eb2c915
+[2020-07-06 09:02:03.068][DEBUG application] key generated public: [B@4d62fa05
+[2020-07-06 09:02:04.139][DEBUG application] key generated public: [B@2f9e7305
+[2020-07-06 09:02:05.154][DEBUG application] key generated public: [B@8a52854
+[2020-07-06 09:03:25.089][DEBUG application] key generated public: [B@562deb75
+[2020-07-06 09:03:36.942][DEBUG application] key generated public: [B@6c6aa28
+[2020-07-06 09:05:46.741][DEBUG application] key generated public: [B@1e7d6117
+[2020-07-06 09:05:48.206][DEBUG application] key generated public: [B@65a46042
+[2020-07-06 09:05:50.964][DEBUG application] in authUser: lgrippa pwd: 48df8b3e62340b9cf63040d3318c8809 appKey: f9e7bc9fcae0ffccf975708bdf40ab13
+[2020-07-06 09:05:50.966][DEBUG application] appKey: f9e7bc9fcae0ffccf975708bdf40ab13 ok 
+[2020-07-06 09:05:51.031][DEBUG application] key generated public: [B@771127d
+[2020-07-06 09:05:53.199][DEBUG application] in authUser: lgrippa pwd: 48df8b3e62340b9cf63040d3318c8809 appKey: f9e7bc9fcae0ffccf975708bdf40ab13
+[2020-07-06 09:05:53.207][DEBUG application] appKey: f9e7bc9fcae0ffccf975708bdf40ab13 ok 
+[2020-07-06 09:05:53.458][DEBUG application] key generated public: [B@6d212e0b
+[2020-07-06 09:05:54.860][DEBUG application] in authUser: lgrippa pwd: 48df8b3e62340b9cf63040d3318c8809 appKey: f9e7bc9fcae0ffccf975708bdf40ab13
+[2020-07-06 09:05:54.860][DEBUG application] appKey: f9e7bc9fcae0ffccf975708bdf40ab13 ok 
+[2020-07-06 09:05:54.930][DEBUG application] key generated public: [B@12309e90
+[2020-07-06 09:06:15.748][DEBUG application] in authUser: lgrippa pwd: 48df8b3e62340b9cf63040d3318c8809 appKey: f9e7bc9fcae0ffccf975708bdf40ab13
+[2020-07-06 09:06:15.750][DEBUG application] appKey: f9e7bc9fcae0ffccf975708bdf40ab13 ok 
+[2020-07-06 09:06:15.848][DEBUG application] key generated public: [B@212666e8

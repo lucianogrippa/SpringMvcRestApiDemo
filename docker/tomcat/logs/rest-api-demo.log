@@ -1,0 +1,10 @@
+[2020-08-04 13:42:32.140][DEBUG application] key generated public: [B@1cad2eec
+[2020-08-04 13:42:33.252][DEBUG application] key generated public: [B@30fbced2
+[2020-08-04 13:42:40.141][DEBUG application] key generated public: [B@57b92ca6
+[2020-08-04 13:42:41.101][DEBUG application] in authUser: lgrippa pwd: 48df8b3e62340b9cf63040d3318c8809 appKey: f9e7bc9fcae0ffccf975708bdf40ab13
+[2020-08-04 13:42:41.103][DEBUG application] appKey: f9e7bc9fcae0ffccf975708bdf40ab13 ok 
+[2020-08-04 13:42:41.290][DEBUG application] key generated public: [B@731c0407
+[2020-08-04 16:16:18.413][DEBUG application] key generated public: [B@29463177
+[2020-08-04 16:16:19.825][DEBUG application] in authUser: lgrippa pwd: 48df8b3e62340b9cf63040d3318c8809 appKey: f9e7bc9fcae0ffccf975708bdf40ab13
+[2020-08-04 16:16:19.829][DEBUG application] appKey: f9e7bc9fcae0ffccf975708bdf40ab13 ok 
+[2020-08-04 16:16:19.993][DEBUG application] key generated public: [B@275f3ebd
