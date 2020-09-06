@@ -1,9 +1,19 @@
-version: '3'
+version: '3.3'
+networks: 
+  ntrestapi:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.22.0.0/24
+        
 services:
   wildfly:
     build: ./wildfly
     container_name: wildfly
-    network_mode: bridge
+    networks: 
+      ntrestapi:
+        ipv4_address: 192.22.0.2
     ports:
     - 8080:8080
     - 9990:9990
@@ -18,10 +28,13 @@ services:
     - appdb
     links:
     - appdb:wildflydbhost
+    
   appdb:
     build:
       context: ./mysql
-    network_mode: bridge
+    networks: 
+      ntrestapi:
+        ipv4_address: 192.22.0.3
     image: wildfly-db
     container_name: wildfly-db
     environment:
@@ -34,10 +47,13 @@ services:
       MYSQL_ROOT_PASSWORD: kj7£fiU
     ports:
     - 3306:3306
+    
   phpmyadmin:
     depends_on:
     - appdb
-    network_mode: bridge
+    networks: 
+      ntrestapi:
+        ipv4_address: 192.22.0.4
     image: phpmyadmin/phpmyadmin
     container_name: myadmin-wildfly
     restart: always

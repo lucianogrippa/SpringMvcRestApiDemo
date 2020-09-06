@@ -1,5 +1,8 @@
 package com.grippaweb.controllers;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Before;
@@ -25,8 +28,7 @@ import com.grippaweb.ServletApplication;
 @ContextConfiguration(classes = ServletApplication.class)
 @SpringBootTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-class HttpApiDefaultErrorPageControllerTest {
-
+class BookmarksControllerTest {
     private MockMvc mockMvc;
 
     @Autowired
@@ -38,13 +40,24 @@ class HttpApiDefaultErrorPageControllerTest {
     }
 
     @Test
-    void A_testHandleError404() throws Exception {
-
-	if (this.mockMvc == null)
-	    this.mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
-
-	mockMvc.perform(MockMvcRequestBuilders.get("/echo/-1").accept(MediaType.APPLICATION_JSON))
-		.andExpect(status().isNotFound());
+    void A_findAll() throws Exception {
+	
+	mockMvc.perform(MockMvcRequestBuilders.get("/api/bookmarks/findAll")
+		.accept(MediaType.APPLICATION_JSON))
+		.andExpect(status().isOk())
+		.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+		.andExpect(jsonPath("$.data").value("paramiter: 12")) 
+		.andReturn();
     }
-
+    
+    @Test
+    void B_findbyDescription() throws Exception {
+	
+	mockMvc.perform(MockMvcRequestBuilders.get("/api/bookmarks/findByName/desc%20%bookmarks")
+		.accept(MediaType.APPLICATION_JSON))
+		.andExpect(status().isOk())
+		.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+		.andExpect(jsonPath("$.data").value("paramiter: 12")) 
+		.andReturn();
+    }
 }

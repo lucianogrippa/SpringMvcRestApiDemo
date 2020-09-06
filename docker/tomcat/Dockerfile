@@ -4,6 +4,8 @@ USER root
 
 ENV DATASOURCE_JNDI_NAME=java:/comp/env/jboss/datasources/mysqldb
 
+ENV ENV app.profile=tomcat
+
 ENV SERVER_BASE_LOG_DIR=/opt/tomcat/logs
 ENV CATALINA_OPTS=-agentlib:jdwp=transport=dt_socket,address=8787,server=y,suspend=n
 

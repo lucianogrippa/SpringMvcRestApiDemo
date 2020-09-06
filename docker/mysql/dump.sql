@@ -1,8 +1,25 @@
--- db sprindemo
-CREATE DATABASE IF NOT EXISTS restapidemo CHARACTER SET = 'utf8'
+﻿-- db contain accounts
+CREATE DATABASE IF NOT EXISTS restapi_accounts CHARACTER SET = 'utf8'
   COLLATE = 'utf8_general_ci';
 
-USE restapidemo;
+-- db containd user bookmarks
+CREATE DATABASE IF NOT EXISTS restapi_bookmarks CHARACTER SET = 'utf8'
+  COLLATE = 'utf8_general_ci';
+
+USE restapi_bookmarks;
+DROP TABLE IF EXISTS bookmarks;
+CREATE TABLE IF NOT EXISTS bookmarks (
+ id bigint(20) AUTO_INCREMENT NOT NULL PRIMARY KEY,
+ name VARCHAR(500) NOT NULL,
+ description VARCHAR(500) NOT NULL,
+ link TEXT NOT NULL
+) CHARACTER SET = 'utf8'
+  COLLATE = 'utf8_general_ci' , ENGINE=INNODB;
+  
+ALTER TABLE restapi_bookmarks.bookmarks 
+  ADD UNIQUE INDEX UK_bookmarks_name(name);
+  
+USE restapi_accounts;
 
 SET autocommit =0;
 set FOREIGN_KEY_CHECKS =0;
@@ -185,6 +202,9 @@ COMMIT;
 SET autocommit =1;
 set FOREIGN_KEY_CHECKS =1;
 
-GRANT ALL PRIVILEGES ON restapidemo.* TO 'user'@'%';
-GRANT ALL PRIVILEGES ON restapidemo.* TO 'user'@'localhost';
+GRANT ALL PRIVILEGES ON restapi_accounts.* TO 'user'@'%';
+GRANT ALL PRIVILEGES ON restapi_accounts.* TO 'user'@'localhost';
+
+GRANT ALL PRIVILEGES ON restapi_bookmarks.* TO 'user'@'%';
+GRANT ALL PRIVILEGES ON restapi_bookmarks.* TO 'user'@'localhost';
 

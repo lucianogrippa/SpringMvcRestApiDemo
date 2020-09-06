@@ -11,6 +11,8 @@ ENV JBOSS_HOME=/opt/jboss/wildfly
 
 ENV DATASOURCE_JNDI_NAME=java:jboss/datasources/mysqldb
 
+ENV app.profile=wildfly
+
 ENV SERVER_BASE_DIR=/opt/jboss/wildfly/standalone
 ENV SERVER_BASE_LOG_DIR=/opt/jboss/wildfly/log
 
