@@ -60,4 +60,6 @@ class BookmarksControllerTest {
 		.andExpect(jsonPath("$.data").value("paramiter: 12")) 
 		.andReturn();
     }
+    
+    
 }
