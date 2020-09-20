@@ -50,3 +50,4 @@ src/test/server/log/rest-api-demo.log
 /docker/wildfly/standalone/deployments/*.deployed
 /docker/tomcat/webapps/*.war
 /docker/tomcat/logs/*.swp
+/.metadata/
