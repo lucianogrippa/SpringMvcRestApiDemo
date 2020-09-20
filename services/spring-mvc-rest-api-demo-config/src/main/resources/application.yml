@@ -1,0 +1,61 @@
+# ==============================================================
+# = Config Server Base con Autenticazione
+# ==============================================================
+# ==============================================================
+# = Profilo Attivo PEER 1
+# ==============================================================  
+spring:
+  application:
+    name: ConfigServerRestApi
+# ==============================================================
+# = Cloud Parameters
+# ============================================================== 
+  cloud:
+    config:
+      server:
+        git:
+          uri: ${repository}
+
+# ==============================================================
+# = Actuator Parameters
+# ==============================================================
+management:
+  endpoint:
+    health:
+      show-details: WHEN_AUTHORIZED
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+
+# ==============================================================
+# = Actuator Info
+# ==============================================================
+info:
+  author:
+    name: "Luciano Grippa"
+  application:
+    name-app: "Config-Server for Rest api demo"
+    profile: "FILE"
+        
+# ==============================================================
+# = Logs Parameters
+# ==============================================================        
+logging:
+  level:
+    org.springframework.cloud: DEBUG
+    org.springframework.security: DEBUG
+    
+# ==============================================================
+# = Security Parameters
+# ============================================================== 
+sicurezza:
+  userpwd: 'BimBumBam_2018'
+  adminpwd: 'MagicaBula_2018'  
+
+
+
+
+
+
+

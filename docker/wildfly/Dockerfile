@@ -36,6 +36,7 @@ USER root
 
 RUN yum install telnet -y
 RUN yum install mysql -y
+RUN yum install git -y
 RUN chmod +x /opt/config/execute.sh
 
 RUN /opt/config/execute.sh commands.cli

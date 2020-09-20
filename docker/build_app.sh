@@ -4,6 +4,7 @@
 # clean up images
 ########################
 docker down
+docker rm -f tomcatdb
 docker rm -f wildfly
 docker rm -f wildfly-db
 docker rm -f myadmin-wildfly
