@@ -9,20 +9,9 @@ server:
 ######################################
 spring:
   profiles: 
-    active: ${app.profile}
+    active: ${app.profile:testcase}
   application:
     name: SpringRestApiDemo
-  jpa:
-    hibernate:
-      ddl-auto: none
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL5Dialect
-        jdbc:
-          lob:
-            non_contextual_creation: true
-    show-sql: true
-
 # ==============================================================
 # = Actuator Parameters
 # ==============================================================

@@ -1,20 +1,22 @@
 # ==============================================================
-# = Config Server Base con Autenticazione
+# = Config Server need authentication for work
 # ==============================================================
-# ==============================================================
-# = Profilo Attivo PEER 1
-# ==============================================================  
+server:
+ servlet:
+   context-path: /ConfigServerRestApi
+   
 spring:
-  application:
+ application:
     name: ConfigServerRestApi
+ 
 # ==============================================================
 # = Cloud Parameters
 # ============================================================== 
-  cloud:
-    config:
-      server:
+ cloud:
+   config:
+     server:
         git:
-          uri: ${repository}
+          uri: ${repository:http://localhost:8089/rest-api-demo-config.git}
 
 # ==============================================================
 # = Actuator Parameters
@@ -49,9 +51,10 @@ logging:
 # ==============================================================
 # = Security Parameters
 # ============================================================== 
-sicurezza:
-  userpwd: 'BimBumBam_2018'
-  adminpwd: 'MagicaBula_2018'  
+basic:
+  security:
+    userpwd: 'appconfiguration-devel'
+    adminpwd: 'ab34h2537cc302398232gdf'  
 
 
 

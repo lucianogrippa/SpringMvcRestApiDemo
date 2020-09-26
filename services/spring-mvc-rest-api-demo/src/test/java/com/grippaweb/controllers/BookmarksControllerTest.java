@@ -23,7 +23,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.grippaweb.ServletApplication;
 
-@TestPropertySource(properties = { "app.profile=testcase" })
+@TestPropertySource(properties = { "app.profile=testcase","spring.profiles.active=testcase" })
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = ServletApplication.class)
 @SpringBootTest

@@ -9,6 +9,7 @@ RUN mkdir /var/www/git
 RUN chown -Rfv www-data:www-data /var/www/git
 
 ADD ./config/git.conf /etc/apache2/sites-available/git.conf
+ADD ./config/.htpasswd /var/www/git/.htpasswd
 ADD ./config/git-create-repo.sh /usr/bin/mkrepo
 
 RUN chmod +x /usr/bin/mkrepo
