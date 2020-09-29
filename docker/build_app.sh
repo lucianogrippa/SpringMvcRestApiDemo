@@ -3,11 +3,12 @@
 #########################
 # clean up images
 ########################
-docker down
-docker rm -f tomcatdb
-docker rm -f wildfly
-docker rm -f wildfly-db
-docker rm -f myadmin-wildfly
+docker-compose rm -f tomcatapp
+docker-compose rm -f wildfly
+docker-compose rm -f appdb
+docker-compose rm -f phpmyadmin
+docker-compose rm -f git-server
+docker-compose rm -f springboot 
 
 ##########################
 # CREATE IMAGE

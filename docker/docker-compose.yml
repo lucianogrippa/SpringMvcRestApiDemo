@@ -137,4 +137,12 @@ services:
       - ./springboot/env:/root/app/env
       - ./springboot/exec:/root/app/exec
       - ./springboot/log:/root/app/log
+    depends_on:
+      - appdb
+    links:
+      - appdb:springbootdb    
+      
+      
+      
+      
   

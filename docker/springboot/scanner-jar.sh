@@ -1,5 +1,14 @@
 #!/bin/bash
 
+function cleanup {
+  	echo "###### clean up application  ######"
+	rm -rf ./exec/*.run
+}
+
+trap cleanup EXIT
+
+cleanup
+
 # run every interval in seconds
 timeinterval=5;
 echo "time intervall: $timeinterval"
@@ -92,4 +101,3 @@ while [[ true ]]; do
     sleep $timeinterval;
 done
 
-rm -rf ./exec/*.run
