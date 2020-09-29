@@ -6,5 +6,5 @@ spring:
     config:      uri:      - ${configserverurl:http://localhost:8080/ConfigServerRestApi}
       username: ${configserver.username:user}
       password: ${configserver.password:appconfiguration-devel}
-      fail-fast: true
+      fail-fast: false
       

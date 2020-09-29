@@ -110,5 +110,31 @@ services:
     ports:
       - 8089:80
     volumes:
-      - ./gitserver/repos:/var/www/git
+      - ./gitserver/repos/rest-api-demo-config.git:/var/www/git/rest-api-demo-config.git
+  #######################################
+  # Spring boot starter
+  ########################################
+  springboot:
+    build: ./springboot
+    container_name: springboot
+    image: springboot
+    networks: 
+      ntrestapi:
+        ipv4_address: 192.22.0.7
+    restart: always
+    ports:
+      - 8181:8181
+      - 8182:8182
+      - 8183:8183
+      - 8184:8184
+      - 8185:8185
+      - 8186:8186
+      - 8187:8187
+      - 8188:8188
+      - 8189:8189
+      - 8190:8190
+    volumes:
+      - ./springboot/env:/root/app/env
+      - ./springboot/exec:/root/app/exec
+      - ./springboot/log:/root/app/log
   

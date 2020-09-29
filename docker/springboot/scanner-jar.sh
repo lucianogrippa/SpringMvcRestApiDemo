@@ -18,7 +18,12 @@ echo "Folder envfolder=\"$envfolder\""
 echo "#####################################"
 echo "#  JAVA RUN  PROPERTIES            ##"
 echo "#####################################"
-appEnv=($(< "./$envfolder/app.env"))
+if [ -f $envfolder/app.env ]; then
+	appEnv=($(< "$envfolder/app.env"))
+else
+	echo "the file $envfolder/app.env do not exists. You should create it before start app"
+	exit 0
+fi
 
 printf -v app_env ' %s' "${appEnv[@]}" # yields "|1|2|3|4"
 app_env=${app_env:1}                  # remove the leading '|'
@@ -34,7 +39,8 @@ while [[ true ]]; do
     #echo $chksum2
 	if [[ $chksum1 != $chksum2 ]] ; then 
 		
-		chksum1="${chksum1:-$chksum2}"
+		chksum1=$chksum2
+		echo "chksum2 = $chksum2  chksum1 =$chksum1"
 		
        	for entry in "$jarfolder"/*
 		do
@@ -57,8 +63,8 @@ while [[ true ]]; do
 			  if [ -f $fileEnv ] ; then
 					app1Env=($(< $fileEnv))
 	
-					printf -v app1_env ' %s' "${app1Env[@]}" # yields "|1|2|3|4"
-					app1_env=${app1_env:1}                  # remove the leading '|'
+					printf -v app1_env ' %s' "${app1Env[@]}"
+					app1_env=${app1_env:1}
 					
 					echo $app1_env
 			
@@ -73,15 +79,11 @@ while [[ true ]]; do
 			  printf -v date '%(%Y-%m-%d.%H%M%S)T' -1 
 			  echo "current execution date:  $date"
 			  logFile="${logfolder}/${fbname}.${date}.log"
-			  
-	          commandToExec="$commandToExec $entry"
-			  
-			  echo "executing $commandToExec > $logFile"
 			 
-			  $commandToExec >$logFile&
-			  
-	          touch $runfile > $runfile
-				
+			  exec $commandToExec $entry > $logFile&
+			  touch $runfile > $runfile
+			  echo "e' stato eseguito il comando: $commandToExec"
+	
 			  echo "### wait for next entry ###"
 		fi
 		done
@@ -89,3 +91,5 @@ while [[ true ]]; do
     #echo "chksum2 = $chksum2  chksum1 =$chksum1";
     sleep $timeinterval;
 done
+
+rm -rf ./exec/*.run
