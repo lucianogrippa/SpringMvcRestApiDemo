@@ -51,3 +51,5 @@ src/test/server/log/rest-api-demo.log
 /docker/tomcat/webapps/*.war
 /docker/tomcat/logs/*.swp
 /.metadata/
+/docker/springboot/log/*.log
+/docker/springboot/exec/*.war
