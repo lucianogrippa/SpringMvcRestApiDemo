@@ -177,4 +177,8 @@ public class UserRepository extends AbstractDao<Long, User> implements IUserRepo
 		return userDeleted;
 	}
 
+	public List<User> findUsersByRole(String role) {
+	    return null;
+	}
+
 }

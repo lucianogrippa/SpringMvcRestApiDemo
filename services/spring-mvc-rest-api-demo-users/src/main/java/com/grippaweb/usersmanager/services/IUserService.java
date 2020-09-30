@@ -1,15 +1,14 @@
-package services;
+package com.grippaweb.usersmanager.services;
 
 import java.util.List;
 
-import entities.User;
+import com.grippaweb.usersmanager.entities.Roles;
+import com.grippaweb.usersmanager.entities.User;
 
 public interface IUserService {
 	User authUser(String username, String pwd, String appKey);
 
 	User find(long id);
-	
-	List<User> findUsersByRole(String role);
 
 	User authUserWithUUID(String username, long userId);
 
@@ -20,4 +19,6 @@ public interface IUserService {
 	boolean delete(long userId);
 	
 	List<User> listAll();
+	
+	List<User> listByRole(Roles role);
 }

@@ -1,0 +1,26 @@
+######################################
+# Server properties
+######################################
+server:
+  servlet:
+    context-path: /SradUsersManagerService
+
+######################################
+# Spring application properties
+######################################
+spring:
+  profiles: 
+    active: ${app.profile:testcase}
+  application:
+    name: SradUsersManagerService
+#################################################################
+# = Actuator Parameters
+#################################################################
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,refresh,bus-refresh        
