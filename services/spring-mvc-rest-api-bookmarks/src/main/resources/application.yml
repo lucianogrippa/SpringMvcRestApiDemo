@@ -2,7 +2,7 @@
 # Server properties
 ######################################
 server:
-  servlet:    context-path: /SradBookmarks
+  servlet:    context-path: /users-service
 
 ######################################
 # Spring application properties
@@ -11,7 +11,7 @@ spring:
   profiles: 
     active: ${app.profile:testcase}
   application:
-    name: SradBookmarks
+    name: bookmarks
 # ==============================================================
 # = Actuator Parameters
 # ==============================================================

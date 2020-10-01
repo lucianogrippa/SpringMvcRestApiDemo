@@ -20,11 +20,17 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Type;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "users")
-@Data
 public class User {
 
 	@Id
@@ -67,10 +73,7 @@ public class User {
 	@JoinTable(name = "usersroles", joinColumns = { @JoinColumn(name = "userid") }, inverseJoinColumns = {
 			@JoinColumn(name = "roleid") })
 	private Collection<Roles> roles = new  LinkedHashSet<Roles>();
-
-	public User() {
-	}
-
+	
 	public User(long id) {
 		userId = id;
 	}

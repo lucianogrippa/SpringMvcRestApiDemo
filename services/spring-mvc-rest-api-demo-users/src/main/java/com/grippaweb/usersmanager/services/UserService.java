@@ -3,18 +3,23 @@ package com.grippaweb.usersmanager.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.Caching;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import com.grippaweb.usersmanager.entities.Roles;
 import com.grippaweb.usersmanager.entities.User;
+import com.grippaweb.usersmanager.helpers.JwtTokenHelper;
 import com.grippaweb.usersmanager.helpers.LogHelper;
 import com.grippaweb.usersmanager.repositories.UserRepository;
 
@@ -30,6 +35,9 @@ public class UserService implements IUserService {
 	@Autowired
 	UserRepository repository;
 
+	@Autowired
+	JwtTokenHelper jwtTokenHelper;
+	
 	LogHelper logger = new LogHelper(getClass());
 
 	@Override
@@ -105,5 +113,27 @@ public class UserService implements IUserService {
 		boolean isSaved = false;
 		repository.deleteById(userId);
 		return isSaved;
+	}
+
+	@Override
+	public User findByUsername(String username) {
+	    return repository.findByUsername(username);
+	}
+
+	@Override
+	public User findByToken(String token) {
+	    
+	    String username = jwtTokenHelper.getUsernameFromToken(token);
+	    
+	    return repository.findByUsername(username);
+	}
+
+	@Override
+	public List<User> listAll(String textSearch, Integer indexRow, Integer maxRow) {
+	    Specification<User> userSpecification = (root, query, builder) -> {
+		// TODO: completare questa quey
+		return null;
+	    };
+	    return null;
 	}
 }

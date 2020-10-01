@@ -3,6 +3,7 @@ package com.grippaweb.usersmanager.security;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -26,14 +27,29 @@ import com.grippaweb.usersmanager.services.UserService;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private static String REALM = "REAME";
 
-    private static final String[] USER_MATCHER = { "/api/users/find/**" };
-    private static final String[] ADMIN_MATCHER = { "/api/users/manage/**" };
+    private static final String[] USER_MATCHER = { "/api/users/**",
+	    				          "/api/roles/**"  
+	    					 };
+    private static final String[] ADMIN_MATCHER = { "/actuator/**" };
+    
 
     @Autowired
     UserService userService;
 
     @Autowired
     RolesService roleService;
+    
+    @Value("${application.default-user.name}")
+    private String defaultUserName;
+    
+    @Value("${application.default-user.password}")
+    private String defaultUserPassword;
+    
+    @Value("${application.default-user-admin.name}")
+    private String defaultAdminUserName;
+    
+    @Value("${application.default-user-admin.password}")
+    private String defaultAdminUserPassword;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -75,6 +91,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	    List<com.grippaweb.usersmanager.entities.User> dbUsers = userService.listByRole(roleAdmin);
 
 	    if (dbUsers != null) {
+		// amministratori da database
 		for(com.grippaweb.usersmanager.entities.User userItem : dbUsers) {
 		    manager.createUser(users
 			    		.username(userItem.getUsername())
@@ -92,10 +109,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     private void createDefaultUsers(UserBuilder users, InMemoryUserDetailsManager manager) {
-	manager.createUser(users.username("ReadUser").password(new BCryptPasswordEncoder().encode("BimBumBam_2018"))
+	manager.createUser(users.username(defaultUserName).password(new BCryptPasswordEncoder().encode(defaultUserPassword))
 		.roles("USER").build());
 
-	manager.createUser(users.username("Admin").password(new BCryptPasswordEncoder().encode("MagicaBula_2018"))
+	manager.createUser(users.username(defaultAdminUserName).password(new BCryptPasswordEncoder().encode(defaultAdminUserPassword))
 		.roles("USER", "ADMIN").build());
     }
 }

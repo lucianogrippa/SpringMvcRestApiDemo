@@ -7,6 +7,8 @@ spring:
       username: ${configserver.username:user}
       password: ${configserver.password:appconfiguration-devel}
       fail-fast: true
+      request-connect-timeout: 120000
+      request-read-timeout: 120000
       retry:
        initial-interval: 5000
        max-interval: 10000

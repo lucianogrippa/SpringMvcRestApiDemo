@@ -17,14 +17,14 @@ import com.grippaweb.usersmanager.helpers.LogHelper;
 import com.grippaweb.usersmanager.services.RolesService;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/roles")
 public class RolesController {
 
     	LogHelper logger = new LogHelper(getClass());
 
 	@Autowired RolesService roleService;
 	
-	@GetMapping(value = "/listroles")
+	@GetMapping(value = "/find/listroles")
 	public @ResponseBody Content listRoles() {
 		Content content = new Content();
 		content.setId(System.currentTimeMillis());
@@ -34,7 +34,7 @@ public class RolesController {
 		return content;
 	}
 	
-	@GetMapping(value = "/role/{roleid}")
+	@GetMapping(value = "/find/id/{roleid}")
 	public @ResponseBody Content getRole(@PathVariable(value = "roleid") long roleId) {
 		Content content = new Content();
 		content.setId(System.currentTimeMillis());
@@ -44,7 +44,7 @@ public class RolesController {
 		return content;
 	}
 	
-	@GetMapping(value = "/rolecode/{code}")
+	@GetMapping(value = "/find/code/{code}")
 	public @ResponseBody Content rolecode(@PathVariable(name = "code") String code) {
 		Content content = new Content();
 		content.setId(System.currentTimeMillis());
@@ -54,7 +54,7 @@ public class RolesController {
 		return content;
 	}
 	
-	@PostMapping(value = "/saveRole")
+	@PostMapping(value = "/save")
 	public @ResponseBody Content createUser(@RequestBody Roles role) throws ApiNotAcceptedHandlerException {
 		logger.logInfo("calling: /saveRole/ ");
 		Content resp = new Content();
@@ -71,7 +71,7 @@ public class RolesController {
 		return resp;
 	}
 	
-	@DeleteMapping(value = "/deleteRole/{roleId}")
+	@DeleteMapping(value = "/delete/{roleId}")
 	public @ResponseBody Content deleteUser(@PathVariable(name = "roleId",required = true) long roleId) throws ApiNotAcceptedHandlerException {
 		logger.logInfo("calling: /deleteRole/ ");
 		Content resp = new Content();

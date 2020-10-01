@@ -21,4 +21,10 @@ public interface IUserService {
 	List<User> listAll();
 	
 	List<User> listByRole(Roles role);
+	
+	User findByUsername(String username);
+	
+	User findByToken(String token);
+	
+	List<User> listAll(String textSearch, Integer indexRow, Integer maxRow);
 }

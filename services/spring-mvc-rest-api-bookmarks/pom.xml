@@ -13,7 +13,7 @@
 	<artifactId>spring-mvc-rest-api-demo</artifactId>
 	<version>0.1.7-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>SradBookmarks</name>
+	<name>bookmarks</name>
 	<description>Progetto prototipo per creare Spring Mvc Rest Api da deployare su server jboss wildfly</description>
 
 	<properties>
@@ -196,6 +196,6 @@
 				</executions>
 			</plugin>
 		</plugins>
-		<finalName>SradBookmarks</finalName>
+		<finalName>bookmarks-service</finalName>
 	</build>
 </project>
