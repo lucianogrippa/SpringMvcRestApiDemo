@@ -1,1 +1,24 @@
+########################################################
+#  JWT AND AUTHORIZATION SERVICE                      ##
+########################################################
 
+server:
+  servlet:    context-path: /auth-service
+    
+spring:
+   profiles: 
+    active: ${app.profile:testcase}
+   application:
+     name: authservice
+        
+##########################################################
+#  REF USER MANAGER
+##########################################################
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,refresh,bus-refresh

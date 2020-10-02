@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.grippaweb</groupId>
 	<artifactId>spring-mvc-rest-api-demo-users</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2</version>
 	<packaging>war</packaging>
 	<name>users-service</name>
 	<description>Demo project for Spring Boot users manager api</description>
@@ -69,7 +69,8 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
-		</dependency><!-- SWAGGER 2 -->
+		</dependency>
+		<!-- SWAGGER 2 -->
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>

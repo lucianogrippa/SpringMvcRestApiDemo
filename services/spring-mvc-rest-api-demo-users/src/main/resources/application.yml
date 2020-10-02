@@ -13,8 +13,10 @@ spring:
     active: ${app.profile:testcase}
   application:
     name: userservice
+
+
 #################################################################
-# = Actuator Parameters
+#  Actuator Parameters
 #################################################################
 management:
   endpoint:
@@ -34,4 +36,4 @@ token-config:
     header: Authorization
     prefix: Bearer 
     expiration: 86400
-    secret: 123_Stella
+    secret: 789503acb5gf33e29803423098
