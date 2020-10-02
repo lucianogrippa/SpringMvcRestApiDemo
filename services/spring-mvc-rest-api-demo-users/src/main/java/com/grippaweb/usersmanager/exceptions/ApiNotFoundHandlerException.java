@@ -42,7 +42,7 @@ public class ApiNotFoundHandlerException extends ServletException {
 			description = "Resource not found in this server";
 		}
 
-		errorInfo.setExeption(getRootCause());
+		errorInfo.setExeption(getRootCause() != null ? getRootCause() : getCause());
 
 		errorInfo.setData(null);
 		errorInfo.setDescription(description);

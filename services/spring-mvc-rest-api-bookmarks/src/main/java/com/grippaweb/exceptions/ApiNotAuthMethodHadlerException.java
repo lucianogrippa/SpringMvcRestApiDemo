@@ -42,7 +42,7 @@ public class ApiNotAuthMethodHadlerException extends ServletException {
 			description = "Permission denied for access to resource";
 		}
 
-		errorInfo.setExeption(getRootCause());
+		errorInfo.setExeption(getRootCause() != null ? getRootCause() : getCause());
 
 		errorInfo.setData(null);
 		errorInfo.setDescription(description);

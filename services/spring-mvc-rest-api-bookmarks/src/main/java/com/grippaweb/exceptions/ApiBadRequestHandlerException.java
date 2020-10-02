@@ -44,7 +44,7 @@ public class ApiBadRequestHandlerException extends ServletException {
 			description ="Bad request error 400 ";
 		}
 		
-		errorInfo.setExeption(getRootCause());
+		errorInfo.setExeption(getRootCause() != null ? getRootCause() : getCause());
 		
 		errorInfo.setData(null);
 		errorInfo.setDescription(description);

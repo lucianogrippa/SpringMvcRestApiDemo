@@ -45,7 +45,7 @@ public class ApiMethodNotAllowedHandlerException extends ServletException {
 			description = "Wrong parameters for method call";
 		}
 
-		errorInfo.setExeption(getRootCause());
+		errorInfo.setExeption(getRootCause() != null ? getRootCause() : getCause());
 
 		errorInfo.setData(null);
 		errorInfo.setDescription(description);

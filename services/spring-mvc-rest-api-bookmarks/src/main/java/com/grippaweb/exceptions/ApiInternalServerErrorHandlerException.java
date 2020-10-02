@@ -41,7 +41,7 @@ public class ApiInternalServerErrorHandlerException extends ServletException {
 			description = "Internal Server error occurred see exception";
 		}
 
-		errorInfo.setExeption(getRootCause());
+		errorInfo.setExeption(getRootCause() != null ? getRootCause() : getCause());
 
 		errorInfo.setData(null);
 		errorInfo.setDescription(description);

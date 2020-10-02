@@ -34,16 +34,17 @@ public class ApiInternalServerErrorHandlerException extends ServletException {
 
 		ApiErrorMessageResponse errorInfo = new ApiErrorMessageResponse();
 		String description = "";
+		if (getMessage() != null && !getMessage().isEmpty()) {
+			description = getMessage();
+		} else
 		if (getStackTrace() != null) {
 			description = StringUtils.isEmpty(getRootCause()) ?  ErrorHandlerHelper.getStackTrace(getMessage(), getStackTrace()):
 			    ErrorHandlerHelper.getStackTrace(getRootCause());
-		} else if (getMessage() != null && !getMessage().isEmpty()) {
-			description = getMessage();
-		} else {
+		}  else {
 			description = "Internal Server error occurred see exception";
 		}
 
-		errorInfo.setExeption(getRootCause());
+		errorInfo.setExeption(getRootCause() != null ? getRootCause() : getCause());
 
 		errorInfo.setData(null);
 		errorInfo.setDescription(description);

@@ -41,7 +41,7 @@ public class ApiNotAcceptedHandlerException extends ServletException {
 			description = " request not accettable";
 		}
 
-		errorInfo.setExeption(getRootCause());
+		errorInfo.setExeption(getRootCause() != null ? getRootCause() : getCause());
 
 		errorInfo.setData(null);
 		errorInfo.setDescription(description);

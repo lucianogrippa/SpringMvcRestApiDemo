@@ -102,7 +102,7 @@ public class UserService implements IUserService {
 	    repository.deleteById(userId);
 	    
 	    Optional<User> user = repository.findById(userId);
-	    isSaved = !user.isPresent();
+	    isSaved = !user.isPresent() || user.isEmpty();
 	    
 	} catch (Exception e) {
 	    logger.logException(e);

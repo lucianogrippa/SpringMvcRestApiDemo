@@ -32,7 +32,7 @@ public class RolesService implements IRolesService {
     public Roles find(long id) {
 	Roles role = null;
 	Optional<Roles> opt = repository.findById(id);
-	if (opt != null) {
+	if (opt.isPresent()) {
 	    role = opt.get();
 	}
 	return role;
@@ -41,33 +41,43 @@ public class RolesService implements IRolesService {
     @Override
     @Caching
     public Roles find(String code) {
-	return repository.findByCode(code);
+	Roles role = null;
+	Optional<Roles> opt = repository.findByCode(code);
+	if (opt.isPresent()) {
+	    role = opt.get();
+	}
+	return role;
     }
 
     @Override
     @Caching
     public List<Roles> listAll() {
-	return repository.listAll();
+	return repository.findAll();
     }
 
     @Override
     @Caching(evict = { @CacheEvict(cacheNames = "roleservice", allEntries = true) })
+    @Transactional
     public boolean save(Roles role) {
 	if (role != null) {
 	    Roles r = repository.save(role);
 	    long roleId = r.getId();
 	    return roleId > 0;
 	}
+	
 	return false;
     }
 
     @Override
     @Caching(evict = { @CacheEvict(cacheNames = "roleservice", allEntries = true) })
+    @Transactional
     public boolean remove(long id) {
 	boolean retVal = false;
 	try {
 	    repository.deleteById(id);
-	    retVal = true;
+	    Optional<Roles> role = repository.findById(id);
+	    retVal = !role.isPresent() || role.isEmpty();
+	    
 	} catch (Exception e) {
 	    logger.logException(e);
 	}
