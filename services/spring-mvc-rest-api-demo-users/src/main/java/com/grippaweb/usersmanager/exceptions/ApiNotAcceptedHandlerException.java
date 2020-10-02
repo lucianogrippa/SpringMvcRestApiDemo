@@ -2,12 +2,12 @@ package com.grippaweb.usersmanager.exceptions;
 
 import javax.servlet.ServletException;
 
-import com.grippaweb.usersmanager.helpers.LogHelper;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.grippaweb.usersmanager.dtos.ApiErrorMessageResponse;
 import com.grippaweb.usersmanager.helpers.ErrorHandlerHelper;
+import com.grippaweb.usersmanager.helpers.LogHelper;
 
 @ResponseStatus(value = HttpStatus.NOT_ACCEPTABLE)
 public class ApiNotAcceptedHandlerException extends ServletException {

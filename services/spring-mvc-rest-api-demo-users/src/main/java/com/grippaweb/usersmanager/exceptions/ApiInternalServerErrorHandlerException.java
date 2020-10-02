@@ -3,6 +3,7 @@ package com.grippaweb.usersmanager.exceptions;
 import javax.servlet.ServletException;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.grippaweb.usersmanager.dtos.ApiErrorMessageResponse;
@@ -34,7 +35,8 @@ public class ApiInternalServerErrorHandlerException extends ServletException {
 		ApiErrorMessageResponse errorInfo = new ApiErrorMessageResponse();
 		String description = "";
 		if (getStackTrace() != null) {
-			description = ErrorHandlerHelper.getStackTrace(getRootCause());
+			description = StringUtils.isEmpty(getRootCause()) ?  ErrorHandlerHelper.getStackTrace(getMessage(), getStackTrace()):
+			    ErrorHandlerHelper.getStackTrace(getRootCause());
 		} else if (getMessage() != null && !getMessage().isEmpty()) {
 			description = getMessage();
 		} else {

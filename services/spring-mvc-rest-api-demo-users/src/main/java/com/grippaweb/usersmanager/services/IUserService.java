@@ -2,6 +2,8 @@ package com.grippaweb.usersmanager.services;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import com.grippaweb.usersmanager.entities.Roles;
 import com.grippaweb.usersmanager.entities.User;
 
@@ -11,8 +13,6 @@ public interface IUserService {
 	User find(long id);
 
 	User authUserWithUUID(String username, long userId);
-
-	User authUserByRequestAuthToken(String authToken);
 
 	boolean save(User user);
 
@@ -26,5 +26,5 @@ public interface IUserService {
 	
 	User findByToken(String token);
 	
-	List<User> listAll(String textSearch, Integer indexRow, Integer maxRow);
+	Page<User> listAll(String textSearch, Integer indexRow, Integer maxRow);
 }

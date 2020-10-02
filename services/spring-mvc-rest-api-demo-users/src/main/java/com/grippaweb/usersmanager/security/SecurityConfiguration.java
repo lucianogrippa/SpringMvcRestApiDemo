@@ -53,7 +53,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-	http.csrf().disable().authorizeRequests().antMatchers(USER_MATCHER).hasAnyRole("USER")
+	http.csrf().disable().authorizeRequests()
+		.antMatchers(USER_MATCHER)
+		.hasAnyRole("ADMIN","SUPER_USER")
 		.antMatchers(ADMIN_MATCHER).hasAnyRole("ADMIN").anyRequest().authenticated().and().httpBasic()
 		.realmName(REALM)
 		.authenticationEntryPoint(getBasicAuthEntryPoint())
@@ -85,6 +87,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
 
 	Roles roleAdmin = roleService.find("ROLE_ADMIN");
+	Roles superUser = roleService.find("ROLE_SUPER_USER");
 
 	if (roleAdmin != null && roleAdmin.getId() > 0) {
 
@@ -97,7 +100,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			    		.username(userItem.getUsername())
 			    		.password(new BCryptPasswordEncoder()
 			    			.encode(userItem.getSecret()))
-				.roles("USER","ADMIN").build());
+				.roles("USER","ADMIN","SUPER_USER").build());
+		}
+	    }
+	    
+	    List<com.grippaweb.usersmanager.entities.User> superUserList = userService.listByRole(superUser);
+	    // aggiungi anche super_admin
+	    if (superUserList != null) {
+		// amministratori da database
+		for(com.grippaweb.usersmanager.entities.User userItem : superUserList) {
+		    manager.createUser(users
+			    		.username(userItem.getUsername())
+			    		.password(new BCryptPasswordEncoder()
+			    			.encode(userItem.getSecret()))
+				.roles("SUPER_USER","USER").build());
 		}
 	    }
 	}
@@ -110,9 +126,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private void createDefaultUsers(UserBuilder users, InMemoryUserDetailsManager manager) {
 	manager.createUser(users.username(defaultUserName).password(new BCryptPasswordEncoder().encode(defaultUserPassword))
-		.roles("USER").build());
+		.roles("SUPER_USER").build());
 
 	manager.createUser(users.username(defaultAdminUserName).password(new BCryptPasswordEncoder().encode(defaultAdminUserPassword))
-		.roles("USER", "ADMIN").build());
+		.roles("SUPER_USER", "ADMIN").build());
     }
 }

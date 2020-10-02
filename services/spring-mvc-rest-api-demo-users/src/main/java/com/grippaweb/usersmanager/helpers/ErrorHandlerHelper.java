@@ -36,4 +36,25 @@ public class ErrorHandlerHelper {
 		}
 		return message;
 	}
+	public static String getStackTrace(String message,StackTraceElement[] stackTrace) {
+	    String description = "";
+
+		if (description != null ) {
+		    StringWriter sw = new StringWriter();
+			sw.append(message);
+			for(StackTraceElement element : stackTrace) {
+			    sw.append(String.format(" [%s] ", element.getLineNumber()));
+			    if(element.getFileName() != null)
+				sw.append(String.format(" %s ", element.getFileName()));
+			    if(element.getClassName() != null)
+				sw.append(String.format(" %s ", element.getClassName()));
+			    if(element.getMethodName() != null)
+				sw.append(String.format(" %s ", element.getMethodName()));
+			    if(element.getModuleName() != null)
+			    sw.append(String.format(" %s ", element.getModuleName()));
+			}
+			description = sw.toString();
+		}
+		return description;
+	}
 }

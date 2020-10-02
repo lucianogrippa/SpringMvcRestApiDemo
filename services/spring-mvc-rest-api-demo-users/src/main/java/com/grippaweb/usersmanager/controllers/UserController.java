@@ -1,10 +1,10 @@
 package com.grippaweb.usersmanager.controllers;
 
-import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,6 +19,7 @@ import com.grippaweb.usersmanager.dtos.Content;
 import com.grippaweb.usersmanager.entities.Roles;
 import com.grippaweb.usersmanager.entities.User;
 import com.grippaweb.usersmanager.exceptions.ApiForbiddenHandlerException;
+import com.grippaweb.usersmanager.exceptions.ApiInternalServerErrorHandlerException;
 import com.grippaweb.usersmanager.exceptions.ApiMethodNotAllowedHandlerException;
 import com.grippaweb.usersmanager.exceptions.ApiNotAcceptedHandlerException;
 import com.grippaweb.usersmanager.exceptions.ApiNotFoundHandlerException;
@@ -121,43 +121,44 @@ public class UserController {
 	return resp;
     }
 
-    @GetMapping(value = {"/find/all",
-	    		 "/find/all/{name}",
-	    		 "/find/all/start-index/{index}/max-page/{maxrow}",
-	    		"/find/all/start-index/{index}/max-page/{maxrow}/name/{name}"})
-    public @ResponseBody Content listusers(@PathVariable(name = "name",required = false) Optional<String> name,@PathVariable(name = "index",required = false) Optional<Integer> startIndex,@PathVariable(name = "maxrow",required = false) Optional<Integer> maxPageRow) throws ApiNotAcceptedHandlerException, ApiNotFoundHandlerException {
+    @GetMapping(value = { "/find/all", "/find/all/{name}", "/find/all/start-index/{index}/max-page/{maxrow}",
+	    "/find/all/start-index/{index}/max-page/{maxrow}/name/{name}" })
+    public @ResponseBody Content listusers(@PathVariable(name = "name", required = false) Optional<String> name,
+	    @PathVariable(name = "index", required = false) Optional<Integer> startIndex,
+	    @PathVariable(name = "maxrow", required = false) Optional<Integer> maxPageRow)
+	    throws ApiNotAcceptedHandlerException, ApiNotFoundHandlerException {
 	String textSearch = "";
 	Integer indexRow = 0;
 	Integer maxRow = 10000;
-	
-	if(name.isPresent() && !name.isEmpty()) {
+
+	if (name.isPresent() && !name.isEmpty()) {
 	    textSearch = name.get();
 	}
-	
-	if(startIndex.isPresent()) {
-	    indexRow= startIndex.get();
+
+	if (startIndex.isPresent()) {
+	    indexRow = startIndex.get();
 	}
-	
-	if(maxPageRow.isPresent()) {
+
+	if (maxPageRow.isPresent()) {
 	    maxRow = maxPageRow.get();
 	}
-	
+
 	logger.logInfo("calling: /listusers/ ");
-	
-	logger.logDebug("name "+textSearch);
-	
+
+	logger.logDebug("name " + textSearch);
+
 	Content resp = new Content();
 	resp.setId(System.currentTimeMillis());
 	try {
-	    
-	    List<User> users = userService.listAll(textSearch,indexRow,maxRow);
-	    
-	    if (users != null && users.size() > 0) {
+
+	    Page<User> users = userService.listAll(textSearch, indexRow, maxRow);
+
+	    if (users != null) {
 		resp.setData(users);
 		resp.setStatus(200);
 		resp.setDescription("list of all users");
 	    } else {
-		throw new  ApiNotFoundHandlerException("La lista degli utenti e' vuota");
+		throw new ApiNotFoundHandlerException("La lista degli utenti e' vuota");
 	    }
 	} catch (NoSuchElementException e) {
 	    ApiNotFoundHandlerException notFound = new ApiNotFoundHandlerException("La lista degli utenti e' vuota");
@@ -189,16 +190,28 @@ public class UserController {
     }
 
     @PostMapping(value = "/save")
-    public @ResponseBody Content createUser(@RequestBody User user) throws ApiNotAcceptedHandlerException {
+    public @ResponseBody Content createUser(@RequestBody User user) throws ApiNotAcceptedHandlerException, ApiInternalServerErrorHandlerException {
 	logger.logInfo("calling: /users/save/ ");
 	Content resp = new Content();
 	resp.setId(System.currentTimeMillis());
-	boolean isSaved = userService.save(user);
-	if (isSaved) {
-	    resp.setData(true);
-	    resp.setStatus(200);
-	} else {
-	    throw new ApiNotAcceptedHandlerException("can't save user");
+	try {
+	    boolean isSaved = userService.save(user);
+	    if (isSaved) {
+		resp.setData(true);
+		resp.setStatus(200);
+		resp.setDescription("Utente salvato con successo!!");
+	    } else {
+		throw new ApiNotAcceptedHandlerException("can't save user");
+	    }
+	} catch (Exception e) {
+	    String message = e.getMessage();
+	    if(message.toLowerCase().contains("constraint")) {
+		throw new ApiInternalServerErrorHandlerException("duplicate entry");
+	    }
+	    else
+	    {
+		throw new ApiInternalServerErrorHandlerException(message, e);
+	    }
 	}
 	return resp;
     }
