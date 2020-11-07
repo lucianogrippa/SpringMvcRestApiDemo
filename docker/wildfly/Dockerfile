@@ -11,6 +11,7 @@ ENV JBOSS_HOME=/opt/jboss/wildfly
 
 ENV app.profile=wildfly
 ENV spring.profiles.active=wildfly
+ENV configserverurl=http://192.22.0.7:8181/ConfigServerRestApi
 
 ENV SERVER_BASE_DIR=/opt/jboss/wildfly/standalone
 ENV SERVER_BASE_LOG_DIR=/opt/jboss/wildfly/log

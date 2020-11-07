@@ -1,10 +1,0 @@
-######################################
-# Server cloud config properties
-######################################
-spring:
-  cloud:
-    config:      uri:      - ${configserverurl:http://localhost:8080/ConfigServerRestApi}
-      username: ${configserver.username:user}
-      password: ${configserver.password:appconfiguration-devel}
-      fail-fast: false
-      
