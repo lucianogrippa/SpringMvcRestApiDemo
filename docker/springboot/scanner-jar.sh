@@ -3,6 +3,8 @@
 function cleanup {
   	echo "###### clean up application  ######"
 	rm -rf ./exec/*.run
+	rm -rf ./exec/*.stop
+	rm -rf ./exec/*.stop.stopped
 }
 
 trap cleanup EXIT
@@ -58,12 +60,16 @@ while [[ true ]]; do
 		  fbname=$(basename "$entry" | cut -d. -f1)
 		  
 		  runfile="$jarfolder/$fbname.run"
+		  stopfile="$jarfolder/$fbname.stop"
+
+		  
 
 		  if [[ (${entry: -4} == ".war" || ${entry: -4} == ".jar") && (! -f $runfile) ]]; then
 			  commandToExec="java -jar $app_env"
 
 			  
 			  fileEnv="./$envfolder/$fbname.env"
+
 			  echo "###################################"
 	
 			  echo "search for env file $fileEnv"
@@ -92,10 +98,24 @@ while [[ true ]]; do
 			  exec $commandToExec $entry > $logFile&
 			  touch $runfile > $runfile
 			  echo "e' stato eseguito il comando: $commandToExec"
-	
-			  echo "### wait for next entry ###"
+			
+			 
+		fi
+		 ##########################################################
+		 # ESEGUE LO STOP DEL JAR / WAR se viene rileavto il file 
+		 # [nomejar].stop
+		 ##########################################################
+		 if [ -f $stopfile ]; then
+			echo "stopping file $fbname ........."
+			## esegui stop del war
+			kill -9 $(pgrep -f $fbname)
+
+			mv  $stopfile  $stopfile.stopped
+			echo "stopping file $fbname ......... stopped"
 		fi
 		done
+
+		echo "### wait for next entry ###"
     fi
     #echo "chksum2 = $chksum2  chksum1 =$chksum1";
     sleep $timeinterval;

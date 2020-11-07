@@ -1,0 +1,45 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.3.3.RELEASE)
+
+2020-11-07 10:11:06.471  INFO 14048 --- [           main] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://localhost:8080/ConfigServerRestApi
+2020-11-07 10:11:15.277  INFO 14048 --- [           main] c.c.c.ConfigServicePropertySourceLocator : Located environment: name=SpringRestApiDemo, profiles=[default], label=null, version=c2c6ecb807873a37b577d3cb35c129f20dd6cf01, state=null
+2020-11-07 10:11:15.279  INFO 14048 --- [           main] b.c.PropertySourceBootstrapConfiguration : Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}]
+2020-11-07 10:11:15.298  INFO 14048 --- [           main] com.grippaweb.ServletApplication         : The following profiles are active: testcase
+2020-11-07 10:11:20.715  INFO 14048 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-11-07 10:11:20.974  INFO 14048 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 219ms. Found 1 JPA repository interfaces.
+2020-11-07 10:11:22.040  INFO 14048 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=5f00a6b2-8370-32b1-8558-4efc5680fb58
+2020-11-07 10:11:24.359  INFO 14048 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-11-07 10:11:24.435  INFO 14048 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-07 10:11:24.436  INFO 14048 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-11-07 10:11:28.708  INFO 14048 --- [           main] o.a.c.c.C.[.[.[/SpringRestApiDemo]       : Initializing Spring embedded WebApplicationContext
+2020-11-07 10:11:28.709  INFO 14048 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 13302 ms
+2020-11-07 10:11:29.703  WARN 14048 --- [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cloud.autoconfigure.RefreshAutoConfiguration$JpaInvokerConfiguration': Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker': Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine a suitable driver class
+2020-11-07 10:11:29.708  INFO 14048 --- [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-11-07 10:11:29.770  INFO 14048 --- [           main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-11-07 10:11:29.779 ERROR 14048 --- [           main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine a suitable driver class
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+

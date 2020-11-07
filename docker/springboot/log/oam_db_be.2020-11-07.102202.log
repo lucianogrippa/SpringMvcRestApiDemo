@@ -1,0 +1,40 @@
+  ______            __  __                 _                  
+ |  ____|          |  \/  |               | |                 
+ | |__     _ __    | \  / |   ___    ___  | |_   _ __    ___  
+ |  __|   | '__|   | |\/| |  / _ \  / __| | __| | '__|  / _ \ 
+ | |____  | |      | |  | | | (_) | \__ \ | |_  | |    | (_) |
+ |______| |_|      |_|  |_|  \___/  |___/  \__| |_|     \___/                                                             
+ powered by all'inizio brucia ma poi passa !!!!!!!!!!!!!!!!!!!
+2020-11-07 10:22:11.489  INFO 15731 --- [           main] eu.oam.app.OamDbBeApplication            : Starting OamDbBeApplication v0.0.3-BETA on luciano-VGN-SZ61MN-B with PID 15731 (/home/luciano/Projects/SpringMvcRestApiDemo/docker/springboot/exec/oam_db_be.jar started by luciano in /home/luciano/Projects/SpringMvcRestApiDemo/docker/springboot)
+2020-11-07 10:22:11.543  INFO 15731 --- [           main] eu.oam.app.OamDbBeApplication            : No active profile set, falling back to default profiles: default
+2020-11-07 10:22:21.390  INFO 15731 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-11-07 10:22:21.930  INFO 15731 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 438ms. Found 1 JPA repository interfaces.
+2020-11-07 10:22:26.660  INFO 15731 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2020-11-07 10:22:26.734  INFO 15731 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-07 10:22:26.735  INFO 15731 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.38]
+2020-11-07 10:22:27.210  INFO 15731 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-07 10:22:27.218  INFO 15731 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 15018 ms
+2020-11-07 10:22:28.166  INFO 15731 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-11-07 10:22:30.123  INFO 15731 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-11-07 10:22:30.194  INFO 15731 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/oamdb'
+2020-11-07 10:22:31.543  INFO 15731 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-07 10:22:31.958  INFO 15731 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-11-07 10:22:32.573  WARN 15731 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-11-07 10:22:32.763  INFO 15731 --- [         task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.21.Final
+2020-11-07 10:22:34.398  INFO 15731 --- [         task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-11-07 10:22:34.830  INFO 15731 --- [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-11-07 10:22:35.787  INFO 15731 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-11-07 10:22:38.190  INFO 15731 --- [         task-1] o.hibernate.id.enhanced.TableGenerator   : HHH000398: Explicit segment value for id generator [hibernate_sequences.sequence_name] suggested; using default [default]
+2020-11-07 10:22:43.137  INFO 15731 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-11-07 10:22:43.226  INFO 15731 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-11-07 10:22:43.624  INFO 15731 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+2020-11-07 10:22:44.036  INFO 15731 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2020-11-07 10:22:44.058  INFO 15731 --- [           main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-11-07 10:22:46.806  INFO 15731 --- [           main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-11-07 10:22:46.868  INFO 15731 --- [           main] eu.oam.app.OamDbBeApplication            : Started OamDbBeApplication in 40.756 seconds (JVM running for 44.479)
+2020-11-07 10:22:47.875  INFO 15731 --- [nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-07 10:22:47.875  INFO 15731 --- [nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-11-07 10:22:47.896  INFO 15731 --- [nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 21 ms
+2020-11-07 10:22:48.028  INFO 15731 --- [nio-5000-exec-1] eu.oam.app.utils.DbUtils                 : starting init database.......
+2020-11-07 10:22:48.681  INFO 15731 --- [nio-5000-exec-1] eu.oam.app.utils.DbUtils                 : no data to update
+2020-11-07 10:22:48.724  INFO 15731 --- [           main] eu.oam.app.OamDbBeApplication            : Linux
