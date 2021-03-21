@@ -109,6 +109,7 @@ public class ContentDemoControllerTest {
 		assertTrue(password != null && BCrypt.checkpw("admin.01", password));
 	}
 
+
 	@Test
 	public void printJsonUser() {
 		Gson json = new Gson();
